@@ -45,6 +45,9 @@ main.managerhome .versus>div:last-child{flex-direction:row-reverse!important}
 main.managerhome .versus .tile{width:42px!important;min-width:42px!important;height:42px!important;margin:0!important;flex:0 0 42px!important}
 main.managerhome .versus .small{width:auto!important;min-width:0!important;max-width:calc(100% - 50px)!important;text-align:center!important;margin:0!important;white-space:normal!important}
 main.managerhome .versus{grid-template-columns:minmax(0,1fr) 32px minmax(0,1fr)!important;gap:3px!important}
+
+/* Vertically center abbreviation inside square team badges on hub and final result */
+.managerhome .versus .tile,.match-result .versus .tile,main:has(.final-outside-button) .versus .tile,.versus .winner-tile-wrap .tile{display:flex!important;align-items:center!important;justify-content:center!important;line-height:1!important;text-align:center!important;padding:0!important;vertical-align:middle!important}
 </style><main><div class="gamebranding"><div class="small">SWEDISH HOCKEY MANAGER</div><h1>SHL <span>GULDDRÖMMEN</span> 🏒</h1><div class="small">BETA 1.0.2 · FINPUTSNING v140 · LEVANDE TAKTIKTAVLA · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
 const T=['Brynäs','Frölunda','Färjestad','Skellefteå','Växjö','Rögle','Luleå','Timrå','Örebro','Linköping','HV71','Leksand','Malmö','Djurgården'],C=['BIF','FHC','FBK','SKE','VLH','RBK','LHF','TIK','ÖHK','LHC','HV71','LIF','MIF','DIF'],K=['#d5ac46','#ce263f','#17834c','#e6ba36','#ed8937','#168b5d','#d33a38','#c83434','#bc243b','#1c76b8','#1559a2','#2474b8','#db2937','#e5b82e'];
 let a=T.map((_,i)=>i),first=[];for(let r=0;r<13;r++){first.push(Array.from({length:7},(_,j)=>[a[j],a[13-j]]));a=[a[0],a[13],...a.slice(1,13)]}let rev=first.map(r=>r.map(([x,y])=>[y,x])),F=[...first,...rev,...first,...rev];
