@@ -189,7 +189,7 @@ function showGoalToast(ours){
  startScoreboardFlash();
  goalToastTimer=setTimeout(()=>{box.remove();goalToastTimer=null},3600);
 }
-function act(i){if(g.finalPending===true&&g.turn===14)return;let sc=scenes[g.scene],off=1,def=1;if(g.scene===9)g.penaltyShotUsed=true;for(let v of Object.values(g.coachActive||{}))if(v.left>0){off*=1+v.off;def*=1-v.def}
+function act(i){if(g.finalPending===true&&g.turn===14)return;document.querySelectorAll('.goaltoast').forEach(el=>el.remove());if(goalToastTimer){clearTimeout(goalToastTimer);goalToastTimer=null}goalFlashUntil=0;let sc=scenes[g.scene],off=1,def=1;if(g.scene===9)g.penaltyShotUsed=true;for(let v of Object.values(g.coachActive||{}))if(v.left>0){off*=1+v.off;def*=1-v.def}
 let empty=!!g.coachActive?.pulled?.left,disaster=empty&&g.possession==='opp'&&g.zone==='defensive'&&g.pressure==='high',ownChance=sc[3][i]+(g.tactic==='attack'&&sc[1]?.045:0)+(g.penalty?.team==='opp'&&sc[1]?.09:0)-(g.penalty?.team==='own'&&sc[1]?.08:0),defChance=sc[3][i]+(g.tactic==='defense'&&!sc[1]?.045:0),p=sc[1]?Math.min(.95,Math.max(.01,ownChance*off)):Math.min(.99,Math.max(.01,defChance)),ok=Math.random()<p,[x,y]=g.score,ownGoal=false,againstGoal=false;
 if(disaster&&Math.random()<.99){y++;againstGoal=true}else if(g.opponentPulled&&g.possession==='own'&&sc[1]&&Math.random()<.65){x++;ownGoal=true}else if(sc[1]){if(ok){x++;ownGoal=true}}else if(!ok&&Math.random()<Math.min(.95,.55*def)){y++;againstGoal=true}
 if(ownGoal||againstGoal)showGoalToast(ownGoal);
