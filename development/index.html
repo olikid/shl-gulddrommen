@@ -105,6 +105,26 @@ main.managerhome .nav+.card .form-square{width:12px!important;height:12px!import
 .standings-table .rank-arrow.down{color:#ff6872!important}
 .standings-table .rank-arrow.same{color:#7890a8!important;font-size:13px!important}
 .standings-note{font-size:11px;color:#a6bad0;margin:10px 0 0}
+
+/* Brighter, denser SHL table */
+.standings-table{border-radius:10px;overflow-x:auto;background:#21364d}
+.standings-table table{border-collapse:separate;border-spacing:0;font-size:12px}
+.standings-table th{background:#375875!important;color:#e9f5ff!important;padding:9px 4px!important;border-bottom:2px solid #76bff5!important}
+.standings-table .standings-row td{padding:6px 4px!important;height:30px!important;line-height:1.2!important;border-bottom:1px solid #45627d!important;background:#29425d;color:#f3f8ff}
+.standings-table .standings-row:nth-of-type(even) td{background:#304c69}
+.standings-table .standings-row.mine td{background:#3e6686!important;color:white!important;font-weight:700}
+.standings-table .standings-row.zone-direct td:first-child{background:#24765f!important;color:white}
+.standings-table .standings-row.zone-playin td:first-child{background:#276aa1!important;color:white}
+.standings-table .standings-row.zone-safe td:first-child{background:#65768a!important;color:white}
+.standings-table .standings-row.zone-relegation td:first-child{background:#ac4254!important;color:white}
+.standings-table .zone-divider td{padding:6px 8px!important;font-size:10px!important}
+.standings-table .zone-divider.zone-direct td{background:#258568!important;color:#fff!important}
+.standings-table .zone-divider.zone-playin td{background:#2879bb!important;color:#fff!important}
+.standings-table .zone-divider.zone-safe td{background:#657b91!important;color:#fff!important}
+.standings-table .zone-divider.zone-relegation td{background:#b8495d!important;color:#fff!important}
+.standings-table .rank-arrow{font-size:17px!important}
+.standings-table .rank-arrow.up{color:#62f5a5!important;text-shadow:0 0 5px #1e9e5d}
+.standings-table .rank-arrow.down{color:#ff858f!important;text-shadow:0 0 5px #a92e43}
 </style><main><div class="gamebranding"><div class="small">SWEDISH HOCKEY MANAGER</div><h1>SHL <span>GULDDRÖMMEN</span> 🏒</h1><div class="small">BETA 1.0.2 · FINPUTSNING v140 · LEVANDE TAKTIKTAVLA · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
 const T=['Brynäs','Frölunda','Färjestad','Skellefteå','Växjö','Rögle','Luleå','Timrå','Örebro','Linköping','HV71','Leksand','Malmö','Djurgården'],C=['BIF','FHC','FBK','SKE','VLH','RBK','LHF','TIK','ÖHK','LHC','HV71','LIF','MIF','DIF'],K=['#d5ac46','#ce263f','#17834c','#e6ba36','#ed8937','#168b5d','#d33a38','#c83434','#bc243b','#1c76b8','#1559a2','#2474b8','#db2937','#e5b82e'];
 let a=T.map((_,i)=>i),first=[];for(let r=0;r<13;r++){first.push(Array.from({length:7},(_,j)=>[a[j],a[13-j]]));a=[a[0],a[13],...a.slice(1,13)]}let rev=first.map(r=>r.map(([x,y])=>[y,x])),F=[...first,...rev,...first,...rev];
