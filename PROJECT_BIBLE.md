@@ -40,3 +40,11 @@
 - Den frysta branchen ska inte ändras. Framtida utveckling sker i `development/index.html` på `main`, utan att ändra `index.html` eller snapshot-branchen.
 - Bekräftade funktioner: sticky tillbaka-knapp i Nyhetscentralen, taktisk scouting och förutsägbarhet efter upprepade taktikval, fasta matchbeslut och sticky scoreboard, kompakt TV/assistent och power-ups, aktiva power-up-effekter visas även när menyn stängs, kompakta resultatlistor, separata kort för slutresultat och omgångens matcher, samt nästa-match-genvägar på resultatsidan (utom omgång 52).
 - Detta är en användarverifierad stabil baslinje, inte ett fullständigt automatiserat regressionstest.
+
+## Officiell release 2026-10-27
+- BETA 1.3 publicerad som officiell version i rotfilen `index.html` på `main`.
+- Release-commit: `b9b7f1d06ef5c2efacd6f4eb9e7d96699bb23681`.
+- Källkod från frysta `stable/beta-1.3-2026-10-27` (endast synlig versionsetikett uppdaterad till BETA 1.3 OFFICIELL VERSION).
+- Publik spellänk: https://olikid.github.io/shl-gulddrommen/
+- Utvecklingslänk: https://olikid.github.io/shl-gulddrommen/development/
+- Notera: releasefilen använder fortfarande localStorage-nyckeln `shl_gulddrommen_development` för att bevara befintliga sparade karriärer på samma origin. Ändra inte utan planerad migration.
