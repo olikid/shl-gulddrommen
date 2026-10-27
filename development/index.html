@@ -374,6 +374,7 @@ function worldNews(){return '<div class="personal-news-heading">🎙️ KRING DI
 
 function previewInsights(){
  const [a,b]=fixture();
+ const stand=standings(g.history),A=stand.find(t=>t.i===a),B=stand.find(t=>t.i===b);
  const weights=tacticWeights();
  const ownIndex=g.team===a?0:2,oppIndex=ownIndex===0?2:0;
  const scouting=tacticMatchup();
