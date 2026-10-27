@@ -30,3 +30,13 @@
 - Ändra aldrig huvudfilen index.html av misstag.
 - Skapa helst separat commit för varje funktion och testa mobilnavigation samt sparade säsonger.
 - Denna projektbibel är en översikt, inte en kopia av fullständig källkod.
+
+
+## Milstolpe: BETA 1.3 stabil återställningspunkt (2026-10-27)
+- Användaren har speltestat BETA 1.3 och bekräftat att spelet fungerar bra och börjar bli roligt.
+- **Fryst GitHub-branch:** `stable/beta-1.3-2026-10-27`.
+- **Exakt snapshot-commit:** `72da3610fa0be1c3b49716b9278e3050e747aa28`.
+- **Snapshot-fil:** `development/index.html` (blob `4a3633fa94de14b4295c24aa1771224923466a8f`).
+- Den frysta branchen ska inte ändras. Framtida utveckling sker i `development/index.html` på `main`, utan att ändra `index.html` eller snapshot-branchen.
+- Bekräftade funktioner: sticky tillbaka-knapp i Nyhetscentralen, taktisk scouting och förutsägbarhet efter upprepade taktikval, fasta matchbeslut och sticky scoreboard, kompakt TV/assistent och power-ups, aktiva power-up-effekter visas även när menyn stängs, kompakta resultatlistor, separata kort för slutresultat och omgångens matcher, samt nästa-match-genvägar på resultatsidan (utom omgång 52).
+- Detta är en användarverifierad stabil baslinje, inte ett fullständigt automatiserat regressionstest.
