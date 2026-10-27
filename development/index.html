@@ -309,7 +309,7 @@ function scoreboardKitColor(teamId){
  }
  return K[teamId];
 }
-function situationVisual(){let info=sceneInfo[g.scene]||sceneInfo[7],type=info[1],def=type==='defend',solo=type==='solo',ourPulled=!!g.coachActive?.pulled?.left,oppPulled=!!g.opponentPulled,ourCount=g.penalty?.team==='own'?4:5,oppCount=g.penalty?.team==='opp'?4:5;if(ourPulled)ourCount++;if(oppPulled)oppCount++;
+function situationVisual(){let info=sceneInfo[g.scene]||sceneInfo[7],type=info[1],def=type==='defend',solo=type==='solo',ourPulled=!!g.coachActive?.pulled?.left,oppPulled=!!g.opponentPulled,ourCount=g.overtime?3:(g.penalty?.team==='own'?4:5),oppCount=g.overtime?3:(g.penalty?.team==='opp'?4:5);if(ourPulled)ourCount++;if(oppPulled)oppCount++;
 let ours=def?[[23,30],[36,63],[48,34],[59,67],[68,39],[44,83]]:solo?[[31,48],[22,22],[27,78],[45,22],[45,78],[53,50]]:[[28,50],[41,24],[44,76],[58,36],[60,70],[71,52]];
 let theirs=def?[[33,44],[45,20],[53,56],[66,23],[68,78],[57,85]]:solo?[[55,18],[61,80],[68,32],[70,65],[76,20],[48,65]]:[[39,47],[53,19],[55,81],[70,40],[71,75],[62,55]];
 let palette=rinkColors(),dots=[];
