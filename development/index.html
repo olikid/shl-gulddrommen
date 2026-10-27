@@ -281,6 +281,11 @@ main.inmatch{padding-bottom:calc(190px + env(safe-area-inset-bottom,0px))}
 .compactbranding .card:has(.compact-final.final-winner-left){border-right:0;border-left:4px solid #78d5a4;background:linear-gradient(115deg,#1b403d 0%,#1b3041 55%,#182c43 100%)}
 .compactbranding .card:has(.compact-final.final-defeat.final-winner-right){border-right:0;border-left:4px solid #de777c;background:linear-gradient(115deg,#50303d 0%,#302b40 27%,#1b2c43 63%,#182c43 100%)}
 .compactbranding .card:has(.compact-final.final-defeat.final-winner-left){border-left:0;border-right:4px solid #de777c;background:linear-gradient(245deg,#50303d 0%,#302b40 27%,#1b2c43 63%,#182c43 100%)}
+/* Richer winner-side color wash, fading smoothly toward the center. */
+.compactbranding .card:has(.compact-final.final-winner-left){background:linear-gradient(105deg,#245947 0%,#224d43 20%,#1d4143 39%,#1b3442 61%,#182c43 83%)}
+.compactbranding .card:has(.compact-final.final-winner-right){background:linear-gradient(255deg,#245947 0%,#224d43 20%,#1d4143 39%,#1b3442 61%,#182c43 83%)}
+.compactbranding .card:has(.compact-final.final-defeat.final-winner-left){background:linear-gradient(105deg,#693b49 0%,#573543 20%,#423141 39%,#283044 61%,#182c43 83%)}
+.compactbranding .card:has(.compact-final.final-defeat.final-winner-right){background:linear-gradient(255deg,#693b49 0%,#573543 20%,#423141 39%,#283044 61%,#182c43 83%)}
 /* League tabs and qualification panel */
 .league-switch{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:13px}.league-switch .btn{font-size:11px;padding:10px 4px;border-radius:10px}.league-relegation{border:1px solid #60798d;border-radius:12px;padding:12px;margin:12px 0;background:linear-gradient(110deg,#203c4b,#302e44)}.league-relegation b{font-size:12px;color:#f5d792}.league-relegation p{margin:7px 0;font-size:13px}
 </style><main><div class="gamebranding"><div class="small">SWEDISH HOCKEY MANAGER</div><h1>SHL <span>GULDDRÖMMEN</span> 🏒</h1><div class="small">BETA 1.0.2 · FINPUTSNING v140 · LEVANDE TAKTIKTAVLA · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
