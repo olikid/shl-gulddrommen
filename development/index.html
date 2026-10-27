@@ -377,14 +377,15 @@ const RINK_KITS=[
 ['#DB2937','#F4F4F4'], // MIF
 ['#E5B82E','#173C8A']  // DIF
 ];
+function clubKitColors(i){return T[i]===SHL_ORIGINAL[i].name?RINK_KITS[i]:[K[i],'#F4F4F4']}
 function rinkColors(){
  const rgb=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
  const dist=(a,b)=>Math.sqrt(rgb(a).reduce((n,v,i)=>n+(v-rgb(b)[i])**2,0));
  // The player's selected club ALWAYS retains its primary color, home or away.
- const own=RINK_KITS[g.team][0],opponentId=rival();
- let opp=RINK_KITS[opponentId][0];
+ const own=clubKitColors(g.team)[0],opponentId=rival();
+ let opp=clubKitColors(opponentId)[0];
  if(dist(own,opp)<100){
-   opp=RINK_KITS[opponentId][1];
+   opp=clubKitColors(opponentId)[1];
    if(dist(own,opp)<100){
      const alternatives=['#2169CC','#F4F4F4','#191D2A','#E84C55','#21B9A1','#713CC5'];
      opp=alternatives.reduce((best,c)=>dist(own,c)>dist(own,best)?c:best,alternatives[0]);
@@ -553,7 +554,7 @@ function beginOvertime(){
 function finish(x,y){if(g.page!=='match'||!g.finalPending)return;document.querySelectorAll('.goaltoast').forEach(el=>el.remove());if(goalToastTimer){clearTimeout(goalToastTimer);goalToastTimer=null}goalFlashUntil=0;if(scoreFlashTimer){clearInterval(scoreFlashTimer);scoreFlashTimer=null}if(x===y){alert('Matchen måste avgöras på isen innan resultatet sparas.');return}let ot=!!g.overtime;let own=home()?{a:g.team,b:rival(),x,y,ot}:{a:rival(),b:g.team,x:y,y:x,ot},others=seasonSchedule()[g.round-1].filter(q=>!q.includes(g.team)).map(([a,b])=>{let x=Math.floor(Math.random()*5),y=Math.floor(Math.random()*5),ot=x===y;if(ot)Math.random()<.5?x++:y++;return{a,b,x,y,ot}});update({page:'result',finalPending:false,score:[x,y],history:[...g.history,[own,...others]],tacticHistory:[...(Array.isArray(g.tacticHistory)?g.tacticHistory:[]).slice(-9),{team:g.team,tactic:g.tactic}],world:worldAfterMatch(own,g.history)})}
 const coachDefs={timeout:{label:'⏱️ Timeout',duration:1,off:[.40,.50],def:[.10,.20]},lines:{label:'⚡ Toppa kedjor',duration:3,off:[.20,.30],def:[.70,.80]},pulled:{label:'🚨 Plocka målvakt',duration:1,off:[.75,.85],def:[-.30,-.20]},goalie:{label:'🥅 Byt målvakt',duration:3,off:[0,0],def:[.15,.25]}};function coach(k){if(g.page!=='match'||g.coachUsed?.[k])return;let d=coachDefs[k];if(!d)return;let roll=r=>r[0]+Math.random()*(r[1]-r[0]);update({coachUsed:{...(g.coachUsed||{}),[k]:true},coachActive:{...(g.coachActive||{}),[k]:{left:d.duration,off:roll(d.off),def:roll(d.def)}},feedback:d.label+' aktiverad! Gäller '+d.duration+' beslut.'})}let goalToastTimer=null,goalFlashUntil=0,scoreFlashTimer=null,goalFlashColor='#e0ae41';
 function startScoreboardFlash(scoringTeam){
- goalFlashColor=RINK_KITS[scoringTeam]?.[0]||K[scoringTeam]||'#e0ae41';
+ goalFlashColor=clubKitColors(scoringTeam)?.[0]||K[scoringTeam]||'#e0ae41';
  if(scoreFlashTimer){clearInterval(scoreFlashTimer);scoreFlashTimer=null}
  let tick=0;
  const flash=()=>{
