@@ -342,7 +342,10 @@ main.inmatch{padding-bottom:calc(190px + env(safe-area-inset-bottom,0px))}
 
 /* BETA 1.4.3 – visibly distinct newsroom lead, without redesigning the hub. */
 .newsroom-banner{display:flex;flex-direction:column;gap:4px;border-radius:12px;background:linear-gradient(110deg,#0a2846,#16476b);border:1px solid #2677a4;border-left:4px solid #17adf5;padding:13px 14px;margin:0 0 14px}.newsroom-banner span{font-size:10px;font-weight:900;letter-spacing:1.3px;color:#58c8ff}.newsroom-banner strong{font-size:16px;color:#f5f8ff}.newsroom-banner small{font-size:11px;color:#b2cddd}.newsroom-lead{border-left:4px solid #17adf5!important;background:linear-gradient(130deg,#254b6b,#213c58)!important}.newsroom-lead .league-news-title{font-size:clamp(17px,4.4vw,21px);line-height:1.28;font-weight:900;color:#fff}.newsroom-lead p{font-size:13px;line-height:1.55}
-</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.3 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
+
+/* BETA 1.4.3.1 – editorial mood reflects the match context. */
+.newsroom-banner.newsroom-crisis{border-left-color:#f07578;background:linear-gradient(110deg,#35253b,#18344d)}.newsroom-banner.newsroom-crisis span{color:#ffacac}.newsroom-banner.newsroom-positive{border-left-color:#52cda1}.newsroom-banner.newsroom-positive span{color:#91eac6}.newsroom-banner strong{line-height:1.28}.newsroom-banner small{font-size:12px;line-height:1.5}
+</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.3.1 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
 const T=['Brynäs','Frölunda','Färjestad','Skellefteå','Växjö','Rögle','Luleå','Timrå','Örebro','Linköping','HV71','Leksand','Malmö','Djurgården'],C=['BIF','FHC','FBK','SKE','VLH','RBK','LHF','TIK','ÖHK','LHC','HV71','LIF','MIF','DIF'],K=['#d5ac46','#ce263f','#17834c','#e6ba36','#ed8937','#168b5d','#d33a38','#c83434','#bc243b','#1c76b8','#1559a2','#2474b8','#db2937','#e5b82e'];
 let a=T.map((_,i)=>i),first=[];for(let r=0;r<13;r++){first.push(Array.from({length:7},(_,j)=>[a[j],a[13-j]]));a=[a[0],a[13],...a.slice(1,13)]}let rev=first.map(r=>r.map(([x,y])=>[y,x])),F=[...first,...rev,...first,...rev];
 /* BETA 1.3.1: Each career season owns its schedule; original fixtures stay as fallback. */
@@ -613,7 +616,33 @@ function personalCoachNews(){let history=g.history||[],n=history.length,w=worldS
  return selected}
 function leagueNewsCards(limit){let items=leagueNewsFeed().slice(0,limit||24);return '<div class="league-news-feed">'+items.map(n=>'<article class="league-news-item"><div class="league-news-meta"><span>'+n.icon+' '+n.tag+'</span><span>OMGÅNG '+n.round+'</span></div><div class="league-news-title">'+n.title+'</div><p>'+n.body+'</p></article>').join('')+'</div>'}
 function personalNewsCards(limit){let items=personalCoachNews().slice(0,limit);return '<div class="league-news-feed">'+items.map((n,i)=>'<article class="league-news-item personal-news-item'+(i===0?' newsroom-lead':'')+'"><div class="league-news-meta"><span>'+n.icon+' '+n.tag+'</span><span>OMGÅNG '+n.round+'</span></div><div class="league-news-title">'+n.title+'</div><p>'+n.body+'</p></article>').join('')+'</div>'}
-function worldNews(){return '<div class="newsroom-banner"><span>● HOCKEYREDAKTIONEN</span><strong>'+T[g.team]+' · SÄSONG '+((g.seasons||[]).length+1)+'</strong><small>Nyheter som följer din tränarkarriär och tabellstriden</small></div><div class="personal-news-heading">🎙️ KRING DIN KLUBB</div>'+personalNewsCards(3)+'<div class="personal-news-heading">🏒 RUNT OM I SHL</div>'+leagueNewsCards(2)+'<button class="league-news-more" onclick="update({page:&quot;news&quot;});window.scrollTo(0,0)">📰 ALLA SHL-NYHETER →</button>'}
+/* BETA 1.4.3.1 – living editorial briefing. Deterministic per completed match; read-only. */
+function newsroomBriefing(){const h=g.history||[],n=h.length,club=T[g.team],season=(g.seasons||[]).length+1;
+ if(!n)return {tag:'SÄSONGSSTART',title:'En ny säsong väntar '+club,body:'Förväntningarna byggs upp. Första matchen blir startskottet på säsong '+season+'.',mood:'neutral'};
+ const table=standings(h),rank=table.findIndex(x=>x.i===g.team)+1,me=table[rank-1],prev=n>1?standings(h.slice(0,-1)).findIndex(x=>x.i===g.team)+1:rank;
+ const match=(h[n-1]||[]).find(m=>m.a===g.team||m.b===g.team),opp=match?(match.a===g.team?match.b:match.a):null,won=match&&(match.a===g.team?match.x>match.y:match.y>match.x),streak=newsroomStreak(h,g.team,n),remaining=Math.max(0,52-n);
+ const outcome=won?'segern':'förlusten',against=opp===null?'senaste motståndet':T[opp],place='plats '+rank,points=me.p+' poäng';
+ const options=[];
+ const add=(priority,tag,title,body,mood)=>options.push({priority,tag,title,body,mood});
+ if(streak.losses>=4)add(95,'KRISLÄGE',streak.losses+' raka förluster – '+club+' måste hitta en vändning','Efter '+outcome+' mot '+against+' växer pressen. Laget ligger på '+place+'.','crisis');
+ if(streak.wins>=4)add(90,'FORMTOPP',club+' flyger fram – '+streak.wins+' raka segrar','Segern mot '+against+' förlänger sviten. '+place+' och '+points+' efter '+n+' omgångar.','positive');
+ if(n>=6&&rank>=13)add(86,'BOTTENSTRID',club+' under press i bottenstriden',(won?'Segern mot ':'Förlusten mot ')+against+' lämnar klubben på '+place+'. '+remaining+' omgångar återstår.','crisis');
+ if(n>=42&&rank<=3)add(85,'SLUTSPURT',club+' jagar topplacering i slutspurten',remaining+' omgångar kvar. '+place+' med '+points+' – varje match får större betydelse.','positive');
+ if(n>=42&&rank>=10)add(84,'SLUTSPURT',club+' går in i en avgörande slutspurt',remaining+' omgångar återstår och laget ligger på '+place+'.','warning');
+ if(n>=3&&rank<prev)add(83,'TABELLKLÄTTRING',club+' klättrar efter '+outcome,'Från plats '+prev+' till '+rank+' efter mötet med '+against+'. Nu väntar nästa utmaning.','positive');
+ if(n>=3&&rank>prev)add(83,'TAPPAD MARK',club+' tappar placeringar efter '+outcome,'Från plats '+prev+' till '+rank+' efter mötet med '+against+'.','warning');
+ if(n>=4&&rank===1)add(78,'SERIELEDNING',club+' håller greppet om serieledningen',points+' efter '+n+' omgångar. '+(won?'Senaste segern stärker läget i toppen.':'Trots senaste förlusten är laget fortfarande etta.'),'positive');
+ // Cycle among equally truthful editorial angles across rounds, avoiding a permanently frozen banner.
+ if(match){add(48,'SENASTE MATCHEN',club+(won?' tog en viktig seger':' fick en tung kväll')+' mot '+against,'Matchen slutade '+match.x+'–'+match.y+'. Laget är på '+place+' med '+points+'.',won?'positive':'warning');
+ add(47,'REDAKTIONENS LÄGE',club+' blickar framåt efter '+outcome+' mot '+against,'Efter '+n+' omgångar är '+club+' på '+place+'. '+remaining+' matcher återstår av grundserien.',won?'positive':'neutral');
+ add(46,'SÄSONGSKOLL',n+' omgångar spelade – så ligger '+club+' till',place+', '+points+' och '+remaining+' matcher kvar. Senast blev det '+(won?'vinst':'förlust')+' mot '+against+'.','neutral');}
+ // Rotate between a major headline and another angle, while always reacting to the latest fixture.
+ options.sort((a,b)=>b.priority-a.priority);
+ const primary=options[0],secondary=options.filter(x=>x.priority<primary.priority);
+ const pick=n%3===1&&secondary.length?secondary[0]:primary;
+ return pick;
+}
+function worldNews(){let b=newsroomBriefing();return '<div class="newsroom-banner newsroom-'+b.mood+'"><span>● HOCKEYREDAKTIONEN · '+b.tag+' · OMG '+(g.history||[]).length+'/52</span><strong>'+b.title+'</strong><small>'+b.body+'</small></div><div class="personal-news-heading">🎙️ KRING DIN KLUBB</div>'+personalNewsCards(3)+'<div class="personal-news-heading">🏒 RUNT OM I SHL</div>'+leagueNewsCards(2)+'<button class="league-news-more" onclick="update({page:&quot;news&quot;});window.scrollTo(0,0)">📰 ALLA SHL-NYHETER →</button>'}
 
 function previewInsights(){
  const [a,b]=fixture(),stand=standings(g.history),A=stand.find(t=>t.i===a),B=stand.find(t=>t.i===b);
