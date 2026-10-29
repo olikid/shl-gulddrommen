@@ -57,3 +57,11 @@
 - Behåll den separata cache-busting-parametern i testlänken; den är inte samma sak som det synliga versionsnumret.
 - Endast `development/index.html` får ändras för utvecklingsuppdateringar. Officiella `index.html` (BETA 1.3.4) ska förbli orörd utan uttryckligt godkännande.
 - Nuvarande godkänd logotyp: **Swedish Hockey Arcade**, kompakt textlogga i vit/blå stil, blå accent `#17ADF5`; minimalistisk SHA-symbol är separat variant. Orange är inte längre huvudaccent för loggan.
+
+## Officiell release: BETA 1.4.1 (2026-10-29)
+- Användaren godkände uttryckligen BETA 1.4.1 som ny officiell sparad/släppt version.
+- Officiell fil `index.html` på `main` uppdaterad med innehållet från `development/index.html` (BETA 1.4.1); synlig etikett bytt till `BETA 1.4.1 · OFFICIELL VERSION`.
+- Release-commit: `bc4d043503623bcdd04967843a22739a59ef51bb`.
+- Fryst återställningsbranch: `stable/beta-1.4.1-2026-10-29` (pekar på release-commit).
+- Föregående BETA 1.3.4 har separat fryst backup `stable/beta-1.3.4-2026-10-27`.
+- Fortsatt utveckling enbart i `development/index.html`, nästa synliga version **BETA 1.4.2**. Ändra inte officiella `index.html` förrän användaren godkänner nästa release.
