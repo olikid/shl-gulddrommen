@@ -65,3 +65,10 @@
 - Fryst återställningsbranch: `stable/beta-1.4.1-2026-10-29` (pekar på release-commit).
 - Föregående BETA 1.3.4 har separat fryst backup `stable/beta-1.3.4-2026-10-27`.
 - Fortsatt utveckling enbart i `development/index.html`, nästa synliga version **BETA 1.4.2**. Ändra inte officiella `index.html` förrän användaren godkänner nästa release.
+
+## Versionspolicy – stora och små ändringar (beslut 2026-10-29)
+- Användaren vill skilja mellan större funktionella uppdateringar och små ändringar.
+- Nuvarande utvecklingsversion: **BETA 1.4.3**. Nästa mindre ändring blir **BETA 1.4.3.1**, därefter **BETA 1.4.3.2**, osv. Nästa större förbättring blir **BETA 1.4.4**.
+- Alla koduppdateringar ska ändra synlig versionsetikett i spelet. Varje commit får en beskrivande ändringsrad.
+- Detta ersätter tidigare regel om att varje ändring måste öka tredje versionssegmentet; små patchar ökar fjärde segmentet.
+- Officiell version förblir **BETA 1.4.1** tills användaren uttryckligen godkänner en ny release.
