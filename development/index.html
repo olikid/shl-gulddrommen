@@ -326,7 +326,19 @@ main.inmatch{padding-bottom:calc(190px + env(safe-area-inset-bottom,0px))}
 @media(prefers-reduced-motion:reduce){
   .livepulse{animation:none}
 }
-</style><main><div class="gamebranding"><div class="small">SWEDISH HOCKEY MANAGER</div><h1>SHL <span>GULDDRÖMMEN</span> 🏒</h1><div class="small">BETA 1.0.2 · FINPUTSNING v140 · LEVANDE TAKTIKTAVLA · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
+/* Swedish Hockey Arcade compact mobile header — visual-only */
+.gamebranding{text-align:center;margin:0 auto 12px}
+.sha-logo{width:min(100%,430px);margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:2px}
+.sha-logo-country{display:flex;align-items:center;justify-content:center;gap:11px;width:83%;color:#f5f7f9}
+.sha-logo-country b{font:800 clamp(10px,3.1vw,15px)/1.35 system-ui,sans-serif;letter-spacing:clamp(3px,1.1vw,7px);white-space:nowrap}
+.sha-logo-country span{height:3px;flex:1;background:#ff741a;max-width:45px}
+.sha-logo-wordmark{display:flex;align-items:center;justify-content:center;gap:clamp(4px,1.5vw,10px);width:100%;white-space:nowrap;transform:skewX(-9deg)}
+.sha-logo-wordmark strong{font:italic 950 clamp(23px,7.3vw,40px)/1.1 system-ui,sans-serif;letter-spacing:-1.8px}
+.sha-logo-wordmark strong:first-child{color:#f5f7f9}
+.sha-logo-wordmark strong:last-child{color:#ff741a}
+.sha-version{font-size:9px;margin-top:7px;letter-spacing:.4px;color:#8fa6ba}
+@media(max-width:350px){.sha-logo-wordmark strong{font-size:clamp(20px,7vw,25px);letter-spacing:-1.4px}.sha-logo-country b{font-size:10px;letter-spacing:3px}}
+</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
 const T=['Brynäs','Frölunda','Färjestad','Skellefteå','Växjö','Rögle','Luleå','Timrå','Örebro','Linköping','HV71','Leksand','Malmö','Djurgården'],C=['BIF','FHC','FBK','SKE','VLH','RBK','LHF','TIK','ÖHK','LHC','HV71','LIF','MIF','DIF'],K=['#d5ac46','#ce263f','#17834c','#e6ba36','#ed8937','#168b5d','#d33a38','#c83434','#bc243b','#1c76b8','#1559a2','#2474b8','#db2937','#e5b82e'];
 let a=T.map((_,i)=>i),first=[];for(let r=0;r<13;r++){first.push(Array.from({length:7},(_,j)=>[a[j],a[13-j]]));a=[a[0],a[13],...a.slice(1,13)]}let rev=first.map(r=>r.map(([x,y])=>[y,x])),F=[...first,...rev,...first,...rev];
 /* BETA 1.3.1: Each career season owns its schedule; original fixtures stay as fallback. */
