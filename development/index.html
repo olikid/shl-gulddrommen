@@ -373,7 +373,7 @@ main.inmatch{padding-bottom:calc(190px + env(safe-area-inset-bottom,0px))}
 
 /* BETA 1.4.4.7 – temporary per-category collapse controls */
 .news-category-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.news-category-heading>.personal-news-heading{margin:0!important;min-width:0}.news-collapse-button{flex:0 0 36px;width:36px;height:36px;border-radius:11px;border:1px solid #6088a7;background:#254863;color:#eaf6ff;font-size:25px;line-height:1;display:grid;place-items:center;cursor:pointer}.news-collapse-button:active{background:#34668c}.news-category-body[hidden]{display:none!important}.news-category-panel.is-collapsed{padding-bottom:13px}.news-category-panel.is-collapsed .news-category-heading{margin-bottom:0}
-</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.4.7 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
+</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
 const T=['Brynäs','Frölunda','Färjestad','Skellefteå','Växjö','Rögle','Luleå','Timrå','Örebro','Linköping','HV71','Leksand','Malmö','Djurgården'],C=['BIF','FHC','FBK','SKE','VLH','RBK','LHF','TIK','ÖHK','LHC','HV71','LIF','MIF','DIF'],K=['#d5ac46','#ce263f','#17834c','#e6ba36','#ed8937','#168b5d','#d33a38','#c83434','#bc243b','#1c76b8','#1559a2','#2474b8','#db2937','#e5b82e'];
 let a=T.map((_,i)=>i),first=[];for(let r=0;r<13;r++){first.push(Array.from({length:7},(_,j)=>[a[j],a[13-j]]));a=[a[0],a[13],...a.slice(1,13)]}let rev=first.map(r=>r.map(([x,y])=>[y,x])),F=[...first,...rev,...first,...rev];
 /* BETA 1.3.1: Each career season owns its schedule; original fixtures stay as fallback. */
@@ -681,28 +681,57 @@ function newsroomBriefing(){const h=g.history||[],n=h.length,club=T[g.team],seas
 }
 /* BETA 1.4.4 – deterministic rotating newsroom, no match RNG or save writes. */
 let newsIndex=0,newsTimer=null,newsSignature='';
-function newsCarouselStories(){const h=g.history||[],n=h.length,own=newsroomBriefing(),stories=[{...own,source:'DIN KLUBB',priority:own.tag==='PRESSREAKTION'?120:90}];
- if(n){const st=standings(h),old=n>=5?standings(h.slice(0,n-5)):null;
- for(let t of st){if(t.i===g.team)continue;let rank=st.findIndex(x=>x.i===t.i)+1,prev=old?old.findIndex(x=>x.i===t.i)+1:rank,streak=newsroomStreak(h,t.i,n),name=T[t.i];
- if(streak.losses>=8&&rank>=11)stories.push({priority:130,source:'SHL',mood:'crisis',title:name+' i djup kris – '+streak.losses+' raka förluster',body:'Laget ligger på plats '+rank+' efter '+n+' omgångar. Pressen växer för varje nederlag.'});
- else if(n>=8&&prev<=10&&rank>=13&&rank-prev>=3)stories.push({priority:122,source:'SHL',mood:'crisis',title:name+' rasar mot kvalstrecket',body:'Från plats '+prev+' till '+rank+' på fem omgångar. Nu krävs en vändning.'});
- else if(streak.wins>=7&&rank<=5)stories.push({priority:105,source:'SHL',mood:'positive',title:name+' flyger fram – '+streak.wins+' raka segrar',body:'Segersviten har tagit laget till plats '+rank+' i SHL.'});}
- if(n>=20){const ha=haStandings(n),lead=ha[0],gap=lead.p-ha[1].p;if(gap>=5||n>=35)stories.push({priority:gap>=12?110:76,source:'HOCKEYALLSVENSKAN',mood:'positive',title:lead.name+(gap>=10?' tar stormsteg mot SHL':' leder jakten på SHL-platsen'),body:lead.name+' toppar HockeyAllsvenskan med '+lead.p+' poäng, '+gap+' före '+ha[1].name+'. Uppflyttning avgörs vid säsongsslutet.'});}
+/* BETA 1.4.5 – seven-story newsroom with story-topic cooldown and mathematical milestones. */
+function newsCarouselStories(){
+ const h=g.history||[],n=h.length,season=(g.seasons||[]).length+1,club=T[g.team],own=newsroomBriefing(),stories=[];
+ const add=(x)=>stories.push(x);
+ const st=n?standings(h):[],myRank=n?st.findIndex(x=>x.i===g.team)+1:0,remaining=52-n;
+ if(n){
+  const mine=st[myRank-1],runner=st[myRank===1?1:0],maxOther=st.filter(x=>x.i!==g.team).reduce((v,x)=>Math.max(v,x.p+remaining*3),0);
+  const prev=n>1?standings(h.slice(0,-1)):null,previousLeader=prev?prev[0]:null;
+  const clinched=myRank===1&&mine.p>maxOther,wasClinched=n>1&&previousLeader&&previousLeader.i===g.team&&previousLeader.p>prev.filter(x=>x.i!==g.team).reduce((v,x)=>Math.max(v,x.p+(53-n)*3),0);
+  if(clinched)add({priority:wasClinched?94:190,topic:'clinched-'+g.team,source:'DIN KLUBB',mood:'positive',title:wasClinched?club+' redan klara seriesegrare – blickar mot slutspelet':club+' HAR SÄKRAT SERIESÄGERN!',body:wasClinched?'Ingen konkurrent kan längre komma ikapp. '+club+' har '+mine.p+' poäng med '+remaining+' omgångar kvar.':'Seriesegern är matematiskt klar med '+remaining+' omgångar kvar. Inget annat lag kan nå '+club+' poängskörd.',tag:'SERIESEGRARE'});
+  else if(myRank===1&&remaining>0&&mine.p+3>maxOther)add({priority:125,topic:'title-chase-'+g.team,source:'DIN KLUBB',mood:'positive',title:club+' kan säkra seriesegern i nästa omgång',body:'Med '+remaining+' omgångar kvar kan ytterligare tre poäng göra serieledningen ointaglig, beroende på övriga resultat.',tag:'GULDLÄGE'});
+  const streak=newsroomStreak(h,g.team,n);
+  if(streak.wins>=4)add({priority:103,topic:'form-win-'+g.team,source:'DIN KLUBB',mood:'positive',title:club+' har '+streak.wins+' raka segrar',body:'Segersviten fortsätter. '+club+' ligger på plats '+myRank+' med '+mine.p+' poäng.',tag:'FORMTOPP'});
+  if(streak.losses>=4)add({priority:120,topic:'form-loss-'+g.team,source:'DIN KLUBB',mood:'crisis',title:club+' i motvind – '+streak.losses+' raka förluster',body:'Resultaten sätter press på klubben, som ligger på plats '+myRank+'.',tag:'FORMKRIS'});
+  const old=n>=5?standings(h.slice(0,n-5)):null;
+  for(const t of st){if(t.i===g.team)continue;const rank=st.findIndex(x=>x.i===t.i)+1,prevRank=old?old.findIndex(x=>x.i===t.i)+1:rank,run=newsroomStreak(h,t.i,n),name=T[t.i];
+   if(run.losses>=8&&rank>=11)add({priority:150,topic:'crisis-'+t.i,source:'SHL',mood:'crisis',title:name+' i djup kris – '+run.losses+' raka förluster',body:'Plats '+rank+' efter '+n+' omgångar. En tung svit hotar säsongen.',tag:'STORKRIS'});
+   else if(n>=8&&prevRank<=10&&rank>=13&&rank-prevRank>=3)add({priority:140,topic:'collapse-'+t.i,source:'SHL',mood:'crisis',title:name+' rasar mot kvalstrecket',body:'Från plats '+prevRank+' till '+rank+' på fem omgångar.',tag:'TABELLRAS'});
+   else if(run.wins>=7&&rank<=5)add({priority:108,topic:'streak-'+t.i,source:'SHL',mood:'positive',title:name+' flyger fram – '+run.wins+' raka segrar',body:'Den starka formen har tagit laget till plats '+rank+'.',tag:'SEGERSVIT'});
+  }
+  if(n>=20){const ha=haStandings(n),lead=ha[0],gap=lead.p-ha[1].p;if(gap>=5||n>=35)add({priority:gap>=12?114:83,topic:'ha-leader-'+lead.name,source:'HOCKEYALLSVENSKAN',mood:'positive',title:lead.name+(gap>=10?' tar stormsteg mot SHL':' leder jakten på SHL-platsen'),body:lead.name+' toppar HockeyAllsvenskan med '+lead.p+' poäng, '+gap+' före '+ha[1].name+'. Uppflyttning avgörs vid säsongsslutet.',tag:'UPPFLYTTNINGSJAKT'});}
+  const latest=(h[n-1]||[]).find(x=>x.a===g.team||x.b===g.team);
+  if(latest){const won=latest.a===g.team?latest.x>latest.y:latest.y>latest.x,opp=T[latest.a===g.team?latest.b:latest.a];
+   add({priority:80,topic:'latest-'+g.team+'-'+n,source:'DIN KLUBB',mood:won?'positive':'warning',title:club+(won?' vann mot ':' föll mot ')+opp,body:'Senaste matchen slutade '+latest.x+'–'+latest.y+'. '+club+' ligger på plats '+myRank+'.',tag:'SENASTE MATCHEN'});
+  }
+  const other=leagueNewsFeed().filter(x=>x.round>=n-1).slice(0,5);
+  for(const x of other)add({priority:64,topic:'league-'+x.title,source:'SHL',mood:x.tag==='KRIS'?'crisis':'neutral',title:x.title,body:x.body,tag:x.tag});
+  add({priority:65,topic:'table-'+g.team,source:'DIN KLUBB',mood:myRank<=4?'positive':myRank>=11?'warning':'neutral',title:club+' på plats '+myRank+' med '+remaining+' matcher kvar',body:'Efter '+n+' omgångar har '+club+' '+mine.p+' poäng. Varje ny omgång kan förändra läget.',tag:'TABELLÄGE'});
  }
- stories.sort((a,b)=>b.priority-a.priority||a.title.localeCompare(b.title));
- const result=[];for(const x of stories){if(!result.some(y=>y.title===x.title))result.push(x);if(result.length===3)break}
- if(result.length===1&&n){const item=leagueNewsFeed().find(x=>x.round>=n-2&&x.title!==result[0].title);if(item)result.push({source:'SHL',mood:'neutral',title:item.title,body:item.body})}
- if(result.length===1&&n)result.push({source:'DIN KLUBB',mood:'neutral',title:'Nästa utmaning väntar '+T[g.team],body:'Efter '+n+' omgångar fortsätter säsongen. Hockeyredaktionen följer utvecklingen.'});
- return result}
+ const event=worldState().lastEvent;
+ if(event&&event.news&&event.round===n)add({priority:155,topic:'press-'+event.id,source:'DIN KLUBB',mood:own.mood,title:'Tränarens ord väcker reaktioner i '+club,body:event.news,tag:'PRESSREAKTION'});
+ if(!n)add({...own,priority:90,topic:'season-start',source:'DIN KLUBB'});
+ // The same topic can be shown for three consecutive rounds (first + two repeats).
+ // If it appeared in the previous three rounds, it must rest this round.
+ const archive=Array.isArray(g.newsArchive)?g.newsArchive:[];
+ const eligible=stories.filter(x=>{if(x.priority>=180)return true;const rounds=new Set(archive.filter(a=>a.season===season&&a.topic===x.topic&&a.round<n).map(a=>a.round));return !(rounds.has(n-1)&&rounds.has(n-2)&&rounds.has(n-3))});
+ eligible.sort((a,b)=>b.priority-a.priority||a.title.localeCompare(b.title));
+ const result=[],topics=new Set();
+ for(const x of eligible){if(topics.has(x.topic))continue;topics.add(x.topic);result.push(x);if(result.length===7)break}
+ if(!result.length)result.push({...own,source:'DIN KLUBB',topic:'fallback-'+n});
+ return result;
+}
 function newsCarouselShow(i){const root=document.querySelector('[data-news-carousel]');if(!root)return;const stories=newsCarouselStories();newsIndex=(i+stories.length)%stories.length;const story=stories[newsIndex];root.className='newsroom-banner newsroom-'+story.mood;root.querySelector('[data-news-title]').textContent=story.title;root.querySelector('[data-news-body]').textContent=story.body;root.querySelector('[data-news-source]').textContent=story.source;root.querySelector('[data-news-count]').textContent=(newsIndex+1)+'/'+stories.length;root.querySelectorAll('[data-news-dot]').forEach((el,j)=>el.classList.toggle('active',j===newsIndex))}
 function newsCarouselNext(delta){newsCarouselShow(newsIndex+delta);newsCarouselTimer()}
-function newsCarouselTimer(){if(newsTimer){clearInterval(newsTimer);newsTimer=null}if(document.querySelector('[data-news-carousel]')&&newsCarouselStories().length>1)newsTimer=setInterval(()=>{if(document.querySelector('[data-news-carousel]'))newsCarouselShow(newsIndex+1);else{clearInterval(newsTimer);newsTimer=null}},18000)}
+function newsCarouselTimer(){if(newsTimer){clearInterval(newsTimer);newsTimer=null}if(document.querySelector('[data-news-carousel]')&&newsCarouselStories().length>1)newsTimer=setInterval(()=>{if(document.querySelector('[data-news-carousel]'))newsCarouselShow(newsIndex+1);else{clearInterval(newsTimer);newsTimer=null}},15000)}
 function newsCarouselInit(){const root=document.querySelector('[data-news-carousel]');if(!root){if(newsTimer){clearInterval(newsTimer);newsTimer=null}return}const sig=(g.seasons||[]).length+':'+(g.history||[]).length+':'+g.team+':'+(worldState().lastEvent?.id||'');if(sig!==newsSignature){newsSignature=sig;newsIndex=0}newsCarouselShow(newsIndex);newsCarouselTimer()}
 /* BETA 1.4.4.3 – persistent, bounded newsroom history.
    Capture only on meaningful game updates, never on the 18-second slide timer. */
 function recordNewsArchive(){if(!Array.isArray(g.newsArchive))g.newsArchive=[];const n=(g.history||[]).length,season=(g.seasons||[]).length+1,stories=newsCarouselStories();const event=worldState().lastEvent;const press=event&&event.round===n&&event.news?'press-'+String(event.id):'';
- const keys=new Set(g.newsArchive.map(x=>x.id));for(const item of stories){const id=season+':'+n+':'+(press&&item.tag==='PRESSREAKTION'?press+':':'')+item.source+':'+item.title;if(keys.has(id))continue;g.newsArchive.unshift({id,season,round:n,source:item.source,title:item.title,body:item.body,mood:item.mood||'neutral'});keys.add(id)}
- g.newsArchive=g.newsArchive.slice(0,180)}
+ const keys=new Set(g.newsArchive.map(x=>x.id));for(const item of stories){const id=season+':'+n+':'+(press&&item.tag==='PRESSREAKTION'?press+':':'')+item.source+':'+item.title;if(keys.has(id))continue;g.newsArchive.unshift({id,season,round:n,source:item.source,topic:item.topic||item.title,title:item.title,body:item.body,mood:item.mood||'neutral'});keys.add(id)}
+ g.newsArchive=g.newsArchive.slice(0,350)}
 /* BETA 1.4.4.4 – independent four-item news sections. */
 const newsInitial={editor:2,club:2,league:3};
 const newsVisible={editor:2,club:2,league:3};
