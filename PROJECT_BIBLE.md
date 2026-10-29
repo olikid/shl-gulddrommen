@@ -48,3 +48,12 @@
 - Publik spellänk: https://olikid.github.io/shl-gulddrommen/
 - Utvecklingslänk: https://olikid.github.io/shl-gulddrommen/development/
 - Notera: releasefilen använder fortfarande localStorage-nyckeln `shl_gulddrommen_development` för att bevara befintliga sparade karriärer på samma origin. Ändra inte utan planerad migration.
+
+## Versionspolicy för utvecklingsversionen (beslut 2026-10-29)
+- Användarens uttryckliga önskemål: varje sparad kodändring i `development/index.html` ska höja det synliga versionsnumret med ett steg, så att varje testversion kan identifieras.
+- Aktuell startpunkt: **BETA 1.4.1** (införd 2026-10-29; endast versionsetiketten ändrades).
+- Nästa koduppdatering ska märkas **BETA 1.4.2**, sedan **BETA 1.4.3**, osv. Större funktionella milstolpar kan få en ny minor-version efter uttryckligt beslut.
+- Versionsetiketten ska alltid vara synlig i spelets header, och varje commit ska ha en tydlig beskrivning av vad som ändrats.
+- Behåll den separata cache-busting-parametern i testlänken; den är inte samma sak som det synliga versionsnumret.
+- Endast `development/index.html` får ändras för utvecklingsuppdateringar. Officiella `index.html` (BETA 1.3.4) ska förbli orörd utan uttryckligt godkännande.
+- Nuvarande godkänd logotyp: **Swedish Hockey Arcade**, kompakt textlogga i vit/blå stil, blå accent `#17ADF5`; minimalistisk SHA-symbol är separat variant. Orange är inte längre huvudaccent för loggan.
