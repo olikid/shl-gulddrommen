@@ -586,7 +586,21 @@ main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light.mat
 main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light,
 main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light.match-inner-light-opposite{animation:none!important;background-position:50% 50%!important}
 }
-</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.61 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
+/* BETA 1.4.5.62 – move the actual spotlight layers with transforms (Safari-safe), preserving blue lighting. */
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light,
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light.match-inner-light-opposite{
+  inset:8px!important;
+  width:calc(100% - 16px)!important;height:calc(100% - 16px)!important;
+  background:radial-gradient(ellipse 30% 60% at 50% 50%,rgba(75,178,255,.65) 0%,rgba(42,129,233,.32) 44%,transparent 100%)!important;
+  background-size:100% 100%!important;background-position:center!important;
+  opacity:1!important;will-change:transform!important;
+}
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light:not(.match-inner-light-opposite){animation:matchMoveLeft62 4s ease-in-out infinite alternate!important}
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light.match-inner-light-opposite{animation:matchMoveRight62 4s ease-in-out infinite alternate!important}
+@keyframes matchMoveLeft62{0%{transform:translate3d(-35%,0,0)}100%{transform:translate3d(35%,0,0)}}
+@keyframes matchMoveRight62{0%{transform:translate3d(35%,0,0)}100%{transform:translate3d(-35%,0,0)}}
+@media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light,main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light.match-inner-light-opposite{animation:none!important;transform:none!important}}
+</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.62 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
 const T=['Brynäs','Frölunda','Färjestad','Skellefteå','Växjö','Rögle','Luleå','Timrå','Örebro','Linköping','HV71','Leksand','Malmö','Djurgården'],C=['BIF','FHC','FBK','SKE','VLH','RBK','LHF','TIK','ÖHK','LHC','HV71','LIF','MIF','DIF'],K=['#d5ac46','#ce263f','#17834c','#e6ba36','#ed8937','#168b5d','#d33a38','#c83434','#bc243b','#1c76b8','#1559a2','#2474b8','#db2937','#e5b82e'];
 let a=T.map((_,i)=>i),first=[];for(let r=0;r<13;r++){first.push(Array.from({length:7},(_,j)=>[a[j],a[13-j]]));a=[a[0],a[13],...a.slice(1,13)]}let rev=first.map(r=>r.map(([x,y])=>[y,x])),F=[...first,...rev,...first,...rev];
 /* BETA 1.3.1: Each career season owns its schedule; original fixtures stay as fallback. */
