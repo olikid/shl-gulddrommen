@@ -471,14 +471,17 @@ to{box-shadow:0 0 0 2px rgba(180,230,255,1),0 0 19px 5px rgba(68,177,255,.52),0 
 }
 @media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(.sha-edge-runner){animation:none!important}}
 
-/* BETA 1.4.5.18 – visibly breathe the existing complete border, no moving segment */
-main.managerhome #app > .card:has(.sha-edge-runner){border:3px solid #74bfff!important;animation:shaFrameGlow18 3.8s ease-in-out infinite!important;will-change:box-shadow,border-color!important}
-@keyframes shaFrameGlow18{
-0%,100%{border-color:#66b6f2;box-shadow:0 0 0 1px rgba(102,182,242,.35),0 0 8px 2px rgba(48,145,228,.20),0 0 22px 4px rgba(42,121,218,.12)!important}
-50%{border-color:#d0f5ff;box-shadow:0 0 0 2px rgba(183,232,255,.98),0 0 25px 8px rgba(68,187,255,.72),0 0 56px 17px rgba(34,130,246,.38)!important}
+/* BETA 1.4.5.19 – Safari fix: !important inside @keyframes invalidates animation declarations. */
+main.managerhome #app > .card:has(.sha-edge-runner){
+ border:3px solid #74bfff!important;
+ animation:shaFrameGlow19 4.2s ease-in-out infinite!important;
+}
+@keyframes shaFrameGlow19{
+ 0%,100%{border-color:#66b6f2;box-shadow:0 0 0 1px rgba(102,182,242,.4),0 0 9px 2px rgba(48,145,228,.22),0 0 23px 5px rgba(42,121,218,.14)}
+ 50%{border-color:#d0f5ff;box-shadow:0 0 0 2px rgba(183,232,255,.98),0 0 25px 8px rgba(68,187,255,.75),0 0 56px 17px rgba(34,130,246,.40)}
 }
 @media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(.sha-edge-runner){animation:none!important;border-color:#a5dfff!important;box-shadow:0 0 0 2px #a5dfff,0 0 24px 7px rgba(68,187,255,.48)!important}}
-</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.18 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
+</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.19 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
 const T=['Brynäs','Frölunda','Färjestad','Skellefteå','Växjö','Rögle','Luleå','Timrå','Örebro','Linköping','HV71','Leksand','Malmö','Djurgården'],C=['BIF','FHC','FBK','SKE','VLH','RBK','LHF','TIK','ÖHK','LHC','HV71','LIF','MIF','DIF'],K=['#d5ac46','#ce263f','#17834c','#e6ba36','#ed8937','#168b5d','#d33a38','#c83434','#bc243b','#1c76b8','#1559a2','#2474b8','#db2937','#e5b82e'];
 let a=T.map((_,i)=>i),first=[];for(let r=0;r<13;r++){first.push(Array.from({length:7},(_,j)=>[a[j],a[13-j]]));a=[a[0],a[13],...a.slice(1,13)]}let rev=first.map(r=>r.map(([x,y])=>[y,x])),F=[...first,...rev,...first,...rev];
 /* BETA 1.3.1: Each career season owns its schedule; original fixtures stay as fallback. */
