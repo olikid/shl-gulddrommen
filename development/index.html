@@ -570,7 +570,23 @@ main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light.mat
 @keyframes matchInnerSweepOpposite60{0%{transform:translate3d(14%,0,0) scale(1.15);opacity:.6}100%{transform:translate3d(-14%,0,0) scale(1.15);opacity:1}}
 main.managerhome #app > .card:has(> .match-inner-light) > :not(.match-glow-layer):not(.match-inner-light):not(.match-inner-light-opposite){position:relative;z-index:1}
 @media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light.match-inner-light-opposite{animation:none!important;transform:none!important}}
-</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.60 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
+/* BETA 1.4.5.61 – two distinct travelling spotlights instead of overlapping full-card washes. */
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light,
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light.match-inner-light-opposite{
+  inset:8px!important;transform:none!important;opacity:1!important;
+  background-image:radial-gradient(ellipse at center,rgba(75,178,255,.65) 0%,rgba(42,129,233,.32) 36%,transparent 72%)!important;
+  background-size:48% 135%!important;background-repeat:no-repeat!important;
+  filter:none!important;
+}
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light:not(.match-inner-light-opposite){animation:matchSpotLeft61 4s ease-in-out infinite alternate!important}
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light.match-inner-light-opposite{animation:matchSpotRight61 4s ease-in-out infinite alternate!important}
+@keyframes matchSpotLeft61{from{background-position:0% 50%}to{background-position:100% 50%}}
+@keyframes matchSpotRight61{from{background-position:100% 50%}to{background-position:0% 50%}}
+@media(prefers-reduced-motion:reduce){
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light,
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light.match-inner-light-opposite{animation:none!important;background-position:50% 50%!important}
+}
+</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.61 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
 const T=['Brynäs','Frölunda','Färjestad','Skellefteå','Växjö','Rögle','Luleå','Timrå','Örebro','Linköping','HV71','Leksand','Malmö','Djurgården'],C=['BIF','FHC','FBK','SKE','VLH','RBK','LHF','TIK','ÖHK','LHC','HV71','LIF','MIF','DIF'],K=['#d5ac46','#ce263f','#17834c','#e6ba36','#ed8937','#168b5d','#d33a38','#c83434','#bc243b','#1c76b8','#1559a2','#2474b8','#db2937','#e5b82e'];
 let a=T.map((_,i)=>i),first=[];for(let r=0;r<13;r++){first.push(Array.from({length:7},(_,j)=>[a[j],a[13-j]]));a=[a[0],a[13],...a.slice(1,13)]}let rev=first.map(r=>r.map(([x,y])=>[y,x])),F=[...first,...rev,...first,...rev];
 /* BETA 1.3.1: Each career season owns its schedule; original fixtures stay as fallback. */
