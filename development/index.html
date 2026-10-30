@@ -511,7 +511,17 @@ main.managerhome #app > .card:has(> .match-glow-layer) > .match-glow-layer{inset
 /* BETA 1.4.5.29 – softer glow; geometry and timing unchanged. */
 @keyframes matchAura28{0%,100%{opacity:.57;box-shadow:0 0 8px 2px rgba(68,184,255,.34),0 0 19px 6px rgba(33,125,255,.15)}50%{opacity:.83;box-shadow:0 0 15px 5px rgba(105,210,255,.62),0 0 32px 11px rgba(33,125,255,.33)}}
 @media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(> .match-glow-layer) > .match-glow-layer{animation:none!important;opacity:1!important}}
-</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.30 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
+/* BETA 1.4.5.31 – calmer preview matchup, editorial press conference. */
+main.prepmatch #app > .card:has(.versus){border:1px solid #6489ab!important;background:linear-gradient(125deg,#1b3651,#172c46)!important;box-shadow:0 0 0 1px rgba(111,172,216,.18),0 0 12px 2px rgba(55,139,213,.13)!important;animation:none!important}
+main.prepmatch .world-card{position:relative;border:1px solid #416f96;border-left:5px solid #37b9ee;border-radius:15px;background:linear-gradient(112deg,rgba(28,81,115,.74) 0%,#233d58 52%,#1a3049 100%);box-shadow:inset 0 0 20px rgba(49,153,221,.06),0 5px 18px rgba(4,18,34,.22);padding:17px 16px 18px}
+main.prepmatch .world-card .world-head{color:#a9d9f6;letter-spacing:.95px}
+main.prepmatch .world-card .world-live{display:inline-flex;align-items:center;gap:7px;color:#ffb0b8;font-weight:900}
+main.prepmatch .world-card .world-live .livepulse{display:inline-block;flex:none}
+main.prepmatch .world-card h3{font-size:19px;line-height:1.3;letter-spacing:.2px;margin:14px 0 12px}
+main.prepmatch .world-card > p{padding:0 0 13px;border-bottom:1px solid rgba(153,198,227,.22);font-size:14px;line-height:1.65}
+main.prepmatch .world-card .world-answer{background:linear-gradient(110deg,#304c69,#2b435d);border:1px solid #547490;transition:background .2s,border-color .2s}
+main.prepmatch .world-card .world-answer:active{background:#426786;border-color:#80c7f2}
+</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.31 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
 const T=['Brynäs','Frölunda','Färjestad','Skellefteå','Växjö','Rögle','Luleå','Timrå','Örebro','Linköping','HV71','Leksand','Malmö','Djurgården'],C=['BIF','FHC','FBK','SKE','VLH','RBK','LHF','TIK','ÖHK','LHC','HV71','LIF','MIF','DIF'],K=['#d5ac46','#ce263f','#17834c','#e6ba36','#ed8937','#168b5d','#d33a38','#c83434','#bc243b','#1c76b8','#1559a2','#2474b8','#db2937','#e5b82e'];
 let a=T.map((_,i)=>i),first=[];for(let r=0;r<13;r++){first.push(Array.from({length:7},(_,j)=>[a[j],a[13-j]]));a=[a[0],a[13],...a.slice(1,13)]}let rev=first.map(r=>r.map(([x,y])=>[y,x])),F=[...first,...rev,...first,...rev];
 /* BETA 1.3.1: Each career season owns its schedule; original fixtures stay as fallback. */
