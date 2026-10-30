@@ -888,8 +888,9 @@ function hubNewsItems(category){
  const shl=leagueNewsFeed().slice(0,2);
  const archive=Array.isArray(g.newsArchive)?g.newsArchive:[];
  const ha=archive.find(x=>x.source==='HOCKEYALLSVENSKAN')||newsCarouselStories().find(x=>x.source==='HOCKEYALLSVENSKAN');
- return ha?shl.concat([{...ha,tag:'HOCKEYALLSVENSKAN',icon:'📰',round:ha.round||(g.history||[]).length}]):shl;
+ const round=(g.history||[]).length,leader=haStandings(round)[0];const fallback=leader?{title:leader.name+' leder HockeyAllsvenskan',body:leader.p+' poäng efter '+round+' omgångar.',round,source:'HOCKEYALLSVENSKAN'}:null;const item=ha||fallback;return item?shl.concat([{...item,tag:'HOCKEYALLSVENSKAN',icon:'📰',round:item.round||round}]):shl;
 }
+function hubNewsSelect(category,index){hubNewsSlide(category,index-hubNewsIndex[category])}
 function hubNewsSlide(category,delta){
  const items=hubNewsItems(category),root=document.querySelector('[data-hub-news="'+category+'"]');if(!root||!items.length)return;
  hubNewsIndex[category]=(hubNewsIndex[category]+delta+items.length)%items.length;
