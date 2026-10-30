@@ -523,7 +523,16 @@ main.prepmatch .world-card .world-answer{background:linear-gradient(110deg,#304c
 main.prepmatch .world-card .world-answer:active{background:#426786;border-color:#80c7f2}
 /* BETA 1.4.5.35 – restore subtle inner illumination without changing approved outer glow. */
 main.managerhome #app > .card:has(> .match-glow-layer){background:radial-gradient(ellipse 75% 65% at 50% 45%,rgba(53,132,205,.24) 0%,rgba(35,91,151,.11) 47%,transparent 100%),linear-gradient(135deg,#172e46,#10253b)!important}
-</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.35 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
+/* BETA 1.4.5.36 – visible, gently moving inner light; independent of outer aura. */
+main.managerhome #app > .card:has(> .match-glow-layer){
+background-image:radial-gradient(ellipse 55% 70% at 48% 45%,rgba(79,177,255,.43) 0%,rgba(42,129,221,.25) 36%,rgba(28,83,151,.09) 70%,transparent 100%),linear-gradient(135deg,#1a3550,#10253b)!important;
+background-size:145% 145%,100% 100%!important;
+background-position:45% 48%,center!important;
+animation:matchInnerLight36 5s ease-in-out infinite alternate!important;
+}
+@keyframes matchInnerLight36{from{background-position:35% 40%,center}to{background-position:65% 60%,center}}
+@media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(> .match-glow-layer){animation:none!important}}
+</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.36 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
 const T=['Brynäs','Frölunda','Färjestad','Skellefteå','Växjö','Rögle','Luleå','Timrå','Örebro','Linköping','HV71','Leksand','Malmö','Djurgården'],C=['BIF','FHC','FBK','SKE','VLH','RBK','LHF','TIK','ÖHK','LHC','HV71','LIF','MIF','DIF'],K=['#d5ac46','#ce263f','#17834c','#e6ba36','#ed8937','#168b5d','#d33a38','#c83434','#bc243b','#1c76b8','#1559a2','#2474b8','#db2937','#e5b82e'];
 let a=T.map((_,i)=>i),first=[];for(let r=0;r<13;r++){first.push(Array.from({length:7},(_,j)=>[a[j],a[13-j]]));a=[a[0],a[13],...a.slice(1,13)]}let rev=first.map(r=>r.map(([x,y])=>[y,x])),F=[...first,...rev,...first,...rev];
 /* BETA 1.3.1: Each career season owns its schedule; original fixtures stay as fallback. */
