@@ -429,7 +429,14 @@ main.inmatch{padding-bottom:calc(190px + env(safe-area-inset-bottom,0px))}
 .standings-preview-card .mini-table-shell .mini-table-full-link{border-top:0!important;margin-top:11px!important;padding:9px 2px 0!important}
 .standings-preview-card .mini-table-open .mini-table-row:last-child{border-bottom:0!important}
 @media(prefers-reduced-motion:reduce){#app > .card:has(.versus)::before,#app > .card:has(.versus)::after{animation:none!important}}
-</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.12 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
+/* BETA 1.4.5.13 – separate preview and hub match-card treatments */
+main.prepmatch #app > .card:has(.versus){background:#142e49!important;box-shadow:0 0 0 2px rgba(136,205,255,.92),0 0 17px 4px rgba(48,160,252,.46),0 0 40px 10px rgba(30,115,211,.28)!important}
+main.prepmatch #app > .card:has(.versus)::before,main.prepmatch #app > .card:has(.versus)::after{content:none!important;animation:none!important}
+main.prepmatch #app > .card:has(.versus) .versus{background:none!important;filter:none!important}
+main.managerhome #app > .card:has(.versus){animation:shaMatchEdgeBreath 4.8s ease-in-out infinite alternate!important}
+@keyframes shaMatchEdgeBreath{from{box-shadow:0 0 0 2px rgba(136,205,255,.68),0 0 12px 3px rgba(48,160,252,.27),0 0 30px 7px rgba(30,115,211,.15),inset 0 0 25px rgba(44,140,216,.13)}to{box-shadow:0 0 0 2px rgba(181,229,255,1),0 0 23px 7px rgba(58,181,255,.64),0 0 49px 12px rgba(30,115,211,.36),inset 0 0 25px rgba(44,140,216,.13)}}
+@media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(.versus){animation:none!important}}
+</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.13 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
 const T=['Brynäs','Frölunda','Färjestad','Skellefteå','Växjö','Rögle','Luleå','Timrå','Örebro','Linköping','HV71','Leksand','Malmö','Djurgården'],C=['BIF','FHC','FBK','SKE','VLH','RBK','LHF','TIK','ÖHK','LHC','HV71','LIF','MIF','DIF'],K=['#d5ac46','#ce263f','#17834c','#e6ba36','#ed8937','#168b5d','#d33a38','#c83434','#bc243b','#1c76b8','#1559a2','#2474b8','#db2937','#e5b82e'];
 let a=T.map((_,i)=>i),first=[];for(let r=0;r<13;r++){first.push(Array.from({length:7},(_,j)=>[a[j],a[13-j]]));a=[a[0],a[13],...a.slice(1,13)]}let rev=first.map(r=>r.map(([x,y])=>[y,x])),F=[...first,...rev,...first,...rev];
 /* BETA 1.3.1: Each career season owns its schedule; original fixtures stay as fallback. */
