@@ -608,7 +608,7 @@ main.managerhome #app > .card:first-child .placement-stat.placement-gold > b{ani
 main.managerhome #app > .card:first-child .stat.placement-gold > .gold-number-halo{filter:none!important;will-change:transform,opacity;backface-visibility:hidden;transform:translate3d(-50%,-50%,0) scale(.74)}
 @keyframes goldHalo48{0%,100%{opacity:.58;transform:translate3d(-50%,-50%,0) scale(.74)}50%{opacity:.80;transform:translate3d(-50%,-50%,0) scale(1.06)}}
 @media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light{animation:none!important}}
-</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.66 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
+</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.67 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
 const T=['Brynäs','Frölunda','Färjestad','Skellefteå','Växjö','Rögle','Luleå','Timrå','Örebro','Linköping','HV71','Leksand','Malmö','Djurgården'],C=['BIF','FHC','FBK','SKE','VLH','RBK','LHF','TIK','ÖHK','LHC','HV71','LIF','MIF','DIF'],K=['#d5ac46','#ce263f','#17834c','#e6ba36','#ed8937','#168b5d','#d33a38','#c83434','#bc243b','#1c76b8','#1559a2','#2474b8','#db2937','#e5b82e'];
 let a=T.map((_,i)=>i),first=[];for(let r=0;r<13;r++){first.push(Array.from({length:7},(_,j)=>[a[j],a[13-j]]));a=[a[0],a[13],...a.slice(1,13)]}let rev=first.map(r=>r.map(([x,y])=>[y,x])),F=[...first,...rev,...first,...rev];
 /* BETA 1.3.1: Each career season owns its schedule; original fixtures stay as fallback. */
@@ -954,7 +954,7 @@ function newsCarouselStories(){
    add({priority:80,topic:'latest-'+g.team+'-'+n,source:'DIN KLUBB',mood:won?'positive':'warning',title:club+(won?' vann mot ':' föll mot ')+opp,body:'Senaste matchen slutade '+latest.x+'–'+latest.y+'. '+club+' ligger på plats '+myRank+'.',tag:'SENASTE MATCHEN'});
   }
   const other=leagueNewsFeed().filter(x=>x.round>=n-1).slice(0,5);
-  for(const x of other)add({priority:64,topic:'league-'+x.title,source:'SHL',mood:x.tag==='KRIS'?'crisis':'neutral',title:x.title,body:x.body,tag:x.tag});
+  for(const x of other)add({priority:64,topic:'league-'+x.title,source:'SHL',mood:(x.tag==='KRIS'||x.tag==='KVALDRAMA')?'crisis':'neutral',title:x.title,body:x.body,tag:x.tag});
   add({priority:65,topic:'table-'+g.team,source:'DIN KLUBB',mood:myRank<=4?'positive':myRank>=11?'warning':'neutral',title:club+' på plats '+myRank+' med '+remaining+' matcher kvar',body:'Efter '+n+' omgångar har '+club+' '+mine.p+' poäng. Varje ny omgång kan förändra läget.',tag:'TABELLÄGE'});
  }
  const event=worldState().lastEvent;
