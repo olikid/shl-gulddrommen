@@ -484,7 +484,12 @@ main.managerhome #app > .card:has(.sha-edge-runner){
 /* Urgent qualification coverage: red editorial card, no moving rail */
 .league-news-item.league-news-urgent{border-left:5px solid #f46a7a!important;border-top:1px solid rgba(244,106,122,.48)!important;border-right:1px solid rgba(244,106,122,.48)!important;border-bottom:1px solid rgba(244,106,122,.48)!important;background:linear-gradient(125deg,rgba(112,36,60,.48),rgba(35,54,78,.9))!important;box-shadow:0 0 18px rgba(244,106,122,.16)!important}
 .league-news-urgent .league-news-meta{color:#ffabb5!important}
-</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.20 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
+/* Hub news controls and softer blue fade around all news variants */
+.hub-news-controls{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin:8px 0 14px;color:#afc9dd;font-size:12px;font-weight:800}
+.hub-news-controls .news-carousel-dots{display:flex;align-items:center;gap:7px}
+.hub-news-slider .league-news-item{border-right-color:#406b91!important;border-bottom-color:#406b91!important;border-top-color:#406b91!important}
+.hub-news-slider .league-news-item.league-news-urgent{background:linear-gradient(115deg,rgba(119,42,64,.48),#243f5b 95%)!important;box-shadow:inset 0 0 20px rgba(235,80,104,.1),0 0 14px rgba(235,80,104,.12)!important}
+</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.21 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
 const T=['Brynäs','Frölunda','Färjestad','Skellefteå','Växjö','Rögle','Luleå','Timrå','Örebro','Linköping','HV71','Leksand','Malmö','Djurgården'],C=['BIF','FHC','FBK','SKE','VLH','RBK','LHF','TIK','ÖHK','LHC','HV71','LIF','MIF','DIF'],K=['#d5ac46','#ce263f','#17834c','#e6ba36','#ed8937','#168b5d','#d33a38','#c83434','#bc243b','#1c76b8','#1559a2','#2474b8','#db2937','#e5b82e'];
 let a=T.map((_,i)=>i),first=[];for(let r=0;r<13;r++){first.push(Array.from({length:7},(_,j)=>[a[j],a[13-j]]));a=[a[0],a[13],...a.slice(1,13)]}let rev=first.map(r=>r.map(([x,y])=>[y,x])),F=[...first,...rev,...first,...rev];
 /* BETA 1.3.1: Each career season owns its schedule; original fixtures stay as fallback. */
@@ -876,6 +881,32 @@ function newsCategory(category){
 }
 function newsroomArchiveCards(){const entries=Array.isArray(g.newsArchive)?g.newsArchive:[];if(!entries.length)return '<p class="muted">Redaktionens arkiv fylls på efter kommande matcher.</p>';return '<div class="league-news-feed">'+entries.map(x=>'<article class="league-news-item newsroom-archive-'+x.mood+'"><div class="league-news-meta"><span>📡 '+x.source+'</span><span>SÄSONG '+x.season+' · OMGÅNG '+x.round+'</span></div><div class="league-news-title">'+x.title+'</div><p>'+x.body+'</p></article>').join('')+'</div>'}
 function worldNewsArchiveTop(){return '<div class="league-news-feed">'+newsCarouselStories().map(x=>'<article class="league-news-item newsroom-archive-'+x.mood+'"><div class="league-news-meta"><span>📡 '+x.source+'</span><span>OMGÅNG '+(g.history||[]).length+'</span></div><div class="league-news-title">'+x.title+'</div><p>'+x.body+'</p></article>').join('')+'</div>'}
+/* BETA 1.4.5.21 – independent compact hub news sliders. */
+const hubNewsIndex={club:0,league:0};
+function hubNewsItems(category){
+ if(category==='club')return personalCoachNews().slice(0,3);
+ const shl=leagueNewsFeed().slice(0,2);
+ const archive=Array.isArray(g.newsArchive)?g.newsArchive:[];
+ const ha=archive.find(x=>x.source==='HOCKEYALLSVENSKAN')||newsCarouselStories().find(x=>x.source==='HOCKEYALLSVENSKAN');
+ return ha?shl.concat([{...ha,tag:'HOCKEYALLSVENSKAN',icon:'📰',round:ha.round||(g.history||[]).length}]):shl;
+}
+function hubNewsSlide(category,delta){
+ const items=hubNewsItems(category),root=document.querySelector('[data-hub-news="'+category+'"]');if(!root||!items.length)return;
+ hubNewsIndex[category]=(hubNewsIndex[category]+delta+items.length)%items.length;
+ const item=items[hubNewsIndex[category]],card=root.querySelector('.league-news-item');
+ card.className='league-news-item '+(item.tag==='KVALDRAMA'?'league-news-urgent':category==='club'?'personal-news-item newsroom-lead':'');
+ card.querySelector('.league-news-meta span:first-child').textContent=(item.icon||'📰')+' '+(item.tag||item.source||'NYHET');
+ card.querySelector('.league-news-meta span:last-child').textContent='OMGÅNG '+(item.round||0);
+ card.querySelector('.league-news-title').textContent=item.title;
+ card.querySelector('p').textContent=item.body;
+ root.querySelector('[data-hub-count]').textContent=(hubNewsIndex[category]+1)+'/'+items.length;
+ root.querySelectorAll('[data-hub-dot]').forEach((el,i)=>el.classList.toggle('active',i===hubNewsIndex[category]));
+}
+function hubNewsCarousel(category){
+ const items=hubNewsItems(category);if(!items.length)return '<p class="muted">Inga nyheter ännu.</p>';
+ hubNewsIndex[category]=0;const item=items[0];
+ return '<div class="hub-news-slider" data-hub-news="'+category+'"><article class="league-news-item '+(item.tag==='KVALDRAMA'?'league-news-urgent':category==='club'?'personal-news-item newsroom-lead':'')+'"><div class="league-news-meta"><span>'+(item.icon||'📰')+' '+(item.tag||item.source||'NYHET')+'</span><span>OMGÅNG '+(item.round||0)+'</span></div><div class="league-news-title">'+item.title+'</div><p>'+item.body+'</p></article><div class="hub-news-controls"><div class="news-carousel-dots">'+items.map((_,i)=>'<button type="button" data-hub-dot class="'+(i===0?'active':'')+'" onclick="hubNewsSlide(\''+category+'\','+(i-hubNewsIndex[category])+')" aria-label="Visa nyhet '+(i+1)+'"></button>').join('')+'</div><button type="button" class="news-carousel-next" onclick="hubNewsSlide(\''+category+'\',1)" aria-label="Nästa nyhet">›</button><span data-hub-count>1/'+items.length+'</span></div></div>';
+}
 function worldNews(){const stories=newsCarouselVisible(),b=stories[0],dots=stories.map((_,i)=>'<button type="button" data-news-dot aria-label="Nyhet '+(i+1)+'" onclick="newsCarouselNext('+i+'-newsIndex)"></button>').join('');return '<div class="newsroom-banner newsroom-'+b.mood+'" data-news-carousel><span><i class="newsroom-pulse" aria-hidden="true"></i> HOCKEYREDAKTIONEN · OMGÅNG '+(g.history||[]).length+'/52</span><strong data-news-title>'+b.title+'</strong><small data-news-body>'+b.body+'</small><div class="news-carousel-controls"><span data-news-source>'+b.source+'</span><div class="news-carousel-dots">'+dots+'</div><button type="button" class="news-carousel-next" onclick="newsCarouselNext(1)" aria-label="Nästa nyhet">›</button><span data-news-count>1/'+stories.length+'</span></div></div><div class="personal-news-heading">🎙️ KRING DIN KLUBB</div>'+personalNewsCards(1)+'<div class="personal-news-heading">🏒 RUNT OM I SHL</div>'+leagueNewsCards(1)+'<button class="league-news-more" onclick="update({page:&quot;news&quot;});window.scrollTo(0,0)">📰 ALLA NYHETER →</button>'}
 
 function previewInsights(){
