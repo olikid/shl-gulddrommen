@@ -870,9 +870,9 @@ main .career-historical-metrics~details.career-clean-details>summary{
  font-size:13px!important;font-weight:800!important;line-height:1.2!important;
  color:#e1f1ff!important;cursor:pointer!important;list-style:none!important;
 }
-main .career-hub-stats~details.career-clean-details>summary span,
-main .career-hub-stats~details.career-reputation-disclosure>summary span,
-main .career-historical-metrics~details.career-clean-details>summary span{
+main .career-hub-stats~details.career-clean-details>summary span.career-dropdown-arrow,
+main .career-hub-stats~details.career-reputation-disclosure>summary span.career-dropdown-arrow,
+main .career-historical-metrics~details.career-clean-details>summary span.career-dropdown-arrow{
  display:grid!important;place-items:center!important;flex:0 0 25px!important;width:25px!important;height:25px!important;
  border-radius:7px!important;background:rgba(77,144,193,.28)!important;border:1px solid rgba(132,190,230,.32)!important;
  color:#bfe6ff!important;font-size:16px!important;line-height:1!important;
@@ -908,7 +908,17 @@ main details.career-clean-details[open]>.career-clean-extra,
 main details.career-clean-details[open]>.career-metrics,
 main details.career-clean-details[open]>.career-reputation{margin-top:11px!important;margin-bottom:12px!important}
 main details.career-clean-details[open]>.career-stats-intro{padding-bottom:9px!important}
-</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.88 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
+/* BETA 1.4.5.89 – ensure label/subtitle cannot inherit arrow-button sizing. */
+main .career-hub-stats~details.career-clean-details>summary span.career-dropdown-label,
+main .career-hub-stats~details.career-reputation-disclosure>summary span.career-dropdown-label,
+main .career-historical-metrics~details.career-clean-details>summary span.career-dropdown-label{
+ display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:center!important;
+ flex:1 1 auto!important;width:auto!important;height:auto!important;min-width:0!important;max-width:none!important;
+ border:0!important;border-radius:0!important;background:transparent!important;padding:0!important;margin:0!important;
+ font-size:13px!important;line-height:1.2!important;text-align:left!important;transform:none!important;
+}
+main details.career-clean-details>summary span.career-dropdown-label small{font-size:10px!important;white-space:normal!important}
+</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.89 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
 const T=['Brynäs','Frölunda','Färjestad','Skellefteå','Växjö','Rögle','Luleå','Timrå','Örebro','Linköping','HV71','Leksand','Malmö','Djurgården'],C=['BIF','FHC','FBK','SKE','VLH','RBK','LHF','TIK','ÖHK','LHC','HV71','LIF','MIF','DIF'],K=['#d5ac46','#ce263f','#17834c','#e6ba36','#ed8937','#168b5d','#d33a38','#c83434','#bc243b','#1c76b8','#1559a2','#2474b8','#db2937','#e5b82e'];
 let a=T.map((_,i)=>i),first=[];for(let r=0;r<13;r++){first.push(Array.from({length:7},(_,j)=>[a[j],a[13-j]]));a=[a[0],a[13],...a.slice(1,13)]}let rev=first.map(r=>r.map(([x,y])=>[y,x])),F=[...first,...rev,...first,...rev];
 /* BETA 1.3.1: Each career season owns its schedule; original fixtures stay as fallback. */
