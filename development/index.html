@@ -721,7 +721,26 @@ main.managerhome .season-champion-confetti::after{
 @keyframes goldDepthNear73{0%{transform:translate3d(-4px,-25%,0)}100%{transform:translate3d(7px,25%,0)}}
 @keyframes goldDepthFar73{0%{transform:translate3d(6px,-22%,0) scale(.82)}100%{transform:translate3d(-6px,22%,0) scale(.82)}}
 @media(prefers-reduced-motion:reduce){main.managerhome .season-champion-confetti .gold-confetti,main.managerhome .season-champion-confetti::after{animation:none!important}}
-</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.73 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
+/* BETA 1.4.5.74 – denser confetti with extra tiny paper flakes, same soft depth. */
+main.managerhome .season-champion-confetti .gold-confetti,
+main.managerhome .season-champion-confetti::after{
+ background-image:
+ linear-gradient(18deg,#ffe9a0,#e7ad35),linear-gradient(-22deg,#f4c24e,#fff1b2),
+ linear-gradient(32deg,#e8a92d,#ffd974),linear-gradient(-17deg,#fff0b4,#e7b345),
+ linear-gradient(10deg,#e6aa35,#f6ce65),linear-gradient(-35deg,#f9d67b,#f2bb40),
+ linear-gradient(24deg,#ffe9a5,#e6ad3c),linear-gradient(-15deg,#edb53d,#ffe49a),
+ linear-gradient(31deg,#f5d17b,#e9a935),linear-gradient(-23deg,#fff0b0,#f2bf4a),
+ linear-gradient(17deg,#e6ae38,#ffe49a),linear-gradient(-28deg,#f8d372,#e7ae38),
+ linear-gradient(26deg,#f7d16c,#fff0b0),linear-gradient(-12deg,#e8af36,#ffdd7e),
+ linear-gradient(35deg,#ffe7a1,#edb13e),linear-gradient(-30deg,#f4c75a,#fff2b5),
+ linear-gradient(12deg,#f8d677,#e9a932),linear-gradient(-18deg,#ffe39a,#e5ac3a),
+ linear-gradient(29deg,#e9b33e,#ffdc79),linear-gradient(-34deg,#fff0ae,#f1be47),
+ linear-gradient(14deg,#f6cd66,#e8a931),linear-gradient(-25deg,#ffe6a0,#efba44),
+ linear-gradient(38deg,#f0bd48,#ffe28a),linear-gradient(-16deg,#fff0b3,#e7ac37)!important;
+ background-size:3px 6px,5px 3px,2px 5px,4px 7px,3px 3px,5px 6px,2px 4px,4px 3px,3px 7px,5px 4px,2px 5px,4px 6px,2px 3px,3px 5px,4px 2px,2px 6px,3px 4px,4px 5px,2px 4px,3px 6px,4px 3px,2px 5px,3px 4px,2px 6px!important;
+ background-position:7% 12%,19% 65%,28% 24%,39% 81%,48% 9%,57% 49%,68% 18%,76% 78%,84% 36%,92% 67%,33% 46%,61% 91%,11% 43%,24% 87%,36% 17%,45% 58%,54% 32%,65% 73%,73% 9%,89% 51%,96% 22%,15% 96%,51% 94%,80% 89%!important;
+}
+</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.74 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
 const T=['Brynäs','Frölunda','Färjestad','Skellefteå','Växjö','Rögle','Luleå','Timrå','Örebro','Linköping','HV71','Leksand','Malmö','Djurgården'],C=['BIF','FHC','FBK','SKE','VLH','RBK','LHF','TIK','ÖHK','LHC','HV71','LIF','MIF','DIF'],K=['#d5ac46','#ce263f','#17834c','#e6ba36','#ed8937','#168b5d','#d33a38','#c83434','#bc243b','#1c76b8','#1559a2','#2474b8','#db2937','#e5b82e'];
 let a=T.map((_,i)=>i),first=[];for(let r=0;r<13;r++){first.push(Array.from({length:7},(_,j)=>[a[j],a[13-j]]));a=[a[0],a[13],...a.slice(1,13)]}let rev=first.map(r=>r.map(([x,y])=>[y,x])),F=[...first,...rev,...first,...rev];
 /* BETA 1.3.1: Each career season owns its schedule; original fixtures stay as fallback. */
