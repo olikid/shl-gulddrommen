@@ -836,7 +836,25 @@ main .career-current-section .career-metrics{margin-top:14px}
 .career-hub-stats>.stat .small{font-size:9px!important;letter-spacing:0!important}
 .career-hub-stats .gold-number-halo{pointer-events:none}
 .career-reputation-disclosure{margin-top:7px!important}
-</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.85 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
+/* BETA 1.4.5.86 – mobile-first, compact career club panel. */
+main .career-hub-club{display:flex!important;align-items:center!important;gap:11px!important;margin:0 0 10px!important;min-height:0!important}
+main .career-hub-club .crest{width:53px!important;height:53px!important;min-width:53px!important;min-height:53px!important;max-width:53px!important;max-height:53px!important;border-radius:11px!important;font-size:17px!important;line-height:1!important;flex:0 0 53px!important;padding:0!important;display:grid!important;place-items:center!important}
+main .career-hub-club h2{font-size:20px!important;margin:0 0 2px!important}
+main .career-hub-club .muted{font-size:11px!important;line-height:1.35!important}
+main .career-hub-stats{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:6px!important;width:100%!important;overflow:visible!important}
+main .career-hub-stats>.stat,
+main .career-hub-stats>.stat.home-coach-score{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:3px!important;min-width:0!important;width:auto!important;min-height:65px!important;height:auto!important;padding:9px 2px!important;margin:0!important;border-radius:10px!important;overflow:hidden!important;text-align:center!important}
+main .career-hub-stats>.stat>b,
+main .career-hub-stats>.stat.home-coach-score>b{display:block!important;flex:none!important;font-size:clamp(19px,5.5vw,27px)!important;line-height:1.05!important;white-space:nowrap!important}
+main .career-hub-stats>.stat>.small,
+main .career-hub-stats>.stat.home-coach-score>.small{display:block!important;flex:none!important;font-size:clamp(7px,1.85vw,9px)!important;line-height:1.1!important;letter-spacing:0!important;white-space:normal!important;overflow-wrap:normal!important;text-align:center!important;max-width:100%!important}
+main .career-hub-stats>.stat.home-coach-score{border:1px solid rgba(121,192,240,.58)!important}
+main .career-hub-stats>.stat.home-coach-score .small{color:#c2ddf2!important}
+main .career-hub-stats+.career-clean-details{margin-top:10px!important;padding-top:7px!important}
+main .career-hub-stats~.career-reputation-disclosure{padding:0!important;border:0!important;background:none!important;margin-top:1px!important}
+main .career-hub-stats~.career-reputation-disclosure>summary{padding:7px 1px!important}
+main .career-hub-stats~.career-reputation-disclosure .career-reputation{margin-top:8px!important}
+</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.86 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
 const T=['Brynäs','Frölunda','Färjestad','Skellefteå','Växjö','Rögle','Luleå','Timrå','Örebro','Linköping','HV71','Leksand','Malmö','Djurgården'],C=['BIF','FHC','FBK','SKE','VLH','RBK','LHF','TIK','ÖHK','LHC','HV71','LIF','MIF','DIF'],K=['#d5ac46','#ce263f','#17834c','#e6ba36','#ed8937','#168b5d','#d33a38','#c83434','#bc243b','#1c76b8','#1559a2','#2474b8','#db2937','#e5b82e'];
 let a=T.map((_,i)=>i),first=[];for(let r=0;r<13;r++){first.push(Array.from({length:7},(_,j)=>[a[j],a[13-j]]));a=[a[0],a[13],...a.slice(1,13)]}let rev=first.map(r=>r.map(([x,y])=>[y,x])),F=[...first,...rev,...first,...rev];
 /* BETA 1.3.1: Each career season owns its schedule; original fixtures stay as fallback. */
