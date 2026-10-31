@@ -199,3 +199,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - **2026-10-31 — BETA 1.5.4.5:** Tränarprofilens medaljdropdown polerad igen: separat `VISA ALLA`-knapp placerad i en gemensam wrapper ovanpå rubrikradens högra sida, så den ligger i samma rad och förblir synlig även när `<details>` är stängt. Rubrik/pil styr öppna/stäng; medaljer visas direkt under när utfälld. Kodcommit `b9819a5ae133337783914bbb55c5e214153fab6b`. Root orörd.
 
 - **2026-10-31 — BETA 1.5.4.6:** Minskad onödig luft överst i tränarprofilens första kort med riktad CSS för topp-padding, rubrikrad och avstånd till porträtt. Myntknappen hålls i samma rubrikrad. Kodcommit `e2ce3691c16274443a20cc0faa113b9786bcda2d`. Officiell root orörd.
+
+- **2026-10-31 — BETA 1.5.4.7:** `Dina utmärkelser` på tränarprofilen har fått en tydligare blå gradientpanel med kant, djup och kraftigare typografi, inspirerad av `Lagets förtroende`. Dropdownen är fortsatt öppen som standard, `VISA ALLA` och pilen ligger i högra delen och medaljerna i panelens innehåll. Kodcommit `d678613b0e4108d63276358c8ef4f6fa1306ffda`. Officiell root orörd.
