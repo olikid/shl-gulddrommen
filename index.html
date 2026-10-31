@@ -159,7 +159,7 @@ main.managerhome #app > .card:first-child .stat .small{font-size:9px!important;l
 main.managerhome #app > .card:first-child > p{margin:4px 0 0!important;font-size:11px!important;line-height:1.1!important}
 main.managerhome #app > .card:first-child .form-square{width:12px!important;height:12px!important;margin-right:3px!important}
 main.managerhome #app > .card:first-child .placement-stat.placement-gold{background:#39362b!important;border:2px solid #f5c84e!important}
-main.managerhome #app > .card:first-child .placement-stat.placement-gold b{color:#ffd74f!important;text-shadow:0 0 7px #d9a92d80!important}
+main.managerhome #app > .card:first-child .placement-stat.placement-gold b{color:#ffd74f!important;text-shadow:0 0 7px #d9a92d80}
 main.managerhome #app > .card:first-child .placement-stat.placement-green b{color:#74e0b0!important}
 main.managerhome #app > .card:first-child .placement-stat.placement-red b{color:#ff8794!important}
 
@@ -190,6 +190,53 @@ main.managerhome #app>.card:first-child .stats>.home-coach-score.coach-neutral{b
 .league-news-feed{display:flex;flex-direction:column;gap:9px}.league-news-item{background:#273f57;border:1px solid #3a5671;border-radius:11px;padding:12px 13px}.league-news-meta{display:flex;justify-content:space-between;gap:8px;color:#a8c9e3;font-size:10px;font-weight:800;letter-spacing:.4px}.league-news-title{font-size:15px;font-weight:800;line-height:1.3;margin:7px 0 4px;color:#fff}.league-news-item p{margin:0;color:#bed0df;font-size:12px;line-height:1.45}.league-news-more{width:100%;background:#304c69;border:1px solid #6488a7;color:#e4f2ff;border-radius:9px;padding:12px;font-size:12px;font-weight:800;margin-top:10px}
 .personal-news-heading{font-size:11px;font-weight:850;letter-spacing:.9px;color:#a9cce6;margin:13px 0 9px}.personal-news-item{border-left:3px solid #82bce9!important;background:#2b4561!important}.personal-news-item .league-news-title{color:#f4faff}
 
+/* BETA 1.4.5.11 – clean final row and visible outer arena halo */
+.mini-table-shell .mini-table-row:last-child{border-bottom:0!important}
+.mini-table-shell .mini-table-full-link{border-top:0!important;margin-top:9px!important;padding:8px 2px 0!important;line-height:1.25!important}
+
+/* BETA 1.4.5.10: arena depth and standings footer spacing */
+main.managerhome #app>.card:has(.versus){background:radial-gradient(ellipse at 50% 0%,rgba(76,167,238,.29),transparent 68%),radial-gradient(ellipse at 0% 80%,rgba(32,111,182,.22),transparent 72%),linear-gradient(130deg,#173754,#10273e 70%,#091c31)!important;box-shadow:inset 0 1px 0 rgba(173,222,255,.3),inset 0 0 32px rgba(4,19,36,.35),0 12px 26px rgba(0,0,0,.25),0 0 18px rgba(44,145,230,.12)!important}
+main.managerhome #app>.card:has(.versus) .versus{background:radial-gradient(ellipse at center,rgba(83,174,244,.12),transparent 75%);border-radius:18px}
+.mini-table-shell .mini-table-full-link{margin-top:8px!important;padding:9px 2px 3px!important;border-top:1px solid rgba(145,183,215,.35)!important;line-height:1.35!important}
+main.managerhome #app>.card:has(.versus){box-shadow:0 0 0 1px rgba(123,202,255,.65),0 0 16px 3px rgba(50,164,248,.38),0 0 38px 8px rgba(30,115,211,.23),inset 0 0 25px rgba(44,140,216,.13)!important}
+/* BETA 1.4.5.8 – visibly stronger arena ambience, layered behind card content */
+main.managerhome #app>.card:has(.versus){isolation:isolate;position:relative;overflow:hidden}
+main.managerhome #app>.card:has(.versus)::before{z-index:0!important;inset:-35% -35%!important;background:radial-gradient(ellipse at 45% 45%,rgba(52,175,255,.43) 0%,rgba(35,130,225,.23) 25%,rgba(24,99,180,.10) 48%,transparent 72%)!important;animation:shaMatchAmbient 5s ease-in-out infinite alternate!important}
+main.managerhome #app>.card:has(.versus)::after{z-index:0!important;background:linear-gradient(115deg,transparent 12%,rgba(107,203,255,.02) 26%,rgba(103,196,255,.22) 45%,rgba(91,184,255,.08) 55%,transparent 76%)!important;animation:shaMatchShimmer 6s ease-in-out infinite alternate!important}
+main.managerhome #app>.card:has(.versus)>*:not(style){position:relative;z-index:1}
+@media(prefers-reduced-motion:reduce){main.managerhome #app>.card:has(.versus)::before,main.managerhome #app>.card:has(.versus)::after{animation:none!important}}
+/* BETA 1.4.5.6 – compact table footer, independent ambient match-card light */
+.mini-table-shell .mini-table-head{display:flex!important;align-items:center!important;justify-content:space-between!important;margin-bottom:2px!important}
+.mini-table-shell .mini-table-full-link{display:block!important;width:100%;text-align:right;padding:5px 2px 0!important;margin:0!important;border-top:1px solid #36536b;font-size:10px!important;line-height:1.2!important}
+.mini-table-shell .mini-table-row:last-child{border-bottom:0}
+main.managerhome #app>.card:has(.versus){position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 14% 0%,#1e4261 0%,transparent 65%),linear-gradient(130deg,#122c47,#102338 70%)!important}
+main.managerhome #app>.card:has(.versus)::before{content:"";position:absolute;z-index:-1;pointer-events:none;inset:-45% -65%;background:radial-gradient(ellipse at 50% 50%,rgba(42,155,242,.15) 0%,rgba(22,106,185,.07) 26%,transparent 58%);transform:translateX(-20%) rotate(-10deg);animation:shaMatchAmbient 14s ease-in-out infinite alternate}
+main.managerhome #app>.card:has(.versus)::after{content:"";position:absolute;z-index:-1;pointer-events:none;inset:0;background:linear-gradient(120deg,transparent 25%,rgba(91,184,255,.045) 47%,transparent 70%);animation:shaMatchShimmer 18s ease-in-out infinite alternate}
+@keyframes shaMatchAmbient{from{transform:translateX(-22%) rotate(-10deg);opacity:.65}to{transform:translateX(23%) rotate(10deg);opacity:1}}
+@keyframes shaMatchShimmer{from{transform:translateX(-18%);opacity:.4}to{transform:translateX(18%);opacity:.9}}
+@media(prefers-reduced-motion:reduce){main.managerhome #app>.card:has(.versus)::before,main.managerhome #app>.card:has(.versus)::after{animation:none!important}}
+/* BETA 1.4.5.5: prevent HA header overflow on narrow screens */
+.mini-table-shell{min-width:0;max-width:100%;box-sizing:border-box}
+.mini-table-shell .mini-table-head{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;gap:3px 7px!important;align-items:center!important}
+.mini-table-shell .mini-table-head>span{white-space:normal!important;overflow-wrap:break-word;line-height:1.15;min-width:0}
+.mini-table-shell .mini-league-toggle{grid-column:2;grid-row:1}
+.mini-table-shell .mini-table-full-link{grid-column:1/-1;grid-row:2;justify-self:end;padding:0 0 2px!important}
+/* BETA 1.4.5.4: restore single-row mini standings header and tight spacing */
+.mini-table-shell{padding:8px 11px!important;margin-top:0!important}
+.mini-table-shell .mini-table-head{margin-bottom:3px!important;gap:6px!important}
+.mini-table-shell .mini-table-head>span{font-size:clamp(10px,2.9vw,12px);letter-spacing:.4px;white-space:nowrap}
+.mini-league-toggle{padding:5px 7px!important;font-size:11px!important;border-radius:8px!important}
+.mini-table-full-link{background:transparent;border:0;color:#c2d8eb;font:800 10px system-ui;letter-spacing:.3px;white-space:nowrap;cursor:pointer;padding:4px 0}
+.mini-table-shell .mini-table-row{padding:4px 2px!important}
+@media(max-width:390px){.mini-table-shell .mini-table-head>span{font-size:10px}.mini-table-full-link{font-size:9px}}
+/* BETA 1.4.5.3 – mini standings switch and sticky table navigation */
+.mini-table-shell{display:block!important;cursor:default!important}
+.mini-table-shell .mini-table-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.mini-league-toggle{flex-shrink:0;background:#305577;color:#e8f5ff;border:1px solid #6a94b4;border-radius:10px;padding:7px 10px;font:800 12px system-ui;cursor:pointer}
+.mini-table-open{display:block;width:100%;background:transparent;border:0;color:inherit;padding:0;text-align:left;cursor:pointer;font:inherit}
+.mini-table-open-label{display:block;text-align:right;font-size:11px;font-weight:800;letter-spacing:.7px;color:#bcd4e8;margin:3px 0}
+.table-sticky-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;margin:0 0 12px;padding:9px;background:#102238f5;border:1px solid #456782;border-radius:12px;box-shadow:0 5px 16px #0005;backdrop-filter:blur(10px)}
+.table-sticky-nav .btn{display:block;width:100%;text-align:center;background:#28435e;color:#fff;border:1px solid #6488a7}
 /* BETA 1.3: sticky navigation in news centre */
 .news-sticky-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;margin:0 0 12px;padding:9px;background:#102238f5;border:1px solid #456782;border-radius:12px;box-shadow:0 5px 16px #0005;backdrop-filter:blur(10px)}
 .news-sticky-nav .btn{display:block;width:100%;text-align:center;background:#28435e;color:#fff;border:1px solid #6488a7}
@@ -339,7 +386,645 @@ main.inmatch{padding-bottom:calc(190px + env(safe-area-inset-bottom,0px))}
 .sha-logo-wordmark strong:last-child{color:#17adf5}
 .sha-version{font-size:9px;margin-top:7px;letter-spacing:.4px;color:#8fa6ba}
 @media(max-width:350px){.sha-logo-wordmark strong{font-size:clamp(20px,7vw,25px);letter-spacing:-1.4px}.sha-logo-country b{font-size:10px;letter-spacing:3px}}
-</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.1 · OFFICIELL VERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
+
+/* BETA 1.4.3 – visibly distinct newsroom lead, without redesigning the hub. */
+.newsroom-banner{display:flex;flex-direction:column;gap:4px;border-radius:12px;background:linear-gradient(110deg,#0a2846,#16476b);border:1px solid #2677a4;border-left:4px solid #17adf5;padding:13px 14px;margin:0 0 14px}.newsroom-banner span{font-size:10px;font-weight:900;letter-spacing:1.3px;color:#58c8ff}.newsroom-banner strong{font-size:16px;color:#f5f8ff}.newsroom-banner small{font-size:11px;color:#b2cddd}.newsroom-lead{border-left:4px solid #17adf5!important;background:linear-gradient(130deg,#254b6b,#213c58)!important}.newsroom-lead .league-news-title{font-size:clamp(17px,4.4vw,21px);line-height:1.28;font-weight:900;color:#fff}.newsroom-lead p{font-size:13px;line-height:1.55}
+
+/* BETA 1.4.3.1 – editorial mood reflects the match context. */
+.newsroom-banner.newsroom-crisis{border-left-color:#f07578;background:linear-gradient(110deg,#35253b,#18344d)}.newsroom-banner.newsroom-crisis span{color:#ffacac}.newsroom-banner.newsroom-positive{border-left-color:#52cda1}.newsroom-banner.newsroom-positive span{color:#91eac6}.newsroom-banner strong{line-height:1.28}.newsroom-banner small{font-size:12px;line-height:1.5}
+
+/* BETA 1.4.3.2 – animated latest-news indicator matching the match LIVE pulse. */
+.newsroom-pulse{display:inline-block;vertical-align:middle;width:9px;height:9px;margin-right:6px;border-radius:50%;background:#17adf5;box-shadow:0 0 8px #17adf5;animation:newsroom-beat 1.65s ease-in-out infinite}@keyframes newsroom-beat{0%,100%{opacity:.5;box-shadow:0 0 0 rgba(23,173,245,0)}50%{opacity:1;box-shadow:0 0 11px rgba(23,173,245,.95)}}@media(prefers-reduced-motion:reduce){.newsroom-pulse{animation:none;opacity:1}}
+
+/* BETA 1.4.4 – accessible carousel controls */
+.news-carousel-controls{display:flex;align-items:center;gap:9px;margin-top:8px;padding-top:9px;border-top:1px solid #ffffff24}.news-carousel-controls>span:first-child{font-size:10px;font-weight:800;color:#c4d9ea;margin-right:auto}.news-carousel-controls>span:last-child{font-size:10px;color:#a9c9de}.news-carousel-dots{display:flex;gap:6px}.news-carousel-dots button{border:0;border-radius:50%;width:8px;height:8px;padding:0;background:#5e819e}.news-carousel-dots button.active{background:#17adf5;box-shadow:0 0 7px #17adf5}.news-carousel-next{border:1px solid #4e8bb1;border-radius:8px;color:#e7f5ff;background:#19496a;font-size:22px;line-height:1;width:30px;height:29px}
+
+/* BETA 1.4.4.2 – editorial colour glow and stronger, mood-matched pulse.
+   Only the newsroom is targeted; scoreboard LIVE animation stays untouched. */
+.newsroom-banner.newsroom-positive{background:linear-gradient(112deg,rgba(21,91,77,.57) 0%,rgba(14,61,75,.62) 37%,#143a59 100%);border-left-color:#52cda1}
+.newsroom-banner.newsroom-crisis{background:linear-gradient(112deg,rgba(93,39,65,.72) 0%,rgba(52,37,62,.68) 41%,#173750 100%)}
+.newsroom-banner{--news-pulse:#17adf5;--news-pulse-rgb:23,173,245}
+.newsroom-banner.newsroom-positive{--news-pulse:#65efb8;--news-pulse-rgb:101,239,184}
+.newsroom-banner.newsroom-crisis{--news-pulse:#ff838e;--news-pulse-rgb:255,131,142}
+.newsroom-banner.newsroom-warning{--news-pulse:#ffca72;--news-pulse-rgb:255,202,114}
+.newsroom-banner .newsroom-pulse{background:var(--news-pulse);box-shadow:0 0 8px 2px rgba(var(--news-pulse-rgb),.8);animation:newsroom-glow-strong 1.65s ease-in-out infinite}
+@keyframes newsroom-glow-strong{0%,100%{opacity:.58;box-shadow:0 0 3px rgba(var(--news-pulse-rgb),.4)}50%{opacity:1;box-shadow:0 0 6px 3px rgba(var(--news-pulse-rgb),1),0 0 19px 6px rgba(var(--news-pulse-rgb),.75)}}
+.newsroom-banner .news-carousel-dots button.active{background:var(--news-pulse);box-shadow:0 0 9px rgba(var(--news-pulse-rgb),.85)}
+@media(prefers-reduced-motion:reduce){.newsroom-banner .newsroom-pulse{animation:none;opacity:1;box-shadow:0 0 8px rgba(var(--news-pulse-rgb),.7)}}
+
+/* BETA 1.4.4.3 – understated editorial archive accents. */
+.newsroom-archive-positive{border-left:3px solid #52cda1!important}.newsroom-archive-crisis{border-left:3px solid #f07578!important}.newsroom-archive-warning{border-left:3px solid #f0be70!important}.newsroom-archive-neutral{border-left:3px solid #17adf5!important}
+
+/* BETA 1.4.4.6 – distinct, compact news sections on mobile. */
+.news-category-panel{margin:16px 0;padding:14px 12px 16px;border-radius:17px;background:linear-gradient(150deg,#1b3550,#152a42);border:1px solid #41627d;box-shadow:0 5px 14px #06142338}.news-category-panel>.personal-news-heading{margin:0 0 13px;font-weight:900;letter-spacing:.8px}.news-category-panel .league-news-feed{display:flex;flex-direction:column;gap:10px}.news-category-panel .league-news-item{margin:0}.news-category-panel .league-news-more{margin-top:13px;width:100%}@media(max-width:480px){.news-category-panel{padding:13px 10px 14px;margin:14px 0}}
+
+/* BETA 1.4.4.7 – temporary per-category collapse controls */
+.news-category-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.news-category-heading>.personal-news-heading{margin:0!important;min-width:0}.news-collapse-button{flex:0 0 36px;width:36px;height:36px;border-radius:11px;border:1px solid #6088a7;background:#254863;color:#eaf6ff;font-size:25px;line-height:1;display:grid;place-items:center;cursor:pointer}.news-collapse-button:active{background:#34668c}.news-category-body[hidden]{display:none!important}.news-category-panel.is-collapsed{padding-bottom:13px}.news-category-panel.is-collapsed .news-category-heading{margin-bottom:0}
+
+/* BETA 1.4.5.12: actual DOM target is main > #app > .card (not main.managerhome) */
+#app > .card:has(> .cap + .versus),#app > .card:has(.versus){position:relative!important;isolation:isolate!important;overflow:hidden!important;background:radial-gradient(ellipse at 50% 10%,rgba(66,157,226,.26),transparent 70%),linear-gradient(135deg,#183854,#0d233b)!important;box-shadow:0 0 0 2px rgba(136,205,255,.92),0 0 17px 4px rgba(48,160,252,.46),0 0 40px 10px rgba(30,115,211,.28),inset 0 0 25px rgba(44,140,216,.13)!important}
+#app > .card:has(.versus)::before{content:"";position:absolute;pointer-events:none;z-index:0;inset:-35% -35%;background:radial-gradient(ellipse at 45% 45%,rgba(52,175,255,.43),rgba(35,130,225,.23) 25%,transparent 72%);animation:shaMatchAmbient 5s ease-in-out infinite alternate}
+#app > .card:has(.versus)::after{content:"";position:absolute;pointer-events:none;z-index:0;inset:0;background:linear-gradient(115deg,transparent 12%,rgba(103,196,255,.22) 45%,transparent 76%);animation:shaMatchShimmer 6s ease-in-out infinite alternate}
+#app > .card:has(.versus)>*{position:relative;z-index:1}
+.standings-preview-card .mini-table-shell .mini-table-full-link{border-top:0!important;margin-top:11px!important;padding:9px 2px 0!important}
+.standings-preview-card .mini-table-open .mini-table-row:last-child{border-bottom:0!important}
+@media(prefers-reduced-motion:reduce){#app > .card:has(.versus)::before,#app > .card:has(.versus)::after{animation:none!important}}
+/* BETA 1.4.5.13 – separate preview and hub match-card treatments */
+main.prepmatch #app > .card:has(.versus){background:#142e49!important;box-shadow:0 0 0 2px rgba(136,205,255,.92),0 0 17px 4px rgba(48,160,252,.46),0 0 40px 10px rgba(30,115,211,.28)!important}
+main.prepmatch #app > .card:has(.versus)::before,main.prepmatch #app > .card:has(.versus)::after{content:none!important;animation:none!important}
+main.prepmatch #app > .card:has(.versus) .versus{background:none!important;filter:none!important}
+main.managerhome #app > .card:has(.versus){animation:shaMatchEdgeBreath 4.8s ease-in-out infinite alternate!important}
+@keyframes shaMatchEdgeBreath{from{box-shadow:0 0 0 2px rgba(136,205,255,.68),0 0 12px 3px rgba(48,160,252,.27),0 0 30px 7px rgba(30,115,211,.15),inset 0 0 25px rgba(44,140,216,.13)}to{box-shadow:0 0 0 2px rgba(181,229,255,1),0 0 23px 7px rgba(58,181,255,.64),0 0 49px 12px rgba(30,115,211,.36),inset 0 0 25px rgba(44,140,216,.13)}}
+@media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(.versus){animation:none!important}}
+
+/* BETA 1.4.5.14 – travelling light segment around the manager hub match border */
+@property --sha-border-angle{syntax:"<angle>";initial-value:0deg;inherits:false}
+main.managerhome #app > .card:has(.versus){overflow:visible!important;animation:none!important}
+main.managerhome #app > .card:has(.versus)::before{inset:0!important;border-radius:inherit!important;z-index:0!important;background:conic-gradient(from var(--sha-border-angle),transparent 0deg,transparent 245deg,rgba(70,170,255,.12) 285deg,rgba(160,235,255,.95) 318deg,#fff 329deg,rgba(98,205,255,.7) 342deg,transparent 360deg)!important;padding:3px!important;animation:shaBorderTravel 7s linear infinite!important;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0)!important;-webkit-mask-composite:xor!important;mask-composite:exclude!important;pointer-events:none!important}
+main.managerhome #app > .card:has(.versus)::after{border-radius:inherit!important}
+@keyframes shaBorderTravel{to{--sha-border-angle:360deg}}
+@media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(.versus)::before{animation:none!important}}
+
+/* BETA 1.4.5.15: exact rounded-rectangle path, never a free-floating conic beam */
+main.managerhome #app > .card:has(.sha-edge-runner){overflow:hidden!important}
+main.managerhome #app > .card:has(.sha-edge-runner)::before{content:none!important;animation:none!important}
+main.managerhome #app > .card:has(.sha-edge-runner)>.sha-edge-runner{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;z-index:3!important;pointer-events:none!important;overflow:visible!important;display:block!important}
+main.managerhome #app > .card:has(.sha-edge-runner)>.sha-edge-runner rect{fill:none;stroke:#c9f5ff;stroke-width:3px;stroke-linecap:round;stroke-dasharray:9 91;stroke-dashoffset:0;filter:drop-shadow(0 0 5px #50c9ff);animation:shaEdgePath 7s linear infinite;x:2px;y:2px;width:calc(100% - 4px);height:calc(100% - 4px);rx:19px;ry:19px}
+@keyframes shaEdgePath{to{stroke-dashoffset:-100}}
+@media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(.sha-edge-runner)>.sha-edge-runner rect{animation:none!important}}
+
+/* BETA 1.4.5.16 – luminous border instead of a travelling white bar */
+main.managerhome #app > .card:has(.sha-edge-runner)>.sha-edge-runner rect{stroke:#68c5ff!important;stroke-width:3px!important;stroke-linecap:round!important;stroke-dasharray:32 68!important;stroke-opacity:.68!important;filter:drop-shadow(0 0 4px #42aaff) drop-shadow(0 0 9px rgba(61,172,255,.85))!important;animation:shaEdgeGlowWave 12s linear infinite!important}
+@keyframes shaEdgeGlowWave{to{stroke-dashoffset:-100}}
+.standings-preview-card{padding-top:8px!important;padding-bottom:7px!important}
+.standings-preview-card .mini-table-shell .mini-table-full-link{margin-top:1px!important;padding-top:2px!important;padding-bottom:0!important}
+.standings-preview-card .mini-table-open{margin-bottom:0!important;padding-bottom:0!important}
+@media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(.sha-edge-runner)>.sha-edge-runner rect{animation:none!important}}
+
+/* BETA 1.4.5.17: only the EXISTING full border breathes; no travelling stroke */
+main.managerhome #app > .card:has(.sha-edge-runner){animation:shaWholeBorderGlow 5.5s ease-in-out infinite alternate!important;overflow:hidden!important}
+main.managerhome #app > .card:has(.sha-edge-runner)>.sha-edge-runner{display:none!important}
+main.managerhome #app > .card:has(.sha-edge-runner)::before{content:none!important;animation:none!important}
+@keyframes shaWholeBorderGlow{
+from{box-shadow:0 0 0 2px rgba(105,190,250,.83),0 0 9px 2px rgba(52,161,246,.20),0 0 23px 5px rgba(36,128,226,.12),inset 0 0 25px rgba(44,140,216,.13)}
+to{box-shadow:0 0 0 2px rgba(180,230,255,1),0 0 19px 5px rgba(68,177,255,.52),0 0 43px 10px rgba(40,136,237,.29),inset 0 0 25px rgba(44,140,216,.13)}
+}
+@media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(.sha-edge-runner){animation:none!important}}
+
+/* BETA 1.4.5.19 – Safari fix: !important inside @keyframes invalidates animation declarations. */
+main.managerhome #app > .card:has(.sha-edge-runner){
+ border:3px solid #74bfff!important;
+ animation:shaFrameGlow19 4.2s ease-in-out infinite!important;
+}
+@keyframes shaFrameGlow19{
+ 0%,100%{border-color:#66b6f2;box-shadow:0 0 0 1px rgba(102,182,242,.4),0 0 9px 2px rgba(48,145,228,.22),0 0 23px 5px rgba(42,121,218,.14)}
+ 50%{border-color:#d0f5ff;box-shadow:0 0 0 2px rgba(183,232,255,.98),0 0 25px 8px rgba(68,187,255,.75),0 0 56px 17px rgba(34,130,246,.40)}
+}
+@media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(.sha-edge-runner){animation:none!important;border-color:#a5dfff!important;box-shadow:0 0 0 2px #a5dfff,0 0 24px 7px rgba(68,187,255,.48)!important}}
+/* Urgent qualification coverage: red editorial card, no moving rail */
+.league-news-item.league-news-urgent{border-left:5px solid #f46a7a!important;border-top:1px solid rgba(244,106,122,.48)!important;border-right:1px solid rgba(244,106,122,.48)!important;border-bottom:1px solid rgba(244,106,122,.48)!important;background:linear-gradient(125deg,rgba(112,36,60,.48),rgba(35,54,78,.9))!important;box-shadow:0 0 18px rgba(244,106,122,.16)!important}
+.league-news-urgent .league-news-meta{color:#ffabb5!important}
+/* Hub news controls and softer blue fade around all news variants */
+.hub-news-controls{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin:14px 0 0;padding-top:12px;border-top:1px solid rgba(150,192,223,.22);color:#afc9dd;font-size:12px;font-weight:800}
+.hub-news-source{margin-right:auto;color:#b4cbe0;font-size:11px;letter-spacing:.12em;font-weight:850;white-space:nowrap}.hub-news-controls .news-carousel-dots{display:flex;align-items:center;gap:7px}
+.hub-news-slider .league-news-item{border-right-color:#406b91!important;border-bottom-color:#406b91!important;border-top-color:#406b91!important}
+.hub-news-slider .league-news-item.league-news-urgent{background:linear-gradient(115deg,rgba(119,42,64,.48),#243f5b 95%)!important;box-shadow:inset 0 0 20px rgba(235,80,104,.1),0 0 14px rgba(235,80,104,.12)!important}
+/* BETA 1.4.5.25 – HA cards share the editorial accent and blue fade. */
+.hub-news-slider .league-news-item.league-news-ha{border-left:5px solid #42c8df!important;border-top:1px solid #467d9e!important;border-right:1px solid #406b91!important;border-bottom:1px solid #406b91!important;background:linear-gradient(112deg,rgba(23,99,116,.48) 0%,rgba(31,79,103,.42) 38%,#243f5b 100%)!important;box-shadow:inset 0 0 18px rgba(66,200,223,.07),0 0 12px rgba(66,200,223,.11)!important}
+.hub-news-slider .league-news-item.league-news-ha .league-news-meta{color:#a6e5ee!important}
+/* BETA 1.4.5.26 – iOS Safari: visible outer glow must not be clipped by the match card. */
+main.managerhome #app > .card:has(> .sha-edge-runner){overflow:visible!important;isolation:isolate;position:relative;animation:shaMatchGlow26 3.6s ease-in-out infinite!important;will-change:box-shadow}
+@keyframes shaMatchGlow26{
+ 0%,100%{border-color:#76bfff;box-shadow:0 0 0 2px rgba(123,202,255,.65),0 0 15px 4px rgba(64,172,255,.42),0 0 30px 8px rgba(34,126,240,.23)}
+ 50%{border-color:#dcf8ff;box-shadow:0 0 0 3px rgba(185,236,255,.96),0 0 24px 8px rgba(76,191,255,.70),0 0 49px 15px rgba(36,136,255,.40)}
+}
+@media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(> .sha-edge-runner){animation:none!important;box-shadow:0 0 0 2px #a9e3ff,0 0 25px 8px rgba(68,177,255,.5)!important}}
+/* BETA 1.4.5.27 – complete glow rebuild, dedicated compositor layer without :has/SVG. */
+main.managerhome #app > .card:has(> .match-glow-layer){position:relative!important;overflow:visible!important;isolation:isolate!important;border:2px solid #8bd7ff!important;background:#10253b!important;animation:none!important;box-shadow:0 0 0 1px rgba(140,215,255,.7),0 0 16px 3px rgba(65,170,255,.45)!important}
+main.managerhome #app > .card:has(> .match-glow-layer)::before,main.managerhome #app > .card:has(> .match-glow-layer)::after{content:none!important;display:none!important;animation:none!important}
+main.managerhome #app > .card:has(> .match-glow-layer) > .match-glow-layer{position:absolute;inset:-5px;border:3px solid #8bd9ff;border-radius:inherit;pointer-events:none;z-index:-1;opacity:.85;box-shadow:0 0 13px 4px rgba(68,184,255,.72),0 0 31px 12px rgba(33,125,255,.4);animation:matchAura27 2.8s ease-in-out infinite;transform:translateZ(0)}
+@keyframes matchAura27{0%,100%{opacity:.55;box-shadow:0 0 12px 3px rgba(68,184,255,.5),0 0 24px 8px rgba(33,125,255,.24)}50%{opacity:1;box-shadow:0 0 21px 7px rgba(105,210,255,.95),0 0 46px 17px rgba(33,125,255,.58)}}
+@media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(> .match-glow-layer) > .match-glow-layer{animation:none;opacity:1}}
+/* BETA 1.4.5.28 – align glow precisely with the card's own border radius. */
+main.managerhome #app > .card:has(> .match-glow-layer){border-radius:20px!important;box-shadow:0 0 0 1px rgba(140,215,255,.65)!important}
+main.managerhome #app > .card:has(> .match-glow-layer) > .match-glow-layer{inset:0!important;border:0!important;border-radius:inherit!important;box-shadow:0 0 12px 3px rgba(68,184,255,.55),0 0 25px 8px rgba(33,125,255,.28);animation:matchAura28 2.8s ease-in-out infinite!important}
+/* BETA 1.4.5.29 – softer glow; geometry and timing unchanged. */
+@keyframes matchAura28{0%,100%{opacity:.57;box-shadow:0 0 8px 2px rgba(68,184,255,.34),0 0 19px 6px rgba(33,125,255,.15)}50%{opacity:.83;box-shadow:0 0 15px 5px rgba(105,210,255,.62),0 0 32px 11px rgba(33,125,255,.33)}}
+@media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(> .match-glow-layer) > .match-glow-layer{animation:none!important;opacity:1!important}}
+/* BETA 1.4.5.31 – calmer preview matchup, editorial press conference. */
+main.prepmatch #app > .card:has(.versus){border:2px solid #8fc6f0!important;background:linear-gradient(125deg,#1b3651,#172c46)!important;box-shadow:0 0 0 1px rgba(144,202,245,.32),0 0 12px 2px rgba(55,139,213,.16)!important;animation:none!important}
+main.prepmatch .world-card{position:relative;border:1px solid #416f96;border-left:5px solid #37b9ee;border-radius:15px;background:linear-gradient(112deg,rgba(28,81,115,.74) 0%,#233d58 52%,#1a3049 100%);box-shadow:inset 0 0 20px rgba(49,153,221,.06),0 5px 18px rgba(4,18,34,.22);padding:17px 16px 18px}
+main.prepmatch .world-card .world-head{color:#a9d9f6;letter-spacing:.95px}
+main.prepmatch .world-card .world-live{display:inline-flex;align-items:center;gap:7px;color:#ffb0b8;font-weight:900}
+main.prepmatch .world-card .world-live .livepulse{display:inline-block;flex:none}
+main.prepmatch .world-card h3{font-size:19px;line-height:1.3;letter-spacing:.2px;margin:14px 0 12px}
+main.prepmatch .world-card > p{padding:0 0 13px;border-bottom:1px solid rgba(153,198,227,.22);font-size:14px;line-height:1.65}
+main.prepmatch .world-card .world-answer{background:linear-gradient(110deg,#304c69,#2b435d);border:1px solid #547490;transition:background .2s,border-color .2s}
+main.prepmatch .world-card .world-answer:active{background:#426786;border-color:#80c7f2}
+/* BETA 1.4.5.35 – restore subtle inner illumination without changing approved outer glow. */
+main.managerhome #app > .card:has(> .match-glow-layer){background:radial-gradient(ellipse 75% 65% at 50% 45%,rgba(53,132,205,.24) 0%,rgba(35,91,151,.11) 47%,transparent 100%),linear-gradient(135deg,#172e46,#10253b)!important}
+/* BETA 1.4.5.36 – visible, gently moving inner light; independent of outer aura. */
+main.managerhome #app > .card:has(> .match-glow-layer){
+background-image:radial-gradient(ellipse 55% 70% at 48% 45%,rgba(79,177,255,.43) 0%,rgba(42,129,221,.25) 36%,rgba(28,83,151,.09) 70%,transparent 100%),linear-gradient(135deg,#1a3550,#10253b)!important;
+background-size:145% 145%,100% 100%!important;
+background-position:45% 48%,center!important;
+animation:matchInnerLight36 5s ease-in-out infinite alternate!important;
+}
+@keyframes matchInnerLight36{from{background-position:35% 40%,center}to{background-position:65% 60%,center}}
+@media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(> .match-glow-layer){animation:none!important}}
+/* BETA 1.4.5.37 – real animated light element, not an animated background. */
+main.managerhome #app > .card:has(> .match-inner-light){position:relative!important;overflow:hidden!important;background:#10253b!important;animation:none!important}
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light{display:block!important;position:absolute!important;inset:8px!important;z-index:0!important;pointer-events:none!important;border-radius:16px!important;background:radial-gradient(ellipse 52% 65% at 50% 50%,rgba(70,173,255,.53) 0%,rgba(40,124,222,.27) 48%,transparent 100%)!important;opacity:.85;transform:translate3d(-14%,0,0) scale(1.15);animation:matchInnerSweep37 4s ease-in-out infinite alternate!important}
+main.managerhome #app > .card:has(> .match-inner-light) > :not(.match-glow-layer):not(.match-inner-light){position:relative;z-index:1}
+main.managerhome #app > .card:has(> .match-inner-light) > .match-glow-layer{z-index:2!important}
+@keyframes matchInnerSweep37{0%{transform:translate3d(-14%,0,0) scale(1.15);opacity:.6}100%{transform:translate3d(14%,0,0) scale(1.15);opacity:1}}
+@media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light{animation:none!important;transform:none!important}}
+/* BETA 1.4.5.39 – gold shimmer sweeps diagonally across first-place placement tile only. */
+main.managerhome .stat.placement-gold{position:relative;overflow:hidden;isolation:isolate}
+main.managerhome .stat.placement-gold::after{content:"";position:absolute;z-index:1;pointer-events:none;inset:-90%;background:linear-gradient(125deg,transparent 47%,rgba(255,239,177,.018) 48.5%,rgba(255,245,201,.055) 49.5%,rgba(255,250,222,.105) 50%,rgba(255,235,172,.047) 50.7%,transparent 52.5%);transform:translate3d(-55%,-55%,0) rotate(-18deg);animation:goldSweep39 7.6s ease-in-out infinite}
+main.managerhome .stat.placement-gold > *{position:relative;z-index:2}
+@keyframes goldSweep39{0%,27.8%{transform:translate3d(-55%,-55%,0) rotate(-18deg);opacity:0}31.8%{opacity:1}82.3%{transform:translate3d(55%,55%,0) rotate(-18deg);opacity:1}87.2%,100%{transform:translate3d(55%,55%,0) rotate(-18deg);opacity:0}}
+@media(prefers-reduced-motion:reduce){main.managerhome .stat.placement-gold::after{animation:none;opacity:0}}
+/* BETA 1.4.5.42 – restrained golden numeral halo. */
+main.managerhome .stat.placement-gold > b{color:#ffdb63!important;text-shadow:0 0 8px rgba(255,205,78,.49),0 0 17px rgba(242,170,40,.23)}
+/* BETA 1.4.5.44 – gently breathing gold halo on first-place numeral. */
+main.managerhome .stat.placement-gold > b{animation:goldNumeralPulse44 3.4s ease-in-out infinite!important}
+@keyframes goldNumeralPulse44{0%,100%{text-shadow:0 0 8px rgba(255,205,78,.42),0 0 16px rgba(242,170,40,.20)}50%{text-shadow:0 0 12px rgba(255,218,99,.75),0 0 25px rgba(242,177,45,.43),0 0 36px rgba(255,196,64,.18)}}
+@media(prefers-reduced-motion:reduce){main.managerhome .stat.placement-gold > b{animation:none!important}}
+/* BETA 1.4.5.45 – let numeral glow animate despite legacy !important and add warm shimmer bloom. */
+main.managerhome #app > .card:first-child .placement-stat.placement-gold b{animation:goldNumeralPulse45 3.4s ease-in-out infinite!important}
+@keyframes goldNumeralPulse45{0%,100%{text-shadow:0 0 7px rgba(255,239,168,.95),0 0 16px rgba(255,215,86,.95),0 0 32px rgba(255,183,38,.75),0 0 55px rgba(255,173,24,.40)}50%{text-shadow:0 0 10px #fff6bd,0 0 22px rgba(255,235,124,1),0 0 42px rgba(255,200,46,1),0 0 70px rgba(255,173,20,.82),0 0 95px rgba(255,164,22,.45)}}
+@media(prefers-reduced-motion:reduce){main.managerhome #app > .card:first-child .placement-stat.placement-gold b{animation:none!important}}
+/* BETA 1.4.5.48 – real pulsing gold light behind the numeral. */
+main.managerhome #app > .card:first-child .stat.placement-gold{position:relative!important;isolation:isolate!important}
+main.managerhome #app > .card:first-child .stat.placement-gold > .gold-number-halo{display:block!important;position:absolute!important;left:50%!important;top:39%!important;width:100px!important;height:100px!important;transform:translate(-50%,-50%) scale(.70);border-radius:50%!important;pointer-events:none!important;z-index:1!important;background:radial-gradient(circle,rgba(255,248,180,.90) 0%,rgba(255,214,67,.70) 15%,rgba(255,180,25,.46) 32%,rgba(255,161,14,.22) 52%,transparent 75%)!important;filter:blur(9px);opacity:.62;animation:goldHalo48 4.2s ease-in-out infinite!important}
+main.managerhome #app > .card:first-child .stat.placement-gold > b,main.managerhome #app > .card:first-child .stat.placement-gold > .small{position:relative!important;z-index:3!important}
+@keyframes goldHalo48{0%,100%{opacity:.58;transform:translate(-50%,-50%) scale(.74)}50%{opacity:.80;transform:translate(-50%,-50%) scale(1.06)}}
+@media(prefers-reduced-motion:reduce){main.managerhome #app > .card:first-child .stat.placement-gold > .gold-number-halo{animation:none!important;opacity:.75!important;transform:translate(-50%,-50%) scale(.95)!important}}
+/* BETA 1.4.5.52 – crisp numeral sits clearly above the animated halo. */
+main.managerhome #app > .card:first-child .stat.placement-gold > b{z-index:5!important;color:#ffd43b!important;-webkit-text-stroke:.35px rgba(255,232,121,.85);filter:drop-shadow(0 1px 1px rgba(35,21,4,.65))}
+/* BETA 1.4.5.56 – slightly enlarge the first-place numeral only. */
+main.managerhome #app > .card:first-child .stats > .stat.placement-stat.placement-gold > b{font-size:22px!important;line-height:1!important;transform:scale(1.08);transform-origin:center center!important}
+/* BETA 1.4.5.60 – twin ambient lights travel in opposite directions within next match. */
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light.match-inner-light-opposite{display:block!important;background:radial-gradient(ellipse 52% 65% at 50% 50%,rgba(70,173,255,.53) 0%,rgba(40,124,222,.27) 48%,transparent 100%)!important;animation:matchInnerSweepOpposite60 4s ease-in-out infinite alternate!important;transform:translate3d(14%,0,0) scale(1.15)}
+@keyframes matchInnerSweepOpposite60{0%{transform:translate3d(14%,0,0) scale(1.15);opacity:.6}100%{transform:translate3d(-14%,0,0) scale(1.15);opacity:1}}
+main.managerhome #app > .card:has(> .match-inner-light) > :not(.match-glow-layer):not(.match-inner-light):not(.match-inner-light-opposite){position:relative;z-index:1}
+@media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light.match-inner-light-opposite{animation:none!important;transform:none!important}}
+/* BETA 1.4.5.61 – two distinct travelling spotlights instead of overlapping full-card washes. */
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light,
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light.match-inner-light-opposite{
+  inset:8px!important;transform:none;opacity:1!important;
+  background-image:radial-gradient(ellipse at center,rgba(75,178,255,.65) 0%,rgba(42,129,233,.32) 36%,transparent 72%)!important;
+  background-size:48% 135%!important;background-repeat:no-repeat!important;
+  filter:none!important;
+}
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light:not(.match-inner-light-opposite){animation:matchSpotLeft61 4s ease-in-out infinite alternate!important}
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light.match-inner-light-opposite{animation:matchSpotRight61 4s ease-in-out infinite alternate!important}
+@keyframes matchSpotLeft61{from{background-position:0% 50%}to{background-position:100% 50%}}
+@keyframes matchSpotRight61{from{background-position:100% 50%}to{background-position:0% 50%}}
+@media(prefers-reduced-motion:reduce){
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light,
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light.match-inner-light-opposite{animation:none!important;background-position:50% 50%!important}
+}
+/* BETA 1.4.5.62 – move the actual spotlight layers with transforms (Safari-safe), preserving blue lighting. */
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light,
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light.match-inner-light-opposite{
+  inset:8px!important;
+  width:calc(100% - 16px)!important;height:calc(100% - 16px)!important;
+  background:radial-gradient(ellipse 30% 60% at 50% 50%,rgba(75,178,255,.29) 0%,rgba(42,129,233,.22) 44%,transparent 100%)!important;
+  background-size:100% 100%!important;background-position:center!important;
+  opacity:1!important;will-change:transform!important;
+}
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light:not(.match-inner-light-opposite){animation:matchMoveLeft62 4s ease-in-out infinite alternate!important}
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light.match-inner-light-opposite{animation:matchMoveRight62 4s ease-in-out infinite alternate!important}
+@keyframes matchMoveLeft62{0%{transform:translate3d(-35%,0,0)}100%{transform:translate3d(35%,0,0)}}
+@keyframes matchMoveRight62{0%{transform:translate3d(35%,0,0)}100%{transform:translate3d(-35%,0,0)}}
+@media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light,main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light.match-inner-light-opposite{animation:none!important;transform:none!important}}
+/* BETA 1.4.5.64 – calmer arena spotlights and lighter gold animation for iPhone Safari. */
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light:not(.match-inner-light-opposite){animation-duration:7s!important}
+main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light.match-inner-light-opposite{animation-duration:7s!important}
+/* Keep the gold number crisp; animate the separate halo only, not expensive text shadows. */
+main.managerhome #app > .card:first-child .placement-stat.placement-gold > b{animation:none!important;text-shadow:0 0 7px rgba(255,220,100,.72),0 0 16px rgba(240,166,38,.32)!important}
+main.managerhome #app > .card:first-child .stat.placement-gold > .gold-number-halo{filter:none!important;will-change:transform,opacity;backface-visibility:hidden;transform:translate3d(-50%,-50%,0) scale(.74)}
+@keyframes goldHalo48{0%,100%{opacity:.58;transform:translate3d(-50%,-50%,0) scale(.74)}50%{opacity:.80;transform:translate3d(-50%,-50%,0) scale(1.06)}}
+@media(prefers-reduced-motion:reduce){main.managerhome #app > .card:has(> .match-inner-light) > .match-inner-light{animation:none!important}}
+/* BETA 1.4.5.68 – gentle individual spotlights for the two teams in pre-match. */
+main.prepmatch #app > .card:has(.versus){position:relative!important;overflow:hidden!important;isolation:isolate}
+main.prepmatch #app > .card:has(.versus) .versus{position:relative;isolation:isolate}
+main.prepmatch #app > .card:has(.versus) .versus::before,
+main.prepmatch #app > .card:has(.versus) .versus::after{
+ content:"";display:block;position:absolute;top:-32px;bottom:-26px;width:43%;border-radius:50%;
+ pointer-events:none;z-index:-1;
+ background:radial-gradient(ellipse 58% 65% at 50% 48%,rgba(106,194,255,.29) 0%,rgba(57,144,234,.16) 45%,transparent 80%);
+ animation:previewTeamSpot68 8s ease-in-out infinite alternate;
+}
+main.prepmatch #app > .card:has(.versus) .versus::before{left:-3%}
+main.prepmatch #app > .card:has(.versus) .versus::after{right:-3%;animation-delay:-4s}
+@keyframes previewTeamSpot68{from{opacity:.60;transform:translate3d(0,-3px,0) scale(.94)}to{opacity:1;transform:translate3d(0,3px,0) scale(1.06)}}
+@media(prefers-reduced-motion:reduce){main.prepmatch #app > .card:has(.versus) .versus::before,main.prepmatch #app > .card:has(.versus) .versus::after{animation:none}}
+/* BETA 1.4.5.69 – stronger, visibly breathing arena spotlights. */
+main.prepmatch #app > .card:has(.versus) .versus::before,
+main.prepmatch #app > .card:has(.versus) .versus::after{
+ width:49%;top:-42px;bottom:-38px;z-index:0;
+ background:radial-gradient(ellipse 62% 68% at 50% 48%,rgba(119,211,255,.53) 0%,rgba(66,164,249,.31) 32%,rgba(45,120,226,.13) 60%,transparent 83%);
+ animation:previewTeamSpot69 5.8s ease-in-out infinite alternate!important;
+ will-change:transform,opacity;
+}
+main.prepmatch #app > .card:has(.versus) .versus::before{left:-5%}
+main.prepmatch #app > .card:has(.versus) .versus::after{right:-5%;animation-delay:-2.9s!important}
+main.prepmatch #app > .card:has(.versus) .versus > *{position:relative;z-index:1}
+@keyframes previewTeamSpot69{0%{opacity:.24;transform:translate3d(0,7px,0) scale(.78)}100%{opacity:1;transform:translate3d(0,-6px,0) scale(1.12)}}
+@media(prefers-reduced-motion:reduce){main.prepmatch #app > .card:has(.versus) .versus::before,main.prepmatch #app > .card:has(.versus) .versus::after{animation:none!important;opacity:.65;transform:none}}
+/* BETA 1.4.5.70 – replace moving team spotlights with a calm, softly mottled arena backdrop. */
+main.prepmatch #app > .card:has(.versus){
+ background:
+ radial-gradient(ellipse 42% 90% at 18% 55%,rgba(64,150,220,.20),transparent 85%),
+ radial-gradient(ellipse 43% 85% at 82% 42%,rgba(79,166,227,.17),transparent 85%),
+ linear-gradient(120deg,#203e5b 0%,#19334e 48%,#244562 100%)!important;
+}
+main.prepmatch #app > .card:has(.versus) .versus::before,
+main.prepmatch #app > .card:has(.versus) .versus::after{content:none!important;display:none!important;animation:none!important}
+/* BETA 1.4.5.71 – celebratory gold confetti and milestone headlines. */
+main.managerhome .season-champion-confetti{position:relative;overflow:hidden;isolation:isolate}
+main.managerhome .season-champion-confetti > strong,main.managerhome .season-champion-confetti > span:not(.gold-confetti){position:relative;z-index:2}
+main.managerhome .season-champion-confetti .gold-confetti{position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.8;background-image:radial-gradient(ellipse 3px 5px at 8% 8%,#ffe391 95%,transparent),radial-gradient(ellipse 3px 4px at 23% 32%,#f8c348 95%,transparent),radial-gradient(ellipse 2px 5px at 39% 12%,#fff0ac 95%,transparent),radial-gradient(ellipse 3px 4px at 58% 28%,#eab43d 95%,transparent),radial-gradient(ellipse 2px 5px at 76% 10%,#ffe391 95%,transparent),radial-gradient(ellipse 3px 5px at 91% 35%,#ffdc72 95%,transparent),radial-gradient(ellipse 2px 4px at 15% 72%,#f8c348 95%,transparent),radial-gradient(ellipse 3px 4px at 69% 76%,#fff0ac 95%,transparent);background-size:100% 100%;animation:goldConfetti71 9s linear infinite}
+@keyframes goldConfetti71{0%{transform:translate3d(0,-75%,0);opacity:0}12%{opacity:.85}85%{opacity:.85}100%{transform:translate3d(0,85%,0);opacity:0}}
+main.managerhome .newsroom-banner.newsroom-milestone{border-color:#e4bd55!important;border-left:5px solid #ffd35e!important;background:linear-gradient(120deg,#4a3b23 0%,#283d4c 55%,#123b56 100%)!important;box-shadow:inset 0 0 24px rgba(250,196,70,.10),0 0 15px rgba(228,181,61,.13)!important}
+main.managerhome .newsroom-banner.newsroom-milestone > span:first-child{color:#ffe08c!important}
+main.managerhome .newsroom-banner.newsroom-milestone .newsroom-pulse{background:#ffd25c!important;box-shadow:0 0 11px #ffd25c!important}
+@media(prefers-reduced-motion:reduce){main.managerhome .season-champion-confetti .gold-confetti{animation:none;transform:none;opacity:.5}}
+/* BETA 1.4.5.72 – fuller gold celebration: layered confetti, varied sizes and drift. */
+main.managerhome .season-champion-confetti .gold-confetti{
+ opacity:1!important;inset:-8px!important;
+ background-image:
+ radial-gradient(ellipse 2px 3px at 4% 10%,#fff0ae 95%,transparent),
+ radial-gradient(ellipse 5px 7px at 12% 25%,#ffd05b 95%,transparent),
+ radial-gradient(ellipse 3px 5px at 19% 5%,#e9b43c 95%,transparent),
+ radial-gradient(ellipse 2px 4px at 27% 65%,#ffe69a 95%,transparent),
+ radial-gradient(ellipse 6px 4px at 34% 14%,#ffc743 95%,transparent),
+ radial-gradient(ellipse 3px 7px at 42% 43%,#f9db76 95%,transparent),
+ radial-gradient(ellipse 4px 3px at 49% 8%,#fff0b1 95%,transparent),
+ radial-gradient(ellipse 5px 8px at 56% 67%,#e8af35 95%,transparent),
+ radial-gradient(ellipse 2px 5px at 63% 20%,#ffde78 95%,transparent),
+ radial-gradient(ellipse 6px 5px at 71% 47%,#f3bd43 95%,transparent),
+ radial-gradient(ellipse 3px 4px at 79% 7%,#ffeaa0 95%,transparent),
+ radial-gradient(ellipse 4px 7px at 87% 64%,#ffd05b 95%,transparent),
+ radial-gradient(ellipse 2px 3px at 95% 23%,#fff2b6 95%,transparent),
+ radial-gradient(ellipse 5px 4px at 8% 81%,#f1b93f 95%,transparent),
+ radial-gradient(ellipse 3px 6px at 23% 90%,#ffdf7d 95%,transparent),
+ radial-gradient(ellipse 4px 4px at 38% 86%,#ffe8a3 95%,transparent),
+ radial-gradient(ellipse 2px 5px at 52% 91%,#f0ba3e 95%,transparent),
+ radial-gradient(ellipse 5px 6px at 68% 88%,#ffda6a 95%,transparent),
+ radial-gradient(ellipse 3px 3px at 83% 92%,#fff0a9 95%,transparent),
+ radial-gradient(ellipse 4px 6px at 97% 84%,#f2c34b 95%,transparent)!important;
+ animation:goldConfetti72 7.8s linear infinite!important;
+}
+main.managerhome .season-champion-confetti::after{
+ content:"";position:absolute;inset:-10px;z-index:1;pointer-events:none;opacity:.8;
+ background-image:radial-gradient(ellipse 3px 6px at 7% 40%,#ffd25d 95%,transparent),radial-gradient(ellipse 5px 4px at 21% 70%,#ffe8a1 95%,transparent),radial-gradient(ellipse 2px 4px at 35% 30%,#f3b83a 95%,transparent),radial-gradient(ellipse 4px 7px at 51% 62%,#ffd86a 95%,transparent),radial-gradient(ellipse 3px 3px at 67% 17%,#fff1b4 95%,transparent),radial-gradient(ellipse 6px 5px at 80% 49%,#f2bc45 95%,transparent),radial-gradient(ellipse 2px 6px at 93% 78%,#ffe18c 95%,transparent);
+ animation:goldConfetti72 10.5s linear infinite reverse;
+}
+@keyframes goldConfetti72{0%{transform:translate3d(-7px,-35%,0);opacity:.45}50%{opacity:1}100%{transform:translate3d(9px,35%,0);opacity:.65}}
+@media(prefers-reduced-motion:reduce){main.managerhome .season-champion-confetti .gold-confetti,main.managerhome .season-champion-confetti::after{animation:none!important;opacity:.7!important}}
+/* BETA 1.4.5.73 – small rectangular confetti in two depth planes, kept behind text. */
+main.managerhome .season-champion-confetti{isolation:isolate!important}
+main.managerhome .season-champion-confetti > strong,
+main.managerhome .season-champion-confetti > span:not(.gold-confetti){position:relative!important;z-index:5!important}
+main.managerhome .season-champion-confetti .gold-confetti,
+main.managerhome .season-champion-confetti::after{
+ pointer-events:none!important;z-index:0!important;
+ background-image:
+ linear-gradient(18deg,#ffe9a0,#e7ad35),
+ linear-gradient(-22deg,#f4c24e,#fff1b2),
+ linear-gradient(32deg,#e8a92d,#ffd974),
+ linear-gradient(-17deg,#fff0b4,#e7b345),
+ linear-gradient(10deg,#e6aa35,#f6ce65),
+ linear-gradient(-35deg,#f9d67b,#f2bb40),
+ linear-gradient(24deg,#ffe9a5,#e6ad3c),
+ linear-gradient(-15deg,#edb53d,#ffe49a),
+ linear-gradient(31deg,#f5d17b,#e9a935),
+ linear-gradient(-23deg,#fff0b0,#f2bf4a),
+ linear-gradient(17deg,#e6ae38,#ffe49a),
+ linear-gradient(-28deg,#f8d372,#e7ae38)!important;
+ background-size:3px 6px,5px 3px,2px 5px,4px 7px,3px 3px,5px 6px,2px 4px,4px 3px,3px 7px,5px 4px,2px 5px,4px 6px!important;
+ background-position:7% 12%,19% 65%,28% 24%,39% 81%,48% 9%,57% 49%,68% 18%,76% 78%,84% 36%,92% 67%,33% 46%,61% 91%!important;
+ background-repeat:no-repeat!important;
+}
+main.managerhome .season-champion-confetti .gold-confetti{
+ filter:blur(.65px)!important;opacity:.72!important;
+ animation:goldDepthNear73 10s linear infinite!important;
+}
+main.managerhome .season-champion-confetti::after{
+ filter:blur(1.7px)!important;opacity:.36!important;
+ transform:scale(.82);animation:goldDepthFar73 14s linear infinite!important;
+}
+@keyframes goldDepthNear73{0%{transform:translate3d(-4px,-25%,0)}100%{transform:translate3d(7px,25%,0)}}
+@keyframes goldDepthFar73{0%{transform:translate3d(6px,-22%,0) scale(.82)}100%{transform:translate3d(-6px,22%,0) scale(.82)}}
+@media(prefers-reduced-motion:reduce){main.managerhome .season-champion-confetti .gold-confetti,main.managerhome .season-champion-confetti::after{animation:none!important}}
+/* BETA 1.4.5.74 – denser confetti with extra tiny paper flakes, same soft depth. */
+main.managerhome .season-champion-confetti .gold-confetti,
+main.managerhome .season-champion-confetti::after{
+ background-image:
+ linear-gradient(18deg,#ffe9a0,#e7ad35),linear-gradient(-22deg,#f4c24e,#fff1b2),
+ linear-gradient(32deg,#e8a92d,#ffd974),linear-gradient(-17deg,#fff0b4,#e7b345),
+ linear-gradient(10deg,#e6aa35,#f6ce65),linear-gradient(-35deg,#f9d67b,#f2bb40),
+ linear-gradient(24deg,#ffe9a5,#e6ad3c),linear-gradient(-15deg,#edb53d,#ffe49a),
+ linear-gradient(31deg,#f5d17b,#e9a935),linear-gradient(-23deg,#fff0b0,#f2bf4a),
+ linear-gradient(17deg,#e6ae38,#ffe49a),linear-gradient(-28deg,#f8d372,#e7ae38),
+ linear-gradient(26deg,#f7d16c,#fff0b0),linear-gradient(-12deg,#e8af36,#ffdd7e),
+ linear-gradient(35deg,#ffe7a1,#edb13e),linear-gradient(-30deg,#f4c75a,#fff2b5),
+ linear-gradient(12deg,#f8d677,#e9a932),linear-gradient(-18deg,#ffe39a,#e5ac3a),
+ linear-gradient(29deg,#e9b33e,#ffdc79),linear-gradient(-34deg,#fff0ae,#f1be47),
+ linear-gradient(14deg,#f6cd66,#e8a931),linear-gradient(-25deg,#ffe6a0,#efba44),
+ linear-gradient(38deg,#f0bd48,#ffe28a),linear-gradient(-16deg,#fff0b3,#e7ac37)!important;
+ background-size:3px 6px,5px 3px,2px 5px,4px 7px,3px 3px,5px 6px,2px 4px,4px 3px,3px 7px,5px 4px,2px 5px,4px 6px,2px 3px,3px 5px,4px 2px,2px 6px,3px 4px,4px 5px,2px 4px,3px 6px,4px 3px,2px 5px,3px 4px,2px 6px!important;
+ background-position:7% 12%,19% 65%,28% 24%,39% 81%,48% 9%,57% 49%,68% 18%,76% 78%,84% 36%,92% 67%,33% 46%,61% 91%,11% 43%,24% 87%,36% 17%,45% 58%,54% 32%,65% 73%,73% 9%,89% 51%,96% 22%,15% 96%,51% 94%,80% 89%!important;
+}
+/* BETA 1.4.5.75 – clearer split between current and historical career stats. */
+main .career-stats-intro{color:#a8c1d8;font-size:13px;line-height:1.55;margin:8px 0 16px}
+main .career-historical-metrics{margin-top:8px}
+main .career-current-section .career-metrics{margin-top:14px}
+/* BETA 1.4.5.76 – five archived seasons per page. */
+.career-pagination{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:17px;padding-top:13px;border-top:1px solid rgba(164,194,219,.24)}
+.career-pagination button{border:1px solid rgba(125,178,217,.48);border-radius:10px;background:#29465f;color:#eaf4ff;font:inherit;font-size:12px;font-weight:800;padding:11px 10px;cursor:pointer}
+.career-pagination button:disabled{opacity:.35;cursor:default}
+.career-pagination span{font-size:13px;color:#b5cce0;white-space:nowrap;font-weight:700}
+/* BETA 1.4.5.77 – archive pagination visibility wins over legacy season-row CSS. */
+.career-season-pages [data-career-season-row][hidden]{display:none!important}
+/* BETA 1.4.5.78 – polished, readable five-season career archive. */
+.career-season-pages{display:grid;gap:10px;margin-top:14px}
+.career-season-pages .career-season-record:not([hidden]){
+ display:block!important;position:relative;margin:0!important;padding:14px 15px!important;
+ border:1px solid rgba(132,174,209,.23)!important;border-radius:13px!important;
+ background:linear-gradient(125deg,rgba(48,78,107,.62),rgba(29,53,78,.42))!important;
+ box-shadow:inset 0 1px rgba(255,255,255,.035);
+}
+.career-season-pages .career-season-record:has(.career-season-gold){border-color:rgba(233,187,81,.45)!important;background:linear-gradient(125deg,rgba(103,84,45,.35),rgba(35,57,76,.62))!important}
+.career-season-pages .career-season-head{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px!important}
+.career-season-pages .career-season-head>b{font-size:16px!important;line-height:1.3!important;letter-spacing:.05px}
+.career-season-pages .career-season-rank{flex-shrink:0;padding:6px 10px!important;border-radius:9px!important;font-size:11px!important;letter-spacing:.3px}
+.career-season-pages .career-season-details{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:5px!important;margin-top:8px!important}
+.career-season-pages .career-season-details>span{font-size:14px!important;font-weight:750!important;color:#e8f2ff!important;white-space:normal!important}
+.career-season-pages .career-season-details>small{font-size:12px!important;line-height:1.45!important;color:#b4c9dd!important;text-align:left!important;white-space:normal!important;letter-spacing:0!important}
+.career-season-pages .career-season-details .career-winner-name{color:#f3f7ff}
+.career-pagination{margin-top:18px!important;padding-top:17px!important;gap:12px!important}
+.career-pagination button{flex:1;min-width:0;min-height:45px;padding:10px 7px!important;font-size:12px!important}
+.career-pagination span{min-width:45px;text-align:center;font-size:14px!important}
+@media(max-width:390px){.career-season-pages .career-season-head>b{font-size:14px!important}.career-season-pages .career-season-record:not([hidden]){padding:12px!important}.career-pagination button{font-size:11px!important}}
+/* BETA 1.4.5.79 – compact archive: keep distinct cards without wasted height. */
+.career-season-pages{gap:5px!important;margin-top:7px!important}
+.career-season-pages .career-season-record:not([hidden]){padding:8px 11px!important;border-radius:9px!important}
+.career-season-pages .career-season-head{gap:7px!important}
+.career-season-pages .career-season-head>b{font-size:14px!important;line-height:1.15!important}
+.career-season-pages .career-season-rank{padding:3px 7px!important;font-size:10px!important;border-radius:7px!important}
+.career-season-pages .career-season-details{margin-top:3px!important;gap:1px!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;flex-wrap:wrap!important}
+.career-season-pages .career-season-details>span{font-size:12px!important;line-height:1.2!important}
+.career-season-pages .career-season-details>small{font-size:10px!important;line-height:1.25!important;text-align:right!important}
+.career-pagination{margin-top:10px!important;padding-top:10px!important}
+@media(max-width:390px){.career-season-pages .career-season-record:not([hidden]){padding:7px 9px!important}.career-season-pages .career-season-details>small{font-size:9px!important}}
+/* BETA 1.4.5.80 – relegation playoff positions 13–14 in career history. */
+.career-season-pages .career-season-record:has(.career-season-danger){border-color:rgba(225,91,100,.42)!important;background:linear-gradient(125deg,rgba(114,43,57,.30),rgba(32,53,75,.62))!important}
+.career-season-pages .career-season-rank.career-season-danger{background:rgba(173,53,65,.34)!important;color:#ffb7bc!important;border:1px solid rgba(248,110,123,.48)!important;box-shadow:0 0 9px rgba(218,66,80,.10)}
+/* BETA 1.4.5.81 – two clear season-finish actions side by side. */
+.season-finish-actions{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:10px;align-items:stretch;margin-top:12px}
+.season-finish-actions button{width:100%!important;min-width:0!important;min-height:55px!important;height:100%!important;white-space:normal!important;line-height:1.2!important;font-size:clamp(11px,2.8vw,15px)!important;padding:10px 8px!important}
+.season-finish-actions .season-table-btn{background:linear-gradient(125deg,#2b5676,#25425f)!important;border:1px solid #7baed2!important;color:#f1f8ff!important;box-shadow:inset 0 1px rgba(255,255,255,.1)!important}
+@media(max-width:360px){.season-finish-actions{gap:7px;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}.season-finish-actions button{font-size:10px!important}}
+/* BETA 1.4.5.82 – career finishing positions mirror SHL standings zones. */
+.career-season-pages .career-season-record:has(.career-season-gold){border-color:rgba(239,191,69,.56)!important;background:linear-gradient(120deg,rgba(111,87,35,.40),rgba(36,57,77,.56))!important}
+.career-season-pages .career-season-rank.career-season-gold{background:rgba(157,111,22,.48)!important;color:#ffdd77!important;border:1px solid rgba(249,201,82,.42)!important}
+.career-season-pages .career-season-record:has(.career-season-silver){border-color:rgba(193,210,226,.42)!important;background:linear-gradient(120deg,rgba(115,136,156,.30),rgba(36,57,77,.55))!important}
+.career-season-pages .career-season-rank.career-season-silver{background:rgba(157,179,198,.32)!important;color:#edf5ff!important;border:1px solid rgba(203,219,235,.45)!important}
+.career-season-pages .career-season-record:has(.career-season-bronze){border-color:rgba(202,141,93,.48)!important;background:linear-gradient(120deg,rgba(127,76,47,.34),rgba(36,57,77,.56))!important}
+.career-season-pages .career-season-rank.career-season-bronze{background:rgba(151,87,45,.44)!important;color:#f6bc8e!important;border:1px solid rgba(218,151,99,.5)!important}
+.career-season-pages .career-season-record:has(.career-season-green){border-color:rgba(79,182,134,.39)!important;background:linear-gradient(120deg,rgba(33,112,81,.31),rgba(36,57,77,.58))!important}
+.career-season-pages .career-season-rank.career-season-green{background:rgba(35,125,88,.42)!important;color:#a4efc7!important;border:1px solid rgba(84,205,151,.39)!important}
+.career-season-pages .career-season-record:has(.career-season-blue){border-color:rgba(88,161,226,.42)!important;background:linear-gradient(120deg,rgba(36,94,151,.34),rgba(36,57,77,.56))!important}
+.career-season-pages .career-season-rank.career-season-blue{background:rgba(41,115,184,.40)!important;color:#b9dcff!important;border:1px solid rgba(100,174,241,.4)!important}
+.career-season-pages .career-season-record:has(.career-season-gray){border-color:rgba(145,159,174,.31)!important;background:linear-gradient(120deg,rgba(94,109,124,.25),rgba(36,57,77,.52))!important}
+.career-season-pages .career-season-rank.career-season-gray{background:rgba(109,124,139,.36)!important;color:#d6dce5!important;border:1px solid rgba(158,173,188,.31)!important}
+.career-season-pages .career-season-record:has(.career-season-danger){border-color:rgba(225,91,100,.49)!important;background:linear-gradient(120deg,rgba(114,43,57,.34),rgba(32,53,75,.62))!important}
+/* BETA 1.4.5.83 – focused career dashboard, detailed numbers on demand. */
+.career-clean .career-overview-title{margin-bottom:2px!important}
+.career-clean .career-overview-title h2{font-size:23px!important}
+.career-clean-subtitle{margin:3px 0 14px!important;color:#a7bfd4;font-size:13px}
+.career-clean-primary{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:9px!important;margin:9px 0 0!important}
+.career-clean-primary>div{min-width:0!important;padding:14px 6px!important}
+.career-clean-primary>div b{font-size:clamp(22px,6vw,34px)!important}
+.career-clean-primary>div span{font-size:10px!important;letter-spacing:.45px!important}
+.career-clean-details{border-top:1px solid rgba(153,188,217,.18);margin-top:14px;padding-top:10px}
+.career-clean-details>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;color:#b8d2e8;font-weight:700;font-size:13px;padding:5px 1px;user-select:none}
+.career-clean-details>summary::-webkit-details-marker{display:none}
+.career-clean-details>summary span{font-size:18px;transition:transform .2s}
+.career-clean-details[open]>summary span{transform:rotate(180deg)}
+.career-clean-extra{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:13px 0 4px}
+.career-clean-extra>div{background:rgba(73,105,137,.3);border-radius:9px;padding:12px 6px;text-align:center}
+.career-clean-extra b{display:block;font-size:23px;color:#f3f7ff}
+.career-clean-extra span{display:block;font-size:10px;color:#a8c1d8;margin-top:3px}
+.career-reputation-disclosure{margin-top:13px;padding:11px 15px;border:1px solid rgba(133,174,207,.24);border-radius:12px;background:rgba(41,70,97,.32)}
+.career-reputation-disclosure .career-reputation{margin-top:12px!important}
+.career-reputation-disclosure .career-reputation-title{display:none}
+.career-historical-metrics.career-clean-primary{margin-top:8px!important}
+/* BETA 1.4.5.85 – current career visually mirrors the manager hub club card. */
+.career-hub-club{display:flex;align-items:center;gap:12px;margin:3px 0 12px}
+.career-hub-club .crest{flex:0 0 auto}
+.career-hub-club h2{margin:0!important;font-size:21px!important;line-height:1.15}
+.career-hub-club .muted{font-size:12px!important;margin-top:3px}
+.career-hub-stats{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:7px!important;margin:0!important}
+.career-hub-stats>.stat{min-width:0!important;padding:11px 3px!important}
+.career-hub-stats>.stat b{font-size:clamp(19px,5vw,29px)!important}
+.career-hub-stats>.stat .small{font-size:9px!important;letter-spacing:0!important}
+.career-hub-stats .gold-number-halo{pointer-events:none}
+.career-reputation-disclosure{margin-top:7px!important}
+/* BETA 1.4.5.86 – mobile-first, compact career club panel. */
+main .career-hub-club{display:flex!important;align-items:center!important;gap:11px!important;margin:0 0 10px!important;min-height:0!important}
+main .career-hub-club .crest{width:53px!important;height:53px!important;min-width:53px!important;min-height:53px!important;max-width:53px!important;max-height:53px!important;border-radius:11px!important;font-size:17px!important;line-height:1!important;flex:0 0 53px!important;padding:0!important;display:grid!important;place-items:center!important}
+main .career-hub-club h2{font-size:20px!important;margin:0 0 2px!important}
+main .career-hub-club .muted{font-size:11px!important;line-height:1.35!important}
+main .career-hub-stats{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:6px!important;width:100%!important;overflow:visible!important}
+main .career-hub-stats>.stat,
+main .career-hub-stats>.stat.home-coach-score{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:3px!important;min-width:0!important;width:auto!important;min-height:65px!important;height:auto!important;padding:9px 2px!important;margin:0!important;border-radius:10px!important;overflow:hidden!important;text-align:center!important}
+main .career-hub-stats>.stat>b,
+main .career-hub-stats>.stat.home-coach-score>b{display:block!important;flex:none!important;font-size:clamp(19px,5.5vw,27px)!important;line-height:1.05!important;white-space:nowrap!important}
+main .career-hub-stats>.stat>.small,
+main .career-hub-stats>.stat.home-coach-score>.small{display:block!important;flex:none!important;font-size:clamp(7px,1.85vw,9px)!important;line-height:1.1!important;letter-spacing:0!important;white-space:normal!important;overflow-wrap:normal!important;text-align:center!important;max-width:100%!important}
+main .career-hub-stats>.stat.home-coach-score{border:1px solid rgba(121,192,240,.58)!important}
+main .career-hub-stats>.stat.home-coach-score .small{color:#c2ddf2!important}
+main .career-hub-stats+.career-clean-details{margin-top:10px!important;padding-top:7px!important}
+main .career-hub-stats~.career-reputation-disclosure{padding:0!important;border:0!important;background:none!important;margin-top:1px!important}
+main .career-hub-stats~.career-reputation-disclosure>summary{padding:7px 1px!important}
+main .career-hub-stats~.career-reputation-disclosure .career-reputation{margin-top:8px!important}
+/* BETA 1.4.5.87 – polished collapsible action buttons in career overview. */
+main .career-hub-stats~details.career-clean-details,
+main .career-hub-stats~details.career-reputation-disclosure,
+main .career-historical-metrics~details.career-clean-details{
+ margin:9px 0 0!important;padding:0!important;border:1px solid rgba(111,166,207,.40)!important;
+ border-radius:11px!important;background:linear-gradient(120deg,rgba(51,88,120,.62),rgba(35,66,94,.54))!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.06)!important;overflow:hidden!important;
+}
+main .career-hub-stats~details.career-clean-details>summary,
+main .career-hub-stats~details.career-reputation-disclosure>summary,
+main .career-historical-metrics~details.career-clean-details>summary{
+ display:flex!important;align-items:center!important;justify-content:space-between!important;
+ gap:8px!important;padding:12px 13px!important;min-height:44px!important;
+ font-size:13px!important;font-weight:800!important;line-height:1.2!important;
+ color:#e1f1ff!important;cursor:pointer!important;list-style:none!important;
+}
+main .career-hub-stats~details.career-clean-details>summary span.career-dropdown-arrow,
+main .career-hub-stats~details.career-reputation-disclosure>summary span.career-dropdown-arrow,
+main .career-historical-metrics~details.career-clean-details>summary span.career-dropdown-arrow{
+ display:grid!important;place-items:center!important;flex:0 0 25px!important;width:25px!important;height:25px!important;
+ border-radius:7px!important;background:rgba(77,144,193,.28)!important;border:1px solid rgba(132,190,230,.32)!important;
+ color:#bfe6ff!important;font-size:16px!important;line-height:1!important;
+}
+main .career-hub-stats~details.career-clean-details[open],
+main .career-hub-stats~details.career-reputation-disclosure[open],
+main .career-historical-metrics~details.career-clean-details[open]{border-color:rgba(128,192,234,.64)!important}
+main .career-hub-stats~details.career-clean-details>div,
+main .career-hub-stats~details.career-reputation-disclosure>div,
+main .career-historical-metrics~details.career-clean-details>div,
+main .career-historical-metrics~details.career-clean-details>p{margin-left:12px!important;margin-right:12px!important}
+main .career-hub-stats~details.career-reputation-disclosure{margin-top:7px!important}
+/* BETA 1.4.5.88 – clearer disclosure hierarchy, label/subtitle and distinct content. */
+main details.career-clean-details>summary .career-dropdown-label{
+ display:flex!important;flex:1 1 auto!important;min-width:0!important;flex-direction:column!important;
+ align-items:flex-start!important;justify-content:center!important;gap:3px!important;
+ background:none!important;border:0!important;border-radius:0!important;
+ width:auto!important;height:auto!important;line-height:1.15!important;
+ font-size:13px!important;font-weight:800!important;color:#f0f7ff!important;text-align:left!important;
+}
+main details.career-clean-details>summary .career-dropdown-label small{
+ display:block!important;font-size:10px!important;font-weight:500!important;color:#a9c4d9!important;line-height:1.3!important;
+}
+main details.career-clean-details>summary .career-dropdown-arrow{
+ display:grid!important;place-items:center!important;flex:0 0 26px!important;
+ width:26px!important;height:26px!important;border-radius:7px!important;
+ background:rgba(77,144,193,.28)!important;border:1px solid rgba(132,190,230,.32)!important;
+ font-size:17px!important;line-height:1!important;transform:none!important;transition:transform .2s ease!important;
+}
+main details.career-clean-details[open]>summary .career-dropdown-arrow{transform:rotate(180deg)!important}
+main details.career-clean-details[open]>summary{border-bottom:1px solid rgba(140,186,218,.24)!important;background:rgba(16,39,63,.23)!important}
+main details.career-clean-details[open]>.career-clean-extra,
+main details.career-clean-details[open]>.career-metrics,
+main details.career-clean-details[open]>.career-reputation{margin-top:11px!important;margin-bottom:12px!important}
+main details.career-clean-details[open]>.career-stats-intro{padding-bottom:9px!important}
+/* BETA 1.4.5.89 – ensure label/subtitle cannot inherit arrow-button sizing. */
+main .career-hub-stats~details.career-clean-details>summary span.career-dropdown-label,
+main .career-hub-stats~details.career-reputation-disclosure>summary span.career-dropdown-label,
+main .career-historical-metrics~details.career-clean-details>summary span.career-dropdown-label{
+ display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:center!important;
+ flex:1 1 auto!important;width:auto!important;height:auto!important;min-width:0!important;max-width:none!important;
+ border:0!important;border-radius:0!important;background:transparent!important;padding:0!important;margin:0!important;
+ font-size:13px!important;line-height:1.2!important;text-align:left!important;transform:none!important;
+}
+main details.career-clean-details>summary span.career-dropdown-label small{font-size:10px!important;white-space:normal!important}
+/* BETA 1.4.5.90 – five-level trust colors, independently evaluated for all four scores. */
+main .career-reputation-grid>.career-trust-level{border:1px solid var(--trust-border)!important;background:linear-gradient(150deg,var(--trust-bg),rgba(36,57,78,.65))!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 0 13px var(--trust-glow)!important;transition:background .25s,border-color .25s!important}
+main .career-reputation-grid>.career-trust-level b{color:var(--trust-ink)!important}
+main .career-reputation-grid>.career-trust-level span{color:var(--trust-label)!important}
+main .career-reputation-grid>.coach-excellent{--trust-bg:rgba(40,118,79,.62);--trust-border:#88dfa9;--trust-ink:#c3ffd8;--trust-label:#b2e7c8;--trust-glow:rgba(68,201,128,.14)}
+main .career-reputation-grid>.coach-good{--trust-bg:rgba(30,103,75,.49);--trust-border:#4eb88b;--trust-ink:#9ce8bc;--trust-label:#a9d8c2;--trust-glow:rgba(61,180,120,.08)}
+main .career-reputation-grid>.coach-neutral{--trust-bg:rgba(40,87,128,.48);--trust-border:#659bc5;--trust-ink:#b5ddff;--trust-label:#bbd5ea;--trust-glow:rgba(72,155,223,.07)}
+main .career-reputation-grid>.coach-warning{--trust-bg:rgba(120,89,35,.51);--trust-border:#e0b454;--trust-ink:#ffe19a;--trust-label:#e9d4a7;--trust-glow:rgba(221,168,61,.10)}
+main .career-reputation-grid>.coach-critical{--trust-bg:rgba(125,42,52,.56);--trust-border:#e77983;--trust-ink:#ffb8bc;--trust-label:#edb6bc;--trust-glow:rgba(222,69,83,.12)}
+/* BETA 1.4.5.92 – compact four-column W/L match statistics and colored win differential. */
+main .career-hub-stats~details.career-clean-details .career-clean-extra{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:6px!important;margin:10px 0 2px!important}
+main .career-hub-stats~details.career-clean-details .career-clean-extra>div{min-width:0!important;padding:12px 2px!important;border-radius:10px!important}
+main .career-hub-stats~details.career-clean-details .career-clean-extra b{font-size:clamp(17px,5vw,25px)!important}
+main .career-hub-stats~details.career-clean-details .career-clean-extra span{font-size:clamp(7px,2vw,9px)!important;letter-spacing:0!important;overflow-wrap:anywhere}
+main .career-clean-extra>.career-win-diff{border:1px solid var(--diff-border)!important;background:var(--diff-bg)!important}
+main .career-clean-extra>.career-win-diff b{color:var(--diff-text)!important}
+main .career-clean-extra>.career-diff-negative{--diff-border:#e57983;--diff-bg:rgba(145,46,61,.38);--diff-text:#ffb6bf}
+main .career-clean-extra>.career-diff-even{--diff-border:#6aade0;--diff-bg:rgba(42,102,154,.35);--diff-text:#b3ddff}
+main .career-clean-extra>.career-diff-positive{--diff-border:#74dca1;--diff-bg:rgba(36,119,79,.35);--diff-text:#bbffd4}
+/* BETA 1.4.5.93 – career headline coach score uses the same live 4-tier palette as trust. */
+main .career-hub-stats>.home-coach-score.coach-excellent{background:rgba(40,118,79,.62)!important;border:1.5px solid #88dfa9!important;color:#c3ffd8!important}
+main .career-hub-stats>.home-coach-score.coach-neutral{background:rgba(40,87,128,.48)!important;border:1.5px solid #659bc5!important;color:#b5ddff!important}
+main .career-hub-stats>.home-coach-score.coach-warning{background:rgba(120,89,35,.51)!important;border:1.5px solid #e0b454!important;color:#ffe19a!important}
+main .career-hub-stats>.home-coach-score.coach-critical{background:rgba(125,42,52,.56)!important;border:1.5px solid #e77983!important;color:#ffb8bc!important}
+main .career-hub-stats>.home-coach-score[class*="coach-"] b,
+main .career-hub-stats>.home-coach-score[class*="coach-"] .small{color:inherit!important}
+/* BETA 1.4.5.94 – match statistics use the same inset, spacing and rhythm as trust tiles. */
+main .career-hub-stats~details.career-clean-details:not(.career-reputation-disclosure)>.career-clean-extra{
+ grid-template-columns:repeat(4,minmax(0,1fr))!important;
+ gap:7px!important;
+ padding:12px 14px 3px!important;
+ margin:0!important;
+ box-sizing:border-box!important;
+}
+main .career-hub-stats~details.career-clean-details:not(.career-reputation-disclosure)>.career-clean-extra>div{
+ display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;
+ gap:5px!important;min-width:0!important;min-height:76px!important;
+ padding:10px 1px!important;border-radius:9px!important;
+}
+main .career-hub-stats~details.career-clean-details:not(.career-reputation-disclosure)>.career-clean-extra b{font-size:clamp(19px,5vw,24px)!important;line-height:1.05!important}
+main .career-hub-stats~details.career-clean-details:not(.career-reputation-disclosure)>.career-clean-extra span{
+ font-size:clamp(7px,1.85vw,9px)!important;line-height:1.1!important;
+ letter-spacing:0!important;white-space:normal!important;overflow-wrap:normal!important;text-align:center!important;
+}
+/* BETA 1.4.5.95 – match tiles compact like trust tiles, not tall columns. */
+main .career-hub-stats~details.career-clean-details:not(.career-reputation-disclosure)>.career-clean-extra{
+ padding:12px 14px 4px!important;gap:6px!important;align-items:stretch!important;
+}
+main .career-hub-stats~details.career-clean-details:not(.career-reputation-disclosure)>.career-clean-extra>div{
+ min-height:0!important;height:68px!important;padding:7px 1px!important;gap:4px!important;
+}
+main .career-hub-stats~details.career-clean-details:not(.career-reputation-disclosure)>.career-clean-extra b{
+ font-size:clamp(19px,5vw,23px)!important;line-height:1!important;
+}
+main .career-hub-stats~details.career-clean-details:not(.career-reputation-disclosure)>.career-clean-extra span{
+ font-size:clamp(7px,1.75vw,8px)!important;line-height:1.05!important;
+}
+/* BETA 1.4.5.96 – vertically and horizontally center all four match statistics. */
+.career-clean-details:not(.career-reputation-disclosure) > .career-clean-extra > div,
+.career-clean-details:not(.career-reputation-disclosure) > .career-clean-extra > .career-win-diff{
+ display:flex!important;flex-direction:column!important;align-items:center!important;
+ justify-content:center!important;text-align:center!important;
+ height:68px!important;min-height:68px!important;max-height:68px!important;
+ padding:5px 2px!important;box-sizing:border-box!important;
+}
+.career-clean-details:not(.career-reputation-disclosure) > .career-clean-extra > div > b,
+.career-clean-details:not(.career-reputation-disclosure) > .career-clean-extra > div > span{
+ position:static!important;margin:0!important;transform:none!important;
+ width:100%!important;text-align:center!important;flex:0 0 auto!important;
+}
+.career-clean-details:not(.career-reputation-disclosure) > .career-clean-extra > div > b{line-height:1.1!important}
+.career-clean-details:not(.career-reputation-disclosure) > .career-clean-extra > div > span{margin-top:5px!important;line-height:1.1!important}
+/* BETA 1.4.5.97 – remove the extra gap beneath match-statistics header. */
+main .career-hub-stats~details.career-clean-details:not(.career-reputation-disclosure)[open]>.career-clean-extra{
+ margin:0!important;padding:5px 14px 8px!important;
+ align-content:start!important;align-items:center!important;
+}
+main .career-hub-stats~details.career-clean-details:not(.career-reputation-disclosure)[open]>.career-clean-extra>div{
+ margin:0!important;height:68px!important;min-height:68px!important;
+ display:flex!important;flex-direction:column!important;
+ justify-content:center!important;align-items:center!important;
+}
+/* BETA 1.4.5.98 – compact match tiles and reuse the manager-hub first-place celebration. */
+main .career-hub-stats~details.career-clean-details:not(.career-reputation-disclosure)[open]>.career-clean-extra{
+ padding:6px 14px 8px!important;
+}
+main .career-hub-stats~details.career-clean-details:not(.career-reputation-disclosure)>.career-clean-extra>div{
+ height:58px!important;min-height:58px!important;max-height:58px!important;
+ padding:3px 2px!important;gap:2px!important;
+}
+main .career-hub-stats~details.career-clean-details:not(.career-reputation-disclosure)>.career-clean-extra b{font-size:clamp(18px,4.8vw,22px)!important}
+main .career-hub-stats~details.career-clean-details:not(.career-reputation-disclosure)>.career-clean-extra span{font-size:clamp(7px,1.7vw,8px)!important}
+main .career-hub-stats>.stat.placement-gold{position:relative!important;overflow:hidden!important;isolation:isolate!important}
+main .career-hub-stats>.stat.placement-gold::after{content:"";position:absolute;z-index:1;pointer-events:none;inset:-90%;background:linear-gradient(125deg,transparent 47%,rgba(255,239,177,.018) 48.5%,rgba(255,245,201,.055) 49.5%,rgba(255,250,222,.105) 50%,rgba(255,235,172,.047) 50.7%,transparent 52.5%);transform:translate3d(-55%,-55%,0) rotate(-18deg);animation:goldSweep39 7.6s ease-in-out infinite}
+main .career-hub-stats>.stat.placement-gold>.gold-number-halo{display:block!important;position:absolute!important;left:50%!important;top:39%!important;width:100px!important;height:100px!important;transform:translate(-50%,-50%) scale(.70);border-radius:50%!important;pointer-events:none!important;z-index:1!important;background:radial-gradient(circle,rgba(255,248,180,.90) 0%,rgba(255,214,67,.70) 15%,rgba(255,180,25,.46) 32%,rgba(255,161,14,.22) 52%,transparent 75%)!important;filter:blur(9px);opacity:.62;animation:goldHalo48 4.2s ease-in-out infinite!important}
+main .career-hub-stats>.stat.placement-gold>b,main .career-hub-stats>.stat.placement-gold>.small{position:relative!important;z-index:3!important}
+main .career-hub-stats>.stat.placement-gold>b{color:#ffd43b!important;-webkit-text-stroke:.35px rgba(255,232,121,.85);filter:drop-shadow(0 1px 1px rgba(35,21,4,.65));animation:goldNumeralPulse45 3.4s ease-in-out infinite!important;transform:scale(1.08)}
+@media(prefers-reduced-motion:reduce){main .career-hub-stats>.stat.placement-gold::after,main .career-hub-stats>.stat.placement-gold>b,main .career-hub-stats>.stat.placement-gold>.gold-number-halo{animation:none!important}}
+/* BETA 1.4.5.99 – restore the gold frame on the career first-place tile. */
+main .career-hub-stats>.stat.placement-stat.placement-gold{
+ border:2px solid #d9b65a!important;
+ background:linear-gradient(145deg,#514329,#302f30)!important;
+ box-shadow:0 0 10px rgba(238,184,55,.27),inset 0 0 12px rgba(255,210,84,.08)!important;
+}
+/* BETA 1.4.5.100 – historical season points and wins use regular weight. */
+main .career-season-record .career-season-details > span{font-weight:400!important}
+</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.4.5.100 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
 const T=['Brynäs','Frölunda','Färjestad','Skellefteå','Växjö','Rögle','Luleå','Timrå','Örebro','Linköping','HV71','Leksand','Malmö','Djurgården'],C=['BIF','FHC','FBK','SKE','VLH','RBK','LHF','TIK','ÖHK','LHC','HV71','LIF','MIF','DIF'],K=['#d5ac46','#ce263f','#17834c','#e6ba36','#ed8937','#168b5d','#d33a38','#c83434','#bc243b','#1c76b8','#1559a2','#2474b8','#db2937','#e5b82e'];
 let a=T.map((_,i)=>i),first=[];for(let r=0;r<13;r++){first.push(Array.from({length:7},(_,j)=>[a[j],a[13-j]]));a=[a[0],a[13],...a.slice(1,13)]}let rev=first.map(r=>r.map(([x,y])=>[y,x])),F=[...first,...rev,...first,...rev];
 /* BETA 1.3.1: Each career season owns its schedule; original fixtures stay as fallback. */
@@ -500,7 +1185,7 @@ function situationInfo(){let info=sceneInfo[g.scene]||sceneInfo[7];return '<div 
 function narrative(sc){let data=scripts[g.scene],c=state(),tv=data?data[0]:'Nu händer det grejer! '+sc[0]+' för '+T[g.team]+'.',advice=data?data[1]:(sc[1]?'Skapa ett bra avslut, men väg riskerna.':'Stäng ytorna och håll fokus.');tv=tv.replaceAll('{own}',T[g.team]).replaceAll('{opp}',T[rival()]);if(c.diff<0)advice+=' Vi ligger under, vi måste våga mer.';if(c.diff>0)advice+=' Vi leder, inga onödiga risker.';let tense=c.late&&Math.abs(c.diff)<=1;if(g.feedback?.includes('KATASTROF'))advice='VAD I HELVETE GÖR VI?! '+advice;else if(tense&&Math.random()<.3)advice='NU JÄVLAR GÄLLER DET! '+advice;else if(Math.random()<.2)advice='Taktiskt sett: '+advice;return '<div class="story"><b>🎙️ TV-KOMMENTATORN</b><p>'+tv+'</p><b>🧠 ASSISTERANDE TRÄNAREN</b><p>'+advice+'</p></div>'}
 const fresh=()=>({schedule:generateSeasonSchedule(),shlClubs:SHL_ORIGINAL.map(c=>({...c})),haClubs:HA_ORIGINAL.map(c=>({...c})),page:'setup',team:0,round:1,turn:0,scene:0,possession:'neutral',zone:'neutral',pressure:'medium',showCommentary:false,showCoachBench:false,penaltyShotUsed:false,opponentPulled:false,clockElapsed:0,penalty:null,coachUsed:{},coachActive:{},score:[0,0],overtime:false,overtimeStep:0,shootout:false,shootoutRound:0,shootoutScore:[0,0],finalPending:false,tactic:null,timeout:false,boost:false,lines:false,pulled:false,feedback:'',history:[],tacticHistory:[],world:{morale:50,fans:50,board:50,answered:{},lastEvent:null},seasons:[],offers:null,offerLastRank:null});let g;try{g=JSON.parse(localStorage.getItem('shl_gulddrommen_development')||localStorage.getItem('shl_gulddrommen_alpha_7_4_test'))||fresh()}catch{g=fresh()}if(!g||!Array.isArray(g.history)||g.team<0||g.team>13)g=fresh();applyRoster();const archiveKey='shl_gulddrommen_career_archive_v1';function readCareerArchive(){try{const a=JSON.parse(localStorage.getItem(archiveKey)||'[]');return Array.isArray(a)?a:[]}catch{return []}}function keepCareerArchive(){const saved=readCareerArchive(),current=Array.isArray(g.seasons)?g.seasons:[];if(saved.length>current.length)g.seasons=saved;else if(current.length>saved.length)try{localStorage.setItem(archiveKey,JSON.stringify(current))}catch{}}keepCareerArchive();const app=document.getElementById('app');
 function returnToManagerHub(){update({page:'home'});window.scrollTo({top:0,left:0,behavior:'instant'});document.documentElement.scrollTop=0;document.body.scrollTop=0}
-function update(p){Object.assign(g,p);applyRoster();keepCareerArchive();try{localStorage.setItem('shl_gulddrommen_development',JSON.stringify(g))}catch{}render()}function resignCoach(){if(!confirm('⚠️ DU ÄR PÅ VÄG ATT LÄMNA '+T[g.team].toUpperCase()+'!\n\nDu säger upp dig som huvudtränare mitt i säsongen. Din pågående säsong, matcher och tabell kommer att nollställas och du får välja ett nytt lag.\n\nTidigare sparade avslutade säsonger behålls.\n\nVill du verkligen börja om?'))return;const seasons=Array.isArray(g.seasons)?g.seasons:[];update({...fresh(),seasons,page:'setup'})}
+function update(p){if(p.page==='news'&&g.page!=='news'){newsVisible.editor=2;newsVisible.club=2;newsVisible.league=3;newsCollapsed.editor=false;newsCollapsed.club=false;newsCollapsed.league=false}const beforeRound=(g.history||[]).length,beforeTeam=g.team;Object.assign(g,p);applyRoster();keepCareerArchive();if((g.history||[]).length!==beforeRound||g.team!==beforeTeam||(p.world&&p.world.lastEvent))recordNewsArchive();try{localStorage.setItem('shl_gulddrommen_development',JSON.stringify(g))}catch{}render()}function resignCoach(){if(!confirm('⚠️ DU ÄR PÅ VÄG ATT LÄMNA '+T[g.team].toUpperCase()+'!\n\nDu säger upp dig som huvudtränare mitt i säsongen. Din pågående säsong, matcher och tabell kommer att nollställas och du får välja ett nytt lag.\n\nTidigare sparade avslutade säsonger behålls.\n\nVill du verkligen börja om?'))return;const seasons=Array.isArray(g.seasons)?g.seasons:[];update({...fresh(),seasons,page:'setup'})}
 function simulateToRound51(){if(g.history.length>=51){alert('Du är redan vid omgång 52 eller senare.');return}if(!confirm('TESTLÄGE: Simulera resterande matcher fram till omgång 52? Din pågående säsong ersätts av simulerade resultat. Tidigare sparade säsonger behålls.'))return;const history=g.history.slice();for(let r=history.length;r<51;r++){history.push(seasonSchedule()[r].map(([a,b])=>{let x=Math.floor(Math.random()*5),y=Math.floor(Math.random()*5),ot=x===y;if(ot)Math.random()<.5?x++:y++;return{a,b,x,y,ot}}))}update({page:'home',round:52,history,turn:0,finalPending:false,tactic:null});window.scrollTo(0,0)}
 function nextSeason(){
  const st=standings(g.history),me=st.find(t=>t.i===g.team),rank=st.findIndex(t=>t.i===g.team)+1,seasons=Array.isArray(g.seasons)?g.seasons:[],q=relegationResult(st);
@@ -509,9 +1194,30 @@ function nextSeason(){
  const coachDown=q.lose===g.team,offers=[...(coachDown?[]:[g.team]),...candidates],next=fresh();
  update({...next,team:coachDown?candidates[0]:g.team,shlClubs:q.shl,haClubs:q.ha,seasons:[...seasons,entry],offers,offerLastRank:rank,leagueReport:relegationCard(q),coachRelegated:coachDown,world:{...worldState(),answered:{},lastEvent:null,pressFeedback:null,upset:null,legacyRank:rank,legacyTeam:g.team}});
 }
-function seasonSummary(st,my,rank){return rank===1?'<div class="season-champion"><strong>🏆 GRUNDSERIEVINNARE!</strong><span>'+T[g.team]+' · '+my.p+' poäng</span></div>':'<div class="season-summary"><div><span>🏆 GRUNDSERIEVINNARE</span><b>'+T[st[0].i]+' · '+st[0].p+' p</b></div><div><span>DIN PLACERING</span><b>'+rank+':a · '+T[g.team]+' · '+my.p+' p</b></div></div>'}function seasonRows(a){return a.map(e=>'<div class="mini-table-row"><span class="mini-pos '+(e.rank===1?'mini-pos-1':'')+'">S'+e.number+'</span><span class="season-mini-team">'+T[e.team]+'<small>Plats '+e.rank+' · Vinnare: '+T[e.winner]+'</small></span><span class="mini-points">'+e.points+' p</span></div>').join('')}function seasonHistoryPreview(){const all=(g.seasons||[]).slice().reverse(),a=all.slice(0,3);return '<button type="button" class="mini-table-link season-history-mini season-history-open" onclick="update({page:\'archive\'})"><span class="mini-table-head"><span>📚 TIDIGARE SÄSONGER</span><span>ALLA SÄSONGER →</span></span>'+seasonRows(a)+'</button>'}function fullSeasonArchive(){const a=(g.seasons||[]).slice().reverse();return card('📚 ALLA SPARADE SÄSONGER','<h2>Säsongshistorik</h2><p class="muted">'+a.length+' sparade säsonger · Senaste först</p><div class="mini-table-link season-history-mini">'+(a.length?seasonRows(a):'<p class="muted">Inga sparade säsonger ännu.</p>')+'</div>')+btn('← TILLBAKA TILL MANAGERHUBBEN','returnToManagerHub()','full career-home-btn')}
+function seasonSummary(st,my,rank){return rank===1?'<div class="season-champion season-champion-confetti"><span class="gold-confetti" aria-hidden="true"></span><strong>🏆 GRUNDSERIEVINNARE!</strong><span>'+T[g.team]+' · '+my.p+' poäng</span></div>':'<div class="season-summary"><div><span>🏆 GRUNDSERIEVINNARE</span><b>'+T[st[0].i]+' · '+st[0].p+' p</b></div><div><span>DIN PLACERING</span><b>'+rank+':a · '+T[g.team]+' · '+my.p+' p</b></div></div>'}function seasonRows(a){return a.map(e=>'<div class="mini-table-row"><span class="mini-pos '+(e.rank===1?'mini-pos-1':'')+'">S'+e.number+'</span><span class="season-mini-team">'+T[e.team]+'<small>Plats '+e.rank+' · Vinnare: '+T[e.winner]+'</small></span><span class="mini-points">'+e.points+' p</span></div>').join('')}function seasonHistoryPreview(){const all=(g.seasons||[]).slice().reverse(),a=all.slice(0,3);return '<button type="button" class="mini-table-link season-history-mini season-history-open" onclick="update({page:\'archive\'})"><span class="mini-table-head"><span>📚 TIDIGARE SÄSONGER</span><span>ALLA SÄSONGER →</span></span>'+seasonRows(a)+'</button>'}function fullSeasonArchive(){const a=(g.seasons||[]).slice().reverse();return card('📚 ALLA SPARADE SÄSONGER','<h2>Säsongshistorik</h2><p class="muted">'+a.length+' sparade säsonger · Senaste först</p><div class="mini-table-link season-history-mini">'+(a.length?seasonRows(a):'<p class="muted">Inga sparade säsonger ännu.</p>')+'</div>')+btn('← TILLBAKA TILL MANAGERHUBBEN','returnToManagerHub()','full career-home-btn')}
 function seasonArchive(){const a=Array.isArray(g.seasons)?g.seasons:[];if(!a.length)return '';return '<div class="season-archive"><h3>📚 Tidigare säsonger</h3>'+a.map(e=>'<div class="season-record"><b>Säsong '+e.number+'</b><span>🏆 '+(e.winnerName||T[e.winner])+'</span><small>Du: '+(e.teamName||T[e.team])+' · Plats '+e.rank+' · '+e.points+' poäng</small></div>').join('')+'</div>'}
-function careerPage(st,my,rank){const a=Array.isArray(g.seasons)?g.seasons:[],played=a.reduce((n,e)=>n+(e.matches||52),0)+g.history.length,wins=a.reduce((n,e)=>n+(e.wins||0),0)+my.w+my.ow,points=a.reduce((n,e)=>n+(e.points||0),0)+my.p,best=[...a.map(e=>e.rank),...(g.history.length===52?[rank]:[])];return card('🏆 MANAGERKARRIÄR · BETA 1.2','<div class="career-overview"><div class="career-overview-title"><h2>Din tränarkarriär</h2><span class="career-season-count">SÄSONG '+(a.length+1)+'</span></div><div class="career-current-club">'+T[g.team]+' <span>· Pågående säsong</span></div><div class="career-progress"><span>OMGÅNG '+g.history.length+'/52</span><span>PLATS '+(g.history.length?rank:'–')+'</span><strong>'+my.p+' POÄNG</strong></div><div class="career-metrics"><div><b>'+played+'</b><span>MATCHER</span></div><div><b>'+wins+'</b><span>SEGRAR</span></div><div><b>'+points+'</b><span>POÄNG</span></div><div><b>'+a.length+'</b><span>SÄSONGER</span></div><div><b>'+(best.length?Math.min(...best):'–')+'</b><span>BÄSTA PLATS</span></div><div><b>'+a.filter(e=>e.rank===1).length+'</b><span>SERIESEGRAR</span></div></div></div>'+worldCareerScores())+btn('← TILLBAKA TILL MANAGERHUBBEN','returnToManagerHub()','full career-home-btn')+card('📚 SÄSONGSHISTORIK',a.length?a.slice().reverse().map(e=>'<div class="season-record career-season-record"><div class="career-season-head"><b>SÄSONG '+e.number+' · '+T[e.team]+'</b><strong class="career-season-rank '+(e.rank===1?'career-season-gold':'')+'">PLATS '+e.rank+'</strong></div><div class="career-season-details"><span>'+e.points+' poäng'+(e.wins!==undefined?' · '+e.wins+' segrar':'')+'</span><small>🏆 Grundserievinnare: <b class="career-winner-name">'+T[e.winner]+'</b></small></div></div>').join(''):'<p class="muted">Inga avslutade säsonger ännu. Spela klart 52 omgångar och spara din första säsong för att bygga din historia.</p>')+'<div class="resign-area">'+btn('🚪 SÄG UPP DIG SOM HUVUDTRÄNARE','resignCoach()','resign-btn full')+'<p>Avsluta din pågående säsong och välj en ny klubb.</p></div>'}
+let careerSeasonPageIndex=0;
+function careerSeasonPage(delta){
+ const rows=[...document.querySelectorAll('[data-career-season-row]')],total=Math.ceil(rows.length/5);
+ if(!total)return;
+ careerSeasonPageIndex=Math.max(0,Math.min(total-1,careerSeasonPageIndex+delta));
+ rows.forEach((row,i)=>{row.hidden=Math.floor(i/5)!==careerSeasonPageIndex;row.style.setProperty('display',row.hidden?'none':'block','important')});
+ const label=document.querySelector('[data-career-page]'),prev=document.querySelector('[data-career-prev]'),next=document.querySelector('[data-career-next]');
+ if(label)label.textContent=(careerSeasonPageIndex+1)+' / '+total;
+ if(prev)prev.disabled=careerSeasonPageIndex===0;
+ if(next)next.disabled=careerSeasonPageIndex===total-1;
+}
+function careerPage(st,my,rank){
+ careerSeasonPageIndex=0;
+ const a=Array.isArray(g.seasons)?g.seasons:[],currentMatches=g.history.length,currentWins=my.w+my.ow,currentLosses=Math.max(0,currentMatches-currentWins),currentWinDiff=currentWins-currentLosses;
+ const historicalMatches=a.reduce((n,e)=>n+(e.matches||52),0),historicalWins=a.reduce((n,e)=>n+(e.wins||0),0),historicalPoints=a.reduce((n,e)=>n+(e.points||0),0);
+ const best=a.length?Math.min(...a.map(e=>e.rank)):'–',titles=a.filter(e=>e.rank===1).length;
+ const metric=(value,label)=>'<div><b>'+value+'</b><span>'+label+'</span></div>';
+ const current=card('DIN KLUBB · SÄSONG '+(a.length+1),'<div class="career-hub-club row"><div class="crest" style="--c:'+K[g.team]+'">'+C[g.team]+'</div><div><h2>'+T[g.team]+'</h2><div class="muted">Huvudtränare · SHL · '+(currentMatches===52?'Grundserien avslutad':'Omgång '+currentMatches+'/52')+'</div></div></div><div class="stats career-hub-stats"><div class="stat placement-stat '+(currentMatches?(rank===1?'placement-gold':rank===2?'placement-silver':rank===3?'placement-bronze':rank>=13?'placement-red':'placement-blue'):'')+'">'+(currentMatches&&rank===1?'<span class="gold-number-halo" aria-hidden="true"></span>':'')+'<b>'+(currentMatches?rank:'–')+'</b><span class="small">PLACERING</span></div><div class="stat"><b>'+my.p+'</b><span class="small">POÄNG</span></div><div class="stat"><b>'+(my.gf-my.ga)+'</b><span class="small">MÅLSKILLNAD</span></div>'+worldHomeScore()+'</div><details class="career-clean-details"><summary><span class="career-dropdown-label">📋 Matchstatistik <small>Matcher & segrar</small></span><span class="career-dropdown-arrow">⌄</span></summary><div class="career-clean-extra">'+metric(currentMatches,'MATCHER')+metric(currentWins,'SEGRAR')+metric(currentLosses,'FÖRLUSTER')+'<div class="career-win-diff '+(currentWinDiff<0?'career-diff-negative':currentWinDiff<5?'career-diff-even':'career-diff-positive')+'"><b>'+(currentWinDiff>0?'+':'')+currentWinDiff+'</b><span>VINSTSKILLNAD</span></div>'+'</div></details><details class="career-clean-details career-reputation-disclosure"><summary><span class="career-dropdown-label">🎤 Lagets förtroende <small>Spelare, supportrar & styrelse</small></span><span class="career-dropdown-arrow">⌄</span></summary>'+worldCareerScores()+'</details>');
+ const history=card('📊 HISTORISK KARRIÄRSTATISTIK','<div class="career-metrics career-historical-metrics career-clean-primary">'+metric(a.length,'SÄSONGER')+metric(titles,'SERIESEGRAR')+metric(best,'BÄSTA PLATS')+'</div><details class="career-clean-details"><summary><span class="career-dropdown-label">📊 Fler karriärsiffror <small>Matcher, segrar & poäng totalt</small></span><span class="career-dropdown-arrow">⌄</span></summary><div class="career-metrics career-clean-extra">'+metric(historicalMatches,'MATCHER')+metric(historicalWins,'SEGRAR')+metric(historicalPoints,'POÄNG')+'</div><p class="career-stats-intro">Statistiken omfattar sparade säsonger. Den pågående säsongen räknas in när du sparar den.</p></details>');
+ const seasons=card('📚 TIDIGARE SÄSONGER',a.length?'<div class="career-season-pages">'+a.slice().reverse().map((e,i)=>'<div class="season-record career-season-record" data-career-season-row="'+i+'"'+(i>=5?' hidden style="display:none!important"':'')+'><div class="career-season-head"><b>SÄSONG '+e.number+' · '+T[e.team]+'</b><strong class="career-season-rank '+(e.rank===1?'career-season-gold':e.rank===2?'career-season-silver':e.rank===3?'career-season-bronze':e.rank<=6?'career-season-green':e.rank<=10?'career-season-blue':e.rank<=12?'career-season-gray':'career-season-danger')+'">PLATS '+e.rank+'</strong></div><div class="career-season-details"><span>'+e.points+' poäng'+(e.wins!==undefined?' · '+e.wins+' segrar':'')+'</span><small>🏆 Grundserievinnare: <b class="career-winner-name">'+T[e.winner]+'</b></small></div></div>').join('')+'</div>'+(a.length>5?'<div class="career-pagination"><button type="button" onclick="careerSeasonPage(-1)" data-career-prev disabled>← FÖREGÅENDE</button><span data-career-page>1 / '+Math.ceil(a.length/5)+'</span><button type="button" onclick="careerSeasonPage(1)" data-career-next>NÄSTA →</button></div>':''):'<p class="muted">Inga sparade säsonger ännu. Spela klart och spara din första säsong för att bygga din historik.</p>');
+ return current+history+seasons+card('⚙️ KARRIÄRVAL','<div class="resign-area">'+btn('🚪 SÄG UPP DIG SOM HUVUDTRÄNARE','resignCoach()','resign-btn full')+'<p>Avsluta din pågående säsong och välj en ny klubb.</p></div>')+btn('← TILLBAKA TILL MANAGERHUBBEN','returnToManagerHub()','full career-home-btn');
+}
 const tile=i=>'<div class="tile" style="--c:'+K[i]+'">'+C[i]+'</div>',card=(title,body)=>'<section class="card"><div class="cap">'+title+'</div>'+body+'</section>',btn=(label,action,cls='')=>'<button class="btn '+cls+'" onclick="'+action+'">'+label+'</button>',fixture=()=>seasonSchedule()[Math.min(g.round-1,51)].find(q=>q.includes(g.team)),home=()=>fixture()[0]===g.team,rival=()=>fixture().find(i=>i!==g.team),match=i=>'<div>'+tile(i)+'<div class="small">'+T[i]+'</div></div>';
 
 /* BETA 1.3 – händelsestyrd press, moral och hockeyvärld. */
@@ -574,14 +1280,193 @@ function worldUpsetCard(){let w=worldState(),u=w.upset;if(!u||u.round!==g.round|
 function worldUpsetContinue(){let w=worldState();if(w.upset&&w.upset.answer)update({world:{...w,upset:{...w.upset,done:true}}})}
 function worldUpsetAnswer(i){let w=worldState(),u=w.upset;if(!u||u.round!==g.round||u.answer)return;let options=[['Vi trodde på vår spelidé hela vägen.',4,3,3,'Tränaren lyfter fram den taktiska planen.'],['Spelarna ska ha all ära för insatsen!',6,5,1,'Tränaren hyllar spelargruppen efter skrällen.'],['Experterna räknade bort oss. Det gav oss bränsle!',2,6,-1,'Tränaren skickar en passning till experterna.']],o=options[i];if(!o)return;let before={morale:w.morale,fans:w.fans,board:w.board},after={morale:worldClamp(w.morale+o[1]),fans:worldClamp(w.fans+o[2]),board:worldClamp(w.board+o[3])};update({world:{...w,...after,upset:{...u,answer:{text:o[0],news:o[4],before,after}},lastEvent:{round:g.round,title:'SKRÄLLSEGER MOT '+T[u.opponent].toUpperCase(),news:o[4]}}})}
 function worldAfterMatch(own,previous){let w=worldState(),won=own.a===g.team?own.x>own.y:own.y>own.x,played=previous.length+1,rank=standings([...previous,[own]]).findIndex(t=>t.i===g.team)+1,legacy=Number(w.legacyRank??g.offerLastRank??(g.seasons||[]).at(-1)?.rank),sameClub=(w.legacyTeam??(g.seasons||[]).at(-1)?.team)===g.team,protectedStart=sameClub&&legacy>=1&&legacy<=6,lossScale=protectedStart?(played<=5?.25:played<=10?.5:played<=15?.75:1):played<=4&&legacy<=10?.75:1,lossPenalty=base=>Math.max(0,Math.round(base*lossScale)),bottom=rank>=13,bottomStreak=bottom?(Number(w.bottomStreak)||0)+1:0,previousRank=Number(w.lastResult?.rank)||rank,climbing=rank<previousRank,crisis=bottom&&played>=4,fanPressure=crisis?(played<=5?2:played<=8?4:played<=12?6:8)+Math.min(4,Math.floor(bottomStreak/3)):0,boardPressure=crisis&&played>=7?(played<=9?1:played<=12?3:5)+Math.min(3,Math.floor(bottomStreak/5)):0,recovery=!bottom&&played>=4?(climbing?3:1):0,crisisBefore=Number(w.crisisLevel)||0,crisisLevel=crisis?Math.min(5,crisisBefore+1):Math.max(0,crisisBefore-(won?2:1));let chance=Number(g.preMatchChance),upset=won&&Number.isFinite(chance)&&chance<=35,bonus=upset?{morale:4,fans:6,board:5}:{morale:0,fans:0,board:0};let fanDelta=(won?2:-lossPenalty(2))-fanPressure+recovery+(won&&crisis?2:0),boardDelta=(won?2:-lossPenalty(2))-boardPressure+(recovery?Math.max(1,recovery-1):0)+(won&&crisis?1:0),moraleDelta=(won?3:-lossPenalty(3))+(won&&crisis?1:0);return {...w,morale:worldClamp(w.morale+moraleDelta+bonus.morale),fans:worldClamp(w.fans+fanDelta+bonus.fans),board:worldClamp(w.board+boardDelta+bonus.board),bottomStreak,crisisLevel,pressureNote:crisis?(played<7?'Supportrarna börjar ifrågasätta resultaten.':played<10?'Fansen protesterar och styrelsen börjar ställa krav.':'Kris i klubben – styrelsens tålamod börjar ta slut.'):(crisisBefore>0&&won?'Segern lättar på pressen och förtroendet börjar återvända.':null),upset:upset?{round:g.round,chance,opponent:own.a===g.team?own.b:own.a,answer:null}:null,lastResult:{round:played,won,rank,upset,bonus,fanDelta,boardDelta,crisisLevel}}}
-function worldHomeScore(){const w=worldState(),score=Math.round((worldClamp(w.morale)+worldClamp(w.fans)+worldClamp(w.board))/3);let level=score<40?'coach-critical':score<50?'coach-warning':score<=75?'coach-neutral':score<90?'coach-good':'coach-excellent';return '<div class="stat home-coach-score '+level+'"><b>'+score+'</b><span class="small">TRÄNARSCORE</span></div>'}
-function worldCareerScores(){const w=worldState(),m=worldClamp(w.morale),f=worldClamp(w.fans),b=worldClamp(w.board),score=Math.round((m+f+b)/3);return '<div class="career-reputation"><div class="career-reputation-title">🎤 FÖRTROENDE & TRÄNARSCORE</div><div class="career-reputation-grid"><div><b>'+m+'</b><span>SPELARMORAL</span></div><div><b>'+f+'</b><span>SUPPORTRAR</span></div><div><b>'+b+'</b><span>STYRELSEN</span></div><div class="career-score-main"><b>'+score+'</b><span>TRÄNARSCORE</span></div></div><div class="career-reputation-note">Genomsnitt av spelarmoral, supportrar och styrelsens förtroende · av 100</div></div>'}
+function worldHomeScore(){const w=worldState(),score=Math.round((worldClamp(w.morale)+worldClamp(w.fans)+worldClamp(w.board))/3);let level=worldCareerLevel(score);return '<div class="stat home-coach-score '+level+'"><b>'+score+'</b><span class="small">TRÄNARSCORE</span></div>'}
+function worldCareerLevel(v){return v<40?'coach-critical':v<55?'coach-warning':v<85?'coach-neutral':'coach-excellent'}
+function worldCareerScores(){const w=worldState(),m=worldClamp(w.morale),f=worldClamp(w.fans),b=worldClamp(w.board),score=Math.round((m+f+b)/3);return '<div class="career-reputation"><div class="career-reputation-title">🎤 FÖRTROENDE & TRÄNARSCORE</div><div class="career-reputation-grid"><div class="career-trust-level '+worldCareerLevel(m)+'"><b>'+m+'</b><span>SPELARMORAL</span></div><div class="career-trust-level '+worldCareerLevel(f)+'"><b>'+f+'</b><span>SUPPORTRAR</span></div><div class="career-trust-level '+worldCareerLevel(b)+'"><b>'+b+'</b><span>STYRELSEN</span></div><div class="career-score-main career-trust-level '+worldCareerLevel(score)+'"><b>'+score+'</b><span>TRÄNARSCORE</span></div></div><div class="career-reputation-note">Tränarscore = genomsnittet av spelarmoral, supportrar och styrelsens förtroende · av 100</div></div>'}
 function worldStatus(){let w=worldState();return (w.pressureNote?'<div class="world-pressure-note">'+w.pressureNote+'</div>':'')+'<div class="world-effects"><span>🏒 Moral '+w.morale+'/100</span><span>❤️ Supportrar '+w.fans+'/100</span><span>👔 Styrelse '+w.board+'/100</span></div>'}
-function leagueNewsFeed(){let feed=[],history=g.history||[],n=history.length;if(!n)return [{round:0,tag:'SÄSONGSSTART',icon:'🏒',title:'SHL-säsongen står för dörren',body:'14 klubbar jagar poäng och prestige. Snart börjar kampen om tabellplaceringarna.'}];let seen=new Set();const add=(round,tag,icon,title,body,key)=>{key=key||tag+title;if(seen.has(key))return;seen.add(key);feed.push({round,tag,icon,title,body})};let start=Math.max(1,n-11);for(let r=n;r>=start;r--){let matches=history[r-1]||[],current=standings(history.slice(0,r)),previous=r>1?standings(history.slice(0,r-1)):null,lead=current[0];if(r===n||previous&&previous[0].i!==lead.i)add(r,'TABELLTOPPEN','🏆',T[lead.i]+' leder SHL',lead.p+' poäng efter '+r+' omgångar.'+(previous&&previous[0].i!==lead.i?' Ny serieledare efter senaste omgången!':''),'leader'+lead.i+(previous&&previous[0].i!==lead.i?'-change':'-current'));for(let m of matches){let winner=m.x>m.y?m.a:m.b,loser=m.x>m.y?m.b:m.a,margin=Math.abs(m.x-m.y),w=current.find(t=>t.i===winner),l=current.find(t=>t.i===loser);if(margin>=4)add(r,'STORSEGER','💥',T[winner]+' körde över '+T[loser],m.x+'–'+m.y+' i en målrik uppvisning.','big'+r+winner);if(previous&&r>=5){let oldW=previous.find(t=>t.i===winner),oldL=previous.find(t=>t.i===loser);if(oldW.p+4<=oldL.p&&w.p<=l.p+2)add(r,'SKRÄLL','⚡',T[winner]+' skrällde mot '+T[loser],T[winner]+' vann med '+m.x+'–'+m.y+' trots ett tydligt sämre tabelläge före matchen.','upset'+r+winner)}}for(let t of current){let last=history.slice(0,r).reverse();let wins=0,losses=0;for(let round of last){let m=round.find(x=>x.a===t.i||x.b===t.i);if(!m)break;let won=m.a===t.i?m.x>m.y:m.y>m.x;if(won&&losses===0)wins++;else if(!won&&wins===0)losses++;else break}if(wins>=4&&(wins===4||wins%3===0))add(r,'FORMTOPP','🔥',T[t.i]+' har '+wins+' raka segrar','En imponerande segersvit gör '+T[t.i]+' till ett av seriens hetaste lag.','wins'+r+t.i);if(losses>=4&&(losses===4||losses%3===0))add(r,'KRIS','🚨',T[t.i]+' har '+losses+' raka förluster','Pressen växer efter ännu ett nederlag för '+T[t.i]+'.','loss'+r+t.i);let place=current.findIndex(x=>x.i===t.i)+1;if(r>=8&&place>=13&&(r===n||r%4===0))add(r,'BOTTENSTRID','⚠️',T[t.i]+' fast på kvalplats','Plats '+place+' efter '+r+' omgångar. Laget måste börja ta poäng.','bottom'+t.i+(r===n?'latest':'-'+r))}}let w=worldState();if(w.lastEvent&&w.lastEvent.news)add(w.lastEvent.round||n,'PRESSKONFERENS','🎤',w.lastEvent.title,w.lastEvent.news,'press'+w.lastEvent.id);return feed.sort((x,y)=>y.round-x.round||(['SKRÄLL','KRIS','FORMTOPP','STORSEGER','TABELLTOPPEN'].indexOf(x.tag)-['SKRÄLL','KRIS','FORMTOPP','STORSEGER','TABELLTOPPEN'].indexOf(y.tag))).slice(0,36)}
-function personalCoachNews(){let history=g.history||[],n=history.length,w=worldState(),feed=[];if(!n)return feed;let st=standings(history),rank=st.findIndex(t=>t.i===g.team)+1,mine=st[rank-1],last=history[n-1].find(m=>m.a===g.team||m.b===g.team),won=last&&(last.a===g.team?last.x>last.y:last.y>last.x),opp=last?(last.a===g.team?last.b:last.a):null,score=Math.round((worldClamp(w.morale)+worldClamp(w.fans)+worldClamp(w.board))/3),streak=worldStreak(),oldRank=n>1?standings(history.slice(0,-1)).findIndex(t=>t.i===g.team)+1:rank;let add=(tag,icon,title,body,key)=>feed.push({round:n,tag,icon,title,body,key:'personal-'+key,personal:true});if(w.lastResult?.round===n&&w.lastResult.upset&&won)add('DIN KLUBB','⚡',T[g.team]+' chockade '+T[opp]+' – tränaren hyllas','En oväntad seger efter att laget räknats bort i förhand. Tränarens beslut gav utdelning och förtroendet växer.','upset');else if(won&&rank<oldRank&&n>=3)add('DIN KLUBB','📈',T[g.team]+' klättrar – tränaren får beröm','Segern mot '+T[opp]+' tar klubben från plats '+oldRank+' till '+rank+'. Supportrarna börjar drömma om mer.','climb');else if(!won&&rank>oldRank&&n>=3)add('DIN KLUBB','📉',T[g.team]+' tappar mark – frågorna växer','Efter förlusten mot '+T[opp]+' faller laget till plats '+rank+'. Tränaren måste hitta en väg tillbaka.','drop');if(n>=4&&rank>=13){if(w.board<40)add('UNDER PRESS','🚨','Styrelsen kräver svar av tränaren i '+T[g.team],'Klubben ligger på plats '+rank+' efter '+n+' omgångar. Styrelsens förtroende är nere på '+worldClamp(w.board)+'/100.','board');else if(w.fans<65)add('SUPPORTERREAKTION','📣',T[g.team]+'-fansen börjar tappa tålamodet','Laget är kvar på kvalplats. Supporterförtroendet ligger på '+worldClamp(w.fans)+'/100 och pressen på tränaren ökar.','fans')}if(streak.wins>=4)add('TRÄNARKARRIÄR','🔥','Tränaren bakom '+T[g.team]+'s segersvit hyllas',streak.wins+' raka segrar har stärkt spelargruppen. Tränarscore: '+score+'/100.','win-streak');else if(streak.losses>=4)add('TRÄNARKARRIÄR','⚠️','Tränaren ifrågasätts efter '+streak.losses+' raka förluster',T[g.team]+' har kört fast. Tränarscore: '+score+'/100 – nu krävs en reaktion.','loss-streak');if(score>=90)add('TRÄNARSTATUS','🌟','Tränaren i '+T[g.team]+' har enormt förtroende','Spelare, fans och styrelse står bakom ledarskapet. Tränarscore: '+score+'/100.','high-score');else if(score<40)add('TRÄNARSTATUS','🔴','Krisstämpel på tränaren i '+T[g.team],'Tränarscoren har sjunkit till '+score+'/100. Fortsatta motgångar kan öka pressen ytterligare.','low-score');if(w.lastEvent&&w.lastEvent.news&&w.lastEvent.round>=n-1)add('EFTER PRESSKONFERENSEN','🎤','Tränarens ord väcker reaktioner i '+T[g.team],w.lastEvent.news+' Spelarmoral '+worldClamp(w.morale)+'/100, supportrar '+worldClamp(w.fans)+'/100 och styrelse '+worldClamp(w.board)+'/100.','press');if(n>=4&&rank<=3&&won)add('DIN KLUBB','🏆',T[g.team]+' jagar toppen – tränaren får arbetsro','Efter '+n+' omgångar ligger laget på plats '+rank+' med '+mine.p+' poäng.','top');return feed.slice(0,5)}
-function leagueNewsCards(limit){let items=leagueNewsFeed().slice(0,limit||24);return '<div class="league-news-feed">'+items.map(n=>'<article class="league-news-item"><div class="league-news-meta"><span>'+n.icon+' '+n.tag+'</span><span>OMGÅNG '+n.round+'</span></div><div class="league-news-title">'+n.title+'</div><p>'+n.body+'</p></article>').join('')+'</div>'}
-function personalNewsCards(limit){return '<div class="league-news-feed">'+personalCoachNews().slice(0,limit).map(n=>'<article class="league-news-item personal-news-item"><div class="league-news-meta"><span>'+n.icon+' '+n.tag+'</span><span>OMGÅNG '+n.round+'</span></div><div class="league-news-title">'+n.title+'</div><p>'+n.body+'</p></article>').join('')+'</div>'}
-function worldNews(){return '<div class="personal-news-heading">🎙️ KRING DIN KLUBB</div>'+personalNewsCards(2)+'<div class="personal-news-heading">🏒 RUNT OM I SHL</div>'+leagueNewsCards(2)+'<button class="league-news-more" onclick="update({page:&quot;news&quot;});window.scrollTo(0,0)">📰 ALLA SHL-NYHETER →</button>'}
+function leagueNewsFeed(){let feed=[],history=g.history||[],n=history.length;if(!n)return [{round:0,tag:'SÄSONGSSTART',icon:'🏒',title:'SHL-säsongen står för dörren',body:'14 klubbar jagar poäng och prestige. Snart börjar kampen om tabellplaceringarna.'}];let seen=new Set();const add=(round,tag,icon,title,body,key)=>{key=key||tag+title;if(seen.has(key))return;seen.add(key);feed.push({round,tag,icon,title,body})};let start=Math.max(1,n-11);for(let r=n;r>=start;r--){let matches=history[r-1]||[],current=standings(history.slice(0,r)),previous=r>1?standings(history.slice(0,r-1)):null,lead=current[0];if(r===n||previous&&previous[0].i!==lead.i)add(r,'TABELLTOPPEN','🏆',T[lead.i]+' leder SHL',lead.p+' poäng efter '+r+' omgångar.'+(previous&&previous[0].i!==lead.i?' Ny serieledare efter senaste omgången!':''),'leader'+lead.i+(previous&&previous[0].i!==lead.i?'-change':'-current'));for(let m of matches){let winner=m.x>m.y?m.a:m.b,loser=m.x>m.y?m.b:m.a,margin=Math.abs(m.x-m.y),w=current.find(t=>t.i===winner),l=current.find(t=>t.i===loser);if(margin>=4)add(r,'STORSEGER','💥',T[winner]+' körde över '+T[loser],m.x+'–'+m.y+' i en målrik uppvisning.','big'+r+winner);if(previous&&r>=5){let oldW=previous.find(t=>t.i===winner),oldL=previous.find(t=>t.i===loser);if(oldW.p+4<=oldL.p&&w.p<=l.p+2)add(r,'SKRÄLL','⚡',T[winner]+' skrällde mot '+T[loser],T[winner]+' vann med '+m.x+'–'+m.y+' trots ett tydligt sämre tabelläge före matchen.','upset'+r+winner)}}for(let t of current){let last=history.slice(0,r).reverse();let wins=0,losses=0;for(let round of last){let m=round.find(x=>x.a===t.i||x.b===t.i);if(!m)break;let won=m.a===t.i?m.x>m.y:m.y>m.x;if(won&&losses===0)wins++;else if(!won&&wins===0)losses++;else break}if(wins>=4&&(wins===4||wins%3===0))add(r,'FORMTOPP','🔥',T[t.i]+' har '+wins+' raka segrar','En imponerande segersvit gör '+T[t.i]+' till ett av seriens hetaste lag.','wins'+r+t.i);if(losses>=4&&(losses===4||losses%3===0))add(r,'KRIS','🚨',T[t.i]+' har '+losses+' raka förluster','Pressen växer efter ännu ett nederlag för '+T[t.i]+'.','loss'+r+t.i);let place=current.findIndex(x=>x.i===t.i)+1;if(r>=8&&place>=13&&(r===n||r%4===0)){
+const left=52-r,safe=current[11],gap=safe.p-t.p,possible=gap<=left*3;
+let tag='BOTTENSTRID',icon='⚠️',title=T[t.i]+' fast på kvalplats',body=left===0?'Grundserien är avslutad. '+T[t.i]+' slutar på plats '+place+' och väntar negativt kval.':'Plats '+place+' efter '+r+' omgångar. Laget måste börja ta poäng.';
+if(left>=1&&left<=3){tag='KVALDRAMA';icon='🚨';
+if(!possible){title=T[t.i]+' kan inte längre undvika negativt kval';body='Avståndet till säker mark är för stort med '+left+' omgångar kvar.'}
+else if(r%2===0){title=T[safe.i]+' känner flåset från '+T[t.i];body='Bara '+gap+' poäng skiljer lagen åt. Kan '+T[safe.i]+' hålla undan?'}
+else{title=T[t.i]+' slåss för att undvika negativt kval!';body=left+' omgång'+(left===1?'':'ar')+' återstår. Kan '+T[t.i]+' passera '+T[safe.i]+' och undvika kval?'}
+}
+add(r,tag,icon,title,body,'bottom'+t.i+(r===n?'latest':'-'+r))
+}}}let w=worldState();if(w.lastEvent&&w.lastEvent.news)add(w.lastEvent.round||n,'PRESSKONFERENS','🎤',w.lastEvent.title,w.lastEvent.news,'press'+w.lastEvent.id);return feed.sort((x,y)=>y.round-x.round||(['SKRÄLL','KRIS','FORMTOPP','STORSEGER','TABELLTOPPEN'].indexOf(x.tag)-['SKRÄLL','KRIS','FORMTOPP','STORSEGER','TABELLTOPPEN'].indexOf(y.tag))).slice(0,36)}
+/* BETA 1.4.2 – Deterministic newsroom: grounded events, editorial priority and career continuity.
+   Pure read-only derivation: no Math.random, no mutations, no effect on match simulation or saves. */
+function newsroomStreak(history,team,round){let wins=0,losses=0;for(let i=round-1;i>=0;i--){let m=(history[i]||[]).find(q=>q.a===team||q.b===team);if(!m)break;let won=m.a===team?m.x>m.y:m.y>m.x;if(won){if(losses)break;wins++}else{if(wins)break;losses++}}return {wins,losses}}
+function titleClinched(table,round,team){const leader=table[0],remaining=Math.max(0,52-round);return leader&&leader.i===team&&table.slice(1).every(t=>leader.p>t.p+remaining*3)}
+function haTitleClinched(table,round){const remaining=Math.max(0,52-round);return table.length>1&&table[0].p>table[1].p+remaining*3}
+function personalCoachNews(){let history=g.history||[],n=history.length,w=worldState(),feed=[];if(!n)return feed;
+ const club=T[g.team],st=standings(history),rank=st.findIndex(t=>t.i===g.team)+1,mine=st[rank-1],last=(history[n-1]||[]).find(m=>m.a===g.team||m.b===g.team),won=last&&(last.a===g.team?last.x>last.y:last.y>last.x),opp=last?(last.a===g.team?last.b:last.a):null,score=Math.round((worldClamp(w.morale)+worldClamp(w.fans)+worldClamp(w.board))/3),streak=newsroomStreak(history,g.team,n),oldRank=n>1?standings(history.slice(0,-1)).findIndex(t=>t.i===g.team)+1:rank;
+ const prior=Array.isArray(g.seasons)?g.seasons:[],oldClubs=prior.filter(x=>x&&Number.isInteger(x.team)&&x.team!==g.team),lastClub=oldClubs.length?oldClubs[oldClubs.length-1]:null;
+ const add=(priority,tag,icon,title,body,key,round=n)=>feed.push({round,tag,icon,title,body,key:'personal-'+key,personal:true,priority});
+ // A past club becomes relevant only when that club actually appears in a played fixture.
+ if(lastClub&&opp===lastClub.team)add(92,'ÅTERKOMST','🎙️','Tränaren mötte sin tidigare klubb '+T[opp],club+' ställdes mot '+T[opp]+', där tränaren tidigare arbetade. '+(won?'Det blev seger för den nya klubben.':'Den tidigare klubben vann mötet.')+' Matchen slutade '+last.x+'–'+last.y+'.','old-club-'+n);
+ if(w.lastResult?.round===n&&w.lastResult.upset&&won)add(88,'SKRÄLL','⚡',club+' skrällde – tränaren hyllas','En oväntad seger mot '+T[opp]+' efter att laget räknats bort i förhand.','upset-'+n);
+ if(streak.losses>=5&&(streak.losses===5||streak.losses%3===0))add(87,'FORMKRIS','🚨',streak.losses+' raka förluster – pressen växer i '+club,'Den tunga sviten fortsätter. '+club+' ligger på plats '+rank+' och behöver bryta trenden.','losing-'+n);
+ if(n>=4&&rank>=13&&w.board<40)add(90,'STYRELSEPRESS','🚨','Styrelsen kräver svar i '+club,'Klubben är på plats '+rank+'. Styrelsens förtroende är '+worldClamp(w.board)+'/100 och läget är pressat.','board-'+n);
+ else if(n>=4&&rank>=13&&w.fans<65)add(77,'SUPPORTERREAKTION','📣','Missnöjet växer bland '+club+'-supportrarna','Laget ligger på plats '+rank+' och supporterförtroendet är '+worldClamp(w.fans)+'/100.','fans-'+n);
+ if(streak.wins>=4&&(streak.wins===4||streak.wins%3===0))add(79,'FORMTOPP','🔥',club+' har '+streak.wins+' raka segrar','Tränaren har hittat ett vinnande recept. Laget ligger nu på plats '+rank+'.','winning-'+n);
+ if(score<40)add(74,'TRÄNARSTATUS','🔴','Förtroendekris kring tränaren i '+club,'Tränarscoren är '+score+'/100. Styrelsens och supportrarnas förtroende väger tungt.','low-'+n);
+ else if(score>=90)add(61,'TRÄNARSTATUS','🌟','Starkt stöd för tränaren i '+club,'Tränarscoren är '+score+'/100 efter '+n+' spelade omgångar.','high-'+n);
+ if(w.lastEvent&&w.lastEvent.news&&w.lastEvent.round>=n-1)add(71,'EFTER PRESSKONFERENSEN','🎤','Tränarens ord väcker reaktioner',w.lastEvent.news+' Supportrarnas förtroende: '+worldClamp(w.fans)+'/100.','press-'+n);
+ if(won&&rank<oldRank&&n>=3)add(53,'TABELLKLÄTTRING','📈',club+' klättrar i tabellen','Segern mot '+T[opp]+' lyfter laget från plats '+oldRank+' till '+rank+'.','climb-'+n);
+ else if(!won&&rank>oldRank&&n>=3)add(48,'TAPPAD MARK','📉',club+' tappar mark','Efter förlusten mot '+T[opp]+' faller laget från plats '+oldRank+' till '+rank+'.','drop-'+n);
+ if(n>=4&&rank<=3&&won)add(43,'TOPPSTRID','🏆',club+' håller sig kvar i toppstriden','Plats '+rank+' och '+mine.p+' poäng efter '+n+' omgångar.','top-'+n);
+ if(n>=42&&rank>=11)add(76,'SÄSONGSSLUTSPURT','⚠️','Varje poäng väger tungt för '+club,'Med '+(52-n)+' omgångar kvar ligger klubben på plats '+rank+'.','run-in-'+n);
+ else if(n>=42&&rank<=4&&!titleClinched(st,n,g.team))add(69,'SÄSONGSSLUTSPURT','🏆','Avgörande veckor väntar '+club,'Med '+(52-n)+' omgångar kvar är laget på plats '+rank+'.','top-run-in-'+n);
+ if(titleClinched(st,n,g.team))add(96,'SERIESEGRARE','🏆',club+' har redan säkrat seriesegern','Med '+(52-n)+' omgångar kvar är förstaplatsen matematiskt klar. Nu väntar uppladdningen inför slutspelet.','clinched-'+n);
+ // Career memory is sourced from saved season results, not invented milestones.
+ let gold=prior.filter(x=>x&&x.rank===1).length;
+ if(gold&&n<=3)add(60,'KARRIÄRMINNE','🏅','Tidigare seriesegrare inleder nytt kapitel','Tränaren har '+gold+' tidigare serieseger'+(gold===1?'':'ar')+' i karriärhistoriken. Nu väntar en ny utmaning i '+club+'.','legacy-'+n);
+ // Prioritize significant events; cap repeat categories, and preserve a useful ordinary fallback.
+ feed.sort((a,b)=>b.priority-a.priority||b.round-a.round||a.key.localeCompare(b.key));
+ let selected=[],tags=new Set();for(let item of feed){if(tags.has(item.tag))continue;selected.push(item);tags.add(item.tag);if(selected.length===4)break}
+ if(!selected.length&&last)selected.push({round:n,tag:'SENASTE MATCHEN',icon:won?'🏒':'📰',title:club+(won?' vann mot ':' föll mot ')+T[opp],body:'Matchen slutade '+last.x+'–'+last.y+'. '+club+' ligger på plats '+rank+' efter '+n+' omgångar.',key:'personal-match-'+n,personal:true});
+ return selected}
+function leagueNewsCards(limit){let items=leagueNewsFeed().slice(0,limit||24);return '<div class="league-news-feed">'+items.map(n=>'<article class="league-news-item '+(n.tag==='KVALDRAMA'?'league-news-urgent':'')+'"><div class="league-news-meta"><span>'+n.icon+' '+n.tag+'</span><span>OMGÅNG '+n.round+'</span></div><div class="league-news-title">'+n.title+'</div><p>'+n.body+'</p></article>').join('')+'</div>'}
+function personalNewsCards(limit){let items=personalCoachNews().slice(0,limit);return '<div class="league-news-feed">'+items.map((n,i)=>'<article class="league-news-item personal-news-item'+(i===0?' newsroom-lead':'')+'"><div class="league-news-meta"><span>'+n.icon+' '+n.tag+'</span><span>OMGÅNG '+n.round+'</span></div><div class="league-news-title">'+n.title+'</div><p>'+n.body+'</p></article>').join('')+'</div>'}
+/* BETA 1.4.3.1 – living editorial briefing. Deterministic per completed match; read-only. */
+function newsroomBriefing(){const h=g.history||[],n=h.length,club=T[g.team],season=(g.seasons||[]).length+1;
+ if(!n)return {tag:'SÄSONGSSTART',title:'En ny säsong väntar '+club,body:'Förväntningarna byggs upp. Första matchen blir startskottet på säsong '+season+'.',mood:'neutral'};
+ const table=standings(h),rank=table.findIndex(x=>x.i===g.team)+1,me=table[rank-1],prev=n>1?standings(h.slice(0,-1)).findIndex(x=>x.i===g.team)+1:rank;
+ const match=(h[n-1]||[]).find(m=>m.a===g.team||m.b===g.team),opp=match?(match.a===g.team?match.b:match.a):null,won=match&&(match.a===g.team?match.x>match.y:match.y>match.x),streak=newsroomStreak(h,g.team,n),remaining=Math.max(0,52-n);
+ const outcome=won?'segern':'förlusten',against=opp===null?'senaste motståndet':T[opp],place='plats '+rank,points=me.p+' poäng';
+ const options=[];
+ const add=(priority,tag,title,body,mood)=>options.push({priority,tag,title,body,mood});
+ // A press-conference response is a real recorded event; feature its actual supporter impact
+ // only until the next match is played. No invented quotes or reactions.
+ const w=worldState(),ev=w.lastEvent,fb=w.pressFeedback;
+ if(ev&&ev.news&&ev.round===n){
+  const delta=fb&&fb.id===ev.id?fb.after.fans-fb.before.fans:null;
+  const reaction=delta===null?'Supportrarnas förtroende ligger nu på '+worldClamp(w.fans)+'/100.':delta>0?'Förtroendet bland supportrarna steg med '+delta+' poäng.':delta<0?'Förtroendet bland supportrarna sjönk med '+Math.abs(delta)+' poäng.':'Supportrarnas förtroende är oförändrat.';
+  add(110,'PRESSREAKTION','Tränarens ord väcker reaktioner i '+club,ev.news+' '+reaction,delta<0?'warning':delta>0?'positive':'neutral');
+ }
+
+ if(streak.losses>=4)add(95,'KRISLÄGE',streak.losses+' raka förluster – '+club+' måste hitta en vändning','Efter '+outcome+' mot '+against+' växer pressen. Laget ligger på '+place+'.','crisis');
+ if(streak.wins>=4)add(90,'FORMTOPP',club+' flyger fram – '+streak.wins+' raka segrar','Segern mot '+against+' förlänger sviten. '+place+' och '+points+' efter '+n+' omgångar.','positive');
+ if(n>=6&&rank>=13)add(86,'BOTTENSTRID',club+' under press i bottenstriden',(won?'Segern mot ':'Förlusten mot ')+against+' lämnar klubben på '+place+'. '+remaining+' omgångar återstår.','crisis');
+ if(n>=42&&rank<=3&&!titleClinched(table,n,g.team))add(85,'SLUTSPURT',club+' jagar topplacering i slutspurten',remaining+' omgångar kvar. '+place+' med '+points+' – varje match får större betydelse.','positive');
+ if(n>=42&&rank>=10)add(84,'SLUTSPURT',club+' går in i en avgörande slutspurt',remaining+' omgångar återstår och laget ligger på '+place+'.','warning');
+ if(n>=3&&rank<prev)add(83,'TABELLKLÄTTRING',club+' klättrar efter '+outcome,'Från plats '+prev+' till '+rank+' efter mötet med '+against+'. Nu väntar nästa utmaning.','positive');
+ if(n>=3&&rank>prev)add(83,'TAPPAD MARK',club+' tappar placeringar efter '+outcome,'Från plats '+prev+' till '+rank+' efter mötet med '+against+'.','warning');
+ if(n>=4&&rank===1)add(78,'SERIELEDNING',club+' håller greppet om serieledningen',points+' efter '+n+' omgångar. '+(won?'Senaste segern stärker läget i toppen.':'Trots senaste förlusten är laget fortfarande etta.'),'positive');
+ // Cycle among equally truthful editorial angles across rounds, avoiding a permanently frozen banner.
+ if(match){add(48,'SENASTE MATCHEN',club+(won?' tog en viktig seger':' fick en tung kväll')+' mot '+against,'Matchen slutade '+match.x+'–'+match.y+'. Laget är på '+place+' med '+points+'.',won?'positive':'warning');
+ add(47,'REDAKTIONENS LÄGE',club+' blickar framåt efter '+outcome+' mot '+against,'Efter '+n+' omgångar är '+club+' på '+place+'. '+remaining+' matcher återstår av grundserien.',won?'positive':'neutral');
+ add(46,'SÄSONGSKOLL',n+' omgångar spelade – så ligger '+club+' till',place+', '+points+' och '+remaining+' matcher kvar. Senast blev det '+(won?'vinst':'förlust')+' mot '+against+'.','neutral');}
+ // Rotate between a major headline and another angle, while always reacting to the latest fixture.
+ options.sort((a,b)=>b.priority-a.priority);
+ const primary=options[0],secondary=options.filter(x=>x.priority<primary.priority);
+ const pick=n%3===1&&secondary.length?secondary[0]:primary;
+ return pick;
+}
+/* BETA 1.4.4 – deterministic rotating newsroom, no match RNG or save writes. */
+let newsIndex=0,newsTimer=null,newsSignature='';
+/* BETA 1.4.5 – seven-story newsroom with story-topic cooldown and mathematical milestones. */
+function newsCarouselStories(){
+ const h=g.history||[],n=h.length,season=(g.seasons||[]).length+1,club=T[g.team],own=newsroomBriefing(),stories=[];
+ const add=(x)=>stories.push(x);
+ const st=n?standings(h):[],myRank=n?st.findIndex(x=>x.i===g.team)+1:0,remaining=52-n;
+ if(n){
+  const mine=st[myRank-1],runner=st[myRank===1?1:0],maxOther=st.filter(x=>x.i!==g.team).reduce((v,x)=>Math.max(v,x.p+remaining*3),0);
+  const prev=n>1?standings(h.slice(0,-1)):null,previousLeader=prev?prev[0]:null;
+  const clinched=myRank===1&&mine.p>maxOther,wasClinched=n>1&&previousLeader&&previousLeader.i===g.team&&previousLeader.p>prev.filter(x=>x.i!==g.team).reduce((v,x)=>Math.max(v,x.p+(53-n)*3),0);
+  if(clinched)add({priority:wasClinched?185:250,topic:'clinched-'+g.team,source:'DIN KLUBB',mood:'milestone',title:wasClinched?club+' VINNER GRUNDSERIEN – '+mine.p+' POÄNG!':club+' ÄR GRUNDSERIESEGRARE!',body:wasClinched?'Efter 52 omgångars kamp står '+club+' som grundseriens vinnare med '+mine.p+' poäng. Förstaplatsen är säkrad – nu väntar jakten på SM-guldet!':'🏆 '+club+' har skrivit in sig som grundserievinnare! Med '+remaining+' omgångar kvar är försprånget ointagligt. Nu börjar uppladdningen inför slutspelet.',tag:'SERIESEGRARE'});
+  else if(myRank===1&&remaining>0&&mine.p+3>maxOther)add({priority:125,topic:'title-chase-'+g.team,source:'DIN KLUBB',mood:'positive',title:club+' kan säkra seriesegern i nästa omgång',body:'Med '+remaining+' omgångar kvar kan ytterligare tre poäng göra serieledningen ointaglig, beroende på övriga resultat.',tag:'GULDLÄGE'});
+  const streak=newsroomStreak(h,g.team,n);
+  if(streak.wins>=4)add({priority:103,topic:'form-win-'+g.team,source:'DIN KLUBB',mood:'positive',title:club+' har '+streak.wins+' raka segrar',body:'Segersviten fortsätter. '+club+' ligger på plats '+myRank+' med '+mine.p+' poäng.',tag:'FORMTOPP'});
+  if(streak.losses>=4)add({priority:120,topic:'form-loss-'+g.team,source:'DIN KLUBB',mood:'crisis',title:club+' i motvind – '+streak.losses+' raka förluster',body:'Resultaten sätter press på klubben, som ligger på plats '+myRank+'.',tag:'FORMKRIS'});
+  const old=n>=5?standings(h.slice(0,n-5)):null;
+  for(const t of st){if(t.i===g.team)continue;const rank=st.findIndex(x=>x.i===t.i)+1,prevRank=old?old.findIndex(x=>x.i===t.i)+1:rank,run=newsroomStreak(h,t.i,n),name=T[t.i];
+   if(run.losses>=8&&rank>=11)add({priority:150,topic:'crisis-'+t.i,source:'SHL',mood:'crisis',title:name+' i djup kris – '+run.losses+' raka förluster',body:'Plats '+rank+' efter '+n+' omgångar. En tung svit hotar säsongen.',tag:'STORKRIS'});
+   else if(n>=8&&prevRank<=10&&rank>=13&&rank-prevRank>=3)add({priority:140,topic:'collapse-'+t.i,source:'SHL',mood:'crisis',title:name+' rasar mot kvalstrecket',body:'Från plats '+prevRank+' till '+rank+' på fem omgångar.',tag:'TABELLRAS'});
+   else if(run.wins>=7&&rank<=5)add({priority:108,topic:'streak-'+t.i,source:'SHL',mood:'positive',title:name+' flyger fram – '+run.wins+' raka segrar',body:'Den starka formen har tagit laget till plats '+rank+'.',tag:'SEGERSVIT'});
+  }
+  if(n>=20){const ha=haStandings(n),lead=ha[0],gap=lead.p-ha[1].p,secured=haTitleClinched(ha,n);if(secured||gap>=5||n>=35)add({priority:secured?245:gap>=12?114:83,topic:'ha-leader-'+lead.name,source:'HOCKEYALLSVENSKAN',mood:secured?'milestone':'positive',title:secured?lead.name+' har säkrat seriesegern i HockeyAllsvenskan!':lead.name+(gap>=10?' tar stormsteg mot SHL':' leder jakten på SHL-platsen'),body:secured?'🏆 '+lead.name+' står som grundserievinnare i HockeyAllsvenskan! '+gap+' poäng före tvåan – nu väntar avgörandet om SHL-platsen vid säsongsslutet.':lead.name+' toppar HockeyAllsvenskan med '+lead.p+' poäng, '+gap+' före '+ha[1].name+'. Uppflyttning avgörs vid säsongsslutet.',tag:secured?'SÄKRAD SERIESÄGER':'UPPFLYTTNINGSJAKT'});}
+  const latest=(h[n-1]||[]).find(x=>x.a===g.team||x.b===g.team);
+  if(latest){const won=latest.a===g.team?latest.x>latest.y:latest.y>latest.x,opp=T[latest.a===g.team?latest.b:latest.a];
+   add({priority:80,topic:'latest-'+g.team+'-'+n,source:'DIN KLUBB',mood:won?'positive':'warning',title:club+(won?' vann mot ':' föll mot ')+opp,body:'Senaste matchen slutade '+latest.x+'–'+latest.y+'. '+club+' ligger på plats '+myRank+'.',tag:'SENASTE MATCHEN'});
+  }
+  const other=leagueNewsFeed().filter(x=>x.round>=n-1).slice(0,5);
+  for(const x of other)add({priority:64,topic:'league-'+x.title,source:'SHL',mood:(x.tag==='KRIS'||x.tag==='KVALDRAMA')?'crisis':'neutral',title:x.title,body:x.body,tag:x.tag});
+  add({priority:65,topic:'table-'+g.team,source:'DIN KLUBB',mood:myRank<=4?'positive':myRank>=11?'warning':'neutral',title:club+' på plats '+myRank+' med '+remaining+' matcher kvar',body:'Efter '+n+' omgångar har '+club+' '+mine.p+' poäng. Varje ny omgång kan förändra läget.',tag:'TABELLÄGE'});
+ }
+ const event=worldState().lastEvent;
+ if(event&&event.news&&event.round===n)add({priority:155,topic:'press-'+event.id,source:'DIN KLUBB',mood:own.mood,title:'Tränarens ord väcker reaktioner i '+club,body:event.news,tag:'PRESSREAKTION'});
+ if(!n)add({...own,priority:90,topic:'season-start',source:'DIN KLUBB'});
+ // The same topic can be shown for three consecutive rounds (first + two repeats).
+ // If it appeared in the previous three rounds, it must rest this round.
+ const archive=Array.isArray(g.newsArchive)?g.newsArchive:[];
+ const eligible=stories.filter(x=>{if(x.priority>=180)return true;const rounds=new Set(archive.filter(a=>a.season===season&&a.topic===x.topic&&a.round<n).map(a=>a.round));return !(rounds.has(n-1)&&rounds.has(n-2)&&rounds.has(n-3))});
+ eligible.sort((a,b)=>b.priority-a.priority||a.title.localeCompare(b.title));
+ const result=[],topics=new Set();
+ for(const x of eligible){if(topics.has(x.topic))continue;topics.add(x.topic);result.push(x);if(result.length===7)break}
+ if(!result.length)result.push({...own,source:'DIN KLUBB',topic:'fallback-'+n});
+ return result;
+}
+/* Seven editorial candidates remain available for archiving; the hub only reveals three per round. */
+function newsCarouselVisible(){return newsCarouselStories().slice(0,3)}
+function newsCarouselShow(i){const root=document.querySelector('[data-news-carousel]');if(!root)return;const stories=newsCarouselVisible();newsIndex=(i+stories.length)%stories.length;const story=stories[newsIndex];root.className='newsroom-banner newsroom-'+story.mood;root.querySelector('[data-news-title]').textContent=story.title;root.querySelector('[data-news-body]').textContent=story.body;root.querySelector('[data-news-source]').textContent=story.source;root.querySelector('[data-news-count]').textContent=(newsIndex+1)+'/'+stories.length;root.querySelectorAll('[data-news-dot]').forEach((el,j)=>el.classList.toggle('active',j===newsIndex))}
+function newsCarouselNext(delta){newsCarouselShow(newsIndex+delta);newsCarouselTimer()}
+function newsCarouselTimer(){if(newsTimer){clearInterval(newsTimer);newsTimer=null}if(document.querySelector('[data-news-carousel]')&&newsCarouselVisible().length>1)newsTimer=setInterval(()=>{if(document.querySelector('[data-news-carousel]'))newsCarouselShow(newsIndex+1);else{clearInterval(newsTimer);newsTimer=null}},15000)}
+function newsCarouselInit(){const root=document.querySelector('[data-news-carousel]');if(!root){if(newsTimer){clearInterval(newsTimer);newsTimer=null}return}const sig=(g.seasons||[]).length+':'+(g.history||[]).length+':'+g.team+':'+(worldState().lastEvent?.id||'');if(sig!==newsSignature){newsSignature=sig;newsIndex=0}newsCarouselShow(newsIndex);newsCarouselTimer()}
+/* BETA 1.4.4.3 – persistent, bounded newsroom history.
+   Capture only on meaningful game updates, never on the 18-second slide timer. */
+function recordNewsArchive(){if(!Array.isArray(g.newsArchive))g.newsArchive=[];const n=(g.history||[]).length,season=(g.seasons||[]).length+1,stories=newsCarouselStories();const event=worldState().lastEvent;const press=event&&event.round===n&&event.news?'press-'+String(event.id):'';
+ const keys=new Set(g.newsArchive.map(x=>x.id));for(const item of stories){const id=season+':'+n+':'+(press&&item.tag==='PRESSREAKTION'?press+':':'')+item.source+':'+item.title;if(keys.has(id))continue;g.newsArchive.unshift({id,season,round:n,source:item.source,topic:item.topic||item.title,title:item.title,body:item.body,mood:item.mood||'neutral'});keys.add(id)}
+ g.newsArchive=g.newsArchive.slice(0,350)}
+/* BETA 1.4.4.4 – independent four-item news sections. */
+const newsInitial={editor:2,club:2,league:3};
+const newsVisible={editor:2,club:2,league:3};
+const newsCollapsed={editor:false,club:false,league:false};
+function newsExpand(category){newsVisible[category]=(newsVisible[category]||newsInitial[category])+newsInitial[category];const target=document.getElementById('news-category-'+category);if(target)target.innerHTML=newsCategory(category)}
+function newsToggle(category){newsCollapsed[category]=!newsCollapsed[category];const section=document.getElementById('news-panel-'+category);if(!section)return;const body=section.querySelector('.news-category-body'),button=section.querySelector('.news-collapse-button');body.hidden=newsCollapsed[category];button.setAttribute('aria-expanded',String(!newsCollapsed[category]));button.setAttribute('aria-label',(newsCollapsed[category]?'Visa ':'Dölj ')+button.dataset.title);button.textContent=newsCollapsed[category]?'＋':'−';section.classList.toggle('is-collapsed',newsCollapsed[category])}
+function newsCategoryPanel(category,title){return '<section id="news-panel-'+category+'" class="news-category-panel" aria-label="'+title+'"><div class="news-category-heading"><div class="personal-news-heading">'+title+'</div><button type="button" class="news-collapse-button" data-title="'+title+'" aria-label="Dölj '+title+'" aria-expanded="true" aria-controls="news-category-'+category+'" onclick="newsToggle(this.dataset.category)" data-category="'+category+'">−</button></div><div class="news-category-body" id="news-category-'+category+'">'+newsCategory(category)+'</div></section>'}
+function newsCategory(category){
+ let items=[];
+ if(category==='editor'){items=(Array.isArray(g.newsArchive)?g.newsArchive:[]).slice();if(!items.length)items=newsCarouselStories().map(x=>({...x,round:(g.history||[]).length,season:(g.seasons||[]).length+1}));}
+ else if(category==='club'){const recent=personalCoachNews().map(x=>({...x,source:x.tag,season:(g.seasons||[]).length+1}));const saved=(Array.isArray(g.newsArchive)?g.newsArchive:[]).filter(x=>x.source==='DIN KLUBB');items=recent.concat(saved).filter((x,i,all)=>all.findIndex(y=>y.title===x.title&&y.round===x.round&&y.season===x.season)===i).sort((x,y)=>(y.season||0)-(x.season||0)||(y.round||0)-(x.round||0));}
+ else{items=leagueNewsFeed().map(x=>({...x,source:x.tag}));const ha=(Array.isArray(g.newsArchive)?g.newsArchive:[]).filter(x=>x.source==='HOCKEYALLSVENSKAN');items=items.concat(ha).filter((x,i,all)=>all.findIndex(y=>y.title===x.title&&y.round===x.round&&y.season===x.season)===i).sort((a,b)=>(b.season||((g.seasons||[]).length+1))-(a.season||((g.seasons||[]).length+1))||(b.round||0)-(a.round||0));}
+ const max=newsVisible[category]||newsInitial[category];
+ const html=items.slice(0,max).map(x=>'<article class="league-news-item newsroom-archive-'+(x.mood||'neutral')+'"><div class="league-news-meta"><span>'+(x.icon||'📰')+' '+(x.source||x.tag||'NYHET')+'</span><span>'+(x.season?'SÄSONG '+x.season+' · ':'')+'OMGÅNG '+(x.round||0)+'</span></div><div class="league-news-title">'+x.title+'</div><p>'+x.body+'</p></article>').join('');
+ const more=items.length>max?'<button type="button" class="league-news-more" onclick="newsExpand(this.dataset.category)" data-category="'+category+'">VISA FLER · '+(items.length-max)+' KVAR ↓</button>':'';
+ return '<div class="league-news-feed">'+(html||'<p class="muted">Inga nyheter ännu.</p>')+'</div>'+more;
+}
+function newsroomArchiveCards(){const entries=Array.isArray(g.newsArchive)?g.newsArchive:[];if(!entries.length)return '<p class="muted">Redaktionens arkiv fylls på efter kommande matcher.</p>';return '<div class="league-news-feed">'+entries.map(x=>'<article class="league-news-item newsroom-archive-'+x.mood+'"><div class="league-news-meta"><span>📡 '+x.source+'</span><span>SÄSONG '+x.season+' · OMGÅNG '+x.round+'</span></div><div class="league-news-title">'+x.title+'</div><p>'+x.body+'</p></article>').join('')+'</div>'}
+function worldNewsArchiveTop(){return '<div class="league-news-feed">'+newsCarouselStories().map(x=>'<article class="league-news-item newsroom-archive-'+x.mood+'"><div class="league-news-meta"><span>📡 '+x.source+'</span><span>OMGÅNG '+(g.history||[]).length+'</span></div><div class="league-news-title">'+x.title+'</div><p>'+x.body+'</p></article>').join('')+'</div>'}
+/* BETA 1.4.5.21 – independent compact hub news sliders. */
+const hubNewsIndex={club:0,league:0};
+function hubNewsItems(category){
+ if(category==='club')return personalCoachNews().slice(0,3);
+ const shl=leagueNewsFeed().slice(0,2);
+ const archive=Array.isArray(g.newsArchive)?g.newsArchive:[];
+ const ha=newsCarouselStories().find(x=>x.source==='HOCKEYALLSVENSKAN')||archive.find(x=>x.source==='HOCKEYALLSVENSKAN');
+ const round=(g.history||[]).length,leader=haStandings(round)[0];const fallback=leader?{title:leader.name+' leder HockeyAllsvenskan',body:leader.p+' poäng efter '+round+' omgångar.',round,source:'HOCKEYALLSVENSKAN'}:null;const item=ha||fallback;return item?shl.concat([{...item,tag:'HOCKEYALLSVENSKAN',icon:'📰',round:item.round||round}]):shl;
+}
+function hubNewsSelect(category,index){hubNewsSlide(category,index-hubNewsIndex[category])}
+function hubNewsSlide(category,delta){
+ const items=hubNewsItems(category),root=document.querySelector('[data-hub-news="'+category+'"]');if(!root||!items.length)return;
+ hubNewsIndex[category]=(hubNewsIndex[category]+delta+items.length)%items.length;
+ const item=items[hubNewsIndex[category]],card=root.querySelector('.league-news-item');
+ card.className='league-news-item '+(item.tag==='KVALDRAMA'?'league-news-urgent':category==='club'?'personal-news-item newsroom-lead':item.tag==='HOCKEYALLSVENSKAN'?'league-news-ha':'');
+ card.querySelector('.league-news-meta span:first-child').textContent=(item.icon||'📰')+' '+(item.tag||item.source||'NYHET');
+ card.querySelector('.league-news-meta span:last-child').textContent='OMGÅNG '+(item.round||0);
+ card.querySelector('.league-news-title').textContent=item.title;
+ card.querySelector('p').textContent=item.body;
+ root.querySelector('[data-hub-source]').textContent=category==='club'?'DIN KLUBB':(item.tag==='HOCKEYALLSVENSKAN'?'HOCKEYALLSVENSKAN':'SHL');
+ root.querySelector('[data-hub-count]').textContent=(hubNewsIndex[category]+1)+'/'+items.length;
+ root.querySelectorAll('[data-hub-dot]').forEach((el,i)=>el.classList.toggle('active',i===hubNewsIndex[category]));
+}
+function hubNewsCarousel(category){
+ const items=hubNewsItems(category);if(!items.length)return '<p class="muted">Inga nyheter ännu.</p>';
+ hubNewsIndex[category]=0;const item=items[0];
+ return '<div class="hub-news-slider" data-hub-news="'+category+'"><article class="league-news-item '+(item.tag==='KVALDRAMA'?'league-news-urgent':category==='club'?'personal-news-item newsroom-lead':item.tag==='HOCKEYALLSVENSKAN'?'league-news-ha':'')+'"><div class="league-news-meta"><span>'+(item.icon||'📰')+' '+(item.tag||item.source||'NYHET')+'</span><span>OMGÅNG '+(item.round||0)+'</span></div><div class="league-news-title">'+item.title+'</div><p>'+item.body+'</p><div class="hub-news-controls"><span class="hub-news-source" data-hub-source>'+(category==='club'?'DIN KLUBB':item.tag==='HOCKEYALLSVENSKAN'?'HOCKEYALLSVENSKAN':'SHL')+'</span><div class="news-carousel-dots">'+items.map((_,i)=>'<button type="button" data-hub-dot class="'+(i===0?'active':'')+'" onclick="hubNewsSelect(\''+category+'\','+i+')" aria-label="Visa nyhet '+(i+1)+'"></button>').join('')+'</div><button type="button" class="news-carousel-next" onclick="hubNewsSlide(\''+category+'\',1)" aria-label="Nästa nyhet">›</button><span data-hub-count>1/'+items.length+'</span></div></article></div>';
+}
+function worldNews(){const stories=newsCarouselVisible(),b=stories[0],dots=stories.map((_,i)=>'<button type="button" data-news-dot aria-label="Nyhet '+(i+1)+'" onclick="newsCarouselNext('+i+'-newsIndex)"></button>').join('');return '<div class="newsroom-banner newsroom-'+b.mood+'" data-news-carousel><span><i class="newsroom-pulse" aria-hidden="true"></i> HOCKEYREDAKTIONEN · OMGÅNG '+(g.history||[]).length+'/52</span><strong data-news-title>'+b.title+'</strong><small data-news-body>'+b.body+'</small><div class="news-carousel-controls"><span data-news-source>'+b.source+'</span><div class="news-carousel-dots">'+dots+'</div><button type="button" class="news-carousel-next" onclick="newsCarouselNext(1)" aria-label="Nästa nyhet">›</button><span data-news-count>1/'+stories.length+'</span></div></div><div class="personal-news-heading">🎙️ KRING DIN KLUBB</div>'+hubNewsCarousel('club')+'<div class="personal-news-heading">🏒 RUNT OM I SHL / HA</div>'+hubNewsCarousel('league')+'<button class="league-news-more" onclick="update({page:&quot;news&quot;});window.scrollTo(0,0)">📰 ALLA NYHETER →</button>'}
 
 function previewInsights(){
  const [a,b]=fixture(),stand=standings(g.history),A=stand.find(t=>t.i===a),B=stand.find(t=>t.i===b);
@@ -597,7 +1482,11 @@ function previewInsights(){
  const meetings=h2h.length?h2h.map(m=>'<div class="h2h-row"><span>'+T[m.a]+'</span><b>'+m.x+'–'+m.y+'</b><span>'+T[m.b]+'</span><small>'+ (m.ot?'ÖT':'')+'</small></div>').join(''):'<p class="muted">Inga tidigare inbördes möten spelade under den här säsongen ännu.</p>';
  return odds+card('🧠 SCOUTINGRAPPORT','<p class="prediction-note">'+(sc.attacking?'Motståndaren har hög offensiv fart. Balanserat spel kan hjälpa er att stå emot utan att bli passiva.':sc.cautious?'Motståndaren har spelat målsnålt. Se upp för kontringar när ni flyttar fram.':'Motståndaren har ingen tydlig offensiv profil just nu.')+'</p>'+(sc.repeated>=2?'<p class="prediction-note">⚠️ Ni har använt samma taktik '+sc.repeated+' matcher i rad. Motståndarna börjar läsa ert spel.</p>':''))+card('🤝 SENASTE INBÖRDES MÖTEN',meetings+'<p class="prediction-note">Visar upp till fem möten från den pågående säsongen.</p>');
 }
-function miniStandingsPreview(st){return '<button class="mini-table-link" onclick="update({page:\'table\'})"><span class="mini-table-head"><span>🏆 TABELLEN · TOPP 3</span><span>HELA TABELLEN →</span></span>'+st.slice(0,3).map((t,i)=>'<span class="mini-table-row '+(t.i===g.team?'is-my-team':'')+'"><span class="mini-pos mini-pos-'+(i+1)+'">'+(i+1)+'.</span><span>'+T[t.i]+'</span><span class="mini-points">'+t.p+' p</span></span>').join('')+'</button>'}
+let miniLeague='shl';
+let miniLeagueTimer=null;
+function scheduleMiniLeague(){if(miniLeagueTimer)clearTimeout(miniLeagueTimer);miniLeagueTimer=null;if(g.page!=='hub'&&!document.querySelector('.mini-table-shell'))return;if(!document.querySelector('.mini-table-shell'))return;miniLeagueTimer=setTimeout(()=>{miniLeagueTimer=null;if(!document.querySelector('.mini-table-shell')||g.page!=='hub')return;toggleMiniLeague(false)},15000)}
+function toggleMiniLeague(manual=true){const current=document.querySelector('.mini-table-shell');if(!current)return;miniLeague=miniLeague==='shl'?'ha':'shl';const st=standings(g.history);const holder=document.createElement('div');holder.innerHTML=miniStandingsPreview(st);current.replaceWith(holder.firstElementChild);if(manual)scheduleMiniLeague();else scheduleMiniLeague()}
+function miniStandingsPreview(st){const ha=miniLeague==='ha',rows=ha?haStandings(g.history.length):st;return '<div class="mini-table-link mini-table-shell"><div class="mini-table-head"><span>🏆 '+(ha?'HOCKEYALLSVENSKAN':'SHL')+' · TOPP 3</span><button type="button" class="mini-league-toggle" onclick="toggleMiniLeague()" aria-label="Byt liga" title="Byt mellan SHL och HockeyAllsvenskan">⇄ '+(ha?'SHL':'HA')+'</button></div><button type="button" class="mini-table-open" onclick="update({page:\'table\',tableLeague:\''+(ha?'ha':'shl')+'\'})" aria-label="Visa hela tabellen">'+rows.slice(0,3).map((t,i)=>'<span class="mini-table-row '+(!ha&&t.i===g.team?'is-my-team':'')+'"><span class="mini-pos mini-pos-'+(i+1)+'">'+(i+1)+'.</span><span>'+(ha?t.name:T[t.i])+'</span><span class="mini-points">'+t.p+' p</span></span>').join('')+'</button><button type="button" class="mini-table-full-link" onclick="update({page:\'table\',tableLeague:\''+(ha?'ha':'shl')+'\'})">HELA TABELLEN →</button></div>'}
 function upcomingMatches(){let rows=[];for(let r=g.round+1;r<=52&&rows.length<5;r++){let q=seasonSchedule()[r-1].find(pair=>pair.includes(g.team));if(q){let opp=q[0]===g.team?q[1]:q[0];rows.push('<div class="upcomingicon" title="Omgång '+r+' · '+T[opp]+' · '+(q[0]===g.team?'Hemma':'Borta')+'"><div class="upcomingbadge" style="--c:'+K[opp]+'">'+C[opp]+'</div></div>')}}return '<div class="upcominglist"><div class="upcomingtitle">KOMMANDE 5 MOTSTÅNDARE</div><div class="upcomingicons">'+rows.join('')+'</div></div>'}
 function standings(history){let t=T.map((_,i)=>({i,p:0,m:0,w:0,ow:0,ol:0,l:0,gf:0,ga:0,form:[],streak:0}));for(let r of history)for(let q of r){let x=t[q.a],y=t[q.b],aw=q.x>q.y;x.m++;y.m++;x.gf+=q.x;x.ga+=q.y;y.gf+=q.y;y.ga+=q.x;x.form=[...x.form,aw?'🟢':q.ot?'🟡':'🔴'].slice(-5);y.form=[...y.form,!aw?'🟢':q.ot?'🟡':'🔴'].slice(-5);x.streak=aw?x.streak+1:0;y.streak=aw?0:y.streak+1;if(aw){if(q.ot){x.ow++;x.p+=2;y.ol++;y.p++}else{x.w++;x.p+=3;y.l++}}else if(q.ot){y.ow++;y.p+=2;x.ol++;x.p++}else{y.w++;y.p+=3;x.l++}}return t.sort((x,y)=>y.p-x.p||(y.gf-y.ga)-(x.gf-x.ga)||y.gf-x.gf||x.i-y.i)}
 function goToNextMatch(direct=false){
@@ -668,7 +1557,7 @@ function nextClock(turn,x,y,goal){let nextStep=(turn+1)%5;if(nextStep===0)return
  out+=Object.entries(g.coachActive||{}).filter(([k,v])=>coachDefs[k]&&v&&v.left>0).map(([k,v])=>'<div class="perk-detail perk-'+k+'"><strong>⚡ '+coachDefs[k].label+'</strong><span>'+({timeout:'Lugnare spel och bättre defensiv organisation.',lines:'Starkare offensiv press och högre chans att skapa mål.',pulled:'Extra utespelare och kraftigt ökad offensiv – men större risk bakåt.',goalie:'Stabilare målvaktsspel och förbättrat försvar.'}[k]||'Aktiv tränarfördel')+'</span><small>'+((v.left===1)?'Gäller under nästa beslut':(v.left===2)?'Gäller under 2 beslut':'Gäller under '+v.left+' beslut')+'</small></div>').join('');
  return out+'</div>';
 }
-function render(){if(g.page==='match'&&g.shootout){g.shootout=false;g.finalPending=false;g.overtime=true;g.overtimeStep=Math.max(2,g.overtimeStep||0)}if(g.page==='match'&&g.turn<14&&!g.overtime&&g.finalPending){g.finalPending=false;try{localStorage.setItem('shl_gulddrommen_development',JSON.stringify(g))}catch{}}document.querySelector('main').classList.toggle('inmatch',g.page==='match');document.querySelector('main').classList.toggle('prepmatch',g.page==='preview');document.querySelector('main').classList.toggle('compactbranding',g.page==='result');document.querySelector('main').classList.toggle('managerhome',g.page==='home');let st=standings(g.history),my=st.find(t=>t.i===g.team),rank=st.findIndex(t=>t.i===g.team)+1,f=fixture(),h='';if(g.page==='setup'){const last=(g.seasons||[]).at(-1),lastRank=Number(g.offerLastRank??last?.rank),offers=Array.isArray(g.offers)&&g.offers.length?g.offers:null;h=offers?'<h2>🏒 VART GÅR KARRIÄREN NU?</h2>'+(g.leagueReport||'')+'<p class="muted">Säsong '+((g.seasons||[]).length+1)+' · Efter din senaste säsong med '+(last.teamName||T[last.team])+' har klubbarna hört av sig. Var vill du fortsätta din tränarkarriär?</p><div class="offer-note">'+(g.coachRelegated?'⚠️ Din tidigare klubb har åkt ur SHL. Allsvensk tränarkarriär kommer senare. Välj ett SHL-erbjudande.':lastRank>=13?'⚠️ <b>'+(last.teamName||T[last.team])+'</b> vill inte förlänga efter plats '+last.rank+'.':'🤝 <b>'+T[last.team]+'</b> vill gärna att du stannar.')+' Du har också fått erbjudanden från andra SHL-klubbar.</div><div class="grid">'+offers.map(i=>'<button class="club '+(g.team===i?'sel':'')+'" onclick="update({team:'+i+'})">'+tile(i)+'<span><b>'+T[i]+'</b><small class="offer-tag">'+(i===last.team?(lastRank>=13?'⚠️ VILL INTE FÖRLÄNGA · KAN ÄNDÅ VÄLJAS':'💙 DIN NUVARANDE KLUBB · VILL FÖRLÄNGA'):'📩 ERBJUDER ETT KONTRAKT')+'</small></span></button>').join('')+'</div><p class="muted">Välj ett av erbjudandena. Din tidigare karriär följer med oavsett klubb.</p>':'<h2>VÄLJ DIN KLUBB</h2><p class="muted">Ta över ett SHL-lag och spela 52 omgångar.</p><div class="grid">'+T.map((t,i)=>'<button class="club '+(g.team===i?'sel':'')+'" onclick="update({team:'+i+'})">'+tile(i)+'<span>'+t+'</span></button>').join('')+'</div>';h+='<p>'+btn(offers?'SKRIV PÅ & STARTA NÄSTA SÄSONG →':'STARTA SÄSONGEN →',"update({...fresh(),team:g.team,shlClubs:g.shlClubs||SHL_ORIGINAL,haClubs:g.haClubs||HA_ORIGINAL,seasons:g.seasons||[],page:'home'})",'full')+'</p>'}else{if(g.page==='home'){h+=card('DIN KLUBB · OMGÅNG '+g.history.length+'/52','<div class="row"><div class="crest" style="--c:'+K[g.team]+'">'+C[g.team]+'</div><div><h2>'+T[g.team]+'</h2><div class="muted">Huvudtränare · SHL</div></div></div><div class="stats"><div class="stat placement-stat '+(g.history.length?(rank===1?'placement-gold':rank===2?'placement-silver':rank===3?'placement-bronze':rank>=13?'placement-red':'placement-blue'):'')+'" role="button" tabindex="0" aria-label="Öppna SHL-tabellen" onclick="update({page:&#39;table&#39;});window.scrollTo(0,0)" onkeydown="if(event.key===&#39;Enter&#39;||event.key===&#39; &#39;){event.preventDefault();this.click()}"><b>'+(g.history.length?rank:'–')+'</b><span class="small">PLACERING</span></div><div class="stat"><b>'+my.p+'</b><span class="small">POÄNG</span></div><div class="stat"><b>'+(my.gf-my.ga)+'</b><span class="small">MÅLSKILLNAD</span></div>'+worldHomeScore()+'</div><p class="muted">Form: '+(my.form.map(v=>'<span class="form-square '+(v.includes('🟢')?'form-win':v.includes('🔴')?'form-loss':'form-draw')+'" title="'+(v.includes('🟢')?'Vinst':v.includes('🔴')?'Förlust':'Oavgjort')+'"></span>').join('')||'Inga matcher')+'</p>');h+=btn('🏆 MIN MANAGERKARRIÄR →',"update({page:'career'})",'full career-entry');h+=g.history.length<52?card('NÄSTA MATCH · OMGÅNG '+g.round,'<div class="versus">'+match(f[0])+'<b>VS</b>'+match(f[1])+'</div><p>'+btn('INFÖR MATCHEN →',"update({page:'preview'})",'full')+'</p>'):card('🏆 GRUNDSERIEN AVSLUTAD',seasonSummary(st,my,rank)+btn('💾 SPARA SÄSONG & SPELA VIDARE','nextSeason()','full'));if(g.history.length<52)h+='<section class="standings-preview-card">'+miniStandingsPreview(st)+'</section>';else if((g.seasons||[]).length)h+='<section class="standings-preview-card">'+seasonHistoryPreview()+'</section>';h+=card('SENASTE NYTT',worldNews());}
+function render(){if(g.page==='match'&&g.shootout){g.shootout=false;g.finalPending=false;g.overtime=true;g.overtimeStep=Math.max(2,g.overtimeStep||0)}if(g.page==='match'&&g.turn<14&&!g.overtime&&g.finalPending){g.finalPending=false;try{localStorage.setItem('shl_gulddrommen_development',JSON.stringify(g))}catch{}}document.querySelector('main').classList.toggle('inmatch',g.page==='match');document.querySelector('main').classList.toggle('prepmatch',g.page==='preview');document.querySelector('main').classList.toggle('compactbranding',g.page==='result');document.querySelector('main').classList.toggle('managerhome',g.page==='home');let st=standings(g.history),my=st.find(t=>t.i===g.team),rank=st.findIndex(t=>t.i===g.team)+1,f=fixture(),h='';if(g.page==='setup'){const last=(g.seasons||[]).at(-1),lastRank=Number(g.offerLastRank??last?.rank),offers=Array.isArray(g.offers)&&g.offers.length?g.offers:null;h=offers?'<h2>🏒 VART GÅR KARRIÄREN NU?</h2>'+(g.leagueReport||'')+'<p class="muted">Säsong '+((g.seasons||[]).length+1)+' · Efter din senaste säsong med '+(last.teamName||T[last.team])+' har klubbarna hört av sig. Var vill du fortsätta din tränarkarriär?</p><div class="offer-note">'+(g.coachRelegated?'⚠️ Din tidigare klubb har åkt ur SHL. Allsvensk tränarkarriär kommer senare. Välj ett SHL-erbjudande.':lastRank>=13?'⚠️ <b>'+(last.teamName||T[last.team])+'</b> vill inte förlänga efter plats '+last.rank+'.':'🤝 <b>'+T[last.team]+'</b> vill gärna att du stannar.')+' Du har också fått erbjudanden från andra SHL-klubbar.</div><div class="grid">'+offers.map(i=>'<button class="club '+(g.team===i?'sel':'')+'" onclick="update({team:'+i+'})">'+tile(i)+'<span><b>'+T[i]+'</b><small class="offer-tag">'+(i===last.team?(lastRank>=13?'⚠️ VILL INTE FÖRLÄNGA · KAN ÄNDÅ VÄLJAS':'💙 DIN NUVARANDE KLUBB · VILL FÖRLÄNGA'):'📩 ERBJUDER ETT KONTRAKT')+'</small></span></button>').join('')+'</div><p class="muted">Välj ett av erbjudandena. Din tidigare karriär följer med oavsett klubb.</p>':'<h2>VÄLJ DIN KLUBB</h2><p class="muted">Ta över ett SHL-lag och spela 52 omgångar.</p><div class="grid">'+T.map((t,i)=>'<button class="club '+(g.team===i?'sel':'')+'" onclick="update({team:'+i+'})">'+tile(i)+'<span>'+t+'</span></button>').join('')+'</div>';h+='<p>'+btn(offers?'SKRIV PÅ & STARTA NÄSTA SÄSONG →':'STARTA SÄSONGEN →',"update({...fresh(),team:g.team,shlClubs:g.shlClubs||SHL_ORIGINAL,haClubs:g.haClubs||HA_ORIGINAL,seasons:g.seasons||[],page:'home'})",'full')+'</p>'}else{if(g.page==='home'){h+=card('DIN KLUBB · OMGÅNG '+g.history.length+'/52','<div class="row"><div class="crest" style="--c:'+K[g.team]+'">'+C[g.team]+'</div><div><h2>'+T[g.team]+'</h2><div class="muted">Huvudtränare · SHL</div></div></div><div class="stats"><div class="stat placement-stat '+(g.history.length?(rank===1?'placement-gold':rank===2?'placement-silver':rank===3?'placement-bronze':rank>=13?'placement-red':'placement-blue'):'')+'" role="button" tabindex="0" aria-label="Öppna SHL-tabellen" onclick="update({page:&#39;table&#39;});window.scrollTo(0,0)" onkeydown="if(event.key===&#39;Enter&#39;||event.key===&#39; &#39;){event.preventDefault();this.click()}">'+(g.history.length&&rank===1?'<span class="gold-number-halo" aria-hidden="true"></span>':'')+'<b>'+(g.history.length?rank:'–')+'</b><span class="small">PLACERING</span></div><div class="stat"><b>'+my.p+'</b><span class="small">POÄNG</span></div><div class="stat"><b>'+(my.gf-my.ga)+'</b><span class="small">MÅLSKILLNAD</span></div>'+worldHomeScore()+'</div><p class="muted">Form: '+(my.form.map(v=>'<span class="form-square '+(v.includes('🟢')?'form-win':v.includes('🔴')?'form-loss':'form-draw')+'" title="'+(v.includes('🟢')?'Vinst':v.includes('🔴')?'Förlust':'Oavgjort')+'"></span>').join('')||'Inga matcher')+'</p>');h+=btn('🏆 MIN MANAGERKARRIÄR →',"update({page:'career'})",'full career-entry');h+=g.history.length<52?card('NÄSTA MATCH · OMGÅNG '+g.round,'<span class="match-glow-layer" aria-hidden="true"></span><span class="match-inner-light" aria-hidden="true"></span><span class="match-inner-light match-inner-light-opposite" aria-hidden="true"></span><div class="versus">'+match(f[0])+'<b>VS</b>'+match(f[1])+'</div><p>'+btn('INFÖR MATCHEN →',"update({page:'preview'})",'full')+'</p>'):card('🏆 GRUNDSERIEN AVSLUTAD',seasonSummary(st,my,rank)+'<div class="season-finish-actions">'+btn('💾 SPARA SÄSONG & SPELA VIDARE','nextSeason()','full')+btn('📊 VISA TABELLEN',"update({page:'table',tableLeague:'shl'})",'full season-table-btn')+'</div>');if(g.history.length<52)h+='<section class="standings-preview-card">'+miniStandingsPreview(st)+'</section>';else if((g.seasons||[]).length)h+='<section class="standings-preview-card">'+seasonHistoryPreview()+'</section>';h+=card('SENASTE NYTT',worldNews());}
 else if(g.page==='preview'||g.page==='match'){let [x,y]=home()?g.score:[g.score[1],g.score[0]];h+=g.page==='match'?'<section class="scorestrip"><div class="matchmeta"><div class="livehead"><span class="livepulse"></span><span class="livetext">LIVE</span><span class="roundnum">· OMGÅNG '+g.round+'</span></div><div class="stripclock">'+(g.overtime?'SUDDEN DEATH · '+String(g.overtimeStep||0).padStart(2,'0')+':00':('PERIOD '+(g.finalPending?3:Math.floor(g.turn/5)+1)+' · '+(g.finalPending?'20:00':clockForTurn(g.turn))))+'</div></div><div class="scoreline"><span class="minitile" style="--c:'+scoreboardKitColor(f[0])+';color:'+scoreTileInk(scoreboardKitColor(f[0]))+'">'+C[f[0]]+'</span><strong>'+x+'–'+y+'</strong><span class="minitile" style="--c:'+scoreboardKitColor(f[1])+';color:'+scoreTileInk(scoreboardKitColor(f[1]))+'">'+C[f[1]]+'</span></div></section>':card('OMGÅNG '+g.round+' · INFÖR MATCH','<div class="versus">'+match(f[0])+'<div style="font-size:29px;font-weight:800">VS</div>'+match(f[1])+'</div>');if(g.page==='preview'){h+=worldPressCard();h+=card('MATCHFÖRBEREDELSER','<div class="tactic-choices">'+[['balanced','⚖️','Balanserat'],['attack','⚡','Offensivt'],['defense','🛡️','Defensivt']].map(([v,emoji,n])=>'<button type="button" class="tactic-choice '+(g.tactic===v?'chosen':'')+'" onclick="update({tactic:g.tactic===\''+v+'\'?null:\''+v+'\'})" aria-pressed="'+(g.tactic===v)+'"><span class="tactic-icon">'+emoji+'</span><span>'+n+'</span></button>').join('')+'</div>'+(!['balanced','attack','defense'].includes(g.tactic)?'<p class="tactic-hint">Välj en strategi för att starta matchen</p>':'')+'<button class="btn full" '+(!['balanced','attack','defense'].includes(g.tactic)?'disabled':'onclick="start()"')+'>🏒 STARTA MATCHEN</button>');h+=previewInsights();h+='<div class="preview-return"><button class="btn full preview-return-btn" onclick="returnToManagerHub()">← TILLBAKA TILL MANAGERHUBBEN</button></div>';}else{let s=scenes[g.scene],penaltyLine='';if(g.penalty){let own=g.penalty.team==='own',left=Math.max(0,Math.ceil(g.penalty.remaining)),mins=String(Math.floor(left/60)).padStart(2,'0'),secs=String(left%60).padStart(2,'0');penaltyLine='<div class="penaltymini">🟨 '+(own?'BOXPLAY · 4 MOT 5':'POWERPLAY · 5 MOT 4')+' <span>⏱ '+mins+':'+secs+' kvar</span></div>'}
 let narration='<div class="match-info-buttons"><button class="narrativetoggle" onclick="update({showCommentary:!g.showCommentary})">'+(g.showCommentary?'▾ TV & assistent':'▸ TV & assistent')+'</button><button class="narrativetoggle coachtoggle" onclick="update({showCoachBench:!g.showCoachBench})">'+(g.showCoachBench?'▾ Power-ups':'▸ Power-ups')+'</button></div>'+(g.showCommentary?narrative(s):'')+benchMarkup();
 h+=card('MATCHSITUATION',penaltyLine+'<h2>'+(g.finalPending===true&&g.turn>=14?finalMatchSummary().title:(s[1]===0?'🛡️ ':g.pressure==='high'&&g.possession==='own'?'🔥 ':g.possession==='neutral'||g.possession==='loose'?'🏒 ':'⚡ ')+s[0])+'</h2>'+(g.finalPending===true&&g.turn>=14?'<p class="final-match-description">'+finalMatchSummary().desc+'</p>'+situationVisual():situationInfo()+narration)+(g.finalPending===true&&g.turn>=14?'':'')+(g.finalPending===true&&g.turn>=14?'<div class="inlinefinal"><div class="inlinefinalhead">🏁 '+(g.overtime?'MATCHEN AVGJORD!':'SLUTSIGNAL!')+'</div><p>'+(g.overtime?'Efter sudden death':'60:00 · Matchen är färdigspelad')+'</p><div class="inlinefinalscore"><span class="'+(x>y?'final-winner':'final-loser')+'">'+C[f[0]]+'</span><strong>'+x+'–'+y+'</strong><span class="'+(y>x?'final-winner':'final-loser')+'">'+C[f[1]]+'</span></div>'+'</div><div class="final-outside-button">'+btn(g.score[0]===g.score[1]?'⏱️ SPELA ÖVERTID →':'AVSLUTA MATCH →',g.score[0]===g.score[1]?'beginOvertime()':'finish(g.score[0],g.score[1])','full')+'</div>':matchDecisionButtons(s[2]))+'<p class="muted feedback">'+(Object.keys(coachDefs).some(k=>g.feedback?.startsWith(coachDefs[k].label+' aktiverad!'))?'':g.feedback)+'</p>');
@@ -692,9 +1581,9 @@ else if(g.page==='table'&&g.tableLeague==='ha'){
   const divider=[0,1,8,12].includes(i)?'<tr class="zone-divider '+zones[zone][1]+'"><td colspan="9">'+zones[zone][0]+'</td></tr>':'';
   return divider+'<tr class="standings-row '+zones[zone][1]+'"><td class="rank-place">'+(i+1)+'</td><td class="team-cell"><span class="table-team-name">'+t.name+'</span>'+movement+'</td><td>'+t.m+'</td><td>'+t.w+'</td><td>'+t.ow+'</td><td>'+t.ol+'</td><td>'+t.l+'</td><td>'+(t.gf-t.ga)+'</td><td><b>'+t.p+'</b></td></tr>';
  }).join('');
- h+=card('🏒 HOCKEYALLSVENSKAN · OMGÅNG '+g.history.length+'/52','<div class="league-switch">'+btn('SHL',"update({tableLeague:'shl'})",'ghost')+btn('HOCKEYALLSVENSKAN',"update({tableLeague:'ha'})",'')+'</div><p class="muted">Simulerad parallell liga · Ettan flyttas direkt upp efter 52 omgångar.</p><div class="tablewrap standings-table"><table><tr><th>#</th><th>LAG</th><th>M</th><th>V</th><th>ÖV</th><th>ÖF</th><th>F</th><th>MS</th><th>P</th></tr>'+rows+'</table></div><p class="standings-note">↑ Upp i tabellen · ↓ Ned i tabellen · Slutspel och nedflyttning i HockeyAllsvenskan införs senare.</p>');
+ h+='<nav class="table-sticky-nav" aria-label="Tabellnavigation">'+btn('← TILL MANAGERHUBBEN','returnToManagerHub()','full')+'</nav>';h+=card('🏒 HOCKEYALLSVENSKAN · OMGÅNG '+g.history.length+'/52','<div class="league-switch">'+btn('SHL',"update({tableLeague:'shl'})",'ghost')+btn('HOCKEYALLSVENSKAN',"update({tableLeague:'ha'})",'')+'</div><p class="muted">Simulerad parallell liga · Ettan flyttas direkt upp efter 52 omgångar.</p><div class="tablewrap standings-table"><table><tr><th>#</th><th>LAG</th><th>M</th><th>V</th><th>ÖV</th><th>ÖF</th><th>F</th><th>MS</th><th>P</th></tr>'+rows+'</table></div><p class="standings-note">↑ Upp i tabellen · ↓ Ned i tabellen · Slutspel och nedflyttning i HockeyAllsvenskan införs senare.</p>');
  h+=btn('← TILLBAKA TILL MANAGERHUBBEN','returnToManagerHub()','full career-home-btn');
 }
-else if(g.page==='table'){let prev=g.history.length>1?standings(g.history.slice(0,-1)):[],old={};prev.forEach((t,i)=>old[t.i]=i+1);let zones=[['DIRECT TILL KVARTSFINAL','zone-direct'],['ÅTTONDELSFINAL · PLAY-IN','zone-playin'],['SÄSONGEN SLUT','zone-safe'],['NEGATIVT KVAL','zone-relegation']];let rows=st.map((t,i)=>{let zone=i<6?0:i<10?1:i<12?2:3;let prior=old[t.i],movement=prior>i+1?'<span class="rank-arrow up" title="Upp '+(prior-i-1)+' placeringar">↑</span>':prior<i+1?'<span class="rank-arrow down" title="Ned '+(i+1-prior)+' placeringar">↓</span>':'';let divider=[0,6,10,12].includes(i)?'<tr class="zone-divider '+zones[zone][1]+'"><td colspan="9">'+zones[zone][0]+'</td></tr>':'';return divider+'<tr class="standings-row '+zones[zone][1]+' '+(t.i===g.team?'mine':'')+'"><td class="rank-place">'+(i+1)+'</td><td class="team-cell"><span class="table-team-name">'+T[t.i]+'</span>'+movement+'</td><td>'+t.m+'</td><td>'+t.w+'</td><td>'+t.ow+'</td><td>'+t.ol+'</td><td>'+t.l+'</td><td>'+(t.gf-t.ga)+'</td><td><b>'+t.p+'</b></td></tr>'}).join('');h+=card('SHL-TABELLEN · OMGÅNG '+g.history.length+'/52','<div class="league-switch">'+btn('SHL',"update({tableLeague:'shl'})",'')+btn('HOCKEYALLSVENSKAN',"update({tableLeague:'ha'})",'ghost')+'</div><div class="tablewrap standings-table"><table><tr><th>#</th><th>LAG</th><th>M</th><th>V</th><th>ÖV</th><th>ÖF</th><th>F</th><th>MS</th><th>P</th></tr>'+rows+'</table></div><p class="standings-note">↑ Upp i tabellen · ↓ Ned i tabellen · – Oförändrad sedan föregående omgång</p>');h+=btn('← TILLBAKA TILL MANAGERHUBBEN','returnToManagerHub()','full career-home-btn')}
-else if(g.page==='career')h+=careerPage(st,my,rank);else if(g.page==='archive')h+=fullSeasonArchive();else if(g.page==='news')h+='<nav class="news-sticky-nav" aria-label="Nyhetscentralens navigation">'+btn('← TILL MANAGERHUBBEN','returnToManagerHub()','full')+'</nav>'+card('📰 NYHETSCENTRALEN','<p class="muted">Det senaste från din tränarkarriär och hela SHL · Säsong '+((g.seasons||[]).length+1)+'</p><div class="personal-news-heading">🎙️ DIN TRÄNARKARRIÄR</div>'+personalNewsCards(5)+'<div class="personal-news-heading">🏒 HELA SHL</div>'+leagueNewsCards(30)+btn('← TILLBAKA TILL MANAGERHUBBEN',"update({page:'home'})",'full'));else if(g.page==='end')h+=card('🏆 GRUNDSERIEN AVSLUTAD','<h2>'+T[g.team]+'</h2><p>Placering '+rank+' · '+my.p+' poäng</p><div class="season-current"><b>Säsong '+((g.seasons||[]).length+1)+'</b><p>🏆 Grundserievinnare: <strong>'+T[st[0].i]+'</strong> · '+st[0].p+' poäng</p></div>'+relegationCard(relegationResult(st))+seasonArchive()+btn('SPARA SÄSONG & SPELA VIDARE','nextSeason()','full'))}app.innerHTML=h;if(g.page==='match'&&Date.now()<goalFlashUntil){const strip=app.querySelector('.scorestrip');if(strip){strip.style.setProperty('background',goalFlashColor,'important');strip.style.setProperty('border-color',goalFlashColor,'important')}}}render();
+else if(g.page==='table'){let prev=g.history.length>1?standings(g.history.slice(0,-1)):[],old={};prev.forEach((t,i)=>old[t.i]=i+1);let zones=[['DIRECT TILL KVARTSFINAL','zone-direct'],['ÅTTONDELSFINAL · PLAY-IN','zone-playin'],['SÄSONGEN SLUT','zone-safe'],['NEGATIVT KVAL','zone-relegation']];let rows=st.map((t,i)=>{let zone=i<6?0:i<10?1:i<12?2:3;let prior=old[t.i],movement=prior>i+1?'<span class="rank-arrow up" title="Upp '+(prior-i-1)+' placeringar">↑</span>':prior<i+1?'<span class="rank-arrow down" title="Ned '+(i+1-prior)+' placeringar">↓</span>':'';let divider=[0,6,10,12].includes(i)?'<tr class="zone-divider '+zones[zone][1]+'"><td colspan="9">'+zones[zone][0]+'</td></tr>':'';return divider+'<tr class="standings-row '+zones[zone][1]+' '+(t.i===g.team?'mine':'')+'"><td class="rank-place">'+(i+1)+'</td><td class="team-cell"><span class="table-team-name">'+T[t.i]+'</span>'+movement+'</td><td>'+t.m+'</td><td>'+t.w+'</td><td>'+t.ow+'</td><td>'+t.ol+'</td><td>'+t.l+'</td><td>'+(t.gf-t.ga)+'</td><td><b>'+t.p+'</b></td></tr>'}).join('');h+='<nav class="table-sticky-nav" aria-label="Tabellnavigation">'+btn('← TILL MANAGERHUBBEN','returnToManagerHub()','full')+'</nav>';h+=card('SHL-TABELLEN · OMGÅNG '+g.history.length+'/52','<div class="league-switch">'+btn('SHL',"update({tableLeague:'shl'})",'')+btn('HOCKEYALLSVENSKAN',"update({tableLeague:'ha'})",'ghost')+'</div><div class="tablewrap standings-table"><table><tr><th>#</th><th>LAG</th><th>M</th><th>V</th><th>ÖV</th><th>ÖF</th><th>F</th><th>MS</th><th>P</th></tr>'+rows+'</table></div><p class="standings-note">↑ Upp i tabellen · ↓ Ned i tabellen · – Oförändrad sedan föregående omgång</p>');h+=btn('← TILLBAKA TILL MANAGERHUBBEN','returnToManagerHub()','full career-home-btn')}
+else if(g.page==='career')h+=careerPage(st,my,rank);else if(g.page==='archive')h+=fullSeasonArchive();else if(g.page==='news')h+='<nav class="news-sticky-nav" aria-label="Nyhetscentralens navigation">'+btn('← TILL MANAGERHUBBEN','returnToManagerHub()','full')+'</nav>'+card('📰 NYHETSCENTRALEN','<p class="muted">Senaste nytt och sparade artiklar från din tränarkarriär · Säsong '+((g.seasons||[]).length+1)+'</p>'+newsCategoryPanel('editor','📡 HOCKEYREDAKTIONEN')+newsCategoryPanel('club','🎙️ DIN KLUBB')+newsCategoryPanel('league','🏒 SHL / HOCKEYALLSVENSKAN'));else if(g.page==='end')h+=card('🏆 GRUNDSERIEN AVSLUTAD','<h2>'+T[g.team]+'</h2><p>Placering '+rank+' · '+my.p+' poäng</p><div class="season-current"><b>Säsong '+((g.seasons||[]).length+1)+'</b><p>🏆 Grundserievinnare: <strong>'+T[st[0].i]+'</strong> · '+st[0].p+' poäng</p></div>'+relegationCard(relegationResult(st))+seasonArchive()+btn('SPARA SÄSONG & SPELA VIDARE','nextSeason()','full'))}app.innerHTML=h;newsCarouselInit();scheduleMiniLeague();if(g.page==='match'&&Date.now()<goalFlashUntil){const strip=app.querySelector('.scorestrip');if(strip){strip.style.setProperty('background',goalFlashColor,'important');strip.style.setProperty('border-color',goalFlashColor,'important')}}}render();
 </script></html>
