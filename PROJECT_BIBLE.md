@@ -234,3 +234,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - **2026-10-31 — BETA 1.5.4.23:** Ytterligare komprimering av trofésamlingens progresspanel: padding 8/12/9px, gap 2px, mindre typografi och 12px progressbar. Kodcommit `624bcabf7879d8383f94fd8d9dc5043029b6a5e4`. Officiell root orörd.
 
 - **2026-10-31 — BETA 1.5.4.24:** Alla trofékategoriboxar har fått djupare blå gradient, mjukt innerljus, skuggor i flera lager, nedsänkt medaljyta och tydligare men diskreta rubrik-/räknardetaljer. Kodcommit `2d83e69328f6589ed1ea5fcdd281fa4da3371e2f`. Officiell root orörd.
+
+- **2026-10-31 — BETA 1.5.4.25:** Slutresultatsrutan återgår till klassisk grön färgsättning vid seger och röd vid förlust. Spotlight-/glow-lager och animationer stängs av specifikt på resultatkortet; övriga matchvyer orörda. Kodcommit `5327e7d0398fa18661b59692b6a843e1fdb7e300`. Officiell root orörd.
