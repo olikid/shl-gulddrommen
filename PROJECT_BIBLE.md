@@ -218,3 +218,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 
 - **2026-10-31 — BETA 1.5.4.15:** Trofésamling med individuella emblem, varierade medaljformer, karriärhistorik (säsong/klubb) och expanderbara beskrivningar. Kodcommit `d6d90ff49780892c8a63a334da1d69ac06e9c9d2`.
 - **2026-10-31 — BETA 1.5.4.16:** Kompaktare medaljkort och emblem; detaljer (beskrivning, säsong, klubb, belöning) visas först vid tryck på kortet. Kodcommit `19d583ae9486bdabc09b252440291feb2c2ef750`. Officiell root orörd.
+
+- **2026-10-31 — BETA 1.5.4.17:** Trofésamlingen visar tre kompakta medaljkort per rad i stället för två; anpassade emblem, typografi och mobilmarginaler. Expanderbara detaljer kvarstår. Kodcommit `6c912e262494bb37c45278451f98770adb50aae2`. Officiell root orörd.
