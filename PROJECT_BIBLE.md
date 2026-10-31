@@ -201,3 +201,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - **2026-10-31 — BETA 1.5.4.6:** Minskad onödig luft överst i tränarprofilens första kort med riktad CSS för topp-padding, rubrikrad och avstånd till porträtt. Myntknappen hålls i samma rubrikrad. Kodcommit `e2ce3691c16274443a20cc0faa113b9786bcda2d`. Officiell root orörd.
 
 - **2026-10-31 — BETA 1.5.4.7:** `Dina utmärkelser` på tränarprofilen har fått en tydligare blå gradientpanel med kant, djup och kraftigare typografi, inspirerad av `Lagets förtroende`. Dropdownen är fortsatt öppen som standard, `VISA ALLA` och pilen ligger i högra delen och medaljerna i panelens innehåll. Kodcommit `d678613b0e4108d63276358c8ef4f6fa1306ffda`. Officiell root orörd.
+
+- **2026-10-31 — BETA 1.5.4.8:** Utmärkelsedropdownen gjordes tunnare (50 px rubrikrad mot tidigare 64 px) och fick mer djup med blå gradient, innerljus och skugga samt kompaktare knappar. Kodcommit `056520a66d00db972ff8ba1ba8acfe2f19faf51c`. Officiell version orörd.
