@@ -226,3 +226,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - **2026-10-31 — BETA 1.5.4.19:** Dynamisk sortering av utmärkelsesamlingen: upplåsta medaljer först inom varje kategoribox och kategoriboxarna sorterade efter antal upplåsta, fallande. Ursprunglig kategoriordning vid lika antal. Kodcommit `1a173e4760eff7f6198f03a48e5fb98bbe213804`. Officiell root orörd.
 
 - **2026-10-31 — BETA 1.5.4.20:** Trofésamlingens progressbar har fått nedsänkt mörkblå skena, mjuk guldgradient och subtil glans. Tillbaka till tränarprofilen är nu en flytande, skrollföljande knapp nere till höger. Kodcommit `d46d0a6645fdfb872183541f830dfc3fb3170211`. Officiell root orörd.
+
+- **2026-10-31 — BETA 1.5.4.21:** Förstärkt och tydligare progressbar på trofésidan efter feedback om att ändringen i .20 inte syntes/fungerade: 20 px nedsänkt skena, tydligare guldindikator, ökad kontrast och robusta CSS-överskrivningar. Flytande tillbaka-knapp oförändrad. Kodcommit `38f5f77cd460e977a4a30f5670cc5b3a9841ec06`. Officiell root orörd.
