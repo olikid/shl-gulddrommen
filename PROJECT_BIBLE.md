@@ -177,3 +177,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - **2026-10-31 — BETA 1.5.2.4:** Ersatt silverfärgad Mynt-emoji i gemensamma `walletTiny()` med inline-SVG föreställande en gyllene myntstapel och kronpräglat mynt. Påverkar både managerhubben och tränarkarriären. Saldo, klickfunktion och ekonomi oförändrade. Kodcommit `2128faad448d33ded015493f1042d7abca6a4ea8`. Officiell root orörd.
 
 - **2026-10-31 — BETA 1.5.2.5:** Tagit bort kronpräglingen från det främre guldmyntet i gemensamma Mynt-ikonen, ersatt med diskret guldfärgad mitt. Gjort saldoknappen smalare med 24×22 px ikon, mindre horisontell padding och mellanrum mellan ikon/saldo. Gäller både managerhubben och tränarkarriären. Kodcommit `89129db8cabffbd4138e6a383afba493ff87475d`. Officiell root orörd.
+
+- **2026-10-31 — BETA 1.5.2.6:** Lagt till diskret loopande CSS-animation med två förskjutna skarpa stjärnglimtar på den gemensamma guldmyntsikonen (`walletTiny`), med reducerad rörelse för `prefers-reduced-motion`. Ingen ändring av saldo eller ekonomi. Kodcommit `d3eba9183d8cd0793cf9c335abb05f3b139dc7a7`. Officiell root orörd.
