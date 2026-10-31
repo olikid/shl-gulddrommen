@@ -242,3 +242,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - **2026-10-31 — BETA 1.5.4.27:** Tomt tillstånd i tränarprofilens utmärkelsedropdown (`Dina första utmärkelser väntar`) fyller nu hela bredden i stället för att pressas in i en av medaljrutnätets fyra kolumner. Centrerad text och kompakt blå panel. Kodcommit `db8da00ed62ec7f40e23bdc61dd4910bff5f54a7`. Officiell root orörd.
 
 - **2026-10-31 — BETA 1.5.4.28:** Tränartiteln i karriärprofilen är klickbar och öppnar en kompakt förklaringspanel som visar varför titeln erhållits och vägen till nästa milstolpe (3/8 säsonger, 2 seriesegrar eller SM-guld). Befintlig titelberäkning och sparformat oförändrade. Kodcommit `df6d86a6521a344ac3a24347193ae20e9a82dd03`. Officiell root orörd.
+
+- **2026-10-31 — BETA 1.5.4.29:** Komprimerat tränarprofilkortet efter tillägget av klickbar tränartitel: mindre vertikala mellanrum kring titel, statistik och utmärkelser samt mindre kortpadding. Förklaringsfunktionen kvar. Kodcommit `381121e68f89a49fc61f9dd9fdc2ec86c5e58ee3`. Officiell root orörd.
