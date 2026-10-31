@@ -72,3 +72,57 @@
 - Alla koduppdateringar ska ändra synlig versionsetikett i spelet. Varje commit får en beskrivande ändringsrad.
 - Detta ersätter tidigare regel om att varje ändring måste öka tredje versionssegmentet; små patchar ökar fjärde segmentet.
 - Officiell version förblir **BETA 1.4.1** tills användaren uttryckligen godkänner en ny release.
+
+
+---
+
+# AKTUELL PROJEKTSTATUS — 2026-10-31 (ersätter äldre statusuppgifter ovan)
+
+> **Läs detta avsnitt först.** Äldre avsnitt ovan bevaras som historik. Deras påståenden om "aktuell version", "nästa ändring" och "officiell version" är historiska och gäller inte längre.
+
+## Verifierad versionsstatus och källor
+- **Projekt-/spelvarumärke:** Swedish Hockey Arcade (tidigare SHL Gulddrömmen).
+- **Repository:** `olikid/shl-gulddrommen`, branch `main`.
+- **Aktuell utvecklingsversion:** **BETA 1.5.0.5**, verifierad både genom synlig versionssträng i `development/index.html` och senaste spelkod-commit `37a7ac0295f6910e90544848a5c85ad248de1d7a` (2026-10-31 01:16 UTC).
+- **Senast officiellt publicerade version:** **BETA 1.4.5.100**, release-commit `d1e73c11d` (2026-10-31 00:46 UTC), bekräftad i commit-historik för `index.html`. Ändra aldrig officiella `index.html` utan uttrycklig instruktion från användaren.
+- **Aktuell utvecklingsfil:** `development/index.html`. Den synliga versionssträngen innehåller `BETA 1.5.0.5 · UTVECKLINGSVERSION`.
+- **Officiell URL:** https://olikid.github.io/shl-gulddrommen/
+- **Utvecklings-URL:** https://olikid.github.io/shl-gulddrommen/development/
+- **Projektbibel:** `PROJECT_BIBLE.md`. Uppdateras som en del av varje framtida spelversionsändring.
+- Det finns äldre frysta återställningsbrancher för BETA 1.3, 1.3.3, 1.3.4 och 1.4.1. För BETA 1.4.5.100 finns en verifierad release-commit; en särskild fryst branch för denna release är **inte** verifierad.
+
+## Säker utvecklingsprocess — användarens uttryckliga beslut 2026-10-31
+1. **Endast `development/index.html` får ändras som spelkod**, såvida användaren inte uttryckligen godkänner annan fil. Dokumentationsfilen `PROJECT_BIBLE.md` får uppdateras löpande enligt detta uppdrag. Tillhörande framtida bildresurser kräver separat överenskommelse om sökväg/uppladdning.
+2. **Rör aldrig `index.html`**, den officiella versionen, utan ett tydligt, uttryckligt godkännande för just den releasen.
+3. Före varje kodändring: läs aktuell utvecklingsfil och dess blob-SHA, kontrollera aktuell synlig version och jämför mot senaste GitHub-commit.
+4. Varje spelkodändring får en **ny synlig BETA-version**, med beskrivande Git-commit. Mindre korrigeringar höjer fjärde sifferledet; större milstolpar kan höja tredje eller annat led enligt överenskommelse. Börja från verklig aktuell version, inte från gamla projektbibelnoteringar.
+5. **Samma uppdatering ska dokumenteras i projektbibeln**: version, datum, vad som ändrats, berörda funktioner, risker/teststatus och gärna commit-SHA. GitHub-commits för kod och projektbibel kan vara separata; dokumentera båda och rapportera om dokumentationen av någon anledning inte kunde uppdateras.
+6. Undvik att ändra `localStorage`-nycklar, nollställa karriärer, skriva över frysta återställningspunkter eller ändra matchflödet oavsiktligt. Kontrollera mobil-UI, sparad karriär och JavaScript-syntax när möjligt; skilj på kodgranskning och faktiskt webbläsartest.
+7. **Projektbibeln är den kontinuerliga överlämningen mellan chattar.** Kontrollera den och aktuell kod vid ny chatt; äldre minnesuppgifter och äldre versionstexter får inte övertrumfa GitHub.
+
+## BETA 1.4.5.100 — verifierad stabil release
+- BETA 1.4.5-serien innehöll omfattande justeringar av Managerhubben, karriärvyn, visuella effekter, matchstatistik och förtroendeindikatorer.
+- I sena patchar: fyra kompakta matchstatistikrutor, vinst/förlust-differens, förfinad karriärhistorik och guldmarkering för förstaplats.
+- Karriärens förtroendefärger justerades i BETA 1.4.5.91: **85+ grönt, 55+ blått, 40+ gult, under 40 rött**. Denna senare skala ersätter äldre önskemål om 75/50/40 i historiken ovan.
+- BETA 1.4.5.100 publicerades officiellt innan BETA 1.5-utvecklingen började.
+
+## BETA 1.5 — verifierad utvecklingshistorik
+- Första försöket med BETA 1.5 introducerade tränaridentitet, porträttval och minne för karriärhändelser, men gav ett JavaScript-startfel. Efter hotfix-försök gjordes **nödåterställning till verifierad BETA 1.4.5.100** (commit `7824fea5a`).
+- BETA 1.5 byggdes därefter upp försiktigare med tränaridentitet och befintlig sparningsmekanism (commit `d1ef78d2a`).
+- BETA 1.5.0.1: tillfällig redigering av tränaridentitet under pågående karriär.
+- BETA 1.5.0.2–1.5.0.3: återställd kompakt klubbruta och dess tidigare position/stil.
+- BETA 1.5.0.4: synlig versionsetikett synkroniserad.
+- BETA 1.5.0.5: fyra illustrerade porträttval för tränare, med reservvisning när bildresurser saknas.
+- Verifierat i aktuell kod: `g.coach15` innehåller namn, ålder, nationalitet, porträttindex och `events`; profilens CSS och porträttval finns i `development/index.html`.
+- **Begränsning:** inga separata porträttbildfiler finns i GitHub-trädet vid kontroll 2026-10-31. Kontrollera verklig visning i webbläsare innan funktionen kallas visuellt färdig. Kodgranskning är inte ett fullständigt funktionstest.
+
+## Beslutade tränarkaraktärer och NÄSTA STEG
+- Användaren har valt en uttrycksfull, illustrerad karaktärsstil framför enkla emojis eller alltför själlösa illustrationer.
+- Fyra tränarkaraktärer/porträtt ska finnas i tränarvalet.
+- Karaktärerna ska **börja utan kavaj**, med vit skjorta eller piké enligt godkänd visuell riktning; inga oönskade externa företagslogotyper på kläderna.
+- **Karriärprogression genom kläder:** spelaren ska senare kunna **köpa/låsa upp en kavaj i spelet** och visuellt avancera från enklare tränarklädsel till mer uppklädd. Detta är ett **planerat system**, inte implementerat i BETA 1.5.0.5.
+- **Nästa konkreta arbetssteg:** färdigställ/integrera de fyra valda tränarporträtten som fungerande resurser och planera/implementera klädprogressionen (börja i skjorta, köp kavaj), med versionshöjning och projektbibeluppdatering. För bildfiler krävs godkänd resursstrategi eftersom nuvarande repo saknar sådana.
+- Fortsätt bevara redan fungerande matchskärm, karriär, nyhetsflöden, supporter-/styrelsepress, coachscore och sparningar.
+
+## Ändringslogg för projektbibeln
+- **2026-10-31 — dokumentationssynk till BETA 1.5.0.5:** verifierat senaste utvecklingscommit, senaste officiella release, kodens tränarprofil och avsaknad av separata bildresurser. Infört obligatorisk dokumentationssynk vid varje framtida versionsändring. Ingen spelkod eller officiell version ändrad.
