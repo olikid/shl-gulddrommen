@@ -163,3 +163,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - **2026-10-31 — BETA 1.5.1.9:** Efter användarens annoterade skärmbild kapat yttre luft i första tränarkarriärkortet: top-padding 5 px, bottom-padding 4 px, rubrikradens min-height 22 px och formradens slutmarginal/linjehöjd minskad. Porträtt, typografi, statistik och myntposition behållna. Kodcommit `5b3b8b3e791c591bddc5c19d0c7132c05fc7bbf9`. Officiell root orörd.
 
 - **2026-10-31 — BETA 1.5.1.10:** Justerat första tränarkarriärkortets rubrikrad med explicit flex-centrering, line-height 1 och lätt uppflyttning så `OMGÅNG 52/52` linjerar med Mynt-knappen; flyttat upp profilhuvudet ytterligare marginellt. Ingen spelmekanik ändrad. Kodcommit `307f392d139bc1ed0c7558f449188cbfc59331d4`. Officiell root orörd.
+
+- **2026-10-31 — BETA 1.5.1.11:** Efter annoterad skärmbild justerat första tränarkortets rubrikrad upp 4 px och Mynt-knappen ned 7 px relativt rubriken, för att möta deras överkanter. CSS-only; officiell root orörd. Kodcommit `46caf53c0ade5df24930fddcc7989ac9d2b244a1`.
