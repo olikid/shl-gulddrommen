@@ -222,3 +222,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - **2026-10-31 — BETA 1.5.4.17:** Trofésamlingen visar tre kompakta medaljkort per rad i stället för två; anpassade emblem, typografi och mobilmarginaler. Expanderbara detaljer kvarstår. Kodcommit `6c912e262494bb37c45278451f98770adb50aae2`. Officiell root orörd.
 
 - **2026-10-31 — BETA 1.5.4.18:** Utmärkelser organiseras i sex separata expanderbara kategoriboxar (Framgång, Form, Lojalitet, Karriär, Ekonomi, Livsstil), vardera med upplåst/total-räknare och tre medaljkort per rad. Tidigare filterknappar ersätts. Kodcommit `31dee02030b89b1159b9c8dae9ca70431ae505e5`. Officiell root orörd.
+
+- **2026-10-31 — BETA 1.5.4.19:** Dynamisk sortering av utmärkelsesamlingen: upplåsta medaljer först inom varje kategoribox och kategoriboxarna sorterade efter antal upplåsta, fallande. Ursprunglig kategoriordning vid lika antal. Kodcommit `1a173e4760eff7f6198f03a48e5fb98bbe213804`. Officiell root orörd.
