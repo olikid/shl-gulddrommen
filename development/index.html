@@ -1208,7 +1208,7 @@ function coach15View(edit){
  let html='<section class="coach15"><div class="coach15top"><span class="coach15face">'+faces[c.portrait]+'</span><div><small>BETA 1.5 · TRÄNARLIVET</small><strong>'+coach15Safe(c.name||'Din tränarprofil')+'</strong><span>'+coach15Safe(c.nationality)+' · '+c.age+' år</span></div></div>';
  if(edit||g.coach15Editing){
   html+='<label>Tränarens namn<input maxlength="40" placeholder="Ange tränarnamn" value="'+coach15Safe(c.name)+'" onchange="coach15Set(\'name\',this.value)"></label>';
-  html+='<div class="coach15faces">'+faces.map((f,i)=>'<button type="button" class="'+(i===c.portrait?'selected':'')+'" onclick="coach15Set(\'portrait\','+i+')">'+f+'</button>').join('')+'</div>';
+  html+='<div class="coach15faces">'+faces.map((f,i)=>'<button type="button" class="'+(i===c.portrait?'selected':'')+'" onclick="coach15Set(\'portrait\','+i+')">'+portrait(i)+'</button>').join('')+'</div>';
   html+='<div class="coach15cols"><label>Ålder<input type="number" min="18" max="80" value="'+c.age+'" onchange="coach15Set(\'age\',this.value)"></label><label>Nationalitet<select onchange="coach15Set(\'nationality\',this.value)">'+['Sverige','Finland','Norge','Danmark','Kanada','USA','Annat'].map(n=>'<option '+(c.nationality===n?'selected':'')+'>'+n+'</option>').join('')+'</select></label></div>';
  }
  if(!edit){html+='<button type="button" class="coach15editbtn" onclick="coach15ToggleEdit()">'+(g.coach15Editing?'✓ Klar med profil':'✏️ Ändra tränare (tillfälligt)')+'</button>'}
