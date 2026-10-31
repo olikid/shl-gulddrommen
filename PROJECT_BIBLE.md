@@ -197,3 +197,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - **2026-10-31 — BETA 1.5.4.4:** Buggfix för achievements-dropdown: föregående version placerade `<summary>` inuti en `<div>`, vilket fick Safari att skapa en oönskad standardrad `Detaljer`. `<summary>` är nu direkt barn till `<details>`, `VISA ALLA` är separat positionerad i samma visuella rubrikrad. Öppen som standard, medaljer och klick bevarade. Kodcommit `39b7dcf9bd8b6eab904f4c753c4f4bdcacad7195`. Officiell root orörd.
 
 - **2026-10-31 — BETA 1.5.4.5:** Tränarprofilens medaljdropdown polerad igen: separat `VISA ALLA`-knapp placerad i en gemensam wrapper ovanpå rubrikradens högra sida, så den ligger i samma rad och förblir synlig även när `<details>` är stängt. Rubrik/pil styr öppna/stäng; medaljer visas direkt under när utfälld. Kodcommit `b9819a5ae133337783914bbb55c5e214153fab6b`. Root orörd.
+
+- **2026-10-31 — BETA 1.5.4.6:** Minskad onödig luft överst i tränarprofilens första kort med riktad CSS för topp-padding, rubrikrad och avstånd till porträtt. Myntknappen hålls i samma rubrikrad. Kodcommit `e2ce3691c16274443a20cc0faa113b9786bcda2d`. Officiell root orörd.
