@@ -209,3 +209,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - **2026-10-31 — BETA 1.5.4.10:** Utmärkelsernas dropdown på tränarprofilen är nu stängd som standard. Fördjupad blå gradient, tydligare innerljus och skuggor på panel och knappar. Kodcommit `6b8aeea0efb86294ebba36c993ab3383b7c6ac37`. Officiell root orörd.
 
 - **2026-10-31 — BETA 1.5.4.11:** Mjukare kontrast i utmärkelsernas dropdownpanel: nedtonad blå gradient, mindre framträdande kant och subtilare glans/skuggor på panel och knappar. Stängd som standard kvarstår. Kodcommit `d9c40eebf518e75258aa2d6d6d2ab03503cce2ca`. Officiell root orörd.
+
+- **2026-10-31 — BETA 1.5.4.12:** `Visa alla` på utmärkelsernas dropdown visas endast när menyn är öppen; stängt läge visar bara rubrik och pil för renare UI. Kodcommit `3e0fe037bea309c45d432b5f1f3558e5b6d9fc6a`. Officiell root orörd.
