@@ -126,3 +126,5 @@
 
 ## Ändringslogg för projektbibeln
 - **2026-10-31 — dokumentationssynk till BETA 1.5.0.5:** verifierat senaste utvecklingscommit, senaste officiella release, kodens tränarprofil och avsaknad av separata bildresurser. Infört obligatorisk dokumentationssynk vid varje framtida versionsändring. Ingen spelkod eller officiell version ändrad.
+
+- **2026-10-31 — BETA 1.5.0.6:** Användaren laddade upp fyra porträtt i `assets/Coaches/coach_0.webp`–`coach_3.webp` (observera stort C). Utvecklingsfilen kopplades till dessa exakta sökvägar både i porträttvalet och tränarprofilens huvudbild; synlig version höjdes till 1.5.0.6. Spelkod-commit `b659b5b95f5ff7230ebf756d4801029a254b7e13`. Endast `development/index.html` ändrad som spelkod, officiell `index.html` orörd. GitHub-kodkontroll genomförd; visuell webbläsartest återstår. Nästa steg: verifiera porträtten i mobilvyn och utveckla köpbar kavaj/klädprogression.
