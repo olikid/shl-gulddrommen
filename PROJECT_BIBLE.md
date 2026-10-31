@@ -173,3 +173,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - **2026-10-31 — BETA 1.5.2.2:** Flyttat tränarkarriärens kompakta tillbaka-till-managerhubben-knapp från sticky topp till flytande fast position i nedre högra hörnet. Behåller knappens utseende, säkerhetsmarginal för iPhone safe area och extra sidbottenutrymme. Kodcommit `b64e16f44f4b0aa22c5ff434b9afc1004346eb81`. Officiell root orörd.
 
 - **2026-10-31 — BETA 1.5.2.3:** Lagt till samma klickbara lilla Mynt-saldoindikator som på managerhubben i tränarkarriärsidans första profilkorts övre högra hörn. Använder befintliga `walletTiny()` och `walletGet()` och öppnar befintliga ekonomisidan; ingen ny ekonomi eller förändring av karriärdata. Responsiv rubrikrad. Kodcommit `59baf408d98382aee0dffe17760726f0af175457`. Officiell root orörd.
+
+- **2026-10-31 — BETA 1.5.2.4:** Ersatt silverfärgad Mynt-emoji i gemensamma `walletTiny()` med inline-SVG föreställande en gyllene myntstapel och kronpräglat mynt. Påverkar både managerhubben och tränarkarriären. Saldo, klickfunktion och ekonomi oförändrade. Kodcommit `2128faad448d33ded015493f1042d7abca6a4ea8`. Officiell root orörd.
