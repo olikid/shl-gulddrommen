@@ -207,3 +207,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - **2026-10-31 — BETA 1.5.4.9:** Utmärkelseradens höjd minskad från 50 till 38 px (cirka 25 %), rubrik och Visa alla ändrade till normal meningsform, knapparna justerade för tunnare rad. Kodcommit `479d845f4835a70c72c5c8e983d882c05c992add`. Officiell root orörd.
 
 - **2026-10-31 — BETA 1.5.4.10:** Utmärkelsernas dropdown på tränarprofilen är nu stängd som standard. Fördjupad blå gradient, tydligare innerljus och skuggor på panel och knappar. Kodcommit `6b8aeea0efb86294ebba36c993ab3383b7c6ac37`. Officiell root orörd.
+
+- **2026-10-31 — BETA 1.5.4.11:** Mjukare kontrast i utmärkelsernas dropdownpanel: nedtonad blå gradient, mindre framträdande kant och subtilare glans/skuggor på panel och knappar. Stängd som standard kvarstår. Kodcommit `d9c40eebf518e75258aa2d6d6d2ab03503cce2ca`. Officiell root orörd.
