@@ -203,3 +203,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - **2026-10-31 — BETA 1.5.4.7:** `Dina utmärkelser` på tränarprofilen har fått en tydligare blå gradientpanel med kant, djup och kraftigare typografi, inspirerad av `Lagets förtroende`. Dropdownen är fortsatt öppen som standard, `VISA ALLA` och pilen ligger i högra delen och medaljerna i panelens innehåll. Kodcommit `d678613b0e4108d63276358c8ef4f6fa1306ffda`. Officiell root orörd.
 
 - **2026-10-31 — BETA 1.5.4.8:** Utmärkelsedropdownen gjordes tunnare (50 px rubrikrad mot tidigare 64 px) och fick mer djup med blå gradient, innerljus och skugga samt kompaktare knappar. Kodcommit `056520a66d00db972ff8ba1ba8acfe2f19faf51c`. Officiell version orörd.
+
+- **2026-10-31 — BETA 1.5.4.9:** Utmärkelseradens höjd minskad från 50 till 38 px (cirka 25 %), rubrik och Visa alla ändrade till normal meningsform, knapparna justerade för tunnare rad. Kodcommit `479d845f4835a70c72c5c8e983d882c05c992add`. Officiell root orörd.
