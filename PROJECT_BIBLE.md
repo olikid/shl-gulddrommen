@@ -171,3 +171,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - **2026-10-31 — BETA 1.5.2.1:** Tränarkarriärens sticky navigationsrad minskad till en innehållsanpassad vänsterställd tillbaka-knapp. Högertexten `MIN TRÄNARKARRIÄR` borttagen och navigationsbehållarens bredd/padding reducerad; sticky scrollfunktion behållen. Kodcommit `0ec10918a09e82b94301c04d217d86077e06d71f`. Officiell root orörd.
 
 - **2026-10-31 — BETA 1.5.2.2:** Flyttat tränarkarriärens kompakta tillbaka-till-managerhubben-knapp från sticky topp till flytande fast position i nedre högra hörnet. Behåller knappens utseende, säkerhetsmarginal för iPhone safe area och extra sidbottenutrymme. Kodcommit `b64e16f44f4b0aa22c5ff434b9afc1004346eb81`. Officiell root orörd.
+
+- **2026-10-31 — BETA 1.5.2.3:** Lagt till samma klickbara lilla Mynt-saldoindikator som på managerhubben i tränarkarriärsidans första profilkorts övre högra hörn. Använder befintliga `walletTiny()` och `walletGet()` och öppnar befintliga ekonomisidan; ingen ny ekonomi eller förändring av karriärdata. Responsiv rubrikrad. Kodcommit `59baf408d98382aee0dffe17760726f0af175457`. Officiell root orörd.
