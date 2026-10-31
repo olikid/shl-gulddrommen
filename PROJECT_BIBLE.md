@@ -215,3 +215,6 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - **2026-10-31 — BETA 1.5.4.13:** `Visa alla` i utmärkelsernas dropdown får mjuk fade/slide/scale vid öppning och stängning (ca 0,3 s), med stöd för reduced-motion. Kodcommit `f2b87f5c3b4b465d026052e68bca14c4f006eca0`. Officiell root orörd.
 
 - **2026-10-31 — BETA 1.5.4.14:** Utmärkelsesidan får visuellt omarbetade medaljkort med metalliska, präglade medalj-emblem och band, olika ytbehandling för brons/silver/guld/diamant, tydligare skillnad mellan upplåsta och låsta utmärkelser, samt mjukare typografi. Ingen ändring i upplåsningslogik eller sparformat. Kodcommit `bceeabcc8a05bdee47775295b9d2a8ba03685ca3`. Officiell root orörd.
+
+- **2026-10-31 — BETA 1.5.4.15:** Trofésamling med individuella emblem, varierade medaljformer, karriärhistorik (säsong/klubb) och expanderbara beskrivningar. Kodcommit `d6d90ff49780892c8a63a334da1d69ac06e9c9d2`.
+- **2026-10-31 — BETA 1.5.4.16:** Kompaktare medaljkort och emblem; detaljer (beskrivning, säsong, klubb, belöning) visas först vid tryck på kortet. Kodcommit `19d583ae9486bdabc09b252440291feb2c2ef750`. Officiell root orörd.
