@@ -230,3 +230,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - **2026-10-31 — BETA 1.5.4.21:** Förstärkt och tydligare progressbar på trofésidan efter feedback om att ändringen i .20 inte syntes/fungerade: 20 px nedsänkt skena, tydligare guldindikator, ökad kontrast och robusta CSS-överskrivningar. Flytande tillbaka-knapp oförändrad. Kodcommit `38f5f77cd460e977a4a30f5670cc5b3a9841ec06`. Officiell root orörd.
 
 - **2026-10-31 — BETA 1.5.4.22:** Trofésamlingens progressruta komprimerad med mindre padding, tätare mellanrum, mindre siffertypografi och tunnare progressbar. Kodcommit `9db686301e5b8228d5b4a09975860062477ab121`. Officiell root orörd.
+
+- **2026-10-31 — BETA 1.5.4.23:** Ytterligare komprimering av trofésamlingens progresspanel: padding 8/12/9px, gap 2px, mindre typografi och 12px progressbar. Kodcommit `624bcabf7879d8383f94fd8d9dc5043029b6a5e4`. Officiell root orörd.
