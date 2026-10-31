@@ -238,3 +238,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - **2026-10-31 — BETA 1.5.4.25:** Slutresultatsrutan återgår till klassisk grön färgsättning vid seger och röd vid förlust. Spotlight-/glow-lager och animationer stängs av specifikt på resultatkortet; övriga matchvyer orörda. Kodcommit `5327e7d0398fa18661b59692b6a843e1fdb7e300`. Officiell root orörd.
 
 - **2026-10-31 — BETA 1.5.4.26:** Fixat riktningen på färgtoningen i slutresultatskortet: segergrönt utgår från vinnande lagets faktiska vänster-/högersida, förlustrött från förlorande lagets sida. Kantaccent följer samma sida. Inga spotlights. Kodcommit `f8fabd0ed7b339f706046e37602c6bcb0408831c`. Officiell root orörd.
+
+- **2026-10-31 — BETA 1.5.4.27:** Tomt tillstånd i tränarprofilens utmärkelsedropdown (`Dina första utmärkelser väntar`) fyller nu hela bredden i stället för att pressas in i en av medaljrutnätets fyra kolumner. Centrerad text och kompakt blå panel. Kodcommit `db8da00ed62ec7f40e23bdc61dd4910bff5f54a7`. Officiell root orörd.
