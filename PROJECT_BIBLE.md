@@ -211,3 +211,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - **2026-10-31 — BETA 1.5.4.11:** Mjukare kontrast i utmärkelsernas dropdownpanel: nedtonad blå gradient, mindre framträdande kant och subtilare glans/skuggor på panel och knappar. Stängd som standard kvarstår. Kodcommit `d9c40eebf518e75258aa2d6d6d2ab03503cce2ca`. Officiell root orörd.
 
 - **2026-10-31 — BETA 1.5.4.12:** `Visa alla` på utmärkelsernas dropdown visas endast när menyn är öppen; stängt läge visar bara rubrik och pil för renare UI. Kodcommit `3e0fe037bea309c45d432b5f1f3558e5b6d9fc6a`. Officiell root orörd.
+
+- **2026-10-31 — BETA 1.5.4.13:** `Visa alla` i utmärkelsernas dropdown får mjuk fade/slide/scale vid öppning och stängning (ca 0,3 s), med stöd för reduced-motion. Kodcommit `f2b87f5c3b4b465d026052e68bca14c4f006eca0`. Officiell root orörd.
