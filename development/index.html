@@ -1201,7 +1201,8 @@ function simulateToRound51(){if(g.history.length>=51){alert('Du är redan vid om
 function nextSeason(){
  const st=standings(g.history),me=st.find(t=>t.i===g.team),rank=st.findIndex(t=>t.i===g.team)+1,seasons=Array.isArray(g.seasons)?g.seasons:[],q=relegationResult(st);
  const entry={number:seasons.length+1,winner:st[0].i,winnerName:T[st[0].i],winnerPoints:st[0].p,team:g.team,teamName:T[g.team],rank,points:me.p,wins:me.w+me.ow,losses:me.l+me.ol,goalsFor:me.gf,goalsAgainst:me.ga,matches:me.m,promotion:q.up,relegation:q.down};
- coach15Event('Säsongsavslut','Slutade på plats '+rank+' med '+T[g.team],g.team);const profile=coach15();\n const candidates=T.map((_,i)=>i).filter(i=>i!==g.team&&i!==q.lose).sort((a,b)=>((a*7+entry.number*11)%17)-((b*7+entry.number*11)%17)).slice(0,3);
+ coach15Event('Säsongsavslut','Slutade på plats '+rank+' med '+T[g.team],g.team);const profile=coach15();
+ const candidates=T.map((_,i)=>i).filter(i=>i!==g.team&&i!==q.lose).sort((a,b)=>((a*7+entry.number*11)%17)-((b*7+entry.number*11)%17)).slice(0,3);
  const coachDown=q.lose===g.team,offers=[...(coachDown?[]:[g.team]),...candidates],next=fresh();
  update({...next,coach15:profile,team:coachDown?candidates[0]:g.team,shlClubs:q.shl,haClubs:q.ha,seasons:[...seasons,entry],offers,offerLastRank:rank,leagueReport:relegationCard(q),coachRelegated:coachDown,world:{...worldState(),answered:{},lastEvent:null,pressFeedback:null,upset:null,legacyRank:rank,legacyTeam:g.team}});
 }
