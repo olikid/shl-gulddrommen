@@ -145,3 +145,5 @@
 
 ## Framtida funktion – Ekonomisk stress (idé från användaren, 2026-10-31)
 Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i förlängningen sannolikheten för matchresultat. Hög ekonomisk stress kan ge fler dåliga taktiska beslut och sämre fokus/stresshantering. Stress bör bedömas utifrån saldo, lön och löpande levnadskostnader, inte enbart saldo. Trygg ekonomi ska innebära normal förmåga, inte garanterad seger; även ekonomisk kris ska bara påverka sannolikheter och aldrig avgöra match automatiskt. **Endast framtida designidé – inte implementerad.** Förankra exakta effekter och balans med användaren innan kodändring.
+
+- **2026-10-31 — BETA 1.5.1.2:** Ersatt stora plånbokskortet på Managerhubben med en liten högerjusterad klickbar Mynt-indikator (🪙 och aktuellt saldo) som öppnar befintlig ekonomisida. Plånboksdata, löner och bonusar oförändrade. Ingen övrig omdesign av Din klubb/tränarprofil ännu. Kodcommit `59cd2121c296a885141b142712af74995397ec7f`. Officiell version orörd; visuell användarverifiering återstår.
