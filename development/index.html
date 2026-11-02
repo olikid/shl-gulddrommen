@@ -1907,6 +1907,9 @@ function rivalrySignal(){
  const lopsided=past.filter(m=>Math.abs(m.x-m.y)>=4).length;
  const close=past.filter(m=>Math.abs(m.x-m.y)===1).length;
  const score=lopsided*3+close+(oldClub?5:0)+(diff>=4?4:0);
+ // QA-only forced rivalries: enable with ?rivaltest=1; ordinary development and official play stay unchanged.
+ const forceTest=new URLSearchParams(location.search).get('rivaltest')==='1';
+ if(forceTest&&!oldClub&&diff<4)return {tag:'HETT RIVALMÖTE',title:'Rivalmöte: '+T[g.team]+' mot '+T[opp],body:'TESTLÄGE: Lagen har en uppbyggd rivalitet. Räkna med hög intensitet och hetare temperament på isen.',intensity:2};
  if(!oldClub&&diff<4&&score<6)return null;
  const scoreline=last?T[last.a]+' '+last.x+'–'+last.y+' '+T[last.b]:'';
  if(oldClub)return {tag:'TRÄNAREN ÅTERVÄNDER',title:'Tillbaka mot gamla klubben – känslorna svallar',body:'Du möter '+T[opp]+', en klubb du tidigare tränat. Det väntas ett känsloladdat möte med blandade reaktioner från läktarna.',intensity:2};
