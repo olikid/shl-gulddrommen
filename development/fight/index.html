@@ -127,7 +127,7 @@
 @keyframes impactBody{35%{transform:rotate(-11deg) translateX(-13px)}75%{transform:rotate(-4deg) translateX(-4px)}}
 @keyframes impactGuard{35%{transform:rotate(9deg) translateY(8px)}}
 @media(prefers-reduced-motion:reduce){.hit-spark.impact-active,.rink.impact-enemy .hockey-fighter *,.rink.impact-mine .hockey-fighter *{animation:none!important}}
-</style></head><body><main class="shell"><div class="top"><span>🥊 THE FIGHTING UPDATE · ARCADE 1.5.6.15</span><a class="exit" href="../">✕ MATCHEN</a></div><div class="hud"><div class="fighter-hud"><div class="hud-head"><span>DU · #21</span><span id="my-hp-num">100 HP</span></div><div class="meter hp"><span id="my-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="my-st-num">100</span></div><div class="meter stamina"><span id="my-st"></span></div></div><div class="fighter-hud"><div class="hud-head"><span>MOTSTÅNDARE · #44</span><span id="enemy-hp-num">100 HP</span></div><div class="meter hp"><span id="enemy-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="enemy-st-num">100</span></div><div class="meter stamina"><span id="enemy-st"></span></div></div></div><div class="rink" id="arena"><div class="fight-call">FIGHT!</div><div class="hit-spark enemy-impact" id="enemy-impact" aria-hidden="true">✦</div><div class="hit-spark mine-impact" id="mine-impact" aria-hidden="true">✦</div><div class="glove left"></div><div class="glove right"></div><div class="crowd"></div><div class="boards"></div><div class="ice-line"></div><svg class="fight-scene" viewBox="0 0 640 300" preserveAspectRatio="xMidYMid meet" aria-label="Två hockeyspelare vända mot varandra i fightingställning"><g class="fight-pair"><g class="hockey-fighter mine" transform="translate(273 0) scale(1 1)">
+</style></head><body><main class="shell"><div class="top"><span>🥊 THE FIGHTING UPDATE · ARCADE 1.5.6.16</span><a class="exit" href="../">✕ MATCHEN</a></div><div class="hud"><div class="fighter-hud"><div class="hud-head"><span>DU · #21</span><span id="my-hp-num">100 HP</span></div><div class="meter hp"><span id="my-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="my-st-num">100</span></div><div class="meter stamina"><span id="my-st"></span></div></div><div class="fighter-hud"><div class="hud-head"><span>MOTSTÅNDARE · #44</span><span id="enemy-hp-num">100 HP</span></div><div class="meter hp"><span id="enemy-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="enemy-st-num">100</span></div><div class="meter stamina"><span id="enemy-st"></span></div></div></div><div class="rink" id="arena"><div class="fight-call">FIGHT!</div><div class="hit-spark enemy-impact" id="enemy-impact" aria-hidden="true">✦</div><div class="hit-spark mine-impact" id="mine-impact" aria-hidden="true">✦</div><div class="glove left"></div><div class="glove right"></div><div class="crowd"></div><div class="boards"></div><div class="ice-line"></div><svg class="fight-scene" viewBox="0 0 640 300" preserveAspectRatio="xMidYMid meet" aria-label="Två hockeyspelare vända mot varandra i fightingställning"><g class="fight-pair"><g class="hockey-fighter mine" transform="translate(273 0) scale(1 1)">
  <ellipse class="skate-shadow" cx="0" cy="281" rx="51" ry="7" fill="#507e9c" opacity=".24"/>
  <g class="fighter-motion">
  <g class="legs"><path d="M-24 214 L-34 269 L-12 270 L-3 224 Z" fill="#1b2d42"/><path d="M7 222 L16 271 L38 271 L25 211 Z" fill="#1b2d42"/><path d="M-39 268 L-8 268 L-4 276 L-43 276 Z M14 269 L42 269 L48 276 L12 276 Z" fill="#0d1b2a" stroke="#607f93" stroke-width="2"/></g>
@@ -184,7 +184,7 @@ function hit(){
   combo=0;rapidChain=0;exhausted=Math.max(exhausted,now+1000);nextAttack=Math.min(nextAttack,now+180);
   draw('🚨 HELT SLUT! Du vevar utan kraft – risk för hård kontring!');move('hit');return;
  }
- p.st=clamp(p.st-(rapidChain>=3?9:10));
+ p.st=clamp(p.st-(rapidChain>=3?7.5:8.5));
  if(Math.random()<(p.st<20?.3:.12)){
   combo=0;rapidChain=0;draw('Du missar!');move('hit');
  }else{
@@ -209,7 +209,7 @@ function duck(){
 function tick(now){
  if(done||!ready)return;
  const dt=Math.min(.08,(now-lastFrame)/1000);lastFrame=now;
- p.st=clamp(p.st+dt*(now-lastHit>450?19:2));e.st=clamp(e.st+dt*12);
+ p.st=clamp(p.st+dt*(now-lastHit>450?22:3));e.st=clamp(e.st+dt*12);
  if(windup&&now>=windup){
   windup=0;
   if(now-lastDodge<440){draw('🛡️ Du duckade precis i tid!')}
