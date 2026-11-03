@@ -320,3 +320,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 
 
 - **2026-11-03 — Fight Arcade 1.5.6.27:** `development/fight/index.html` uppdaterad: DUCKA till vänster och SLÅSS till höger. Runda tidigt-2000-talsinspirerade arkadknappar med glans, djup, tryckeffekt, tangentbordsfokus och mobilstorlekar. Versionsetikett uppdaterad. Kodcommit `47ba9f745d63aecfe49fe7fd526124d1959cc39d`. Officiell version orörd. Visuellt mobiltest återstår.
+
+- **2026-11-03 — Fight Arcade 1.5.6.28:** `development/fight/index.html`: låser SVG-armarnas ledpositioner under träffreaktioner för att förhindra att de flyger iväg; behåller dramatisk handskkastning men lägger till iskontakt, en studs, kort glidning och uttoning. Commit `d1a0a9235a45802c345df1dbde80d062efdda1c7`. Ingen ändring i fightens spelmekanik eller officiella version. Mobiltest återstår.
