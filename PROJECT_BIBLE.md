@@ -256,3 +256,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - **2026-11-03 — BETA 1.5.5.37:** Flytande navigering efter matchresultat visas efter 4 sekunder (tidigare 6), med mjuk 0,75 s fade/uppåtglidning och lätt blur; rörelsereducering respekteras. Kodcommit `be9205abbae958dde31e4368f8a34a3562e95f41`. Officiell root orörd. Ej browsertestat.
 
 - **2026-11-03 — BETA 1.5.5.38:** Pressrummets rubrik, journalistfråga och svarsalternativ A/B/C animeras successivt vid nytt slutresultat (fade, lätt uppåtglidning, kort blur, förskjutna starttider). Menyns fyrasekundersfördröjning kvar. Reducerad rörelse respekteras. Kodcommit `6a38a888231affd99ac6005941fb627a35b05276`. Officiell root orörd. Ej browsertestat.
+
+- **2026-11-03 — BETA 1.5.5.39:** Presskonferens före match får samma formspråk som efter match: djupblått pressrumskort, tränarprofil, live-status, inramade SVAR, kursiverade citat, A/B/C och mjukt förskjutna entréanimationer för rubrik, fråga och svar. Separat inför-match-identitet; befintliga val, effekter och matchlogik behålls. Kodcommit `f8d326e43369c29183b619b6b262978eadbed181`. Officiell root orörd. Ej browsertestat.
