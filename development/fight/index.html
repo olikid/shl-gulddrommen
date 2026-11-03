@@ -95,7 +95,24 @@
 @keyframes heavyRecoil{40%{transform:translateX(-15px) rotate(-8deg)}75%{transform:translateX(-5px) rotate(-3deg)}}
 @keyframes closeDodge{45%{transform:translateY(23px) rotate(-13deg)}}
 @media(max-width:430px){.rink.fight-ready .fight-pair{transform:scale(1.3)}}
-</style></head><body><main class="shell"><div class="top"><span>🥊 THE FIGHTING UPDATE · ARCADE 1.5.6.13</span><a class="exit" href="../">✕ MATCHEN</a></div><div class="hud"><div class="fighter-hud"><div class="hud-head"><span>DU · #21</span><span id="my-hp-num">100 HP</span></div><div class="meter hp"><span id="my-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="my-st-num">100</span></div><div class="meter stamina"><span id="my-st"></span></div></div><div class="fighter-hud"><div class="hud-head"><span>MOTSTÅNDARE · #44</span><span id="enemy-hp-num">100 HP</span></div><div class="meter hp"><span id="enemy-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="enemy-st-num">100</span></div><div class="meter stamina"><span id="enemy-st"></span></div></div></div><div class="rink" id="arena"><div class="fight-call">FIGHT!</div><div class="glove left"></div><div class="glove right"></div><div class="crowd"></div><div class="boards"></div><div class="ice-line"></div><svg class="fight-scene" viewBox="0 0 640 300" preserveAspectRatio="xMidYMid meet" aria-label="Två hockeyspelare vända mot varandra i fightingställning"><g class="fight-pair"><g class="hockey-fighter mine" transform="translate(205 0) scale(1 1)">
+
+/* 1.5.6.14 compact, close-contact fighters and responsive impact */
+.fight-pair,.rink.fight-ready .fight-pair{transform:scale(.91)!important;transition:none!important}
+.hockey-fighter.mine{translate:-90px 0;transition:translate .85s cubic-bezier(.25,.8,.2,1)}
+.hockey-fighter.enemy{translate:90px 0;transition:translate .85s cubic-bezier(.25,.8,.2,1)}
+.rink.fight-ready .hockey-fighter.mine,.rink.fight-ready .hockey-fighter.enemy{translate:0 0}
+.hockey-fighter .fighter-motion{animation:closeStance .75s ease-in-out infinite alternate!important}
+.hockey-fighter .head-group{animation:lookAtRival 1s ease-in-out infinite alternate!important}
+.hockey-fighter .punch-arm{animation:closeGuard .6s ease-in-out infinite alternate!important}
+.rink.arena-hit .hockey-fighter.mine .punch-arm{animation:rapidCross .19s ease-out!important}
+.rink.arena-enemy-hit .hockey-fighter.enemy .punch-arm{animation:rapidCross .22s ease-out!important}
+.rink.arena-enemy-hurt .hockey-fighter.enemy .fighter-motion,.rink.arena-hurt .hockey-fighter.mine .fighter-motion{animation:contactShock .23s ease-out!important}
+.rink.arena-dodge .hockey-fighter.mine .fighter-motion{animation:closeDodge .25s ease-out!important}
+.rink.fight-ready .hockey-fighter .back-arm{animation:grabJersey .55s ease-in-out infinite alternate!important}
+@keyframes rapidCross{0%{transform:rotate(-22deg)}42%{transform:rotate(-112deg) translateX(22px)}70%{transform:rotate(-106deg) translateX(20px)}100%{transform:rotate(-22deg)}}
+@keyframes contactShock{40%{transform:translateX(-9px) rotate(-7deg)}75%{transform:translateX(-3px) rotate(-2deg)}}
+@media(prefers-reduced-motion:reduce){.hockey-fighter.mine,.hockey-fighter.enemy{transition:none!important}}
+</style></head><body><main class="shell"><div class="top"><span>🥊 THE FIGHTING UPDATE · ARCADE 1.5.6.14</span><a class="exit" href="../">✕ MATCHEN</a></div><div class="hud"><div class="fighter-hud"><div class="hud-head"><span>DU · #21</span><span id="my-hp-num">100 HP</span></div><div class="meter hp"><span id="my-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="my-st-num">100</span></div><div class="meter stamina"><span id="my-st"></span></div></div><div class="fighter-hud"><div class="hud-head"><span>MOTSTÅNDARE · #44</span><span id="enemy-hp-num">100 HP</span></div><div class="meter hp"><span id="enemy-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="enemy-st-num">100</span></div><div class="meter stamina"><span id="enemy-st"></span></div></div></div><div class="rink" id="arena"><div class="fight-call">FIGHT!</div><div class="glove left"></div><div class="glove right"></div><div class="crowd"></div><div class="boards"></div><div class="ice-line"></div><svg class="fight-scene" viewBox="0 0 640 300" preserveAspectRatio="xMidYMid meet" aria-label="Två hockeyspelare vända mot varandra i fightingställning"><g class="fight-pair"><g class="hockey-fighter mine" transform="translate(273 0) scale(1 1)">
  <ellipse class="skate-shadow" cx="0" cy="281" rx="51" ry="7" fill="#507e9c" opacity=".24"/>
  <g class="fighter-motion">
  <g class="legs"><path d="M-24 214 L-34 269 L-12 270 L-3 224 Z" fill="#1b2d42"/><path d="M7 222 L16 271 L38 271 L25 211 Z" fill="#1b2d42"/><path d="M-39 268 L-8 268 L-4 276 L-43 276 Z M14 269 L42 269 L48 276 L12 276 Z" fill="#0d1b2a" stroke="#607f93" stroke-width="2"/></g>
@@ -103,7 +120,7 @@
  <g class="back-arm" transform="translate(-30 148)"><path d="M0 0 L-17 31 L-4 48 L15 12 Z" fill="#b72c45" stroke="#f2f5fa" stroke-width="3"/><ellipse cx="-4" cy="48" rx="12" ry="11" fill="#182b40"/></g>
  <g class="head-group"><path d="M-18 128 L-15 110 L15 110 L21 130 Z" fill="#d5a07d"/><ellipse cx="0" cy="96" rx="27" ry="31" fill="#d8a783"/><path d="M-29 92 Q-30 56 1 59 Q32 58 30 91 L18 90 L13 80 L-23 81 Z" fill="#14283b" stroke="#b6c9d8" stroke-width="3"/><path d="M-21 93 L24 94 L19 106 L-18 106 Z" fill="#17283b" opacity=".7"/><path d="M17 96 L33 103 L18 108" fill="#d7a17c"/><circle cx="17" cy="92" r="2.6" fill="#122033"/></g>
  <g class="punch-arm" transform="translate(27 147)"><path d="M-3 -4 Q18 -4 24 16 L40 41 L25 54 L8 31 L-6 19 Z" fill="#b72c45" stroke="#f5f7ff" stroke-width="3"/><ellipse cx="33" cy="49" rx="13" ry="12" fill="#172b41" stroke="#8ca4b7" stroke-width="2"/></g>
- </g></g><g class="hockey-fighter enemy" transform="translate(435 0) scale(-1 1)">
+ </g></g><g class="hockey-fighter enemy" transform="translate(367 0) scale(-1 1)">
  <ellipse class="skate-shadow" cx="0" cy="281" rx="51" ry="7" fill="#507e9c" opacity=".24"/>
  <g class="fighter-motion">
  <g class="legs"><path d="M-24 214 L-34 269 L-12 270 L-3 224 Z" fill="#1b2d42"/><path d="M7 222 L16 271 L38 271 L25 211 Z" fill="#1b2d42"/><path d="M-39 268 L-8 268 L-4 276 L-43 276 Z M14 269 L42 269 L48 276 L12 276 Z" fill="#0d1b2a" stroke="#607f93" stroke-width="2"/></g>
@@ -111,12 +128,12 @@
  <g class="back-arm" transform="translate(-30 148)"><path d="M0 0 L-17 31 L-4 48 L15 12 Z" fill="#e5ba32" stroke="#f2f5fa" stroke-width="3"/><ellipse cx="-4" cy="48" rx="12" ry="11" fill="#182b40"/></g>
  <g class="head-group"><path d="M-18 128 L-15 110 L15 110 L21 130 Z" fill="#d5a07d"/><ellipse cx="0" cy="96" rx="27" ry="31" fill="#d8a783"/><path d="M-29 92 Q-30 56 1 59 Q32 58 30 91 L18 90 L13 80 L-23 81 Z" fill="#14283b" stroke="#b6c9d8" stroke-width="3"/><path d="M-21 93 L24 94 L19 106 L-18 106 Z" fill="#17283b" opacity=".7"/><path d="M17 96 L33 103 L18 108" fill="#d7a17c"/><circle cx="17" cy="92" r="2.6" fill="#122033"/></g>
  <g class="punch-arm" transform="translate(27 147)"><path d="M-3 -4 Q18 -4 24 16 L40 41 L25 54 L8 31 L-6 19 Z" fill="#e5ba32" stroke="#f5f7ff" stroke-width="3"/><ellipse cx="33" cy="49" rx="13" ry="12" fill="#172b41" stroke="#8ca4b7" stroke-width="2"/></g>
- </g></g></g></svg></div><div class="teams"><span>DITT LAG</span><span>MOTSTÅNDAREN</span></div><h1 id="headline">DET HETTAR TILL!</h1><p class="desc" id="description">Spamma SLÅSS för kombos! DUCKA när motståndaren laddar ett slag – annars riskerar du en hård kontring.</p><div class="combat-log" id="combat-log" aria-live="polite">Fighten börjar nu!</div><div class="actions" id="controls"><button type="button" class="red fight-action" id="hit-button">🥊 SLÅSS!</button><button type="button" class="blue fight-action" id="duck-button">🛡️ DUCKA!</button></div><div class="status" id="status">FIGHT · Omgång 0</div><p class="note">SEPARAT SPELBAR PROTOTYP · Påverkar inte karriär eller sparfiler</p></main><script>
+ </g></g></g></svg></div><div class="teams"><span>DITT LAG</span><span>MOTSTÅNDAREN</span></div><h1 id="headline">DET HETTAR TILL!</h1><p class="desc" id="description">Snabba slag i följd ger en liten bonus! Men tömmer du stamina blir du sårbar för kontringar.</p><div class="combat-log" id="combat-log" aria-live="polite">Fighten börjar nu!</div><div class="actions" id="controls"><button type="button" class="red fight-action" id="hit-button">🥊 SLÅSS!</button><button type="button" class="blue fight-action" id="duck-button">🛡️ DUCKA!</button></div><div class="status" id="status">FIGHT · Omgång 0</div><p class="note">SEPARAT SPELBAR PROTOTYP · Påverkar inte karriär eller sparfiler</p></main><script>
 (()=>{
 'use strict';
 const $=id=>document.getElementById(id);
 const p={hp:100,st:100},e={hp:100,st:100};
-let ready=false,done=false,hits=0,combo=0,lastHit=0,lastDodge=0,windup=0,nextAttack=performance.now()+1100,exhausted=0,started=performance.now(),lastFrame=started;
+let ready=false,done=false,hits=0,combo=0,lastHit=0,rapidChain=0,lastDodge=0,windup=0,nextAttack=performance.now()+1100,exhausted=0,started=performance.now(),lastFrame=started;
 const clamp=x=>Math.max(0,Math.min(100,x));
 function draw(message){
  for(const [prefix,f] of [['my',p],['enemy',e]]){
@@ -135,20 +152,23 @@ function finish(title,description){
 }
 function hit(){
  if(done||!ready)return;
- const now=performance.now();if(now-lastHit<100)return;
+ const now=performance.now();if(now-lastHit<95)return;
+ const interval=lastHit?now-lastHit:999;
+ rapidChain=interval>=95&&interval<=290?Math.min(6,rapidChain+1):0;
  lastHit=now;hits++;
  if(p.st<10||now<exhausted){
-  combo=0;exhausted=Math.max(exhausted,now+1000);nextAttack=Math.min(nextAttack,now+180);
+  combo=0;rapidChain=0;exhausted=Math.max(exhausted,now+1000);nextAttack=Math.min(nextAttack,now+180);
   draw('🚨 HELT SLUT! Du vevar utan kraft – risk för hård kontring!');move('hit');return;
  }
- p.st=clamp(p.st-10);
+ p.st=clamp(p.st-(rapidChain>=3?9:10));
  if(Math.random()<(p.st<20?.3:.12)){
-  combo=0;draw('Du missar!');move('hit');
+  combo=0;rapidChain=0;draw('Du missar!');move('hit');
  }else{
   combo=Math.min(8,combo+1);
-  const damage=5+Math.random()*4+combo*.5;
+  const speedBonus=rapidChain>=2?Math.min(2.5,rapidChain*.45):0;
+  const damage=5+Math.random()*4+combo*.5+speedBonus;
   e.hp=clamp(e.hp-damage);e.st=clamp(e.st-3);
-  draw('🥊 TRÄFF! −'+Math.round(damage)+' HP · Kombo x'+combo);move('enemy-hurt');
+  draw('🥊 TRÄFF! −'+Math.round(damage)+' HP · Kombo x'+combo+(speedBonus?' · ⚡ SNABBA SLAG +'+speedBonus.toFixed(1):''));move('enemy-hurt');
  }
  if(p.st<8){exhausted=now+1100;nextAttack=Math.min(nextAttack,now+220)}
  if(e.hp<=0)finish('DU VINNER FIGHTEN!','Motståndaren går ner och domarna bryter.');
@@ -156,7 +176,7 @@ function hit(){
 function duck(){
  if(done||!ready)return;
  const now=performance.now();if(now-lastDodge<240)return;
- lastDodge=now;combo=0;p.st=clamp(p.st+18);move('dodge');
+ lastDodge=now;combo=0;rapidChain=0;p.st=clamp(p.st+18);move('dodge');
  if(windup){
   windup=0;nextAttack=now+750;p.st=clamp(p.st+12);
   draw('🛡️ PERFEKT DUCKNING! Du undviker slaget och återhämtar energi.');
@@ -172,7 +192,7 @@ function tick(now){
   else{
    const vulnerable=p.st<22||now<exhausted;
    const damage=(vulnerable?16:7)+Math.random()*(vulnerable?10:7);
-   p.hp=clamp(p.hp-damage);combo=0;move('hurt');
+   p.hp=clamp(p.hp-damage);combo=0;rapidChain=0;move('hurt');
    draw((vulnerable?'💥 HÅRD KONTRING!':'👊 Motståndaren träffar!')+' −'+Math.round(damage)+' HP');
    if(p.hp<=0){finish('DU FÖRLORAR FIGHTEN!','Du fick slut på kraft och motståndaren tog över.');return}
   }
