@@ -2396,16 +2396,23 @@ if(g.overtime){
  if(x!==y)update({score:[x,y],overtimeStep:step,coachActive:active,feedback:msg+' · 🏆 GOLDEN GOAL!',finalPending:true});
  else update({score:[x,y],overtimeStep:step,clockElapsed:step*60,coachActive:active,feedback:msg+' · ⏱️ Sudden death fortsätter!',possession,zone,pressure,scene:chooseScene()});
  }else if(g.turn===14){update({score:[x,y],coachActive:active,feedback:msg,finalPending:true})}else{let next=nextClock(g.turn,x,y,ok),oldTime=Number.isFinite(g.clockElapsed)?g.clockElapsed:0,passed=(g.turn+1)%5===0?Math.max(0,1200-oldTime)+next:Math.max(0,next-oldTime),pen=g.penalty?{...g.penalty,remaining:g.penalty.remaining-passed}:null;if(pen&&((pen.team==='opp'&&ownGoal)||(pen.team==='own'&&againstGoal)))pen=null;if(pen&&pen.remaining<=0)pen=null;if(!pen&&Math.random()<(g.rivalryMatch?.heated?.19:.15)){pen={team:Math.random()<.5?'own':'opp',remaining:120};msg+=' · 🟨 Utvisning!'+(g.rivalryMatch?.heated?' Hett temperament i rivalmötet!':'')}
-update({score:[x,y],turn:g.turn+1,clockElapsed:next,penalty:pen,possession,zone,pressure,feedback:msg,coachActive:active,opponentPulled});update({scene:chooseScene()})}setTimeout(matchFightMaybe,0)}
+update({score:[x,y],turn:g.turn+1,clockElapsed:next,penalty:pen,possession,zone,pressure,feedback:msg,coachActive:active,opponentPulled});update({scene:chooseScene()})}setTimeout(()=>matchFightMaybe({ownGoal,againstGoal,lead:x>y,margin:Math.abs(x-y)}),0)}
 /* Occasional invitation to play the fight arcade inside a league match */
+/* 1.5.6.39: fight offers require an actual in-match provocation */
 let matchFightSeen='',matchFightOpen=false;
-function matchFightMaybe(){
- if(g.page!=='match'||g.finalPending||g.overtime||matchFightOpen||g.turn<2||g.turn>12)return;
+function matchFightMaybe(incident){
+ if(g.page!=='match'||g.finalPending||g.overtime||matchFightOpen||g.turn<3||g.turn>12||!incident)return;
  const key=(g.seasons||[]).length+'-'+g.round+'-'+g.team;
- if(matchFightSeen===key||Math.random()>(g.rivalryMatch?.heated?.18:.09))return;
+ if(matchFightSeen===key)return;
+ const {ownGoal,againstGoal,lead,margin}=incident;
+ let reason='',chance=0;
+ if(ownGoal&&lead&&margin>=2){reason='Efter ännu ett mål för '+T[g.team]+' tappar '+T[rival()]+' tålamodet! En frustrerad motståndare utmanar din spelare.';chance=margin>=3?.58:.36}
+ else if(againstGoal&&margin>=2&&!lead){reason=T[rival()]+' har fått övertaget. Det kokar över på isen när spelarna börjar munhuggas!';chance=.22}
+ else if((ownGoal||againstGoal)&&g.rivalryMatch?.heated){reason='Rivalmötet kokar efter målet! Spelarna ryker ihop framför målburen.';chance=.28}
+ if(!reason||Math.random()>chance)return;
  matchFightSeen=key;matchFightOpen=true;
  const el=document.createElement('div');el.id='match-fight-layer';el.className='match-fight-layer';
- el.innerHTML='<section class="match-fight-invite"><strong>🥊 DET HETTAR TILL!</strong><h2>MOTSTÅNDAREN BJUDER UPP TILL FIGHT!</h2><p>Handskarna åker av! Vill du ta fighten? Matchen väntar medan ni gör upp.</p><button onclick="matchFightLaunch()">🥊 TA FIGHTEN</button><button onclick="matchFightEnd()">🛡️ AVSTÅ</button></section>';
+ el.innerHTML='<section class="match-fight-invite"><strong>🥊 DET KOKAR PÅ ISEN!</strong><h2>MOTSTÅNDAREN BJUDER UPP TILL FIGHT!</h2><p>'+reason+'</p><p>Vill du låta din spelare anta utmaningen? En seger kan lyfta lagmoralen, men för många fighter oroar styrelsen.</p><button onclick="matchFightLaunch()">🥊 TA FIGHTEN</button><button onclick="matchFightEnd()">🛡️ AVSTÅ</button></section>';
  document.body.appendChild(el);
 }
 function matchFightLaunch(){
@@ -2414,7 +2421,16 @@ function matchFightLaunch(){
 }
 function matchFightEnd(result){
  document.getElementById('match-fight-layer')?.remove();matchFightOpen=false;
- if(g.page==='match')update({feedback:result==='win'?'🥊 DIN SPELARE VANN FIGHTEN! Publiken jublar!':result==='lose'?'🥊 Motståndaren vann fighten. Nu fortsätter matchen!':'🥊 Fighten avbruten. Matchen fortsätter.'});
+ if(g.page!=='match')return;
+ if(result!=='win'&&result!=='lose'){update({feedback:'🥊 Spelaren avstår från fighten. Matchen fortsätter.'});return}
+ const w=worldState(),season=(g.seasons||[]).length+1;
+ const previous=(g.fightDiscipline&&g.fightDiscipline.season===season)?g.fightDiscipline:{season,count:0,wins:0,losses:0};
+ const count=previous.count+1,win=result==='win',disciplinePenalty=count>=3?(count===3?4:2):0;
+ const nextWorld={...w,morale:worldClamp(w.morale+(win?7:-7)),fans:worldClamp(w.fans+(win?3:-2)),board:worldClamp(w.board-disciplinePenalty)};
+ const nextDiscipline={season,count,wins:previous.wins+(win?1:0),losses:previous.losses+(win?0:1)};
+ const outcome=win?'🥊 FIGHTSEGER! Laget får en energikick (+7 moral).':'🥊 FIGHTFÖRLUST! Laget tappar energi och självförtroende (−7 moral).';
+ const warning=disciplinePenalty?' ⚠️ Styrelsen oroas över disciplinen (−'+disciplinePenalty+' förtroende).':'';
+ update({world:nextWorld,fightDiscipline:nextDiscipline,feedback:outcome+warning});
 }
 window.addEventListener('message',ev=>{
  const iframe=document.querySelector('#match-fight-layer iframe');
