@@ -2418,7 +2418,9 @@ function matchFightEnd(result){
 }
 window.addEventListener('message',ev=>{
  const iframe=document.querySelector('#match-fight-layer iframe');
- if(!iframe||ev.origin!==location.origin||ev.source!==iframe.contentWindow||ev.data?.type!=='shl-fight-finished')return;
+ if(!iframe||ev.origin!==location.origin||ev.source!==iframe.contentWindow)return;
+ if(ev.data?.type==='shl-fight-exit'){matchFightEnd();return}
+ if(ev.data?.type!=='shl-fight-finished')return;
  const result=ev.data.result,bar=document.querySelector('.match-fight-bar');
  if(bar){bar.querySelector('strong').textContent=result==='win'?'🏆 DU VANN FIGHTEN!':'🥊 FIGHTEN ÄR ÖVER';const button=bar.querySelector('button');button.textContent='FORTSÄTT MATCHEN →';button.onclick=()=>matchFightEnd(result)}
 });
