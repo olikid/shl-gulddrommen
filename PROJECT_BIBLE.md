@@ -336,3 +336,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - **2026-11-03 — Fight Arcade 1.5.6.34:** `development/fight/index.html`: linjedomaren något större (64×126 px från 57×113 px), utan ändringar i animationer, timing, handskkast eller fightbalans. Commit `a8de2f2fc9e294585253af598ee11f7d09067321`. Officiell version orörd.
 
 - **2026-11-03 — Fight Arcade 1.5.6.35:** `development/fight/index.html`: behåller linjedomarens godkända storlek 64×126 px men flyttar hans slutposition åt vänster vid spelarvinst och åt höger vid motståndarvinst för att inte täcka vinnaren. Commit `30f006181ede40f67212c123745656bd82944a2f`. Officiell version orörd; visuell kontroll på mobil återstår.
+
+- **2026-11-03 — Fight Arcade 1.5.6.36:** `development/fight/index.html`: visuella trötthetseffekter för spelaren vid stamina under 38 (hängande huvud, tung andning, långsammare armguard, text TRÖTT) och under 17 (kraftigare utmattning, text HELT SLUT). Ingen ändring i combatlogik, timing, handskar eller domare. Commit `554db7a135ed674dec69040b2574f434009ea35e`. Officiell version orörd; mobiltest återstår.
