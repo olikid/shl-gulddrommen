@@ -2437,7 +2437,8 @@ function matchFightMaybe(incident){
 }
 function matchFightLaunch(){
  const el=document.getElementById('match-fight-layer');if(!el)return;
- el.innerHTML='<section class="match-fight-embed"><div class="match-fight-bar"><strong>🥊 FIGHT PÅ ISEN</strong><button onclick="matchFightEnd()">✕ TILL MATCHEN</button></div><iframe title="Hockeyfight" src="fight/?embedded=1"></iframe></section>';
+ const colors=rinkColors(),params=new URLSearchParams({embedded:'1',mine:T[g.team],enemy:T[rival()],mineColor:colors.own,enemyColor:colors.opp});
+ el.innerHTML='<section class="match-fight-embed"><div class="match-fight-bar"><strong>🥊 '+coach15Safe(T[g.team])+' VS '+coach15Safe(T[rival()])+'</strong><button onclick="matchFightEnd()">✕ TILL MATCHEN</button></div><iframe title="Hockeyfight" src="fight/?'+params.toString()+'"></iframe></section>';
 }
 function matchFightEnd(result){
  document.getElementById('match-fight-layer')?.remove();matchFightOpen=false;
