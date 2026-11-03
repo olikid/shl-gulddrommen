@@ -112,7 +112,22 @@
 @keyframes rapidCross{0%{transform:rotate(-22deg)}42%{transform:rotate(-112deg) translateX(22px)}70%{transform:rotate(-106deg) translateX(20px)}100%{transform:rotate(-22deg)}}
 @keyframes contactShock{40%{transform:translateX(-9px) rotate(-7deg)}75%{transform:translateX(-3px) rotate(-2deg)}}
 @media(prefers-reduced-motion:reduce){.hockey-fighter.mine,.hockey-fighter.enemy{transition:none!important}}
-</style></head><body><main class="shell"><div class="top"><span>🥊 THE FIGHTING UPDATE · ARCADE 1.5.6.14</span><a class="exit" href="../">✕ MATCHEN</a></div><div class="hud"><div class="fighter-hud"><div class="hud-head"><span>DU · #21</span><span id="my-hp-num">100 HP</span></div><div class="meter hp"><span id="my-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="my-st-num">100</span></div><div class="meter stamina"><span id="my-st"></span></div></div><div class="fighter-hud"><div class="hud-head"><span>MOTSTÅNDARE · #44</span><span id="enemy-hp-num">100 HP</span></div><div class="meter hp"><span id="enemy-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="enemy-st-num">100</span></div><div class="meter stamina"><span id="enemy-st"></span></div></div></div><div class="rink" id="arena"><div class="fight-call">FIGHT!</div><div class="glove left"></div><div class="glove right"></div><div class="crowd"></div><div class="boards"></div><div class="ice-line"></div><svg class="fight-scene" viewBox="0 0 640 300" preserveAspectRatio="xMidYMid meet" aria-label="Två hockeyspelare vända mot varandra i fightingställning"><g class="fight-pair"><g class="hockey-fighter mine" transform="translate(273 0) scale(1 1)">
+
+/* 1.5.6.15 punch impact feedback */
+.hit-spark{position:absolute;z-index:12;top:41%;left:50%;width:62px;height:62px;transform:translate(-50%,-50%) scale(.25);opacity:0;pointer-events:none;display:grid;place-items:center;font-size:34px;font-weight:1000;color:#fff;text-shadow:0 2px 4px #13273e,0 0 16px #f5c34e;filter:drop-shadow(0 0 8px #ffd167)}
+.hit-spark::before{content:"";position:absolute;inset:5px;border:4px solid #ffe49a;border-radius:50%;box-shadow:0 0 12px #ffb545}
+.hit-spark.mine-impact{left:42%}.hit-spark.enemy-impact{left:58%}
+.hit-spark.impact-active{animation:impactBurst .33s cubic-bezier(.1,.8,.3,1) forwards}
+.rink.impact-enemy .hockey-fighter.enemy .head-group{animation:impactHead .3s ease-out!important}
+.rink.impact-mine .hockey-fighter.mine .head-group{animation:impactHead .3s ease-out!important}
+.rink.impact-enemy .hockey-fighter.enemy .fighter-motion,.rink.impact-mine .hockey-fighter.mine .fighter-motion{animation:impactBody .32s ease-out!important}
+.rink.impact-enemy .hockey-fighter.enemy .punch-arm,.rink.impact-mine .hockey-fighter.mine .punch-arm{animation:impactGuard .32s ease-out!important}
+@keyframes impactBurst{0%{opacity:0;transform:translate(-50%,-50%) scale(.2) rotate(-25deg)}25%{opacity:1;transform:translate(-50%,-50%) scale(1.15) rotate(7deg)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.6) rotate(16deg)}}
+@keyframes impactHead{35%{transform:rotate(-18deg) translateX(-9px)}75%{transform:rotate(-7deg) translateX(-3px)}}
+@keyframes impactBody{35%{transform:rotate(-11deg) translateX(-13px)}75%{transform:rotate(-4deg) translateX(-4px)}}
+@keyframes impactGuard{35%{transform:rotate(9deg) translateY(8px)}}
+@media(prefers-reduced-motion:reduce){.hit-spark.impact-active,.rink.impact-enemy .hockey-fighter *,.rink.impact-mine .hockey-fighter *{animation:none!important}}
+</style></head><body><main class="shell"><div class="top"><span>🥊 THE FIGHTING UPDATE · ARCADE 1.5.6.15</span><a class="exit" href="../">✕ MATCHEN</a></div><div class="hud"><div class="fighter-hud"><div class="hud-head"><span>DU · #21</span><span id="my-hp-num">100 HP</span></div><div class="meter hp"><span id="my-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="my-st-num">100</span></div><div class="meter stamina"><span id="my-st"></span></div></div><div class="fighter-hud"><div class="hud-head"><span>MOTSTÅNDARE · #44</span><span id="enemy-hp-num">100 HP</span></div><div class="meter hp"><span id="enemy-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="enemy-st-num">100</span></div><div class="meter stamina"><span id="enemy-st"></span></div></div></div><div class="rink" id="arena"><div class="fight-call">FIGHT!</div><div class="hit-spark enemy-impact" id="enemy-impact" aria-hidden="true">✦</div><div class="hit-spark mine-impact" id="mine-impact" aria-hidden="true">✦</div><div class="glove left"></div><div class="glove right"></div><div class="crowd"></div><div class="boards"></div><div class="ice-line"></div><svg class="fight-scene" viewBox="0 0 640 300" preserveAspectRatio="xMidYMid meet" aria-label="Två hockeyspelare vända mot varandra i fightingställning"><g class="fight-pair"><g class="hockey-fighter mine" transform="translate(273 0) scale(1 1)">
  <ellipse class="skate-shadow" cx="0" cy="281" rx="51" ry="7" fill="#507e9c" opacity=".24"/>
  <g class="fighter-motion">
  <g class="legs"><path d="M-24 214 L-34 269 L-12 270 L-3 224 Z" fill="#1b2d42"/><path d="M7 222 L16 271 L38 271 L25 211 Z" fill="#1b2d42"/><path d="M-39 268 L-8 268 L-4 276 L-43 276 Z M14 269 L42 269 L48 276 L12 276 Z" fill="#0d1b2a" stroke="#607f93" stroke-width="2"/></g>
@@ -146,6 +161,15 @@ function draw(message){
 function move(type){
  const a=$('arena');a.classList.remove('arena-hit','arena-dodge','arena-enemy-hit','arena-hurt','arena-enemy-hurt');void a.offsetWidth;a.classList.add('arena-'+type);
 }
+function impact(target){
+ const arena=$('arena'),spark=$(target==='enemy'?'enemy-impact':'mine-impact');
+ arena.classList.remove('impact-enemy','impact-mine');
+ spark.classList.remove('impact-active');
+ void arena.offsetWidth;
+ arena.classList.add('impact-'+target);
+ spark.classList.add('impact-active');
+ window.setTimeout(()=>{spark.classList.remove('impact-active');arena.classList.remove('impact-'+target)},330);
+}
 function finish(title,description){
  done=true;$('headline').textContent=title;$('description').textContent=description;
  $('controls').innerHTML='<a class="reset" style="grid-column:1/-1;text-align:center" href="./">🥊 NY FIGHT</a>';draw();
@@ -168,7 +192,7 @@ function hit(){
   const speedBonus=rapidChain>=2?Math.min(2.5,rapidChain*.45):0;
   const damage=5+Math.random()*4+combo*.5+speedBonus;
   e.hp=clamp(e.hp-damage);e.st=clamp(e.st-3);
-  draw('🥊 TRÄFF! −'+Math.round(damage)+' HP · Kombo x'+combo+(speedBonus?' · ⚡ SNABBA SLAG +'+speedBonus.toFixed(1):''));move('enemy-hurt');
+  draw('🥊 TRÄFF! −'+Math.round(damage)+' HP · Kombo x'+combo+(speedBonus?' · ⚡ SNABBA SLAG +'+speedBonus.toFixed(1):''));move('enemy-hurt');impact('enemy');
  }
  if(p.st<8){exhausted=now+1100;nextAttack=Math.min(nextAttack,now+220)}
  if(e.hp<=0)finish('DU VINNER FIGHTEN!','Motståndaren går ner och domarna bryter.');
@@ -192,7 +216,7 @@ function tick(now){
   else{
    const vulnerable=p.st<22||now<exhausted;
    const damage=(vulnerable?16:7)+Math.random()*(vulnerable?10:7);
-   p.hp=clamp(p.hp-damage);combo=0;rapidChain=0;move('hurt');
+   p.hp=clamp(p.hp-damage);combo=0;rapidChain=0;move('hurt');impact('mine');
    draw((vulnerable?'💥 HÅRD KONTRING!':'👊 Motståndaren träffar!')+' −'+Math.round(damage)+' HP');
    if(p.hp<=0){finish('DU FÖRLORAR FIGHTEN!','Du fick slut på kraft och motståndaren tog över.');return}
   }
