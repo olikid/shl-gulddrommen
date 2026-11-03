@@ -2400,7 +2400,7 @@ function fightPenaltyMarkup(){
  const now=Math.floor(g.turn/5)*1200+(Number.isFinite(g.clockElapsed)?g.clockElapsed:0),remaining=Math.max(0,f.until-now);
  if(!remaining)return '';
  const time=String(Math.floor(remaining/60))+':'+String(remaining%60).padStart(2,'0');
- return '<div class="fight-penalty-status"><strong>🥊 MATCHSTRAFF EFTER FIGHTEN · 5 MIN</strong><div class="fight-penalty-teams"><span>🟨 '+coach15Safe(f.own)+' · 1 SPELARE UTVISAD</span><span>🟨 '+coach15Safe(f.enemy)+' · 1 SPELARE UTVISAD</span></div><small>⏱️ '+time+' kvar · Lika många spelare utvisade, lagen fortsätter med lika styrka.</small></div>';
+ return '<div class="fight-penalty-status"><strong>🥊 SLAGSMÅL · 5 MINUTERS UTVISNING VAR</strong><div class="fight-penalty-teams"><span>🟨 '+coach15Safe(f.own)+' · 1 SPELARE UTVISAD</span><span>🟨 '+coach15Safe(f.enemy)+' · 1 SPELARE UTVISAD</span></div><small>⏱️ '+time+' kvar · Lika många spelare utvisade, lagen fortsätter med lika styrka.</small></div>';
 }
 function matchDecisionButtons(options){return '<div class="match-decisions"><div class="match-decision-heading">TA ETT BESLUT</div>'+options.map((label,i)=>'<div class="match-decision-small">'+btn(label,'act('+i+')','choice')+'</div>').join('')+'</div>'}
 function act(i){if(g.finalPending===true)return;document.querySelectorAll('.goaltoast').forEach(el=>el.remove());if(goalToastTimer){clearTimeout(goalToastTimer);goalToastTimer=null}goalFlashUntil=0;let sc=scenes[g.scene],off=1,def=1;if(g.scene===9)g.penaltyShotUsed=true;for(let v of Object.values(g.coachActive||{}))if(v.left>0){off*=1+v.off;def*=1-v.def}
