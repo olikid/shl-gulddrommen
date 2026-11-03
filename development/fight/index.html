@@ -69,7 +69,33 @@
 @keyframes realDodge{45%{transform:translateY(22px) rotate(-11deg)}}
 @keyframes feetShift{to{transform:skewX(2deg)}}
 @media(prefers-reduced-motion:reduce){.fight-pair,.hockey-fighter *{animation:none!important;transition:none!important}}
-</style></head><body><main class="shell"><div class="top"><span>🥊 THE FIGHTING UPDATE · ARCADE 1.5.6.12</span><a class="exit" href="../">✕ MATCHEN</a></div><div class="hud"><div class="fighter-hud"><div class="hud-head"><span>DU · #21</span><span id="my-hp-num">100 HP</span></div><div class="meter hp"><span id="my-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="my-st-num">100</span></div><div class="meter stamina"><span id="my-st"></span></div></div><div class="fighter-hud"><div class="hud-head"><span>MOTSTÅNDARE · #44</span><span id="enemy-hp-num">100 HP</span></div><div class="meter hp"><span id="enemy-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="enemy-st-num">100</span></div><div class="meter stamina"><span id="enemy-st"></span></div></div></div><div class="rink" id="arena"><div class="fight-call">FIGHT!</div><div class="glove left"></div><div class="glove right"></div><div class="crowd"></div><div class="boards"></div><div class="ice-line"></div><svg class="fight-scene" viewBox="0 0 640 300" preserveAspectRatio="xMidYMid meet" aria-label="Två hockeyspelare vända mot varandra i fightingställning"><g class="fight-pair"><g class="hockey-fighter mine" transform="translate(205 0) scale(1 1)">
+
+/* 1.5.6.13: one continuous, close-range side-view fight scene */
+.rink{background:linear-gradient(#132840 0 34%,#c7d9e7 34% 36%,#f5fbff 36% 62%,#dceff9 62%);isolation:isolate}
+.fight-scene{position:absolute;inset:0;width:100%;height:100%;z-index:5;overflow:visible}
+.fight-pair{transition:transform .75s cubic-bezier(.22,.8,.25,1);transform-origin:50% 73%;transform:scale(.83)}
+.rink.fight-ready .fight-pair{transform:scale(1.42)}
+.hockey-fighter .fighter-motion{animation:closeStance .55s ease-in-out infinite alternate;transform-origin:center 260px}
+.hockey-fighter.enemy .fighter-motion{animation-delay:-.27s}
+.hockey-fighter .head-group{animation:lookAtRival .7s ease-in-out infinite alternate;transform-origin:0 115px}
+.hockey-fighter .punch-arm{animation:closeGuard .45s ease-in-out infinite alternate;transform-origin:27px 147px}
+.hockey-fighter.enemy .punch-arm{animation-delay:-.25s}
+.hockey-fighter .back-arm{animation:grabJersey .65s ease-in-out infinite alternate;transform-origin:-30px 148px}
+.hockey-fighter .legs{animation:none!important}
+.rink.arena-hit .hockey-fighter.mine .punch-arm{animation:heavyJab .24s ease-out!important}
+.rink.arena-enemy-hit .hockey-fighter.enemy .punch-arm{animation:heavyJab .24s ease-out!important}
+.rink.arena-enemy-hurt .hockey-fighter.enemy .fighter-motion,.rink.arena-hurt .hockey-fighter.mine .fighter-motion{animation:heavyRecoil .3s ease-out!important}
+.rink.arena-dodge .hockey-fighter.mine .fighter-motion{animation:closeDodge .3s ease-out!important}
+.rink.gloves .glove{animation:gloveFall .95s ease-in forwards}
+@keyframes closeStance{from{transform:rotate(-2deg) translateY(1px)}to{transform:rotate(2deg) translateY(-2px)}}
+@keyframes lookAtRival{to{transform:rotate(4deg) translateY(-2px)}}
+@keyframes closeGuard{from{transform:rotate(-17deg)}to{transform:rotate(-33deg)}}
+@keyframes grabJersey{from{transform:rotate(-32deg)}to{transform:rotate(-43deg)}}
+@keyframes heavyJab{0%{transform:rotate(-20deg)}38%{transform:rotate(-100deg) translateX(13px)}65%{transform:rotate(-95deg) translateX(15px)}100%{transform:rotate(-20deg)}}
+@keyframes heavyRecoil{40%{transform:translateX(-15px) rotate(-8deg)}75%{transform:translateX(-5px) rotate(-3deg)}}
+@keyframes closeDodge{45%{transform:translateY(23px) rotate(-13deg)}}
+@media(max-width:430px){.rink.fight-ready .fight-pair{transform:scale(1.3)}}
+</style></head><body><main class="shell"><div class="top"><span>🥊 THE FIGHTING UPDATE · ARCADE 1.5.6.13</span><a class="exit" href="../">✕ MATCHEN</a></div><div class="hud"><div class="fighter-hud"><div class="hud-head"><span>DU · #21</span><span id="my-hp-num">100 HP</span></div><div class="meter hp"><span id="my-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="my-st-num">100</span></div><div class="meter stamina"><span id="my-st"></span></div></div><div class="fighter-hud"><div class="hud-head"><span>MOTSTÅNDARE · #44</span><span id="enemy-hp-num">100 HP</span></div><div class="meter hp"><span id="enemy-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="enemy-st-num">100</span></div><div class="meter stamina"><span id="enemy-st"></span></div></div></div><div class="rink" id="arena"><div class="fight-call">FIGHT!</div><div class="glove left"></div><div class="glove right"></div><div class="crowd"></div><div class="boards"></div><div class="ice-line"></div><svg class="fight-scene" viewBox="0 0 640 300" preserveAspectRatio="xMidYMid meet" aria-label="Två hockeyspelare vända mot varandra i fightingställning"><g class="fight-pair"><g class="hockey-fighter mine" transform="translate(205 0) scale(1 1)">
  <ellipse class="skate-shadow" cx="0" cy="281" rx="51" ry="7" fill="#507e9c" opacity=".24"/>
  <g class="fighter-motion">
  <g class="legs"><path d="M-24 214 L-34 269 L-12 270 L-3 224 Z" fill="#1b2d42"/><path d="M7 222 L16 271 L38 271 L25 211 Z" fill="#1b2d42"/><path d="M-39 268 L-8 268 L-4 276 L-43 276 Z M14 269 L42 269 L48 276 L12 276 Z" fill="#0d1b2a" stroke="#607f93" stroke-width="2"/></g>
