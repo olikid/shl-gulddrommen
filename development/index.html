@@ -1574,7 +1574,7 @@ main{padding-bottom:116px}
 .season-history-mini .career-season-details>span{font-size:12px!important;font-weight:400!important;color:#e8f2ff!important}
 .season-history-mini .career-season-details>small{font-size:10px!important;color:#b4c9dd!important;text-align:right!important}
 .season-history-mini .career-season-details .career-winner-name{color:#f3f7ff}
-</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.5.5.52 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
+</style><main><div class="gamebranding"><div class="sha-logo" role="img" aria-label="Swedish Hockey Arcade"><div class="sha-logo-country"><span></span><b>SWEDISH</b><span></span></div><div class="sha-logo-wordmark"><strong>HOCKEY</strong><strong>ARCADE</strong></div></div><div class="small sha-version">BETA 1.5.5.53 · UTVECKLINGSVERSION · INOFFICIELLT FANSPEL</div></div><div id="app"></div></main><script>
 const T=['Brynäs','Frölunda','Färjestad','Skellefteå','Växjö','Rögle','Luleå','Timrå','Örebro','Linköping','HV71','Leksand','Malmö','Djurgården'],C=['BIF','FHC','FBK','SKE','VLH','RBK','LHF','TIK','ÖHK','LHC','HV71','LIF','MIF','DIF'],K=['#d5ac46','#ce263f','#17834c','#e6ba36','#ed8937','#168b5d','#d33a38','#c83434','#bc243b','#1c76b8','#1559a2','#2474b8','#db2937','#e5b82e'];
 let a=T.map((_,i)=>i),first=[];for(let r=0;r<13;r++){first.push(Array.from({length:7},(_,j)=>[a[j],a[13-j]]));a=[a[0],a[13],...a.slice(1,13)]}let rev=first.map(r=>r.map(([x,y])=>[y,x])),F=[...first,...rev,...first,...rev];
 /* BETA 1.3.1: Each career season owns its schedule; original fixtures stay as fallback. */
@@ -2097,7 +2097,7 @@ function rivalrySignal(){
  if(forceTest&&!oldClub&&diff<4)return {tag:'HETT RIVALMÖTE',title:'Rivalmöte: '+T[g.team]+' mot '+T[opp],body:'TESTLÄGE: Lagen har en uppbyggd rivalitet. Räkna med hög intensitet och hetare temperament på isen.',intensity:2};
  if(!oldClub&&diff<4&&score<6)return null;
  const scoreline=last?T[last.a]+' '+last.x+'–'+last.y+' '+T[last.b]:'';
- if(oldClub)return {tag:'TRÄNAREN ÅTERVÄNDER',title:'Tillbaka mot gamla klubben – känslorna svallar',body:'Du möter '+T[opp]+', en klubb du tidigare tränat. Det väntas ett känsloladdat möte med blandade reaktioner från läktarna.',intensity:2};
+ if(oldClub)return {tag:'TRÄNAREN ÅTERVÄNDER',title:T[g.team]+' möter '+T[opp]+' – tränaren ställs mot sin gamla klubb',body:'Det väntar ett laddat möte när '+T[g.team]+' ställs mot '+T[opp]+'. '+T[g.team]+'s huvudtränare har tidigare lett motståndarlaget, vilket ger matchen en extra dimension. Hur tas den tidigare tränaren emot när lagen möts igen?',intensity:2};
  if(diff>=4)return {tag:'REVANSCHMÖTE',title:ourLoss?T[g.team]+' jagar revansch efter storförlusten':T[opp]+' vill ha revansch efter förnedringen',body:'Senaste mötet: '+scoreline+'. Det förlorande laget väntas komma extra taggat till nedsläpp.',intensity:2};
  return {tag:'HETT RIVALMÖTE',title:'Det börjar hetta till mellan '+T[g.team]+' och '+T[opp],body:'Flera laddade möten har byggt upp en rivalitet. Räkna med hög intensitet på isen.',intensity:1};
 }
