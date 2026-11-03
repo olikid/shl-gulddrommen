@@ -393,6 +393,7 @@ function finish(title,description){
  else $('arena').classList.add('victory-'+(p.hp>=e.hp?'mine':'enemy'));
  const winner=loser?(loser==='mine'?'enemy':'mine'):(p.hp>=e.hp?'mine':'enemy');
  window.setTimeout(()=>{const a=$('arena');a.classList.add('referee-'+winner);$('combat-log').textContent='👨‍⚖️ Linjedomaren kommer in och särar på spelarna!';},1500);
+ if(window.parent!==window&&new URLSearchParams(location.search).has('embedded'))window.parent.postMessage({type:'shl-fight-finished',result:winner==='mine'?'win':'lose'},location.origin);
  $('controls').innerHTML='<div class="fight-ended" role="status">🏁 FIGHTEN ÄR AVSLUTAD</div>';draw();
 }
 function hit(){
@@ -476,6 +477,7 @@ window.setTimeout(()=>{
  started=performance.now();lastAction=started;lastFrame=started;nextAttack=started+380;requestAnimationFrame(tick);
 },1900);
 window.setTimeout(()=>countdown.remove(),2550);
+if(new URLSearchParams(location.search).has('embedded')){const exit=document.querySelector('.exit');if(exit){exit.textContent='✕ TILL MATCHEN';exit.addEventListener('click',ev=>{ev.preventDefault();window.parent.postMessage({type:'shl-fight-exit'},location.origin)})}}
 draw();
 })();
 </script></body></html>
