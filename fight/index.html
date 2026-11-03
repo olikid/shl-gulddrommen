@@ -385,6 +385,7 @@ function fightClubDivision(r){return r>=1800?'LEGEND':r>=1500?'ELITE':r>=1300?'C
 function fightClubShow(){const v=fightClubRead();document.getElementById('fight-rank').textContent=v.rating;document.getElementById('fight-division').textContent=fightClubDivision(v.rating);document.getElementById('fight-record').textContent=v.wins+'–'+v.losses;document.getElementById('fight-streak').textContent='🔥 Segersvit: '+v.streak;const next=[1100,1300,1500,1800].find(n=>v.rating<n);document.getElementById('fight-progress').style.width=(next?Math.max(0,Math.min(100,100*(v.rating-(next===1100?1000:next===1300?1100:next===1500?1300:1500))/(next-(next===1100?1000:next===1300?1100:next===1500?1300:1500)))):100)+'%';document.getElementById('fight-next').textContent=next?'Nästa division: '+fightClubDivision(next)+' · '+next+' FR':'Högsta divisionen uppnådd!'}
 if(!fightClubEmbedded&&!fightClubQuick){document.body.classList.add('fight-club-home');document.getElementById('fight-lobby').hidden=false;fightClubShow()}
 document.getElementById('fight-quick').addEventListener('click',()=>{location.href='?quick=1'});
+if(!fightClubEmbedded&&!fightClubQuick)return; // Lobby only: do not start hidden fight timers or controls.
 
 /* Match integration: display actual clubs and color the SVG jerseys, arms and gloves. */
 const fightParams=new URLSearchParams(location.search);
