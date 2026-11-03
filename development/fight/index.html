@@ -154,7 +154,25 @@
 .rink.knockout-mine .hockey-fighter.mine .back-arm,.rink.knockout-enemy .hockey-fighter.enemy .back-arm{animation:none!important}
 @keyframes fallToIce{0%{transform:rotate(0deg) translateY(0)}18%{transform:rotate(-13deg) translateY(-8px)}55%{transform:rotate(55deg) translateY(0)}80%{transform:rotate(88deg) translateY(0)}100%{transform:rotate(87deg) translateY(0)}}
 @media(prefers-reduced-motion:reduce){.rink.knockout-mine .hockey-fighter.mine .fighter-motion,.rink.knockout-enemy .hockey-fighter.enemy .fighter-motion{animation:none!important;transform:rotate(87deg)}}
-</style></head><body><main class="shell"><div class="top"><span>🥊 THE FIGHTING UPDATE · ARCADE 1.5.6.20</span><a class="exit" href="../">✕ MATCHEN</a></div><div class="hud"><div class="fighter-hud"><div class="hud-head"><span>DU · #21</span><span id="my-hp-num">100 HP</span></div><div class="meter hp"><span id="my-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="my-st-num">100</span></div><div class="meter stamina"><span id="my-st"></span></div></div><div class="fighter-hud"><div class="hud-head"><span>MOTSTÅNDARE · #44</span><span id="enemy-hp-num">100 HP</span></div><div class="meter hp"><span id="enemy-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="enemy-st-num">100</span></div><div class="meter stamina"><span id="enemy-st"></span></div></div></div><div class="rink" id="arena"><div class="fight-call">FIGHT!</div><div class="hit-spark enemy-impact" id="enemy-impact" aria-hidden="true">✦</div><div class="hit-spark mine-impact" id="mine-impact" aria-hidden="true">✦</div><div class="thrown-glove left" aria-hidden="true"><svg viewBox="0 0 64 70"><path d="M16 21 Q13 12 23 9 L43 10 Q51 13 49 24 L46 44 Q57 48 54 56 L47 65 L15 63 L8 54 Q7 48 15 44 Z" fill="#b62943" stroke="#f2f7ff" stroke-width="3"/><path d="M17 22 L44 23 M16 32 L45 34 M17 45 L46 45" stroke="#e5ecf6" stroke-width="3" opacity=".85"/><path d="M15 42 Q0 30 3 22 Q9 16 18 23 L25 38 Z" fill="#9c2138" stroke="#fff" stroke-width="2"/><path d="M18 53 L45 54" stroke="#152c46" stroke-width="5"/></svg></div><div class="thrown-glove right" aria-hidden="true"><svg viewBox="0 0 64 70"><path d="M16 21 Q13 12 23 9 L43 10 Q51 13 49 24 L46 44 Q57 48 54 56 L47 65 L15 63 L8 54 Q7 48 15 44 Z" fill="#d5ad30" stroke="#f2f7ff" stroke-width="3"/><path d="M17 22 L44 23 M16 32 L45 34 M17 45 L46 45" stroke="#f7e9b6" stroke-width="3"/><path d="M15 42 Q0 30 3 22 Q9 16 18 23 L25 38 Z" fill="#bb8f1e" stroke="#fff" stroke-width="2"/><path d="M18 53 L45 54" stroke="#152c46" stroke-width="5"/></svg></div><div class="crowd"></div><div class="boards"></div><div class="ice-line"></div><svg class="fight-scene" viewBox="0 0 640 300" preserveAspectRatio="xMidYMid meet" aria-label="Två hockeyspelare vända mot varandra i fightingställning"><g class="fight-pair"><g class="hockey-fighter mine" transform="translate(273 0) scale(1 1)">
+
+/* 1.5.6.21 eliminate floating glove artifacts; victory celebration */
+.thrown-glove{display:none!important}
+.ice-gloves{position:absolute;inset:0;z-index:6;pointer-events:none;opacity:0;transition:opacity .15s}
+.rink.gloves-landed .ice-gloves{opacity:1}
+.ice-glove{position:absolute;top:87%;width:18px;height:13px;border-radius:5px 7px 4px 4px;border:2px solid #fff;box-shadow:0 2px 3px #15334b66,inset 0 -4px #182a40}
+.ice-glove:before{content:"";position:absolute;left:-5px;top:2px;width:8px;height:7px;border-radius:5px 1px 4px 4px;background:inherit;border:1px solid white}
+.ice-glove.red{left:32%;background:#b62943;transform:rotate(-23deg)}
+.ice-glove.yellow{left:68%;background:#d5ad30;transform:rotate(18deg)}
+.rink.victory-mine .hockey-fighter.mine .fighter-motion,.rink.victory-enemy .hockey-fighter.enemy .fighter-motion{animation:winnerBounce .7s ease-in-out infinite alternate!important}
+.rink.victory-mine .hockey-fighter.mine .punch-arm,.rink.victory-enemy .hockey-fighter.enemy .punch-arm{animation:victoryRaise .7s ease-out forwards!important;transform-origin:27px 147px}
+.rink.victory-mine .hockey-fighter.mine .back-arm,.rink.victory-enemy .hockey-fighter.enemy .back-arm{animation:victoryOtherArm .7s ease-out forwards!important;transform-origin:-30px 148px}
+.rink.victory-mine .hockey-fighter.mine .head-group,.rink.victory-enemy .hockey-fighter.enemy .head-group{animation:winnerLookUp .7s ease-out forwards!important}
+@keyframes winnerBounce{from{transform:translateY(0) rotate(-2deg)}to{transform:translateY(-10px) rotate(3deg)}}
+@keyframes victoryRaise{to{transform:rotate(-160deg) translateY(-13px)}}
+@keyframes victoryOtherArm{to{transform:rotate(160deg) translateY(-12px)}}
+@keyframes winnerLookUp{to{transform:rotate(-13deg) translateY(-4px)}}
+@media(prefers-reduced-motion:reduce){.rink.victory-mine .hockey-fighter.mine .fighter-motion,.rink.victory-enemy .hockey-fighter.enemy .fighter-motion{animation:none!important}}
+</style></head><body><main class="shell"><div class="top"><span>🥊 THE FIGHTING UPDATE · ARCADE 1.5.6.21</span><a class="exit" href="../">✕ MATCHEN</a></div><div class="hud"><div class="fighter-hud"><div class="hud-head"><span>DU · #21</span><span id="my-hp-num">100 HP</span></div><div class="meter hp"><span id="my-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="my-st-num">100</span></div><div class="meter stamina"><span id="my-st"></span></div></div><div class="fighter-hud"><div class="hud-head"><span>MOTSTÅNDARE · #44</span><span id="enemy-hp-num">100 HP</span></div><div class="meter hp"><span id="enemy-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="enemy-st-num">100</span></div><div class="meter stamina"><span id="enemy-st"></span></div></div></div><div class="rink" id="arena"><div class="fight-call">FIGHT!</div><div class="hit-spark enemy-impact" id="enemy-impact" aria-hidden="true">✦</div><div class="hit-spark mine-impact" id="mine-impact" aria-hidden="true">✦</div><div class="ice-gloves" aria-hidden="true"><span class="ice-glove red"></span><span class="ice-glove yellow"></span></div><div class="crowd"></div><div class="boards"></div><div class="ice-line"></div><svg class="fight-scene" viewBox="0 0 640 300" preserveAspectRatio="xMidYMid meet" aria-label="Två hockeyspelare vända mot varandra i fightingställning"><g class="fight-pair"><g class="hockey-fighter mine" transform="translate(273 0) scale(1 1)">
  <ellipse class="skate-shadow" cx="0" cy="281" rx="51" ry="7" fill="#507e9c" opacity=".24"/>
  <g class="fighter-motion">
  <g class="legs"><path d="M-24 214 L-34 269 L-12 270 L-3 224 Z" fill="#1b2d42"/><path d="M7 222 L16 271 L38 271 L25 211 Z" fill="#1b2d42"/><path d="M-39 268 L-8 268 L-4 276 L-43 276 Z M14 269 L42 269 L48 276 L12 276 Z" fill="#0d1b2a" stroke="#607f93" stroke-width="2"/></g>
@@ -200,7 +218,8 @@ function impact(target){
 function finish(title,description){
  done=true;$('headline').textContent=title;$('description').textContent=description;
  const loser=p.hp<=0?'mine':e.hp<=0?'enemy':null;
- if(loser)$('arena').classList.add('knockout-'+loser);
+ if(loser){$('arena').classList.add('knockout-'+loser,'victory-'+(loser==='mine'?'enemy':'mine'));}
+ else $('arena').classList.add('victory-'+(p.hp>=e.hp?'mine':'enemy'));
  $('controls').innerHTML='<div class="fight-ended" role="status">🏁 FIGHTEN ÄR AVSLUTAD</div>';draw();
 }
 function hit(){
@@ -273,7 +292,7 @@ window.setTimeout(()=>{arena.classList.add('fight-ready');$('headline').textCont
 const countdown=document.createElement('div');countdown.className='fight-countdown';countdown.setAttribute('aria-live','assertive');arena.appendChild(countdown);
 const count=(value,delay)=>window.setTimeout(()=>{countdown.textContent=value;countdown.classList.remove('count-pop');void countdown.offsetWidth;countdown.classList.add('count-pop')},delay);
 count('3',400);count('2',850);count('1',1300);
-window.setTimeout(()=>arena.classList.add('throw-gloves'),450);
+window.setTimeout(()=>arena.classList.add('gloves-landed'),1100);
 window.setTimeout(()=>{
  countdown.textContent='BAAAM!';countdown.classList.remove('count-pop');void countdown.offsetWidth;countdown.classList.add('count-pop','go');
  arena.classList.add('call');
