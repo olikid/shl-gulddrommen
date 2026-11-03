@@ -301,3 +301,5 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - Vision 1.5.6 — THE FIGHTING UPDATE: slagsmål, gruff, utvisningar, skador, matchdynamik, disciplinära följder och sportjournalistiska reaktioner. Exakt design och balans ska utformas med användaren före kodning.
 - Skydd: ändra endast development/index.html tills användaren uttryckligen begär ny officiell release. Bevara localStorage, saves och kompatibilitet. Kontrollera SHA och versionsrad före ändringar.
 - Teststatus: ingen automatiserad JS-, mobil- eller webbläsarregression och ingen live Pages-verifiering utfördes i release-steget. Tidigare mobilfeedback var positiv.
+
+- **2026-11-03 — Officiell 1.5.5 hotfix:** Tränarporträtten i root index.html använde relativa sökvägar `../assets/Coaches/coach_*.webp` från development-mappen. I officiell root ändrades de två referenserna till `assets/Coaches/coach_*.webp`. Filerna finns i GitHub assets/Coaches. Kodcommit `ee4ef53a10f66570b44fb651236c88336588cc9a`. Development/index.html orörd; sparfiler och logik orörda. Ej live-webbläsartestat.
