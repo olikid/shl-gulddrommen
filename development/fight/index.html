@@ -127,7 +127,14 @@
 @keyframes impactBody{35%{transform:rotate(-11deg) translateX(-13px)}75%{transform:rotate(-4deg) translateX(-4px)}}
 @keyframes impactGuard{35%{transform:rotate(9deg) translateY(8px)}}
 @media(prefers-reduced-motion:reduce){.hit-spark.impact-active,.rink.impact-enemy .hockey-fighter *,.rink.impact-mine .hockey-fighter *{animation:none!important}}
-</style></head><body><main class="shell"><div class="top"><span>🥊 THE FIGHTING UPDATE · ARCADE 1.5.6.16</span><a class="exit" href="../">✕ MATCHEN</a></div><div class="hud"><div class="fighter-hud"><div class="hud-head"><span>DU · #21</span><span id="my-hp-num">100 HP</span></div><div class="meter hp"><span id="my-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="my-st-num">100</span></div><div class="meter stamina"><span id="my-st"></span></div></div><div class="fighter-hud"><div class="hud-head"><span>MOTSTÅNDARE · #44</span><span id="enemy-hp-num">100 HP</span></div><div class="meter hp"><span id="enemy-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="enemy-st-num">100</span></div><div class="meter stamina"><span id="enemy-st"></span></div></div></div><div class="rink" id="arena"><div class="fight-call">FIGHT!</div><div class="hit-spark enemy-impact" id="enemy-impact" aria-hidden="true">✦</div><div class="hit-spark mine-impact" id="mine-impact" aria-hidden="true">✦</div><div class="glove left"></div><div class="glove right"></div><div class="crowd"></div><div class="boards"></div><div class="ice-line"></div><svg class="fight-scene" viewBox="0 0 640 300" preserveAspectRatio="xMidYMid meet" aria-label="Två hockeyspelare vända mot varandra i fightingställning"><g class="fight-pair"><g class="hockey-fighter mine" transform="translate(273 0) scale(1 1)">
+
+/* 1.5.6.17 high-energy countdown */
+.fight-countdown{position:absolute;z-index:30;left:50%;top:48%;transform:translate(-50%,-50%);font-size:clamp(72px,17vw,148px);line-height:1;font-weight:1000;letter-spacing:-.08em;color:#fff;text-shadow:0 5px 0 #163049,0 0 24px #2c91ff,0 0 45px #113b80;pointer-events:none;opacity:0}
+.fight-countdown.count-pop{animation:countSmash .43s cubic-bezier(.16,.8,.2,1) both}
+.fight-countdown.go{font-size:clamp(52px,12vw,105px);color:#ffdc65;text-shadow:0 5px 0 #a73c13,0 0 28px #ff672c,0 0 52px #ffb731}
+@keyframes countSmash{0%{opacity:0;transform:translate(-50%,-50%) scale(2.4) rotate(-8deg);filter:blur(7px)}30%{opacity:1;transform:translate(-50%,-50%) scale(.91) rotate(2deg);filter:blur(0)}65%{opacity:1;transform:translate(-50%,-50%) scale(1.05)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.15)}}
+@media(prefers-reduced-motion:reduce){.fight-countdown.count-pop{animation:none;opacity:1}}
+</style></head><body><main class="shell"><div class="top"><span>🥊 THE FIGHTING UPDATE · ARCADE 1.5.6.17</span><a class="exit" href="../">✕ MATCHEN</a></div><div class="hud"><div class="fighter-hud"><div class="hud-head"><span>DU · #21</span><span id="my-hp-num">100 HP</span></div><div class="meter hp"><span id="my-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="my-st-num">100</span></div><div class="meter stamina"><span id="my-st"></span></div></div><div class="fighter-hud"><div class="hud-head"><span>MOTSTÅNDARE · #44</span><span id="enemy-hp-num">100 HP</span></div><div class="meter hp"><span id="enemy-hp"></span></div><div class="hud-head"><span>STAMINA</span><span id="enemy-st-num">100</span></div><div class="meter stamina"><span id="enemy-st"></span></div></div></div><div class="rink" id="arena"><div class="fight-call">FIGHT!</div><div class="hit-spark enemy-impact" id="enemy-impact" aria-hidden="true">✦</div><div class="hit-spark mine-impact" id="mine-impact" aria-hidden="true">✦</div><div class="glove left"></div><div class="glove right"></div><div class="crowd"></div><div class="boards"></div><div class="ice-line"></div><svg class="fight-scene" viewBox="0 0 640 300" preserveAspectRatio="xMidYMid meet" aria-label="Två hockeyspelare vända mot varandra i fightingställning"><g class="fight-pair"><g class="hockey-fighter mine" transform="translate(273 0) scale(1 1)">
  <ellipse class="skate-shadow" cx="0" cy="281" rx="51" ry="7" fill="#507e9c" opacity=".24"/>
  <g class="fighter-motion">
  <g class="legs"><path d="M-24 214 L-34 269 L-12 270 L-3 224 Z" fill="#1b2d42"/><path d="M7 222 L16 271 L38 271 L25 211 Z" fill="#1b2d42"/><path d="M-39 268 L-8 268 L-4 276 L-43 276 Z M14 269 L42 269 L48 276 L12 276 Z" fill="#0d1b2a" stroke="#607f93" stroke-width="2"/></g>
@@ -240,9 +247,18 @@ $('hit-button').disabled=true;$('duck-button').disabled=true;
 $('headline').textContent='ÖGA MOT ÖGA...';
 $('description').textContent='Spelarna glider in från varsin sida av isen.';
 const arena=$('arena');
-window.setTimeout(()=>{arena.classList.add('fight-ready');$('headline').textContent='DE NÄRMAR SIG...'},350);
-window.setTimeout(()=>{arena.classList.add('gloves');$('headline').textContent='HANDSKARNA ÅKER!';$('description').textContent='De kastar handskarna och höjer nävarna.'},1300);
-window.setTimeout(()=>{arena.classList.remove('gloves');arena.classList.add('call');$('headline').textContent='FIGHT!';$('description').textContent='Spamma SLÅSS – men DUCKA när motståndaren laddar!';$('hit-button').disabled=false;$('duck-button').disabled=false;ready=true;started=performance.now();lastFrame=started;nextAttack=started+1100;requestAnimationFrame(tick)},2600);
+window.setTimeout(()=>{arena.classList.add('fight-ready');arena.classList.add('gloves');$('headline').textContent='FIGHT!';$('description').textContent='Är du redo?';},180);
+const countdown=document.createElement('div');countdown.className='fight-countdown';countdown.setAttribute('aria-live','assertive');arena.appendChild(countdown);
+const count=(value,delay)=>window.setTimeout(()=>{countdown.textContent=value;countdown.classList.remove('count-pop');void countdown.offsetWidth;countdown.classList.add('count-pop')},delay);
+count('3',400);count('2',850);count('1',1300);
+window.setTimeout(()=>{
+ countdown.textContent='BAAAM!';countdown.classList.remove('count-pop');void countdown.offsetWidth;countdown.classList.add('count-pop','go');
+ arena.classList.remove('gloves');arena.classList.add('call');
+ $('headline').textContent='FIGHT!';$('description').textContent='KÖR! Snabba slag ger bonus – håll koll på stamina!';
+ $('hit-button').disabled=false;$('duck-button').disabled=false;ready=true;
+ started=performance.now();lastFrame=started;nextAttack=started+650;requestAnimationFrame(tick);
+},1750);
+window.setTimeout(()=>countdown.remove(),2450);
 draw();
 })();
 </script></body></html>
