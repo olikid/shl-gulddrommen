@@ -362,6 +362,22 @@
 (()=>{
 'use strict';
 const $=id=>document.getElementById(id);
+/* Match integration: display actual clubs and color the SVG jerseys, arms and gloves. */
+const fightParams=new URLSearchParams(location.search);
+if(fightParams.get('embedded')==='1'){
+ const safeColor=(value,fallback)=>/^#[0-9a-fA-F]{6}$/.test(value||'')?value:fallback;
+ const mineColor=safeColor(fightParams.get('mineColor'),'#b72c45'),enemyColor=safeColor(fightParams.get('enemyColor'),'#e5ba32');
+ const mineName=(fightParams.get('mine')||'DITT LAG').slice(0,40),enemyName=(fightParams.get('enemy')||'MOTSTÅNDAREN').slice(0,40);
+ const labels=document.querySelectorAll('.teams span');if(labels[0])labels[0].textContent=mineName;if(labels[1])labels[1].textContent=enemyName;
+ const hud=document.querySelectorAll('.fighter-hud .hud-head:first-child span:first-child');if(hud[0])hud[0].textContent=mineName+' · #21';if(hud[1])hud[1].textContent=enemyName+' · #44';
+ const top=document.querySelector('.top>span');if(top)top.textContent='🥊 '+mineName+' VS '+enemyName;
+ for(const [selector,oldColor,color] of [['.hockey-fighter.mine','#b72c45',mineColor],['.hockey-fighter.enemy','#e5ba32',enemyColor]]){
+  const fighter=document.querySelector(selector);
+  if(!fighter)continue;
+  fighter.querySelectorAll('[fill]').forEach(node=>{if(node.getAttribute('fill')?.toLowerCase()===oldColor)node.setAttribute('fill',color)});
+ }
+ const gloves=document.querySelectorAll('.ice-glove');if(gloves[0])gloves[0].style.setProperty('--glove-color',mineColor);if(gloves[1])gloves[1].style.setProperty('--glove-color',enemyColor);
+}
 const p={hp:100,st:100},e={hp:100,st:100};
 let ready=false,done=false,hits=0,combo=0,lastHit=0,rapidChain=0,lastDodge=0,windup=0,nextAttack=performance.now()+1100,exhausted=0,started=performance.now(),lastFrame=started,lastAction=performance.now(),enemyChain=0;
 const clamp=x=>Math.max(0,Math.min(100,x));
