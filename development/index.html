@@ -1581,6 +1581,16 @@ main{padding-bottom:116px}
 @media(prefers-reduced-motion:reduce){.result-live-row,#result-round-panel.result-panel-in{animation:none!important}#result-round-panel{transition:none!important}}
 
 
+/* 1.5.6.38: embedded match fights */
+.match-fight-layer{position:fixed;inset:0;z-index:99999;background:#051322eb;display:flex;align-items:center;justify-content:center;padding:10px}
+.match-fight-invite{max-width:440px;width:100%;padding:24px;border-radius:20px;border:1px solid #688aa4;background:#132b44;color:#fff;text-align:center;box-shadow:0 20px 70px #000a}
+.match-fight-invite strong{color:#ff8497}.match-fight-invite h2{font-size:23px;margin:14px 0}.match-fight-invite p{color:#c6d8e7}
+.match-fight-invite button,.match-fight-bar button{display:block;width:100%;border:1px solid #6b8ba3;border-radius:12px;background:#a72c46;color:white;padding:13px;margin-top:10px;font-weight:900;cursor:pointer}
+.match-fight-invite button:last-child{background:#27415b}
+.match-fight-embed{width:min(900px,100%);height:min(96dvh,850px);background:#081625;display:flex;flex-direction:column;border-radius:14px;overflow:hidden;border:1px solid #577791}
+.match-fight-bar{padding:8px 12px;display:flex;justify-content:space-between;align-items:center;gap:12px;color:white}
+.match-fight-bar button{width:auto;margin:0;padding:9px 12px;font-size:12px}
+.match-fight-embed iframe{border:0;width:100%;flex:1;min-height:0}
 </style><style>.coach15{background:linear-gradient(140deg,#19324c,#102337);border:1px solid #53769a;border-radius:13px;padding:12px;margin:10px 0;color:#e9f4ff}.coach15top{display:flex;align-items:center;gap:12px}.coach15face{font-size:32px;padding:8px;background:#294763;border-radius:10px}.coach15top>div{display:flex;flex-direction:column;gap:3px}.coach15top small{color:#7ebaf0;font-size:10px;letter-spacing:.08em}.coach15top strong{font-size:17px}.coach15top span{font-size:12px;color:#bbcede}.coach15 label{display:block;margin-top:10px;font-size:11px;color:#bdd2e4}.coach15 input,.coach15 select{width:100%;box-sizing:border-box;background:#0c1e30;color:#fff;border:1px solid #4c6d8d;border-radius:7px;padding:9px;margin-top:4px}.coach15faces{display:flex;gap:7px;margin-top:10px}.coach15faces button{background:#1e3b57;border:1px solid #527494;border-radius:8px;font-size:23px;padding:8px 12px}.coach15faces button.selected{border:2px solid #7ac7ff}.coach15cols{display:grid;grid-template-columns:1fr 1fr;gap:10px}.coach15bottom{border-top:1px solid #3c5871;margin-top:12px;padding-top:9px;font-size:12px;display:flex;justify-content:space-between;gap:8px}.coach15bottom span{color:#9bb4cb} .coach15editbtn{display:block;width:100%;margin-top:12px;background:#294c6b;color:#eaf6ff;border:1px solid #6d9bc2;border-radius:9px;padding:10px;font-size:12px;font-weight:700} .coach15portrait{display:inline-flex;position:relative;overflow:hidden;align-items:center;justify-content:center;width:100%;height:100%}.coach15portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;z-index:1}.coach15fallback{font-size:26px}.coach15face{width:56px;height:65px;overflow:hidden;display:inline-flex;padding:0}.coach15face .coach15portrait img{object-fit:cover;object-position:center 10%}.coach15face .coach15portrait{width:100%;height:100%}.coach15faces button{width:25%;height:132px;padding:0;overflow:hidden;background:linear-gradient(180deg,#244663,#132d47)}.coach15faces .coach15fallback{font-size:25px}/* BETA 1.5.0.9: Managerhubben's season preview reuses career season card styling. */
 .season-history-mini .career-season-pages{display:grid!important;gap:6px!important;margin-top:10px!important}
 .season-history-mini .career-season-record{display:block!important;position:relative;text-align:left;border:1px solid rgba(132,174,209,.23)!important;border-radius:9px!important;background:linear-gradient(125deg,rgba(48,78,107,.62),rgba(29,53,78,.42))!important;padding:8px 11px!important;margin:0!important;box-shadow:inset 0 1px rgba(255,255,255,.035)}
@@ -2386,7 +2396,32 @@ if(g.overtime){
  if(x!==y)update({score:[x,y],overtimeStep:step,coachActive:active,feedback:msg+' · 🏆 GOLDEN GOAL!',finalPending:true});
  else update({score:[x,y],overtimeStep:step,clockElapsed:step*60,coachActive:active,feedback:msg+' · ⏱️ Sudden death fortsätter!',possession,zone,pressure,scene:chooseScene()});
  }else if(g.turn===14){update({score:[x,y],coachActive:active,feedback:msg,finalPending:true})}else{let next=nextClock(g.turn,x,y,ok),oldTime=Number.isFinite(g.clockElapsed)?g.clockElapsed:0,passed=(g.turn+1)%5===0?Math.max(0,1200-oldTime)+next:Math.max(0,next-oldTime),pen=g.penalty?{...g.penalty,remaining:g.penalty.remaining-passed}:null;if(pen&&((pen.team==='opp'&&ownGoal)||(pen.team==='own'&&againstGoal)))pen=null;if(pen&&pen.remaining<=0)pen=null;if(!pen&&Math.random()<(g.rivalryMatch?.heated?.19:.15)){pen={team:Math.random()<.5?'own':'opp',remaining:120};msg+=' · 🟨 Utvisning!'+(g.rivalryMatch?.heated?' Hett temperament i rivalmötet!':'')}
-update({score:[x,y],turn:g.turn+1,clockElapsed:next,penalty:pen,possession,zone,pressure,feedback:msg,coachActive:active,opponentPulled});update({scene:chooseScene()})}}
+update({score:[x,y],turn:g.turn+1,clockElapsed:next,penalty:pen,possession,zone,pressure,feedback:msg,coachActive:active,opponentPulled});update({scene:chooseScene()})}setTimeout(matchFightMaybe,0)}
+/* Occasional invitation to play the fight arcade inside a league match */
+let matchFightSeen='',matchFightOpen=false;
+function matchFightMaybe(){
+ if(g.page!=='match'||g.finalPending||g.overtime||matchFightOpen||g.turn<2||g.turn>12)return;
+ const key=(g.seasons||[]).length+'-'+g.round+'-'+g.team;
+ if(matchFightSeen===key||Math.random()>(g.rivalryMatch?.heated?.18:.09))return;
+ matchFightSeen=key;matchFightOpen=true;
+ const el=document.createElement('div');el.id='match-fight-layer';el.className='match-fight-layer';
+ el.innerHTML='<section class="match-fight-invite"><strong>🥊 DET HETTAR TILL!</strong><h2>MOTSTÅNDAREN BJUDER UPP TILL FIGHT!</h2><p>Handskarna åker av! Vill du ta fighten? Matchen väntar medan ni gör upp.</p><button onclick="matchFightLaunch()">🥊 TA FIGHTEN</button><button onclick="matchFightEnd()">🛡️ AVSTÅ</button></section>';
+ document.body.appendChild(el);
+}
+function matchFightLaunch(){
+ const el=document.getElementById('match-fight-layer');if(!el)return;
+ el.innerHTML='<section class="match-fight-embed"><div class="match-fight-bar"><strong>🥊 FIGHT PÅ ISEN</strong><button onclick="matchFightEnd()">✕ TILL MATCHEN</button></div><iframe title="Hockeyfight" src="fight/?embedded=1"></iframe></section>';
+}
+function matchFightEnd(result){
+ document.getElementById('match-fight-layer')?.remove();matchFightOpen=false;
+ if(g.page==='match')update({feedback:result==='win'?'🥊 DIN SPELARE VANN FIGHTEN! Publiken jublar!':result==='lose'?'🥊 Motståndaren vann fighten. Nu fortsätter matchen!':'🥊 Fighten avbruten. Matchen fortsätter.'});
+}
+window.addEventListener('message',ev=>{
+ const iframe=document.querySelector('#match-fight-layer iframe');
+ if(!iframe||ev.origin!==location.origin||ev.source!==iframe.contentWindow||ev.data?.type!=='shl-fight-finished')return;
+ const result=ev.data.result,bar=document.querySelector('.match-fight-bar');
+ if(bar){bar.querySelector('strong').textContent=result==='win'?'🏆 DU VANN FIGHTEN!':'🥊 FIGHTEN ÄR ÖVER';const button=bar.querySelector('button');button.textContent='FORTSÄTT MATCHEN →';button.onclick=()=>matchFightEnd(result)}
+});
 function nextClock(turn,x,y,goal){let nextStep=(turn+1)%5;if(nextStep===0)return 105+Math.floor(Math.random()*110);let elapsed=Number.isFinite(g.clockElapsed)?g.clockElapsed:150+turn%5*220;let pace=175+Math.floor(Math.random()*115);if(g.tactic==='attack')pace-=25;if(g.tactic==='defense')pace+=25;if(x<y)pace-=20;if(g.pulled)pace-=25;if(goal)pace-=15;let next=Math.max(elapsed+70,elapsed+pace);let upper=1190-(4-nextStep)*95;return Math.min(upper,next)}function clockForTurn(turn){let step=turn%5;let elapsed=Number.isFinite(g.clockElapsed)?g.clockElapsed:140+step*225;elapsed=Math.max(0,Math.min(1199,elapsed));return String(Math.floor(elapsed/60)).padStart(2,'0')+':'+String(elapsed%60).padStart(2,'0')};function benchMarkup(){
  let out='<div class="benchinside">';
  if(g.showCoachBench)out+='<div class="grid benchgrid">'+Object.entries(coachDefs).map(([k,d])=>'<button class="btn ghost" '+(g.coachUsed?.[k]?'disabled style="opacity:.45"':'onclick="coach('+String.fromCharCode(39)+k+String.fromCharCode(39)+')"')+'>'+d.label+(g.coachUsed?.[k]?' · ✓':'')+'</button>').join('')+'</div>';
