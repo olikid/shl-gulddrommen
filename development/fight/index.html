@@ -438,10 +438,12 @@ function fightClubOpponentsRender(){const box=$('fight-opponents');if(box)box.in
 function fightClubStakes(mine,theirs){const gap=theirs-mine,shift=Math.min(10,Math.round(Math.max(0,Math.abs(gap)-100)*7/300));return {win:gap>100?Math.min(25,20+shift):gap< -100?Math.max(10,20-shift):20,loss:gap>100?Math.max(10,20-shift):gap< -100?Math.min(25,20+shift):20}}
 const fcPendingKey='shl-fight-pending-v1',fcReadyKey='shl-fight-ready-v1';
 function fcPendingRead(){try{return JSON.parse(localStorage.getItem(fcPendingKey)||'null')}catch{return null}}
-function fcPendingSet(o){const mine=fightClubRead().rating,stakes=fightClubStakes(mine,o.elo);try{localStorage.setItem(fcPendingKey,JSON.stringify({id:o.id,elo:o.elo,loss:stakes.loss,started:Date.now()}))}catch{}}
+function fcPendingSet(o){const mine=fightClubRead().rating,stakes=fightClubStakes(mine,o.elo);try{localStorage.setItem(fcPendingKey,JSON.stringify({id:o.id,elo:o.elo,loss:stakes.loss,started:Date.now(),phase:'active'}))}catch{}}
 function fcPendingClear(){try{localStorage.removeItem(fcPendingKey)}catch{}}
 function fcForfeitPending(){
  const pending=fcPendingRead();if(!pending)return null;
+ // Fail-safe: only an explicitly active, unfinished fight can ever cost Elo.
+ if(pending.phase!=='active'){fcPendingClear();return null;}
  fcPendingClear();
  const v=fightClubRead(),old=v.rating,loss=Math.max(10,Math.min(25,Number(pending.loss)||20));
  v.rating=Math.max(0,v.rating-loss);v.losses++;v.streak=0;
@@ -470,14 +472,14 @@ function fightClubVersus(o,ended,won,delta,newRating,oldRating){
  const footer=overlay.querySelector('.fc-versus-foot');
  if(!ended){
  footer.innerHTML='<button type="button" class="fc-action fc-action-primary" id="fc-ready">🥊 REDO · STARTA FIGHTEN</button><small class="fc-commit-warning">MATCHEN ÄR BINDANDE · LÄMNAR DU RÄKNAS DET SOM FÖRLUST</small>';
- footer.querySelector('#fc-ready').addEventListener('click',()=>{try{sessionStorage.setItem(fcReadyKey,o.id)}catch{}location.href='?quick=1&opponent='+encodeURIComponent(o.id)});
+ footer.querySelector('#fc-ready').addEventListener('click',()=>{fcPendingSet(o);try{sessionStorage.setItem(fcReadyKey,o.id)}catch{}location.href='?quick=1&opponent='+encodeURIComponent(o.id)});
  }else{
  footer.innerHTML='<button type="button" class="fc-action fc-action-primary" id="fc-next">🥊 NY MATCH</button><a class="fc-action fc-action-secondary" href="./">🚪 TILL MENYN</a>';
  footer.querySelector('#fc-next').addEventListener('click',()=>{
  const card=overlay.querySelector('.fc-versus-card');
  card.innerHTML='<div class="fc-versus-kicker">FIGHT CLUB · MATCHMAKING</div><div class="fc-versus-title">SEARCHING</div><div class="fight-matchmaking-spinner" style="margin:22px auto"></div><div class="fc-versus-foot">LETAR EFTER DIN NÄSTA MOTSTÅNDARE...</div>';
  const candidates=fightClubMatchups(),picked=candidates[Math.floor(Math.random()*candidates.length)];
- window.setTimeout(()=>{if(!picked){card.querySelector('.fc-versus-foot').textContent='INGEN MATCH HITTADES';return}const next={...picked,...(fightClubOppState()[picked.id]||{})};overlay.remove();fcPendingSet(next);fightClubVersus(next,false);},1300);
+ window.setTimeout(()=>{if(!picked){card.querySelector('.fc-versus-foot').textContent='INGEN MATCH HITTADES';return}const next={...picked,...(fightClubOppState()[picked.id]||{})};overlay.remove();fightClubVersus(next,false);},1300);
  });
  }
  return overlay;
@@ -492,7 +494,7 @@ function fightClubFindMatch(){
  window.setTimeout(()=>{if(!picked){button.disabled=false;return}const o={...picked,...(fightClubOppState()[picked.id]||{})};
  box.innerHTML='<div class="fight-matchmaking-info">🥊 MATCH HITTAD · '+o.name+'</div>';
  button.querySelector('strong').textContent='🥊 MATCH HITTAD!';
- fcPendingSet(o);fightClubVersus(o,false);
+ fightClubVersus(o,false);
  },1100);
 }
 function fightClubRead(){try{const v=JSON.parse(localStorage.getItem(fightClubKey)||'{}');return {rating:Number.isFinite(v.rating)?v.rating:1000,wins:v.wins||0,losses:v.losses||0,streak:v.streak||0}}catch{return {rating:1000,wins:0,losses:0,streak:0}}}
@@ -546,7 +548,7 @@ if(fightParams.get('embedded')==='1'){
  }
  const gloves=document.querySelectorAll('.ice-glove');if(gloves[0])gloves[0].style.setProperty('--glove-color',mineColor);if(gloves[1])gloves[1].style.setProperty('--glove-color',enemyColor);
 }
-if(!fightClubEmbedded&&fightClubQuick){const pending=fcPendingRead();let approved='';try{approved=sessionStorage.getItem(fcReadyKey)||'';sessionStorage.removeItem(fcReadyKey)}catch{}if(pending&&(pending.id!==fightClubParams.get('opponent')||approved!==pending.id)){fcForfeitPending();location.replace('./');return}}
+if(!fightClubEmbedded&&fightClubQuick){const pending=fcPendingRead();let approved='';try{approved=sessionStorage.getItem(fcReadyKey)||'';sessionStorage.removeItem(fcReadyKey)}catch{}if(!pending||pending.phase!=='active'||pending.id!==fightClubParams.get('opponent')||approved!==pending.id){if(pending&&pending.phase==='active')fcForfeitPending();location.replace('./');return}}
 const fightClubChosen=fightClubOpponents.find(o=>o.id===fightClubParams.get('opponent'))||fightClubMatchups()[0];
 if(!fightClubEmbedded&&fightClubQuick){const o={...fightClubChosen,...(fightClubOppState()[fightClubChosen.id]||{})};const hud=document.querySelectorAll('.fighter-hud .hud-head:first-child span:first-child');if(hud[1])hud[1].textContent=o.name.toUpperCase()+' · '+o.elo+' ELO';const teams=document.querySelectorAll('.teams span');if(teams[1])teams[1].textContent=o.name;document.querySelector('.top>span').textContent='🥊 QUICK FIGHT · VS '+o.name.toUpperCase();}
 const p={hp:100,st:100},e={hp:100,st:100};
