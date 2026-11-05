@@ -411,3 +411,8 @@ Tränarens privatekonomi ska i en framtida version påverka matchbeslut och i f�
 - DEV 0.4.23: återställde normal motståndarmatchning efter testet, commit `e43ca003d48c3310e5cb81874c1838bc01867285`.
 - VIKTIG PRODUKTORDNING: managerhubben (`index.html`) är fortsatt huvudspelets startsida och fokus. Fight Club är ett separat spelläge via managerhubbens spellägesmeny, inte ny startsida. `index.html` ändrades inte vid releasen. Managerhubben länkar till `fight/` och använder `fight/` som inbäddad fight i SHL-match.
 - Utvecklingsfilen `development/fight/index.html` behölls orörd vid release. Git-historiken möjliggör återställning av tidigare officiell Fight Club. GitHub-filkopieringen är verifierad, men publicerad Pages-visning och fullständig webbläsar-QA har inte verifierats här.
+
+## 2026-11-05 — Fristående spelbar hockeyprototyp 0.1
+- Användaren ville testa mer aktivt spelande i hockeymatcherna. Ny isolerad fil `development/hockey/index.html`, commit `5807a1c29a084ecd32f529328998c5499edc3312`, testadress `https://olikid.github.io/shl-gulddrommen/development/hockey/?v=01`.
+- Canvasbaserat powerplay-test Brynäs–Färjestad 2–2, joystick och mobilknappar för pass, fint och skott, tangentbordskontroller, försvarare och målvakt, tid/poäng och omspelning.
+- Ingen integration i managerhubben ännu; officiella filer och befintliga sparningar ändras inte. Spelkänsla och faktisk mobilfunktion ska utvärderas av användaren före nästa steg. Publicerad webbläsar- och syntax-QA inte genomförd.
